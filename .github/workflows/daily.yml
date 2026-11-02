@@ -1,0 +1,73 @@
+name: Daily X security feed
+
+on:
+  schedule:
+    # 06:23 JST every day
+    - cron: "23 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-feed
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: voidzero-dev/setup-vp@v1.22.0
+        with:
+          node-version: "26"
+          cache: true
+
+      - run: vp test
+
+      - name: Collect topics from X (xAI x_search)
+        id: fetch
+        continue-on-error: true
+        run: vp run fetch
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          XAI_MODEL: ${{ vars.XAI_MODEL }}
+          MAX_ITEMS: ${{ vars.MAX_ITEMS }}
+          MAX_TURNS: ${{ vars.MAX_TURNS }}
+
+      - name: Build feed
+        run: vp run build
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+
+      - name: Commit collected data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "no data changes"
+          else
+            git commit -m "data: $(date -u +%F) ${{ steps.fetch.outcome }}"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v6.0.0
+      - uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: public
+      - id: deploy
+        uses: actions/deploy-pages@v5.0.1
+
+      - name: Fail the run if collection failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "::error::Collection failed: $(jq -r .message data/status.json)"
+          exit 1
