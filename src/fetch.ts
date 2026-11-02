@@ -1,21 +1,20 @@
 /**
- * Collect security topics from X via the xAI Responses API (x_search tool).
- *
- * Two searches over the last 24h before the run (WINDOW_HOURS):
- *   1. "trusted": restricted to primary-source accounts (allowed_x_handles)
- *   2. "general": all of X, searched topic by topic
- * Results are validated (see lib/items.ts), merged and written to
- * data/raw/<run date>.json. data/status.json records a short public status.
- * Any failure exits non-zero so the GitHub Actions run fails; detailed error
- * bodies only go to the (sanitized) Actions log.
- *
- * Env: XAI_API_KEY (required), XAI_MODEL, MAX_ITEMS, MAX_TURNS, TRUSTED_HANDLES, WINDOW_HOURS
+ * Any failure exits non-zero so the GitHub Actions run fails and notifies.
+ * Error bodies from the API go only to the sanitized Actions log, never to
+ * data/status.json, because that file is committed and published in the feed.
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { DEFAULT_TRUSTED_HANDLES, parseHandles, rollingWindow } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
-import { citedStatuses, extractOutputText, normalizeItems, TOPICS_SCHEMA } from "./lib/items.ts";
+import {
+  citedStatuses,
+  extractOutputText,
+  normalizeItems,
+  TOPICS_SCHEMA,
+  type NormalizeOptions,
+  type NormalizeResult,
+} from "./lib/items.ts";
 import type { RawDay, RunRecord, Status, Topic } from "./lib/types.ts";
 
 const DATA = join(import.meta.dirname, "..", "data");
@@ -104,29 +103,37 @@ async function runSearch(
     },
   };
 
-  let res: Response;
-  try {
-    res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(600_000),
-    });
-  } catch (e) {
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(600_000),
+  }).catch((e: unknown) => {
     throw new SearchError("xAI API に接続できませんでした", String(e));
-  }
+  });
 
   if (!res.ok) {
     const detail = (await res.text()).slice(0, 500);
-    let hint = "";
-    if (res.status === 401 || res.status === 403 || /api key/i.test(detail)) {
-      hint = " (APIキーが無効か失効しています)";
-    } else if (res.status === 402 || res.status === 429 || /credit|balance|spend/i.test(detail)) {
-      hint = " (クレジット不足またはレート制限の可能性があります)";
-    }
-    throw new SearchError(`xAI API エラー HTTP ${res.status}${hint}`, detail);
+    throw new SearchError(`xAI API エラー HTTP ${res.status}${errorHint(res.status, detail)}`, detail);
   }
   return res.json();
+}
+
+function errorHint(status: number, detail: string): string {
+  // xAI answers an invalid key with HTTP 400, so the body has to be checked too.
+  if (status === 401 || status === 403 || /api key/i.test(detail)) return " (APIキーが無効か失効しています)";
+  if (status === 402 || status === 429 || /credit|balance|spend/i.test(detail)) {
+    return " (クレジット不足またはレート制限の可能性があります)";
+  }
+  return "";
+}
+
+function parseSearchResult(resp: unknown, opts: NormalizeOptions): NormalizeResult {
+  try {
+    return normalizeItems(JSON.parse(extractOutputText(resp)), citedStatuses(resp), opts);
+  } catch (e) {
+    throw new SearchError("応答の解析に失敗しました", String(e));
+  }
 }
 
 async function main(): Promise<void> {
@@ -183,18 +190,13 @@ async function main(): Promise<void> {
       // Raw responses are kept for diagnosis (gitignored; uploaded as an artifact on failure).
       await writeFile(join(DEBUG, `${spec.label}.json`), JSON.stringify(resp, null, 2));
       usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
-      let result;
-      try {
-        result = normalizeItems(JSON.parse(extractOutputText(resp)), citedStatuses(resp), {
-          collectedAt: nowIso(),
-          notBefore,
-          notAfter,
-          maxItems: spec.maxItems,
-          exclude: taken,
-        });
-      } catch (e) {
-        throw new SearchError("応答の解析に失敗しました", String(e));
-      }
+      const result = parseSearchResult(resp, {
+        collectedAt: nowIso(),
+        notBefore,
+        notAfter,
+        maxItems: spec.maxItems,
+        exclude: taken,
+      });
       for (const t of result.items) taken.add(t.id);
       collected.push(...result.items);
       rejected.push(...result.rejected.map((r) => ({ search: spec.label, ...r })));

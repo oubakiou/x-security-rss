@@ -16,7 +16,6 @@ export function escapeXml(s: string): string {
     .replace(/'/g, "&apos;");
 }
 
-/** Links to other posts merged into this topic. Ids are numeric (validated in mergeTopics). */
 function relatedHtml(t: Topic): string {
   const ids = (t.related ?? []).filter((id) => /^\d{1,20}$/.test(id));
   if (!ids.length) return "";
@@ -31,7 +30,6 @@ function rfc822(iso: string): string {
   return (Number.isNaN(d.getTime()) ? new Date(0) : d).toUTCString();
 }
 
-/** Item shown at the top of the feed when the latest run failed. */
 export function statusAlert(status: Status | undefined, meta: FeedMeta): Topic | undefined {
   if (!status || status.ok) return undefined;
   const day = status.checked_at.slice(0, 10);

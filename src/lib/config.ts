@@ -6,13 +6,11 @@ const HANDLE_RE = /^[A-Za-z0-9_]{1,15}$/;
  * Actions variable (comma separated, without @).
  */
 export const DEFAULT_TRUSTED_HANDLES = [
-  // Government / CERT
   "CISAgov",
   "CISACyber",
   "NCSC",
   "CERT_CC",
   "jpcert",
-  // Vendor threat intel / vulnerability research
   "MsftSecIntel",
   "msftsecresponse",
   "Mandiant",
@@ -20,7 +18,6 @@ export const DEFAULT_TRUSTED_HANDLES = [
   "Unit42_Intel",
   "thezdi",
   "Shadowserver",
-  // Security news
   "BleepinComputer",
   "TheHackersNews",
   "SecurityWeek",

@@ -18,7 +18,6 @@ export interface RunRecord {
   window: { from: string; to: string };
   usage: unknown;
   kept: number;
-  /** rejected items: reason, public post id and decoded posting time */
   rejected: Array<{ search: string; reason: string; id?: string; posted_at?: string }>;
   errors: string[];
 }

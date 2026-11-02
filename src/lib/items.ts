@@ -3,7 +3,6 @@ import type { Topic } from "./types.ts";
 export const LIMITS = { title: 120, summary: 600, author: 80, tags: 10, tag: 40 } as const;
 const X_HOSTS = new Set(["x.com", "www.x.com", "twitter.com", "www.twitter.com", "mobile.twitter.com"]);
 const HANDLE_RE = /^[A-Za-z0-9_]{1,15}$/;
-/** Twitter/X snowflake epoch (ms). */
 const SNOWFLAKE_EPOCH = 1288834974657n;
 
 export interface StatusRef {
@@ -12,20 +11,14 @@ export interface StatusRef {
   id: string;
 }
 
-/** Strictly parse an X status URL. Rejects other hosts, schemes and shapes. */
 export function parseStatusUrl(input: unknown): StatusRef | undefined {
   if (typeof input !== "string") return undefined;
-  let u: URL;
-  try {
-    u = new URL(input.trim());
-  } catch {
-    return undefined;
-  }
+  const u = URL.parse(input.trim());
+  if (!u) return undefined;
   if (u.protocol !== "https:" || !X_HOSTS.has(u.hostname) || u.username || u.password || u.port) {
     return undefined;
   }
   const parts = u.pathname.split("/").filter(Boolean);
-  // /<handle>/status/<id>  or  /i/status/<id>  or  /i/web/status/<id>
   const idx = parts.indexOf("status");
   if (idx < 1 || idx !== parts.length - 2) return undefined;
   const id = parts[idx + 1]!;
@@ -37,7 +30,7 @@ export function parseStatusUrl(input: unknown): StatusRef | undefined {
   return undefined;
 }
 
-/** Posting time encoded in an X snowflake id (undefined for pre-snowflake ids). */
+/** undefined for ids from before X switched to snowflake ids (2010). */
 export function snowflakeTime(id: string): Date | undefined {
   try {
     const ms = (BigInt(id) >> 22n) + SNOWFLAKE_EPOCH;
@@ -47,19 +40,34 @@ export function snowflakeTime(id: string): Date | undefined {
   }
 }
 
-/** Remove characters not allowed in XML 1.0 plus bidi/zero-width controls, trim and cap length. */
+/**
+ * A single XML 1.0-invalid character makes readers reject the whole feed, and
+ * bidi/zero-width controls can make a title display differently from its text.
+ */
+function isAllowedChar(ch: string): boolean {
+  const cp = ch.codePointAt(0)!;
+  const xmlChar =
+    cp === 0x09 ||
+    cp === 0x0a ||
+    cp === 0x0d ||
+    (cp >= 0x20 && cp <= 0xd7ff) ||
+    (cp >= 0xe000 && cp <= 0xfffd) ||
+    (cp >= 0x10000 && cp <= 0x10ffff);
+  const invisibleControl =
+    (cp >= 0x200b && cp <= 0x200f) ||
+    (cp >= 0x202a && cp <= 0x202e) ||
+    (cp >= 0x2066 && cp <= 0x2069) ||
+    cp === 0xfeff;
+  return xmlChar && !invisibleControl;
+}
+
 export function cleanText(v: unknown, max: number): string {
   if (typeof v !== "string") return "";
-  const cleaned = v
-    // oxlint-disable-next-line no-control-regex
-    .replace(/[^\t\n\r\u0020-\uD7FF\uE000-\uFFFD\u{10000}-\u{10FFFF}]/gu, "")
-    .replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, "")
-    .trim();
+  const cleaned = Array.from(v).filter(isAllowedChar).join("").trim();
   const chars = Array.from(cleaned);
   return chars.length > max ? chars.slice(0, max - 1).join("") + "…" : cleaned;
 }
 
-/** JSON Schema passed to the Responses API (structured output). */
 export const TOPICS_SCHEMA = {
   type: "object",
   properties: {
@@ -84,7 +92,6 @@ export const TOPICS_SCHEMA = {
   additionalProperties: false,
 } as const;
 
-/** Find the model's final text in a Responses API result. */
 export function extractOutputText(resp: unknown): string {
   const output = (resp as { output?: unknown[] })?.output ?? [];
   for (const item of output as Array<{ type?: string; content?: Array<{ type?: string; text?: string }> }>) {
@@ -146,9 +153,7 @@ export type RejectReason =
 
 export interface Rejected {
   reason: RejectReason;
-  /** status id when the URL could be parsed (public X post id) */
   id?: string;
-  /** posting time decoded from the id */
   posted_at?: string;
 }
 
@@ -159,11 +164,9 @@ export interface NormalizeResult {
 }
 
 /**
- * Validate model-produced items (fail-closed):
- * - url must be a real X status URL whose id the API reported as a source
- * - if the citation carries a handle, it must match the item's handle
- * - posting time comes from the snowflake id, not from the model
- * - text fields are cleaned and length-capped; count is capped
+ * Fail-closed: an item survives only if its id was reported as a source by the
+ * API. Posting time is taken from the snowflake id because the model's
+ * posted_at is untrusted (a future date would pin an item to the top).
  */
 export function normalizeItems(
   raw: unknown,
@@ -234,19 +237,16 @@ export function normalizeItems(
 const CVE_RE = /CVE-\d{4}-\d{4,7}/gi;
 const MAX_RELATED = 5;
 
-/** CVE ids in a topic's title and tags (the summary is ignored: it often mentions other, merely similar CVEs). */
+/** The summary is ignored: it often mentions other, merely similar CVEs. */
 export function topicCves(t: Pick<Topic, "title" | "tags">): Set<string> {
   const text = [t.title, ...t.tags].join(" ");
   return new Set([...text.matchAll(CVE_RE)].map((m) => m[0].toUpperCase()));
 }
 
 /**
- * Merge days (newest first), dedupe by id and by shared CVE, sort by
- * posted_at desc, cap. For a CVE reported more than once, the earliest
- * collected topic is kept (so items already delivered to readers stay
- * stable) and later posts are attached to it as `related`.
- * Stored data is re-sanitized (defense in depth): id must be numeric and the
- * link is rebuilt from it.
+ * For a CVE reported more than once, the earliest collected topic is kept so
+ * items already delivered to readers stay stable. Stored data is re-sanitized
+ * (defense in depth) because data/raw is only as trustworthy as past runs.
  */
 export function mergeTopics(days: Topic[][], limit: number): Topic[] {
   const byId = new Map<string, Topic>();

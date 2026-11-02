@@ -1,4 +1,3 @@
-/** Parse an integer env var within [min, max]; fall back to `def` when unset or invalid. */
 export function intEnv(name: string, def: number, min: number, max: number): number {
   const raw = process.env[name]?.trim();
   if (!raw) return def;

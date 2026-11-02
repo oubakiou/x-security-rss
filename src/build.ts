@@ -1,8 +1,3 @@
-/**
- * Build public/feed.xml and public/index.html from data/raw/*.json and data/status.json.
- *
- * Env: SITE_URL (default: https://oubakiou.github.io/x-security-rss/), FEED_LIMIT
- */
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { intEnv } from "./lib/env.ts";
