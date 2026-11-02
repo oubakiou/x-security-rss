@@ -134,9 +134,28 @@ export interface NormalizeOptions {
   exclude?: Set<string>;
 }
 
+export type RejectReason =
+  | "bad_url"
+  | "bad_id"
+  | "not_cited"
+  | "duplicate"
+  | "handle_mismatch"
+  | "before_window"
+  | "after_window"
+  | "over_limit";
+
+export interface Rejected {
+  reason: RejectReason;
+  /** status id when the URL could be parsed (public X post id) */
+  id?: string;
+  /** posting time decoded from the id */
+  posted_at?: string;
+}
+
 export interface NormalizeResult {
   items: Topic[];
   dropped: number;
+  rejected: Rejected[];
 }
 
 /**
@@ -157,23 +176,36 @@ export function normalizeItems(
   const notAfter = opts.notAfter ?? Date.parse(opts.collectedAt) + 3_600_000;
   const seen = new Set<string>();
   const items: Topic[] = [];
-  let dropped = 0;
+  const rejected: Rejected[] = [];
   for (const r of list as Array<Record<string, unknown>>) {
     const ref = parseStatusUrl(r?.url);
-    if (ref && opts.exclude?.has(ref.id)) continue;
-    const time = ref && snowflakeTime(ref.id);
-    const citedHandle = ref ? cited.get(ref.id) : undefined;
-    const ok =
-      ref &&
-      time &&
-      cited.has(ref.id) &&
-      !seen.has(ref.id) &&
-      (!citedHandle || citedHandle === ref.handle?.toLowerCase()) &&
-      time.getTime() >= opts.notBefore &&
-      time.getTime() <= notAfter &&
-      items.length < opts.maxItems;
-    if (!ok) {
-      dropped++;
+    if (!ref) {
+      rejected.push({ reason: "bad_url" });
+      continue;
+    }
+    if (opts.exclude?.has(ref.id)) continue;
+    const time = snowflakeTime(ref.id);
+    if (!time) {
+      rejected.push({ reason: "bad_id", id: ref.id });
+      continue;
+    }
+    const posted_at = time.toISOString().slice(0, 19) + "Z";
+    const citedHandle = cited.get(ref.id);
+    const reason: RejectReason | undefined = !cited.has(ref.id)
+      ? "not_cited"
+      : seen.has(ref.id)
+        ? "duplicate"
+        : citedHandle && citedHandle !== ref.handle?.toLowerCase()
+          ? "handle_mismatch"
+          : time.getTime() < opts.notBefore
+            ? "before_window"
+            : time.getTime() > notAfter
+              ? "after_window"
+              : items.length >= opts.maxItems
+                ? "over_limit"
+                : undefined;
+    if (reason) {
+      rejected.push({ reason, id: ref.id, posted_at });
       continue;
     }
     seen.add(ref.id);
@@ -187,7 +219,7 @@ export function normalizeItems(
       author: citedHandle
         ? `${name || citedHandle} (@${citedHandle})`
         : `${name || "不明"}${handle ? ` (@${handle})` : ""} ※投稿者未検証`,
-      posted_at: time.toISOString().slice(0, 19) + "Z",
+      posted_at,
       summary: cleanText(r.summary, LIMITS.summary),
       tags: (Array.isArray(r.tags) ? r.tags : [])
         .map((t) => cleanText(t, LIMITS.tag))
@@ -196,7 +228,7 @@ export function normalizeItems(
       collected_at: opts.collectedAt,
     });
   }
-  return { items, dropped };
+  return { items, dropped: rejected.length, rejected };
 }
 
 /**
@@ -320,7 +352,8 @@ if (import.meta.vitest) {
         new Map(),
         opts,
       );
-      expect(r).toEqual({ items: [], dropped: 1 });
+      expect(r.items).toEqual([]);
+      expect(r.rejected).toEqual([{ reason: "not_cited", id: ID1, posted_at: "2026-11-02T12:02:58Z" }]);
     });
 
     it("keeps cited items, rebuilds url, takes time from the id and marks unverified authors", () => {
@@ -363,7 +396,7 @@ if (import.meta.vitest) {
         [ID2, undefined],
         [OLD, undefined],
       ]);
-      const { items, dropped } = normalizeItems(
+      const { items, dropped, rejected } = normalizeItems(
         {
           items: [
             { ...base, url: "https://example.com/post" },
@@ -379,6 +412,13 @@ if (import.meta.vitest) {
       );
       expect(items.map((i) => i.id)).toEqual([ID1]);
       expect(dropped).toBe(5);
+      expect(rejected.map((r) => r.reason)).toEqual([
+        "bad_url",
+        "not_cited",
+        "before_window",
+        "duplicate",
+        "over_limit",
+      ]);
     });
 
     it("enforces notAfter and skips excluded ids without counting them", () => {

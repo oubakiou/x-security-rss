@@ -10,12 +10,22 @@ export interface Topic {
   collected_at: string;
 }
 
+export interface RunRecord {
+  at: string;
+  model: string;
+  window: { from: string; to: string };
+  usage: unknown;
+  kept: number;
+  /** rejected items: reason, public post id and decoded posting time */
+  rejected: Array<{ search: string; reason: string; id?: string; posted_at?: string }>;
+  errors: string[];
+}
+
+/** One file per run date; repeated runs on the same date append. */
 export interface RawDay {
   date: string;
-  model: string;
-  usage: unknown;
-  dropped_unverified: number;
   items: Topic[];
+  runs?: RunRecord[];
 }
 
 export interface Status {

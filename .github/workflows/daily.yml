@@ -44,6 +44,15 @@ jobs:
           MAX_TURNS: ${{ vars.MAX_TURNS }}
           TRUSTED_HANDLES: ${{ vars.TRUSTED_HANDLES }}
 
+      - name: Upload raw API responses for diagnosis
+        if: steps.fetch.outcome == 'failure'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: xai-responses
+          path: data/debug/
+          retention-days: 3
+          if-no-files-found: ignore
+
       - name: Build feed
         run: vp run build
         env:

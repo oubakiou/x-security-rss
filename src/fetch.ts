@@ -11,12 +11,12 @@
  *
  * Env: XAI_API_KEY (required), XAI_MODEL, MAX_ITEMS, MAX_TURNS, TRUSTED_HANDLES
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { DEFAULT_TRUSTED_HANDLES, parseHandles, previousUtcDay } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
 import { citedStatuses, extractOutputText, normalizeItems, TOPICS_SCHEMA } from "./lib/items.ts";
-import type { RawDay, Status, Topic } from "./lib/types.ts";
+import type { RawDay, RunRecord, Status, Topic } from "./lib/types.ts";
 
 const DATA = join(import.meta.dirname, "..", "data");
 const API_URL = "https://api.x.ai/v1/responses";
@@ -57,6 +57,14 @@ async function writeStatus(status: Omit<Status, "checked_at">): Promise<void> {
   await mkdir(DATA, { recursive: true });
   const full: Status = { ...status, checked_at: nowIso() };
   await writeFile(join(DATA, "status.json"), JSON.stringify(full, null, 2) + "\n");
+}
+
+async function readJson<T>(path: string): Promise<T | undefined> {
+  try {
+    return JSON.parse(await readFile(path, "utf8")) as T;
+  } catch {
+    return undefined;
+  }
 }
 
 class SearchError extends Error {
@@ -164,11 +172,15 @@ async function main(): Promise<void> {
   const taken = new Set<string>();
   const usage: Record<string, unknown> = {};
   const errors: string[] = [];
-  let dropped = 0;
+  const rejected: RunRecord["rejected"] = [];
+  const DEBUG = join(DATA, "debug");
+  await mkdir(DEBUG, { recursive: true });
 
   for (const spec of specs) {
     try {
       const resp = await runSearch(apiKey!, model, maxTurns, spec);
+      // Raw responses are kept for diagnosis (gitignored; uploaded as an artifact on failure).
+      await writeFile(join(DEBUG, `${spec.label}.json`), JSON.stringify(resp, null, 2));
       usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
       let result;
       try {
@@ -180,30 +192,44 @@ async function main(): Promise<void> {
           exclude: taken,
         });
       } catch (e) {
-        throw new SearchError("応答の解析に失敗しました", String(e), resp);
+        throw new SearchError("応答の解析に失敗しました", String(e));
       }
       for (const t of result.items) taken.add(t.id);
       collected.push(...result.items);
-      dropped += result.dropped;
-      logSafe(`[${spec.label}] kept ${result.items.length}, dropped ${result.dropped}`);
+      rejected.push(...result.rejected.map((r) => ({ search: spec.label, ...r })));
+      const reasons = result.rejected.map((r) => `${r.reason}${r.id ? `(${r.id} ${r.posted_at})` : ""}`);
+      logSafe(
+        `[${spec.label}] kept ${result.items.length}, dropped ${result.dropped}` +
+          (reasons.length ? `: ${reasons.join(", ")}` : ""),
+      );
     } catch (e) {
       const err = e instanceof SearchError ? e : new SearchError("予期しないエラー", String(e));
       errors.push(`${spec.label}: ${err.publicMessage}`);
       logSafe(`[${spec.label}] ${err.publicMessage}${err.detail ? ` | detail: ${err.detail}` : ""}`);
-      if (err.response !== undefined) {
-        await mkdir(DATA, { recursive: true });
-        await writeFile(
-          join(DATA, `last_error_response.${spec.label}.json`),
-          JSON.stringify(err.response, null, 2),
-        );
-      }
     }
   }
 
   const items = collected.slice(0, maxItems + specs[0]!.maxItems);
-  const day: RawDay = { date: runDate, model, usage, dropped_unverified: dropped, items };
+  const rawPath = join(DATA, "raw", `${runDate}.json`);
+  const prev = await readJson<RawDay>(rawPath);
+  const prevItems = Array.isArray(prev?.items) ? prev.items : [];
+  const prevIds = new Set(prevItems.map((t) => t.id));
+  const run: RunRecord = {
+    at: nowIso(),
+    model,
+    window: { from, to },
+    usage,
+    kept: items.length,
+    rejected,
+    errors,
+  };
+  const day: RawDay = {
+    date: runDate,
+    items: [...prevItems, ...items.filter((t) => !prevIds.has(t.id))],
+    runs: [...(Array.isArray(prev?.runs) ? prev.runs : []), run],
+  };
   await mkdir(join(DATA, "raw"), { recursive: true });
-  await writeFile(join(DATA, "raw", `${runDate}.json`), JSON.stringify(day, null, 2) + "\n");
+  await writeFile(rawPath, JSON.stringify(day, null, 2) + "\n");
   logSafe(`window ${from}..${to} UTC, total ${items.length}, usage=${JSON.stringify(usage)}`);
 
   if (errors.length) {
@@ -211,10 +237,22 @@ async function main(): Promise<void> {
     process.exit(1);
   }
   if (items.length === 0) {
-    await writeStatus({ ok: false, message: `検証を通った投稿が0件でした (破棄 ${dropped} 件)` });
+    const counts = Object.entries(
+      rejected.reduce<Record<string, number>>((a, r) => ((a[r.reason] = (a[r.reason] ?? 0) + 1), a), {}),
+    )
+      .map(([k, v]) => `${k}=${v}`)
+      .join(", ");
+    await writeStatus({
+      ok: false,
+      message: `検証を通った投稿が0件でした (破棄 ${rejected.length} 件${counts ? `: ${counts}` : ""})`,
+    });
     process.exit(1);
   }
-  await writeStatus({ ok: true, message: `${items.length} 件を取得しました`, dropped_unverified: dropped });
+  await writeStatus({
+    ok: true,
+    message: `${items.length} 件を取得しました`,
+    dropped_unverified: rejected.length,
+  });
 }
 
 await main();
