@@ -16,6 +16,16 @@ export function escapeXml(s: string): string {
     .replace(/'/g, "&apos;");
 }
 
+/** Links to other posts merged into this topic. Ids are numeric (validated in mergeTopics). */
+function relatedHtml(t: Topic): string {
+  const ids = (t.related ?? []).filter((id) => /^\d{1,20}$/.test(id));
+  if (!ids.length) return "";
+  const links = ids
+    .map((id, i) => `<a href="https://x.com/i/status/${id}" rel="noopener noreferrer">関連投稿${i + 1}</a>`)
+    .join(" / ");
+  return `<p>同じCVEの関連投稿: ${links}</p>`;
+}
+
 function rfc822(iso: string): string {
   const d = new Date(iso);
   return (Number.isNaN(d.getTime()) ? new Date(0) : d).toUTCString();
@@ -48,7 +58,9 @@ export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): str
   const items = all
     .map((t) => {
       const desc =
-        `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` + `<p>投稿者: ${escapeXml(t.author)}</p>`;
+        `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` +
+        `<p>投稿者: ${escapeXml(t.author)}</p>` +
+        relatedHtml(t);
       const cats = t.tags.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n");
       return [
         "    <item>",
@@ -89,6 +101,7 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
   <h2><a href="${escapeXml(t.url)}" rel="noopener noreferrer">${escapeXml(t.title)}</a></h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
   <p>${escapeXml(t.summary)}</p>
+  ${relatedHtml(t)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
 </article>`,
     )
@@ -172,6 +185,15 @@ if (import.meta.vitest) {
       expect(xml.slice(first, first + 200)).toContain("⚠️ 収集に失敗しました (2026-11-03)");
       expect(xml).toContain("status-error-2026-11-03");
       expect(xml).toContain("HTTP 401");
+    });
+  });
+
+  describe("related posts", () => {
+    it("renders related links and skips non-numeric ids", () => {
+      const xml = renderRss([{ ...topic, related: ["456", "javascript:x"] }], meta);
+      expect(xml).toContain("https://x.com/i/status/456");
+      expect(xml).not.toContain("javascript:x");
+      expect(renderHtml([{ ...topic, related: ["456"] }], meta)).toContain("関連投稿1");
     });
   });
 

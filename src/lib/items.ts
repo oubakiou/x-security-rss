@@ -231,8 +231,20 @@ export function normalizeItems(
   return { items, dropped: rejected.length, rejected };
 }
 
+const CVE_RE = /CVE-\d{4}-\d{4,7}/gi;
+const MAX_RELATED = 5;
+
+/** CVE ids in a topic's title and tags (the summary is ignored: it often mentions other, merely similar CVEs). */
+export function topicCves(t: Pick<Topic, "title" | "tags">): Set<string> {
+  const text = [t.title, ...t.tags].join(" ");
+  return new Set([...text.matchAll(CVE_RE)].map((m) => m[0].toUpperCase()));
+}
+
 /**
- * Merge days (newest first), dedupe by id, sort by posted_at desc, cap.
+ * Merge days (newest first), dedupe by id and by shared CVE, sort by
+ * posted_at desc, cap. For a CVE reported more than once, the earliest
+ * collected topic is kept (so items already delivered to readers stay
+ * stable) and later posts are attached to it as `related`.
  * Stored data is re-sanitized (defense in depth): id must be numeric and the
  * link is rebuilt from it.
  */
@@ -254,7 +266,24 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
       });
     }
   }
-  return [...byId.values()].sort((a, b) => toTime(b.posted_at) - toTime(a.posted_at)).slice(0, limit);
+
+  // Earliest collected first (stable: keeps file order, i.e. trusted search first, within a run).
+  const ordered = [...byId.values()].sort((a, b) => toTime(a.collected_at) - toTime(b.collected_at));
+  const kept: Topic[] = [];
+  const owner = new Map<string, Topic>(); // CVE -> kept topic
+  for (const t of ordered) {
+    const cves = topicCves(t);
+    const target = [...cves].map((c) => owner.get(c)).find(Boolean);
+    if (target) {
+      if ((target.related ??= []).length < MAX_RELATED) target.related.push(t.id);
+      for (const c of cves) if (!owner.has(c)) owner.set(c, target);
+      for (const c of cves) if (!target.tags.some((x) => x.toUpperCase() === c)) target.tags.push(c);
+      continue;
+    }
+    kept.push(t);
+    for (const c of cves) owner.set(c, t);
+  }
+  return kept.sort((a, b) => toTime(b.posted_at) - toTime(a.posted_at)).slice(0, limit);
 }
 
 function toTime(s: string): number {
@@ -487,6 +516,37 @@ if (import.meta.vitest) {
       tags: [],
       collected_at: AT,
     });
+    it("merges topics sharing a CVE into the earliest collected one", () => {
+      const a = {
+        ...t(ID1),
+        title: "GitLab KEV CVE-2026-97229/CVE-2026-110264",
+        collected_at: "2026-11-02T18:00:00Z",
+      };
+      const b = {
+        ...t(ID2),
+        title: "GitLab RCE cve-2026-97229 exploited",
+        collected_at: "2026-11-02T18:00:00Z",
+      };
+      const c = { ...t(OLD), title: "unrelated", tags: ["CVE-2026-1"], collected_at: "2026-11-02T18:00:00Z" };
+      const d = {
+        ...t("2117312811139260474"),
+        title: "follow-up",
+        tags: ["CVE-2026-110264"],
+        collected_at: "2026-11-03T00:00:00Z",
+      };
+      // newest day first, as build.ts passes them
+      const merged = mergeTopics([[d], [a, b, c]], 10);
+      expect(merged.map((m) => m.id)).toEqual([ID1, OLD]);
+      expect(merged[0]!.related).toEqual([ID2, "2117312811139260474"]);
+      expect(merged[0]!.tags).toContain("CVE-2026-97229");
+    });
+
+    it("ignores CVEs that only appear in the summary", () => {
+      const a = { ...t(ID1), title: "A", summary: "similar to CVE-2026-5" };
+      const b = { ...t(ID2), title: "B CVE-2026-5" };
+      expect(mergeTopics([[a, b]], 10)).toHaveLength(2);
+    });
+
     it("dedupes (first wins), sorts by snowflake time, rebuilds links, drops bad ids and caps", () => {
       const merged = mergeTopics(
         [

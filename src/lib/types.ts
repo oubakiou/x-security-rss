@@ -8,6 +8,8 @@ export interface Topic {
   summary: string;
   tags: string[];
   collected_at: string;
+  /** ids of other posts merged into this topic (same CVE) */
+  related?: string[];
 }
 
 export interface RunRecord {
