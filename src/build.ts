@@ -5,6 +5,7 @@
  */
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { intEnv } from "./lib/env.ts";
 import { mergeTopics } from "./lib/items.ts";
 import { renderHtml, renderRss, type FeedMeta } from "./lib/rss.ts";
 import type { RawDay, Status } from "./lib/types.ts";
@@ -22,10 +23,11 @@ async function readJson<T>(path: string): Promise<T | undefined> {
 }
 
 const siteUrl = (process.env.SITE_URL || "https://oubakiou.github.io/x-security-rss/").replace(/\/?$/, "/");
-const limit = Number(process.env.FEED_LIMIT || 100);
+const limit = intEnv("FEED_LIMIT", 100, 1, 500);
 const meta: FeedMeta = {
   title: "X Security Topics",
-  description: "X (旧Twitter) から毎日収集したサイバーセキュリティの話題 (Grok x_search による自動収集)",
+  description:
+    "X (旧Twitter) から毎日収集したサイバーセキュリティの話題。Grok (x_search) による自動収集・自動要約で、内容は未検証です。必ず元の投稿と一次情報を確認してください。",
   siteUrl,
   feedUrl: `${siteUrl}feed.xml`,
 };

@@ -32,6 +32,17 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 よくある原因: API キーの失効 (`HTTP 400/401`) → キーを再発行して Secret を更新。
 クレジット切れ (`HTTP 402/429`) → console.x.ai でチャージ。
 
+## セキュリティ上の設計
+
+- 取得結果 (LLM 出力・X の投稿内容) は信頼しない入力として扱う
+  - 投稿 URL は厳密に解析し、API が出典 (`citations` / `annotations`) として返した投稿 ID だけを採用 (0件なら全件破棄)
+  - リンクは `https://x.com/i/status/<id>` に組み直す (X が実際の投稿者に転送する)。出典で投稿者を確認できない場合は「※投稿者未検証」と表示
+  - 投稿時刻は投稿 ID (snowflake) から算出。件数・文字数に上限、XML で不正な文字・双方向制御文字を除去
+  - RSS/HTML は全項目をエスケープ。index.html は CSP でスクリプトを禁止
+- 公開する失敗メッセージは HTTP ステータスと固定の説明のみ。詳細は Actions ログ (ワークフローコマンドを無害化して出力)
+- ワークフローは既定で権限なし。収集ジョブは `contents: write` のみ、公開ジョブは `pages`/`id-token` のみ。checkout は認証情報を残さず、push 時だけトークンを渡す
+- Action はコミット SHA で固定し、Dependabot (7日クールダウン) で更新
+
 ## 開発
 
 Node.js 26 / npm 12 / [Vite+](https://viteplus.dev)。npm は `.npmrc` で

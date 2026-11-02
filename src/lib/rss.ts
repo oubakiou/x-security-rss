@@ -86,7 +86,7 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
   const rows = topics
     .map(
       (t) => `<article>
-  <h2><a href="${escapeXml(t.url)}">${escapeXml(t.title)}</a></h2>
+  <h2><a href="${escapeXml(t.url)}" rel="noopener noreferrer">${escapeXml(t.title)}</a></h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
   <p>${escapeXml(t.summary)}</p>
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
@@ -98,6 +98,8 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <title>${escapeXml(meta.title)}</title>
 <link rel="alternate" type="application/rss+xml" title="${escapeXml(meta.title)}" href="${escapeXml(meta.feedUrl)}">
 <style>
