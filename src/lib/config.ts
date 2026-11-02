@@ -25,7 +25,6 @@ export const DEFAULT_TRUSTED_HANDLES = [
   "TheHackersNews",
   "SecurityWeek",
   "DarkReading",
-  "briankrebs",
 ] as const;
 
 export function parseHandles(raw: string | undefined, fallback: readonly string[]): string[] {
