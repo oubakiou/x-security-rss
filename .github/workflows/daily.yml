@@ -42,6 +42,7 @@ jobs:
           XAI_MODEL: ${{ vars.XAI_MODEL }}
           MAX_ITEMS: ${{ vars.MAX_ITEMS }}
           MAX_TURNS: ${{ vars.MAX_TURNS }}
+          TRUSTED_HANDLES: ${{ vars.TRUSTED_HANDLES }}
 
       - name: Build feed
         run: vp run build

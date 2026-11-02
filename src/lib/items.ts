@@ -127,7 +127,11 @@ export interface NormalizeOptions {
   collectedAt: string;
   /** earliest acceptable posting time (ms) */
   notBefore: number;
+  /** latest acceptable posting time (ms); defaults to collectedAt + 1h */
+  notAfter?: number;
   maxItems: number;
+  /** ids already taken by an earlier search (skipped, not counted as dropped) */
+  exclude?: Set<string>;
 }
 
 export interface NormalizeResult {
@@ -150,12 +154,13 @@ export function normalizeItems(
   const list = (raw as { items?: unknown })?.items;
   if (!Array.isArray(list)) throw new Error("items 配列がありません");
 
-  const now = Date.parse(opts.collectedAt);
+  const notAfter = opts.notAfter ?? Date.parse(opts.collectedAt) + 3_600_000;
   const seen = new Set<string>();
   const items: Topic[] = [];
   let dropped = 0;
   for (const r of list as Array<Record<string, unknown>>) {
     const ref = parseStatusUrl(r?.url);
+    if (ref && opts.exclude?.has(ref.id)) continue;
     const time = ref && snowflakeTime(ref.id);
     const citedHandle = ref ? cited.get(ref.id) : undefined;
     const ok =
@@ -165,7 +170,7 @@ export function normalizeItems(
       !seen.has(ref.id) &&
       (!citedHandle || citedHandle === ref.handle?.toLowerCase()) &&
       time.getTime() >= opts.notBefore &&
-      time.getTime() <= now + 3_600_000 &&
+      time.getTime() <= notAfter &&
       items.length < opts.maxItems;
     if (!ok) {
       dropped++;
@@ -374,6 +379,25 @@ if (import.meta.vitest) {
       );
       expect(items.map((i) => i.id)).toEqual([ID1]);
       expect(dropped).toBe(5);
+    });
+
+    it("enforces notAfter and skips excluded ids without counting them", () => {
+      const cited = new Map<string, string | undefined>([
+        [ID1, undefined],
+        [ID2, undefined],
+      ]);
+      const { items, dropped } = normalizeItems(
+        {
+          items: [
+            { ...base, url: `https://x.com/foo/status/${ID1}` },
+            { ...base, url: `https://x.com/foo/status/${ID2}` },
+          ],
+        },
+        cited,
+        { ...opts, notAfter: Date.parse("2026-11-02T12:30:00Z"), exclude: new Set([ID1]) },
+      );
+      expect(items).toEqual([]);
+      expect(dropped).toBe(1);
     });
 
     it("caps field sizes", () => {

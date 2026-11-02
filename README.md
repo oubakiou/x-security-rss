@@ -3,6 +3,8 @@
 X (旧Twitter) からサイバーセキュリティの話題を毎日収集し、RSS として配信します。
 
 - 収集: xAI Responses API の `x_search` ツール (Grok) — `src/fetch.ts`
+  - 対象期間は前日の UTC 丸一日 (JST 前日9時〜当日9時)
+  - 信頼できるアカウント限定の検索と、分野別の一般検索の2本立て
 - 生成: RSS 2.0 (`feed.xml`) と一覧ページ (`index.html`) — `src/build.ts`
 - 実行: GitHub Actions で毎日 09:00 JST (`.github/workflows/daily.yml`)
 - 配信: GitHub Pages — **https://oubakiou.github.io/x-security-rss/feed.xml**
@@ -16,11 +18,12 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 
 任意の設定 (Actions の **Variables**):
 
-| 変数        | 既定値     | 説明                                    |
-| ----------- | ---------- | --------------------------------------- |
-| `XAI_MODEL` | `grok-4.3` | 使用モデル                              |
-| `MAX_ITEMS` | `15`       | 1日あたりの最大件数                     |
-| `MAX_TURNS` | `3`        | 検索の往復回数の上限 (費用の上限に効く) |
+| 変数              | 既定値                     | 説明                                              |
+| ----------------- | -------------------------- | ------------------------------------------------- |
+| `XAI_MODEL`       | `grok-4.3`                 | 使用モデル                                        |
+| `MAX_ITEMS`       | `15`                       | 一般検索の最大件数 (アカウント限定検索はその半分) |
+| `MAX_TURNS`       | `6`                        | 検索1本あたりの往復回数の上限 (費用の上限に効く)  |
+| `TRUSTED_HANDLES` | `src/lib/config.ts` の一覧 | 優先検索するアカウント (カンマ区切り、最大20)     |
 
 ## 失敗したとき
 
