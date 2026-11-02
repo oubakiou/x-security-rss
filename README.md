@@ -4,7 +4,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 
 - 収集: xAI Responses API の `x_search` ツール (Grok) — `src/fetch.ts`
 - 生成: RSS 2.0 (`feed.xml`) と一覧ページ (`index.html`) — `src/build.ts`
-- 実行: GitHub Actions で毎日 06:23 JST (`.github/workflows/daily.yml`)
+- 実行: GitHub Actions で毎日 09:00 JST (`.github/workflows/daily.yml`)
 - 配信: GitHub Pages — **https://oubakiou.github.io/x-security-rss/feed.xml**
 
 ## セットアップ

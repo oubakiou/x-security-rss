@@ -2,8 +2,8 @@ name: Daily X security feed
 
 on:
   schedule:
-    # 06:23 JST every day
-    - cron: "23 21 * * *"
+    # 09:00 JST (00:00 UTC) every day
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
