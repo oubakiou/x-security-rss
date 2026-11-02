@@ -43,6 +43,7 @@ jobs:
           MAX_ITEMS: ${{ vars.MAX_ITEMS }}
           MAX_TURNS: ${{ vars.MAX_TURNS }}
           TRUSTED_HANDLES: ${{ vars.TRUSTED_HANDLES }}
+          WINDOW_HOURS: ${{ vars.WINDOW_HOURS }}
 
       - name: Upload raw API responses for diagnosis
         if: steps.fetch.outcome == 'failure'

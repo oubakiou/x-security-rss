@@ -37,11 +37,24 @@ export function parseHandles(raw: string | undefined, fallback: readonly string[
   return unique.length ? unique : [...fallback];
 }
 
-/** Previous full UTC day: [from 00:00, to 00:00). */
-export function previousUtcDay(now: Date): { from: string; to: string } {
-  const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-  const iso = (ms: number) => new Date(ms).toISOString().slice(0, 10);
-  return { from: iso(today - 86_400_000), to: iso(today) };
+/**
+ * Rolling window ending at `now`. x_search's from_date/to_date are not
+ * strictly honored (it favors the most recent posts), so the window is
+ * enforced by us from snowflake times; the tool dates only hint the range.
+ */
+export function rollingWindow(now: Date, hours: number) {
+  const end = now.getTime();
+  const start = end - hours * 3_600_000;
+  const fmt = (ms: number) => new Date(ms).toISOString().slice(0, 16).replace("T", " ");
+  const day = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+  return {
+    start,
+    end,
+    label: `${fmt(start)}〜${fmt(end)} UTC`,
+    /** inclusive start date / exclusive end date for x_search */
+    fromDate: day(start),
+    toDate: day(end + 86_400_000),
+  };
 }
 
 if (import.meta.vitest) {
@@ -64,16 +77,13 @@ if (import.meta.vitest) {
     });
   });
 
-  describe("previousUtcDay", () => {
-    it("returns the previous full UTC day", () => {
-      expect(previousUtcDay(new Date("2026-11-03T00:00:05Z"))).toEqual({
-        from: "2026-11-02",
-        to: "2026-11-03",
-      });
-      expect(previousUtcDay(new Date("2026-01-01T17:00:00Z"))).toEqual({
-        from: "2025-12-31",
-        to: "2026-01-01",
-      });
+  describe("rollingWindow", () => {
+    it("covers the last N hours", () => {
+      const w = rollingWindow(new Date("2026-11-03T00:00:00Z"), 24);
+      expect(w.start).toBe(Date.parse("2026-11-02T00:00:00Z"));
+      expect(w.end).toBe(Date.parse("2026-11-03T00:00:00Z"));
+      expect(w.label).toBe("2026-11-02 00:00〜2026-11-03 00:00 UTC");
+      expect([w.fromDate, w.toDate]).toEqual(["2026-11-02", "2026-11-04"]);
     });
   });
 }
