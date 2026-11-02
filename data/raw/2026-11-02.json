@@ -40,6 +40,20 @@
         "cryptocurrency"
       ],
       "collected_at": "2026-11-02T17:52:13Z"
+    },
+    {
+      "id": "2116983150689632488",
+      "url": "https://x.com/i/status/2116983150689632488",
+      "title": "FBI、北朝鮮ハッカー集団がBinanceから63億ドル窃取と特定",
+      "author": "BleepingComputer (@BleepinComputer) ※投稿者未検証",
+      "posted_at": "2026-11-01T19:58:09Z",
+      "summary": "FBIがBinanceから63億ドルの暗号資産窃取を北朝鮮ハッカー集団と結び付け。影響：大規模暗号資産盗難。対処：取引所側のセキュリティ強化と監視強化。",
+      "tags": [
+        "Binance",
+        "North Korea",
+        "crypto theft"
+      ],
+      "collected_at": "2026-11-02T18:16:35Z"
     }
   ],
   "runs": [
@@ -155,6 +169,162 @@
       "errors": [
         "(reasons not recorded in this version)"
       ]
+    },
+    {
+      "at": "2026-11-02T18:17:07Z",
+      "model": "grok-4.3",
+      "window": {
+        "from": "2026-11-01",
+        "to": "2026-11-02"
+      },
+      "usage": {
+        "trusted": {
+          "input_tokens": 9127,
+          "input_tokens_details": {
+            "cached_tokens": 3328
+          },
+          "output_tokens": 2973,
+          "output_tokens_details": {
+            "reasoning_tokens": 1452
+          },
+          "total_tokens": 12100,
+          "num_sources_used": 0,
+          "num_server_side_tools_used": 5,
+          "cost_in_usd_ticks": 1153468500,
+          "server_side_tool_usage_details": {
+            "web_search_calls": 0,
+            "x_search_calls": 5,
+            "x_posts_fetched": 20,
+            "x_users_fetched": 0,
+            "code_interpreter_calls": 0,
+            "file_search_calls": 0,
+            "mcp_calls": 0,
+            "document_search_calls": 0,
+            "image_generation_calls": 0
+          },
+          "context_details": {
+            "input_tokens": 7435,
+            "output_tokens": 2013
+          }
+        },
+        "general": {
+          "input_tokens": 11957,
+          "input_tokens_details": {
+            "cached_tokens": 1792
+          },
+          "output_tokens": 2582,
+          "output_tokens_details": {
+            "reasoning_tokens": 1198
+          },
+          "total_tokens": 14539,
+          "num_sources_used": 0,
+          "num_server_side_tools_used": 5,
+          "cost_in_usd_ticks": 1445196500,
+          "server_side_tool_usage_details": {
+            "web_search_calls": 0,
+            "x_search_calls": 5,
+            "x_posts_fetched": 25,
+            "x_users_fetched": 0,
+            "code_interpreter_calls": 0,
+            "file_search_calls": 0,
+            "mcp_calls": 0,
+            "document_search_calls": 0,
+            "image_generation_calls": 0
+          },
+          "context_details": {
+            "input_tokens": 10127,
+            "output_tokens": 1691
+          }
+        }
+      },
+      "kept": 1,
+      "rejected": [
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117283385261556137",
+          "posted_at": "2026-11-02T15:51:10Z"
+        },
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117237376947028473",
+          "posted_at": "2026-11-02T12:48:21Z"
+        },
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117237103662625049",
+          "posted_at": "2026-11-02T12:47:16Z"
+        },
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117188412130091316",
+          "posted_at": "2026-11-02T09:33:47Z"
+        },
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117217395697746101",
+          "posted_at": "2026-11-02T11:28:57Z"
+        },
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117212735029313547",
+          "posted_at": "2026-11-02T11:10:26Z"
+        },
+        {
+          "search": "trusted",
+          "reason": "after_window",
+          "id": "2117208415579906488",
+          "posted_at": "2026-11-02T10:53:16Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117312811139260474",
+          "posted_at": "2026-11-02T17:48:06Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117296702747283749",
+          "posted_at": "2026-11-02T16:44:06Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117295338302443685",
+          "posted_at": "2026-11-02T16:38:40Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117294504080540086",
+          "posted_at": "2026-11-02T16:35:21Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117289642055909495",
+          "posted_at": "2026-11-02T16:16:02Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117319989489516553",
+          "posted_at": "2026-11-02T18:16:38Z"
+        },
+        {
+          "search": "general",
+          "reason": "after_window",
+          "id": "2117319729484533978",
+          "posted_at": "2026-11-02T18:15:36Z"
+        }
+      ],
+      "errors": []
     }
   ]
 }

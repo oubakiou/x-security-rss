@@ -1,5 +1,6 @@
 {
-  "ok": false,
-  "message": "検証を通った投稿が0件でした (破棄 6 件)",
-  "checked_at": "2026-11-02T18:09:14Z"
+  "ok": true,
+  "message": "1 件を取得しました",
+  "dropped_unverified": 14,
+  "checked_at": "2026-11-02T18:17:07Z"
 }
