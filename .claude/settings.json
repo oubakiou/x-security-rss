@@ -1,0 +1,6 @@
+{
+  "permissions": {
+    "allow": ["Bash(.agents/scripts/gh-pr-comment.sh *)"],
+    "deny": ["Edit(/**/.agents/scripts/**)", "Edit(/**/.claude/**)", "Edit(/**/.codex/**)"]
+  }
+}
