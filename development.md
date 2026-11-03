@@ -16,6 +16,8 @@
   (`if (import.meta.vitest) { const { describe, it, expect } = import.meta.vitest; ... }` を実装ファイル末尾に置く)。
 - 対象は vite.config.ts の `test.includeSource` (`src/lib/**/*.ts`)。副作用のあるエントリポイント
   (`src/*.ts`) は含めない。
+- shell script は in-source test を持てないため、`scripts/<name>.test.ts` に子プロセスで起動する契約テストを置く
+  (`test.include`)。fixture は `.temp/` 配下に作り、`onTestFinished` で回収する。
 - 挙動を変える場合は対応する回帰テストを追加・更新し、関連する検証を実行する。
   未実行・失敗した検証は理由とともに報告する。文書だけの変更では format と差分確認を行う。
 
@@ -45,6 +47,19 @@
   投稿したエージェントとモデルが分かるように、末尾に記載する (例: `— Codex (<モデル名>)`)。
   ただし Claude Code on the web は環境の制約でモデル名を書けないため (2026/11 現在)、
   Claude Code の署名とセッションへのリンクで代替する。
+- エージェントが PR に書き込むときは `.agents/scripts/gh-pr-comment.sh` を使う
+  (`reply <PR> <コメントID> <本文ファイル>` / `resolve <PR> <コメントID>` / `comment <PR> <本文ファイル>`)。
+  本文は `.temp/` 配下のファイルに書く (`comment` は PR と同じ番号体系の Issue にも投稿できる)。
+  `resolve` の経路は Claude Code on the web の GitHub プロキシが提供するもので、GitHub の公開 REST API ではない。
+- `.claude/settings.json` は、この script だけを確認なしで許可し、`.agents/scripts/`・`.claude/`・`.codex/` の編集を deny する。
+  - `gh api` 自体を許可しない理由: ワイルドカードがマージや削除、任意ファイルの投稿にも一致する。
+  - 編集を deny する理由: 許可した script や自動実行される hook を書き換えられると、確認なしで任意のコマンドを実行できてしまう。
+    Edit の deny は Claude のファイル編集ツールに加え、Bash の `cat`・`sed`・`tee` やリダイレクトの書き込み先にも効く。
+    ファイル名がコマンドに現れない書き込み (script 言語の処理内など) までは防げない。
+  - これらのファイルを変更するときは、人が編集する。
+- `main` は GitHub の Rulesets で保護する (マージに PR と承認を必須にする、force push と削除を禁止する)。
+  エージェント側の許可設定が破られても、マージをサーバー側で防ぐため。
+  Actions の `archive` ジョブは `main` に直接 push するので、GitHub Actions を bypass に加える。
 
 ## 検証コマンド
 
@@ -66,7 +81,7 @@ API キーは安全な環境変数や Secrets から渡し、コード・テス�
 - `archive/YYYY-MM-DD.json` (git): 確定した日の取得結果。一度コミットしたら書き換えない。
 - Pages の `snapshots/YYYY-MM-DD-HH.json`: 未確定の日の取得結果 (1回の実行で1ファイル、上書きしない)。
   `manifest.json` に一覧とハッシュ、`feed-state.json` にフィードの元になった状態を置く。
-- `site/` と `.work/` は生成物。コミットしない。
+- `site/`、`.work/`、`.temp/` は生成物・作業用。コミットしない。
 
 ## Review guidelines
 
