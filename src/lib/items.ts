@@ -246,11 +246,13 @@ export function topicCves(t: Pick<Topic, "title" | "tags">): Set<string> {
 /**
  * For a CVE reported more than once, the earliest collected topic is kept so
  * items already delivered to readers stay stable. Stored data is re-sanitized
- * (defense in depth) because data/raw is only as trustworthy as past runs.
+ * (defense in depth) because stored snapshots are only as trustworthy as past runs.
  */
 export function mergeTopics(days: Topic[][], limit: number): Topic[] {
   const byId = new Map<string, Topic>();
-  for (const day of days) {
+  // Inputs arrive newest first, but the first collection of a post (and its order within that run)
+  // must win: a later re-fetch would otherwise hand the CVE representative role to another post.
+  for (const day of [...days].reverse()) {
     for (const t of day) {
       if (typeof t?.id !== "string" || !/^\d{1,20}$/.test(t.id) || byId.has(t.id)) continue;
       const time = snowflakeTime(t.id);
@@ -267,11 +269,9 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
     }
   }
 
-  // Earliest collected first (stable: keeps file order, i.e. trusted search first, within a run).
-  const ordered = [...byId.values()].sort((a, b) => toTime(a.collected_at) - toTime(b.collected_at));
   const kept: Topic[] = [];
   const owner = new Map<string, Topic>(); // CVE -> kept topic
-  for (const t of ordered) {
+  for (const t of byId.values()) {
     const cves = topicCves(t);
     const target = [...cves].map((c) => owner.get(c)).find(Boolean);
     if (target) {
@@ -541,13 +541,34 @@ if (import.meta.vitest) {
       expect(merged[0]!.tags).toContain("CVE-2026-97229");
     });
 
+    it("keeps the first collection of a re-fetched post so the CVE representative stays stable", () => {
+      const a1 = { ...t(ID1), title: "A CVE-2026-7777", collected_at: "2026-11-03T00:00:00Z" };
+      const b = { ...t(ID2), title: "B CVE-2026-7777", collected_at: "2026-11-03T01:00:00Z" };
+      const a2 = { ...t(ID1), title: "A again CVE-2026-7777", collected_at: "2026-11-03T02:00:00Z" };
+      // newest snapshot first, as build.ts passes them
+      const merged = mergeTopics([[a2], [b], [a1]], 10);
+      expect(merged.map((m) => [m.id, m.title, m.collected_at])).toEqual([
+        [ID1, "A CVE-2026-7777", "2026-11-03T00:00:00Z"],
+      ]);
+      expect(merged[0]!.related).toEqual([ID2]);
+    });
+
+    it("keeps the representative when only the second of two same-run posts is re-fetched", () => {
+      const a = { ...t(ID1), title: "A CVE-2026-8888", collected_at: "2026-11-03T00:00:00Z" };
+      const b = { ...t(ID2), title: "B CVE-2026-8888", collected_at: "2026-11-03T00:00:00Z" };
+      const b2 = { ...b, title: "B again CVE-2026-8888", collected_at: "2026-11-03T01:00:00Z" };
+      const merged = mergeTopics([[b2], [a, b]], 10);
+      expect(merged.map((m) => [m.id, m.title])).toEqual([[ID1, "A CVE-2026-8888"]]);
+      expect(merged[0]!.related).toEqual([ID2]);
+    });
+
     it("ignores CVEs that only appear in the summary", () => {
       const a = { ...t(ID1), title: "A", summary: "similar to CVE-2026-5" };
       const b = { ...t(ID2), title: "B CVE-2026-5" };
       expect(mergeTopics([[a, b]], 10)).toHaveLength(2);
     });
 
-    it("dedupes (first wins), sorts by snowflake time, rebuilds links, drops bad ids and caps", () => {
+    it("dedupes keeping the earliest snapshot, sorts by snowflake time, rebuilds links, drops bad ids and caps", () => {
       const merged = mergeTopics(
         [
           [t(ID1), t("../etc")],
@@ -557,7 +578,7 @@ if (import.meta.vitest) {
       );
       expect(merged.map((m) => [m.id, m.title, m.url])).toEqual([
         [ID2, ID2, `https://x.com/i/status/${ID2}`],
-        [ID1, ID1, `https://x.com/i/status/${ID1}`],
+        [ID1, "old", `https://x.com/i/status/${ID1}`],
       ]);
     });
   });

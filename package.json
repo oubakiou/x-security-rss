@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "restore": "vpx src/restore.ts",
     "fetch": "vpx src/fetch.ts",
     "build": "vpx src/build.ts"
   },

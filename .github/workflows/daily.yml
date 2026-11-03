@@ -5,8 +5,12 @@ on:
     # 09:00 JST (00:00 UTC) every day
     - cron: "0 0 * * *"
   workflow_dispatch:
+    inputs:
+      bootstrap:
+        description: "初回のみ: Pages に manifest.json が無い状態から開始する"
+        type: boolean
+        default: false
 
-# Least privilege by default; each job opts in to what it needs.
 permissions: {}
 
 concurrency:
@@ -14,13 +18,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Runs npm dependencies and handles untrusted API output, so it gets read-only access.
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      contents: write
+      contents: read
     outputs:
       fetch_outcome: ${{ steps.fetch.outcome }}
+      has_pending_archive: ${{ steps.pending.outputs.has_pending }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -32,6 +38,12 @@ jobs:
           cache: true
 
       - run: vp test
+
+      - name: Restore unarchived snapshots from Pages
+        run: vp run restore
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          BOOTSTRAP: ${{ inputs.bootstrap && 'true' || 'false' }}
 
       - name: Collect topics from X (xAI x_search)
         id: fetch
@@ -50,39 +62,101 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: xai-responses
-          path: data/debug/
+          path: .work/debug/
           retention-days: 3
           if-no-files-found: ignore
 
-      - name: Build feed
+      - name: Build feed and manifest
         run: vp run build
         env:
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
 
-      - name: Commit collected data
-        env:
-          GH_TOKEN: ${{ github.token }}
-          OUTCOME: ${{ steps.fetch.outcome }}
-          REPO: ${{ github.repository }}
+      - name: Detect days ready to archive
+        id: pending
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data
-          if git diff --cached --quiet; then
-            echo "no data changes"
-            exit 0
+          if compgen -G ".work/archive-pending/*.json" > /dev/null; then
+            echo "has_pending=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_pending=false" >> "$GITHUB_OUTPUT"
           fi
-          git commit -m "data: $(date -u +%F) ${OUTCOME}"
-          # Credentials are supplied only for this push (not persisted by checkout).
-          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
-          echo "::add-mask::$auth"
-          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" \
-            push "https://github.com/${REPO}.git" HEAD:main
+
+      - name: Upload pending archive files
+        if: steps.pending.outputs.has_pending == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: archive-pending
+          path: .work/archive-pending/
+          retention-days: 7
+
+      - name: Back up the site
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: site-backup
+          path: site/
+          retention-days: 90
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          path: public
+          path: site
 
+  # Holds write access but runs only git: no project code or dependencies.
+  # Snapshots are dropped from Pages only by a later run, after it sees them here in git.
+  archive:
+    needs: collect
+    if: needs.collect.outputs.has_pending_archive == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          ref: main
+
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: archive-pending
+          path: ${{ runner.temp }}/archive-pending
+
+      - name: Commit finalized days
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PENDING: ${{ runner.temp }}/archive-pending
+        run: |
+          set -euo pipefail
+          mkdir -p archive
+          for f in "$PENDING"/*.json; do
+            name=$(basename "$f")
+            [[ "$name" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}\.json$ ]] || { echo "::error::unexpected file $name"; exit 1; }
+            if [ -e "archive/$name" ]; then
+              cmp -s "$f" "archive/$name" || { echo "::error::archive/$name already exists with different content"; exit 1; }
+            else
+              cp "$f" "archive/$name"
+            fi
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add archive
+          if git diff --cached --quiet; then
+            echo "nothing new to archive"
+            exit 0
+          fi
+          git commit -m "archive: $(ls "$PENDING" | sed 's/\.json$//' | paste -sd ' ')"
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          for attempt in 1 2 3; do
+            if git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" \
+              push "https://github.com/${REPO}.git" HEAD:main; then
+              exit 0
+            fi
+            git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth" \
+              pull --rebase "https://github.com/${REPO}.git" main
+          done
+          exit 1
+
+  # Safe to publish whether or not archiving succeeded: unarchived days stay on Pages.
   deploy:
     needs: collect
     runs-on: ubuntu-latest
@@ -99,15 +173,17 @@ jobs:
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
   report:
-    needs: [collect, deploy]
+    needs: [collect, archive, deploy]
     if: always()
     runs-on: ubuntu-latest
     permissions: {}
     steps:
-      - name: Fail the run if collection failed
-        if: needs.collect.outputs.fetch_outcome != 'success'
+      - name: Fail the run if collection or archiving failed
+        if: needs.collect.outputs.fetch_outcome != 'success' || needs.archive.result == 'failure' || needs.deploy.result != 'success'
         env:
-          OUTCOME: ${{ needs.collect.outputs.fetch_outcome }}
+          FETCH: ${{ needs.collect.outputs.fetch_outcome }}
+          ARCHIVE: ${{ needs.archive.result }}
+          DEPLOY: ${{ needs.deploy.result }}
         run: |
-          echo "::error::Collection failed (outcome: ${OUTCOME}). See the collect job log and data/status.json."
+          echo "::error::fetch=${FETCH} archive=${ARCHIVE} deploy=${DEPLOY}. See the job logs."
           exit 1
