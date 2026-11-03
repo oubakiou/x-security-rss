@@ -57,9 +57,10 @@
     Edit の deny は Claude のファイル編集ツールに加え、Bash の `cat`・`sed`・`tee` やリダイレクトの書き込み先にも効く。
     ファイル名がコマンドに現れない書き込み (script 言語の処理内など) までは防げない。
   - これらのファイルを変更するときは、人が編集する。
-- `main` は GitHub の Rulesets で保護する (マージに PR と承認を必須にする、force push と削除を禁止する)。
-  エージェント側の許可設定が破られても、マージをサーバー側で防ぐため。
-  Actions の `archive` ジョブは `main` に直接 push するので、GitHub Actions を bypass に加える。
+- `main` は GitHub の Rulesets で、削除・force push・直接 push を禁止する (PR を必須にする。承認数は 0)。
+  エージェントはユーザーの GitHub アカウントとして操作するため、bypass にユーザーを入れるとエージェントも bypass でき、
+  承認必須にしても作成者 (= ユーザー) は自分の PR を承認できない。マージの防止はエージェント側の許可設定に頼る。
+  Actions の `archive` ジョブは `main` に直接 push するので、bypass には GitHub Actions だけを加える。
 
 ## 検証コマンド
 
