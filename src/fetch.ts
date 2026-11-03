@@ -1,9 +1,10 @@
 /**
- * Any failure exits non-zero so the GitHub Actions run fails and notifies.
- * Error bodies from the API go only to the sanitized Actions log, never to
- * data/status.json, because that file is committed and published in the feed.
+ * Any failure exits non-zero so the GitHub Actions run fails and notifies, but
+ * a snapshot is still written so the failure is recorded and shown in the feed.
+ * Error bodies from the API go only to the sanitized Actions log, never to the
+ * snapshot, because snapshots are published on Pages and archived in git.
  */
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { DEFAULT_TRUSTED_HANDLES, parseHandles, rollingWindow } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
@@ -15,9 +16,10 @@ import {
   type NormalizeOptions,
   type NormalizeResult,
 } from "./lib/items.ts";
-import type { RawDay, RunRecord, Status, Topic } from "./lib/types.ts";
+import { DEBUG_DIR, SITE_DIR } from "./lib/paths.ts";
+import { serializeSnapshot, snapshotName, SNAPSHOT_DIR, type Snapshot } from "./lib/snapshot.ts";
+import type { Status, Topic } from "./lib/types.ts";
 
-const DATA = join(import.meta.dirname, "..", "data");
 const API_URL = "https://api.x.ai/v1/responses";
 const MODEL_RE = /^[A-Za-z0-9._-]{1,64}$/;
 
@@ -52,18 +54,42 @@ function nowIso(): string {
   return new Date().toISOString().slice(0, 19) + "Z";
 }
 
-async function writeStatus(status: Omit<Status, "checked_at">): Promise<void> {
-  await mkdir(DATA, { recursive: true });
-  const full: Status = { ...status, checked_at: nowIso() };
-  await writeFile(join(DATA, "status.json"), JSON.stringify(full, null, 2) + "\n");
+async function writeSnapshot(snapshot: Snapshot): Promise<string> {
+  const dir = join(SITE_DIR, SNAPSHOT_DIR);
+  await mkdir(dir, { recursive: true });
+  const name = snapshotName(new Date(snapshot.fetched_at), await readdir(dir));
+  await writeFile(join(dir, name), serializeSnapshot(snapshot));
+  return name;
 }
 
-async function readJson<T>(path: string): Promise<T | undefined> {
-  try {
-    return JSON.parse(await readFile(path, "utf8")) as T;
-  } catch {
-    return undefined;
+function rejectSummary(rejected: Snapshot["rejected"]): string {
+  const counts = new Map<string, number>();
+  for (const r of rejected) counts.set(r.reason, (counts.get(r.reason) ?? 0) + 1);
+  return [...counts].map(([k, v]) => `${k}=${v}`).join(", ");
+}
+
+function runStatus(items: Topic[], errors: string[], rejected: Snapshot["rejected"], at: string): Status {
+  if (errors.length) {
+    return {
+      ok: false,
+      message: `一部または全部の検索に失敗しました (${errors.join(" / ")})`,
+      checked_at: at,
+    };
   }
+  if (items.length === 0) {
+    const summary = rejectSummary(rejected);
+    return {
+      ok: false,
+      message: `検証を通った投稿が0件でした (破棄 ${rejected.length} 件${summary ? `: ${summary}` : ""})`,
+      checked_at: at,
+    };
+  }
+  return {
+    ok: true,
+    message: `${items.length} 件を取得しました`,
+    checked_at: at,
+    dropped_unverified: rejected.length,
+  };
 }
 
 class SearchError extends Error {
@@ -138,11 +164,6 @@ function parseSearchResult(resp: unknown, opts: NormalizeOptions): NormalizeResu
 
 async function main(): Promise<void> {
   const apiKey = process.env.XAI_API_KEY?.trim();
-  if (!apiKey) {
-    await writeStatus({ ok: false, message: "XAI_API_KEY が設定されていません" });
-    logSafe("XAI_API_KEY is not set");
-    process.exit(1);
-  }
 
   const modelEnv = process.env.XAI_MODEL?.trim();
   const model = modelEnv && MODEL_RE.test(modelEnv) ? modelEnv : "grok-4.3";
@@ -151,7 +172,6 @@ async function main(): Promise<void> {
   const handles = parseHandles(process.env.TRUSTED_HANDLES, DEFAULT_TRUSTED_HANDLES);
 
   const now = new Date();
-  const runDate = now.toISOString().slice(0, 10);
   const windowHours = intEnv("WINDOW_HOURS", 24, 1, 72);
   const w = rollingWindow(now, windowHours);
   // 1h slack before the window for clock skew; nothing after "now" can exist
@@ -180,82 +200,59 @@ async function main(): Promise<void> {
   const taken = new Set<string>();
   const usage: Record<string, unknown> = {};
   const errors: string[] = [];
-  const rejected: RunRecord["rejected"] = [];
-  const DEBUG = join(DATA, "debug");
-  await mkdir(DEBUG, { recursive: true });
+  const rejected: Snapshot["rejected"] = [];
+  await mkdir(DEBUG_DIR, { recursive: true });
+  if (!apiKey) errors.push("XAI_API_KEY が設定されていません");
 
-  for (const spec of specs) {
-    try {
-      const resp = await runSearch(apiKey!, model, maxTurns, spec);
-      // Raw responses are kept for diagnosis (gitignored; uploaded as an artifact on failure).
-      await writeFile(join(DEBUG, `${spec.label}.json`), JSON.stringify(resp, null, 2));
-      usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
-      const result = parseSearchResult(resp, {
-        collectedAt: nowIso(),
-        notBefore,
-        notAfter,
-        maxItems: spec.maxItems,
-        exclude: taken,
-      });
-      for (const t of result.items) taken.add(t.id);
-      collected.push(...result.items);
-      rejected.push(...result.rejected.map((r) => ({ search: spec.label, ...r })));
-      const reasons = result.rejected.map((r) => `${r.reason}${r.id ? `(${r.id} ${r.posted_at})` : ""}`);
-      logSafe(
-        `[${spec.label}] kept ${result.items.length}, dropped ${result.dropped}` +
-          (reasons.length ? `: ${reasons.join(", ")}` : ""),
-      );
-    } catch (e) {
-      const err = e instanceof SearchError ? e : new SearchError("予期しないエラー", String(e));
-      errors.push(`${spec.label}: ${err.publicMessage}`);
-      logSafe(`[${spec.label}] ${err.publicMessage}${err.detail ? ` | detail: ${err.detail}` : ""}`);
+  if (apiKey) {
+    for (const spec of specs) {
+      try {
+        const resp = await runSearch(apiKey, model, maxTurns, spec);
+        // Raw responses are kept for diagnosis only (never published; uploaded as a short-lived artifact on failure).
+        await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(resp, null, 2));
+        usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
+        const result = parseSearchResult(resp, {
+          collectedAt: nowIso(),
+          notBefore,
+          notAfter,
+          maxItems: spec.maxItems,
+          exclude: taken,
+        });
+        for (const t of result.items) taken.add(t.id);
+        collected.push(...result.items);
+        rejected.push(...result.rejected.map((r) => ({ search: spec.label, ...r })));
+        const reasons = result.rejected.map((r) => `${r.reason}${r.id ? `(${r.id} ${r.posted_at})` : ""}`);
+        logSafe(
+          `[${spec.label}] kept ${result.items.length}, dropped ${result.dropped}` +
+            (reasons.length ? `: ${reasons.join(", ")}` : ""),
+        );
+      } catch (e) {
+        const err = e instanceof SearchError ? e : new SearchError("予期しないエラー", String(e));
+        errors.push(`${spec.label}: ${err.publicMessage}`);
+        logSafe(`[${spec.label}] ${err.publicMessage}${err.detail ? ` | detail: ${err.detail}` : ""}`);
+      }
     }
   }
 
   const items = collected.slice(0, maxItems + specs[0]!.maxItems);
-  const rawPath = join(DATA, "raw", `${runDate}.json`);
-  const prev = await readJson<RawDay>(rawPath);
-  const prevItems = Array.isArray(prev?.items) ? prev.items : [];
-  const prevIds = new Set(prevItems.map((t) => t.id));
-  const run: RunRecord = {
-    at: nowIso(),
-    model,
+  const fetchedAt = nowIso();
+  const status = runStatus(items, errors, rejected, fetchedAt);
+  const name = await writeSnapshot({
+    version: 1,
+    fetched_at: fetchedAt,
     window: { from: new Date(w.start).toISOString(), to: new Date(w.end).toISOString() },
+    model,
+    status,
     usage,
-    kept: items.length,
+    items,
     rejected,
     errors,
-  };
-  const day: RawDay = {
-    date: runDate,
-    items: [...prevItems, ...items.filter((t) => !prevIds.has(t.id))],
-    runs: [...(Array.isArray(prev?.runs) ? prev.runs : []), run],
-  };
-  await mkdir(join(DATA, "raw"), { recursive: true });
-  await writeFile(rawPath, JSON.stringify(day, null, 2) + "\n");
-  logSafe(`window ${w.label}, total ${items.length}, usage=${JSON.stringify(usage)}`);
-
-  if (errors.length) {
-    await writeStatus({ ok: false, message: `一部または全部の検索に失敗しました (${errors.join(" / ")})` });
-    process.exit(1);
-  }
-  if (items.length === 0) {
-    const counts = Object.entries(
-      rejected.reduce<Record<string, number>>((a, r) => ((a[r.reason] = (a[r.reason] ?? 0) + 1), a), {}),
-    )
-      .map(([k, v]) => `${k}=${v}`)
-      .join(", ");
-    await writeStatus({
-      ok: false,
-      message: `検証を通った投稿が0件でした (破棄 ${rejected.length} 件${counts ? `: ${counts}` : ""})`,
-    });
-    process.exit(1);
-  }
-  await writeStatus({
-    ok: true,
-    message: `${items.length} 件を取得しました`,
-    dropped_unverified: rejected.length,
   });
+  logSafe(`${name}: window ${w.label}, total ${items.length}, usage=${JSON.stringify(usage)}`);
+  if (!status.ok) {
+    logSafe(status.message);
+    process.exit(1);
+  }
 }
 
 await main();

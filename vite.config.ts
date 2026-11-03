@@ -2,14 +2,14 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   lint: {
-    ignorePatterns: ["public/**", "data/**"],
+    ignorePatterns: ["site/**", ".work/**", "archive/**"],
     options: {
       typeAware: true,
       typeCheck: true,
     },
   },
   fmt: {
-    ignorePatterns: ["public/**", "data/**"],
+    ignorePatterns: ["site/**", ".work/**", "archive/**"],
     printWidth: 110,
   },
   test: {

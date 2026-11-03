@@ -246,7 +246,7 @@ export function topicCves(t: Pick<Topic, "title" | "tags">): Set<string> {
 /**
  * For a CVE reported more than once, the earliest collected topic is kept so
  * items already delivered to readers stay stable. Stored data is re-sanitized
- * (defense in depth) because data/raw is only as trustworthy as past runs.
+ * (defense in depth) because stored snapshots are only as trustworthy as past runs.
  */
 export function mergeTopics(days: Topic[][], limit: number): Topic[] {
   const byId = new Map<string, Topic>();

@@ -12,23 +12,6 @@ export interface Topic {
   related?: string[];
 }
 
-export interface RunRecord {
-  at: string;
-  model: string;
-  window: { from: string; to: string };
-  usage: unknown;
-  kept: number;
-  rejected: Array<{ search: string; reason: string; id?: string; posted_at?: string }>;
-  errors: string[];
-}
-
-/** One file per run date; repeated runs on the same date append. */
-export interface RawDay {
-  date: string;
-  items: Topic[];
-  runs?: RunRecord[];
-}
-
 export interface Status {
   ok: boolean;
   message: string;
