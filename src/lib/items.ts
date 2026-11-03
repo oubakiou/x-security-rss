@@ -252,7 +252,11 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
   const byId = new Map<string, Topic>();
   for (const day of days) {
     for (const t of day) {
-      if (typeof t?.id !== "string" || !/^\d{1,20}$/.test(t.id) || byId.has(t.id)) continue;
+      if (typeof t?.id !== "string" || !/^\d{1,20}$/.test(t.id)) continue;
+      const seen = byId.get(t.id);
+      // Inputs arrive newest first; a re-fetched post must keep its first collection time,
+      // otherwise a later re-fetch would hand the CVE representative role to another post.
+      if (seen && toTime(cleanText(t.collected_at, 30)) >= toTime(seen.collected_at)) continue;
       const time = snowflakeTime(t.id);
       byId.set(t.id, {
         id: t.id,
@@ -539,6 +543,18 @@ if (import.meta.vitest) {
       expect(merged.map((m) => m.id)).toEqual([ID1, OLD]);
       expect(merged[0]!.related).toEqual([ID2, "2117312811139260474"]);
       expect(merged[0]!.tags).toContain("CVE-2026-97229");
+    });
+
+    it("keeps the first collection of a re-fetched post so the CVE representative stays stable", () => {
+      const a1 = { ...t(ID1), title: "A CVE-2026-7777", collected_at: "2026-11-03T00:00:00Z" };
+      const b = { ...t(ID2), title: "B CVE-2026-7777", collected_at: "2026-11-03T01:00:00Z" };
+      const a2 = { ...t(ID1), title: "A again CVE-2026-7777", collected_at: "2026-11-03T02:00:00Z" };
+      // newest snapshot first, as build.ts passes them
+      const merged = mergeTopics([[a2], [b], [a1]], 10);
+      expect(merged.map((m) => [m.id, m.title, m.collected_at])).toEqual([
+        [ID1, "A CVE-2026-7777", "2026-11-03T00:00:00Z"],
+      ]);
+      expect(merged[0]!.related).toEqual([ID2]);
     });
 
     it("ignores CVEs that only appear in the summary", () => {
