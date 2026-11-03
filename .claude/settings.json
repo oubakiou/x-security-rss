@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(gh api repos/oubakiou/x-security-rss/pulls/*/comments*)",
-      "Bash(gh api repos/oubakiou/x-security-rss/pulls/*/ccr/comments/*/resolve*)",
-      "Bash(gh api repos/oubakiou/x-security-rss/issues/*/comments*)"
-    ]
-  }
-}
