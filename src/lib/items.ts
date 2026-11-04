@@ -261,7 +261,8 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
         url: `https://x.com/i/status/${t.id}`,
         title: cleanText(t.title, LIMITS.title) || "(無題)",
         // Older runs appended a per-item notice; the site and feed descriptions carry it now.
-        author: cleanText(t.author, LIMITS.author + 20).replace(/\s*※投稿者未検証$/, ""),
+        // Strip before truncating: old composed authors can exceed the limit, which would cut the notice mid-word.
+        author: cleanText(cleanText(t.author, Infinity).replace(/\s*※投稿者未検証$/, ""), LIMITS.author + 20),
         posted_at: time ? time.toISOString().slice(0, 19) + "Z" : cleanText(t.posted_at, 30),
         summary: cleanText(t.summary, LIMITS.summary),
         tags: (Array.isArray(t.tags) ? t.tags : []).map((x) => cleanText(x, LIMITS.tag)).filter(Boolean),
@@ -528,6 +529,12 @@ if (import.meta.vitest) {
         10,
       );
       expect(merged.map((m) => m.author).sort()).toEqual(["Name (@foo)", "※投稿者未検証 Name"]);
+      const longName = "N".repeat(80);
+      const [long] = mergeTopics(
+        [[{ ...t(ID1), author: `${longName} (@${"h".repeat(15)}) ※投稿者未検証` }]],
+        10,
+      );
+      expect(long?.author).toBe(`${longName} (@${"h".repeat(15)})`);
     });
     it("merges topics sharing a CVE into the earliest collected one", () => {
       const a = {
