@@ -221,7 +221,7 @@ export function normalizeItems(
       title: cleanText(r.title, LIMITS.title) || "(無題)",
       author: citedHandle
         ? `${name || citedHandle} (@${citedHandle})`
-        : `${name || "不明"}${handle ? ` (@${handle})` : ""} ※投稿者未検証`,
+        : `${name || "不明"}${handle ? ` (@${handle})` : ""}`,
       posted_at,
       summary: cleanText(r.summary, LIMITS.summary),
       tags: (Array.isArray(r.tags) ? r.tags : [])
@@ -260,7 +260,8 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
         id: t.id,
         url: `https://x.com/i/status/${t.id}`,
         title: cleanText(t.title, LIMITS.title) || "(無題)",
-        author: cleanText(t.author, LIMITS.author + 20),
+        // Older runs appended a per-item notice; the site and feed descriptions carry it now.
+        author: cleanText(t.author, LIMITS.author + 20).replace(/\s*※投稿者未検証$/, ""),
         posted_at: time ? time.toISOString().slice(0, 19) + "Z" : cleanText(t.posted_at, 30),
         summary: cleanText(t.summary, LIMITS.summary),
         tags: (Array.isArray(t.tags) ? t.tags : []).map((x) => cleanText(x, LIMITS.tag)).filter(Boolean),
@@ -385,7 +386,7 @@ if (import.meta.vitest) {
       expect(r.rejected).toEqual([{ reason: "not_cited", id: ID1, posted_at: "2026-11-02T12:02:58Z" }]);
     });
 
-    it("keeps cited items, rebuilds url, takes time from the id and marks unverified authors", () => {
+    it("keeps cited items, rebuilds url, takes time from the id and keeps the unverified author as given", () => {
       const { items, dropped } = normalizeItems(
         { items: [{ ...base, url: `https://twitter.com/foo/status/${ID1}?s=20` }] },
         new Map([[ID1, undefined]]),
@@ -396,7 +397,7 @@ if (import.meta.vitest) {
         id: ID1,
         url: `https://x.com/i/status/${ID1}`,
         posted_at: "2026-11-02T12:02:58Z",
-        author: "Name (@foo) ※投稿者未検証",
+        author: "Name (@foo)",
       });
     });
 
@@ -515,6 +516,18 @@ if (import.meta.vitest) {
       summary: "",
       tags: [],
       collected_at: AT,
+    });
+    it("drops the per-item unverified notice from stored authors", () => {
+      const merged = mergeTopics(
+        [
+          [
+            { ...t(ID1), author: "Name (@foo) ※投稿者未検証" },
+            { ...t(ID2), author: "※投稿者未検証 Name" },
+          ],
+        ],
+        10,
+      );
+      expect(merged.map((m) => m.author).sort()).toEqual(["Name (@foo)", "※投稿者未検証 Name"]);
     });
     it("merges topics sharing a CVE into the earliest collected one", () => {
       const a = {
