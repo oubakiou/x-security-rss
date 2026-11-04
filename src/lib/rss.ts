@@ -91,6 +91,20 @@ ${items}
 `;
 }
 
+/** Link previews are built from the site's own metadata only, never from collected posts, so post text cannot dress up a shared card. */
+function ogpHtml(meta: FeedMeta): string {
+  const tags: [string, string, string][] = [
+    ["property", "og:type", "website"],
+    ["property", "og:site_name", meta.title],
+    ["property", "og:title", meta.title],
+    ["property", "og:description", meta.description],
+    ["property", "og:url", meta.siteUrl],
+    ["property", "og:locale", "ja_JP"],
+    ["name", "twitter:card", "summary"],
+  ];
+  return tags.map(([attr, key, value]) => `<meta ${attr}="${key}" content="${escapeXml(value)}">`).join("\n");
+}
+
 export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): string {
   const alert = statusAlert(status, meta);
   const rows = topics
@@ -112,6 +126,8 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>${escapeXml(meta.title)}</title>
+<meta name="description" content="${escapeXml(meta.description)}">
+${ogpHtml(meta)}
 <link rel="alternate" type="application/rss+xml" title="${escapeXml(meta.title)}" href="${escapeXml(meta.feedUrl)}">
 <style>
 :root{color-scheme:light dark;--fg:#1a1a1a;--muted:#666;--bg:#fff;--line:#e5e5e5;--warn:#b45309}
@@ -201,6 +217,27 @@ if (import.meta.vitest) {
       expect(html).toContain('type="application/rss+xml"');
       expect(html).toContain("A &amp; B &lt;script&gt;");
       expect(html).not.toContain("<script>");
+    });
+
+    it("emits OGP tags from the site metadata only", () => {
+      const html = renderHtml(
+        [topic],
+        { ...meta, title: `T "&" <x>` },
+        {
+          ok: false,
+          message: "xAI API エラー HTTP 401",
+          checked_at: "2026-11-03T21:00:00Z",
+        },
+      );
+      expect(html).toContain('<meta property="og:title" content="T &quot;&amp;&quot; &lt;x&gt;">');
+      expect(html).toContain('<meta property="og:description" content="D">');
+      expect(html).toContain('<meta name="description" content="D">');
+      expect(html).toContain('<meta property="og:url" content="https://example.github.io/r/">');
+      expect(html).toContain('<meta property="og:type" content="website">');
+      expect(html).toContain('<meta name="twitter:card" content="summary">');
+      const head = html.slice(0, html.indexOf("</head>"));
+      expect(head).not.toContain("A &amp; B");
+      expect(head).not.toContain("HTTP 401");
     });
   });
 }
