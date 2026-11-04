@@ -17,11 +17,20 @@ export function escapeXml(s: string): string {
     .replace(/'/g, "&apos;");
 }
 
-function relatedHtml(t: Topic): string {
+/** Opens in a new tab on the site page; the mark and hidden text tell sighted and screen-reader users before they click. */
+function externalLink(href: string, text: string): string {
+  return `<a href="${escapeXml(href)}" target="_blank" rel="noopener noreferrer">${escapeXml(text)}<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>`;
+}
+
+function relatedHtml(t: Topic, newTab = false): string {
   const ids = (t.related ?? []).filter((id) => /^\d{1,20}$/.test(id));
   if (!ids.length) return "";
   const links = ids
-    .map((id, i) => `<a href="https://x.com/i/status/${id}" rel="noopener noreferrer">関連投稿${i + 1}</a>`)
+    .map((id, i) =>
+      newTab
+        ? externalLink(`https://x.com/i/status/${id}`, `関連投稿${i + 1}`)
+        : `<a href="https://x.com/i/status/${id}" rel="noopener noreferrer">関連投稿${i + 1}</a>`,
+    )
     .join(" / ");
   return `<p>同じCVEの関連投稿: ${links}</p>`;
 }
@@ -111,10 +120,10 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
   const rows = topics
     .map(
       (t) => `<article>
-  <h2><a href="${escapeXml(t.url)}" rel="noopener noreferrer">${escapeXml(t.title)}</a></h2>
+  <h2>${externalLink(t.url, t.title)}</h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
   <p>${escapeXml(t.summary)}</p>
-  ${relatedHtml(t)}
+  ${relatedHtml(t, true)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
 </article>`,
     )
@@ -137,12 +146,13 @@ body{margin:0 auto;max-width:760px;padding:24px 16px;font:16px/1.7 system-ui,san
 a{color:inherit}h1{font-size:1.4rem}h2{font-size:1.05rem;margin:0 0 4px}
 article{border-top:1px solid var(--line);padding:16px 0}.meta{color:var(--muted);font-size:.85rem;margin:0}
 .tags span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin:0 4px 4px 0;font-size:.8rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #status{border:1px solid var(--warn);color:var(--warn);padding:12px;border-radius:6px;white-space:pre-wrap}
 </style>
 </head>
 <body>
 <h1>${escapeXml(meta.title)}</h1>
-<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · <a href="${escapeXml(meta.sourceUrl)}" rel="noopener noreferrer">GitHub</a></p>
+<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · ${externalLink(meta.sourceUrl, "GitHub")}</p>
 ${alert ? `<p id="status">${escapeXml(alert.title)}\n${escapeXml(alert.summary)}</p>` : ""}
 ${rows || "<p>まだ記事がありません。</p>"}
 </body>
@@ -217,9 +227,24 @@ if (import.meta.vitest) {
     it("escapes content and links the feed", () => {
       const html = renderHtml([topic], meta);
       expect(html).toContain('type="application/rss+xml"');
-      expect(html).toContain('<a href="https://github.com/o/r" rel="noopener noreferrer">GitHub</a>');
+      expect(html).toContain(
+        '<a href="https://github.com/o/r" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>',
+      );
       expect(html).toContain("A &amp; B &lt;script&gt;");
       expect(html).not.toContain("<script>");
+    });
+
+    it("opens post links in a new tab with a visible and spoken notice, but not in the feed", () => {
+      const t = { ...topic, related: ["456"] };
+      const html = renderHtml([t], meta);
+      expect(html).toContain(
+        '<a href="https://x.com/u/status/123" target="_blank" rel="noopener noreferrer">A &amp; B &lt;script&gt;<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>',
+      );
+      expect(html).toContain(
+        '<a href="https://x.com/i/status/456" target="_blank" rel="noopener noreferrer">関連投稿1',
+      );
+      expect(html).not.toMatch(/<a href="https:\/\/example\.github\.io\/r\/feed\.xml"[^>]*target=/);
+      expect(renderRss([t], meta)).not.toContain("target=");
     });
 
     it("emits OGP tags from the site metadata only", () => {
