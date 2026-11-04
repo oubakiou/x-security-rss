@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "date": "2026-11-03",
+  "snapshots": [
+    {
+      "name": "2026-11-03-08.json",
+      "sha256": "fc7875d46a0f44c5ff1c94f58692d56422e18bdb3ed16366dcd67d579e3f3aee",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-03T08:28:01Z",
+        "window": {
+          "from": "2026-11-02T08:26:58.963Z",
+          "to": "2026-11-03T08:26:58.963Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "10 件を取得しました",
+          "checked_at": "2026-11-03T08:28:01Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 6812,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 2931,
+            "output_tokens_details": {
+              "reasoning_tokens": 1528
+            },
+            "total_tokens": 9743,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 657081000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 10,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 5119,
+              "output_tokens": 1935
+            }
+          },
+          "general": {
+            "input_tokens": 29198,
+            "input_tokens_details": {
+              "cached_tokens": 1152
+            },
+            "output_tokens": 2642,
+            "output_tokens_details": {
+              "reasoning_tokens": 1554
+            },
+            "total_tokens": 31840,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2418929000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 27366,
+              "output_tokens": 1262
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2117531014545510695",
+            "url": "https://x.com/i/status/2117531014545510695",
+            "title": "Synology NASがランサムウェア攻撃、未更新DSMを標的",
+            "author": "The Hacker News (@TheHackersNews) ※投稿者未検証",
+            "posted_at": "2026-11-03T08:15:10Z",
+            "summary": "Synology NAS機器がランサムウェア攻撃を受け、2024年12月にパッチ適用済みの脆弱性を悪用。古いDSMバージョンが標的。Synologyは即時更新を推奨。影響：データ暗号化・身代金要求。対処：最新DSMへ更新。",
+            "tags": [
+              "ransomware",
+              "Synology",
+              "DSM"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117497003009798501",
+            "url": "https://x.com/i/status/2117497003009798501",
+            "title": "Siemens IoT2050にCVSS 10.0脆弱性、悪用確認",
+            "author": "The Hacker News (@TheHackersNews) ※投稿者未検証",
+            "posted_at": "2026-11-03T06:00:01Z",
+            "summary": "Siemens IoT2050のCVE-2026-58115 (CVSS 10.0)が活発に悪用され、Linuxボットペイロードを展開。Node-RED経由でリモートコマンド実行。VulnCheckがハニーポットで検知。影響：バックドア作成。対処：緊急パッチ適用。",
+            "tags": [
+              "CVE-2026-58115",
+              "Siemens",
+              "IoT"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117491034406125678",
+            "url": "https://x.com/i/status/2117491034406125678",
+            "title": "WordPress CryptoPayment GatewayにCVSS 10.0脆弱性",
+            "author": "The Hacker News (@TheHackersNews) ※投稿者未検証",
+            "posted_at": "2026-11-03T05:36:18Z",
+            "summary": "CryptoPayment Gateway WordPressプラグインのCVE-2026-81648 (CVSS 10.0)が未パッチで悪用。認証なしでウォレット認証情報抽出・ファイル削除可能。影響：決済設定改ざん。対処：パッチなしのため監視強化。",
+            "tags": [
+              "CVE-2026-81648",
+              "WordPress",
+              "plugin"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117460760112537673",
+            "url": "https://x.com/i/status/2117460760112537673",
+            "title": "Revolveで18万人規模のデータ侵害発生",
+            "author": "SecurityWeek (@SecurityWeek) ※投稿者未検証",
+            "posted_at": "2026-11-03T03:36:00Z",
+            "summary": "Revolveでデータ侵害が発生、少なくとも18万人が影響。個人情報漏洩の可能性。影響：ID盗用リスク。対処：アカウント監視・パスワード変更。",
+            "tags": [
+              "data breach",
+              "Revolve"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117413447558373505",
+            "url": "https://x.com/i/status/2117413447558373505",
+            "title": "ChainalysisがAI駆動サイバー攻撃でデータ侵害",
+            "author": "SecurityWeek (@SecurityWeek) ※投稿者未検証",
+            "posted_at": "2026-11-03T00:28:00Z",
+            "summary": "ChainalysisがAI駆動のサイバー攻撃を受けデータ侵害を公表。影響：機密データ漏洩。対処：インシデント対応・監査実施。",
+            "tags": [
+              "data breach",
+              "Chainalysis",
+              "AI"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117352435207295246",
+            "url": "https://x.com/i/status/2117352435207295246",
+            "title": "Microsoft、悪用脆弱性の実態分析を公開",
+            "author": "Microsoft Threat Intelligence (@MsftSecIntel) ※投稿者未検証",
+            "posted_at": "2026-11-02T20:25:33Z",
+            "summary": "公開CVEのうち実世界攻撃で使われるのは200分の1未満。RCE・権限昇格が標的。AI支援で悪用加速の懸念。影響：優先防御必要。対処：高影響システムの保護優先。",
+            "tags": [
+              "Microsoft",
+              "exploited vulnerabilities"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117320078991536628",
+            "url": "https://x.com/i/status/2117320078991536628",
+            "title": "Google、100万台規模のXCPE Androidボットネットを無力化",
+            "author": "BleepingComputer (@BleepinComputer) ※投稿者未検証",
+            "posted_at": "2026-11-02T18:16:59Z",
+            "summary": "GoogleがXCPE Androidマルウェアボットネットを無力化、TVボックスメーカー禁止。影響：スクリーンショット・キーログ・リモートシェル。対処：ファームウェア更新・デバイス交換。",
+            "tags": [
+              "malware",
+              "Android",
+              "botnet"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117286323585487148",
+            "url": "https://x.com/i/status/2117286323585487148",
+            "title": "Android x.cpeマルウェアがファームウェアに埋め込まれ永続化",
+            "author": "The Hacker News (@TheHackersNews) ※投稿者未検証",
+            "posted_at": "2026-11-02T16:02:51Z",
+            "summary": "x.cpeマルウェアがAndroidファームウェアに埋め込まれ、再起動後も自己再インストール。182機種特定。影響：アドフラウド超えの情報窃取。対処：ベンダー介入またはデバイス交換必要。",
+            "tags": [
+              "malware",
+              "Android",
+              "firmware"
+            ],
+            "collected_at": "2026-11-03T08:27:26Z"
+          },
+          {
+            "id": "2117508092321747077",
+            "url": "https://x.com/i/status/2117508092321747077",
+            "title": "LinuxカーネルにCVSS9.8のRCE脆弱性CVE-2026-98432",
+            "author": "Marcus Hutchins (@MalwareTechBlog) ※投稿者未検証",
+            "posted_at": "2026-11-03T06:44:05Z",
+            "summary": "LinuxカーネルTCP/IPスタックのuse-after-free脆弱性CVE-2026-98432（CVSS9.8）が公開。Ubuntu/RHEL/Proxmoxなど影響。MPTCP有効時リモートコード実行可能で、脅威アクターのスキャン検知。Debianは修正済み。net.mptcp.enabled=0設定後再起動が必要。PoC存在。",
+            "tags": [
+              "CVE-2026-98432",
+              "Linux",
+              "zero-day",
+              "RCE"
+            ],
+            "collected_at": "2026-11-03T08:28:01Z"
+          },
+          {
+            "id": "2117409241418080304",
+            "url": "https://x.com/i/status/2117409241418080304",
+            "title": "OpenBSD 8.0にセキュリティエラッタ公開",
+            "author": "Dark Web Intelligence (@DailyDarkWeb) ※投稿者未検証",
+            "posted_at": "2026-11-03T00:11:17Z",
+            "summary": "OpenBSD 8.0向けセキュリティエラッタ公開。nsd（CVE-2026-101337など）、IPsec AES-GMACカーネルヒープオーバーフロー、video(4) use-after-freeなどを修正。syspatch(8)で適用推奨。",
+            "tags": [
+              "OpenBSD",
+              "patch",
+              "security advisory"
+            ],
+            "collected_at": "2026-11-03T08:28:01Z"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
