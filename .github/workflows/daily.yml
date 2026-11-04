@@ -2,8 +2,8 @@ name: Daily X security feed
 
 on:
   schedule:
-    # 09:00 JST (00:00 UTC) every day
-    - cron: "0 0 * * *"
+    # 05:00 and 11:00 JST (20:00 and 02:00 UTC) every day
+    - cron: "0 2,20 * * *"
   workflow_dispatch:
     inputs:
       bootstrap:

@@ -3,12 +3,12 @@
 X (旧Twitter) からサイバーセキュリティの話題を毎日収集し、RSS として配信します。
 
 - 収集: xAI Responses API の `x_search` ツール (Grok) — `src/fetch.ts`
-  - 対象期間は実行時点から過去24時間 (毎日 9:00 JST 実行なので前日9時〜当日9時)。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
+  - 対象期間は実行時点から過去24時間。1日2回の実行で期間が重なるが、同じ投稿は最初の収集を保持して重複を除く。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
   - 信頼できるアカウント限定の検索と、分野別の一般検索の2本立て
 - 保存: 取得結果は1回の実行ごとに `snapshots/YYYY-MM-DD-HH.json` として Pages に置き、日が確定したら
   `archive/YYYY-MM-DD.json` として git にコミット (`src/restore.ts` / `src/build.ts`、詳細は [development.md](development.md))
 - 生成: RSS 2.0 (`feed.xml`) と一覧ページ (`index.html`) — `src/build.ts`
-- 実行: GitHub Actions で毎日 09:00 JST (`.github/workflows/daily.yml`)
+- 実行: GitHub Actions で毎日 05:00 と 11:00 JST の2回 (`.github/workflows/daily.yml`)。GitHub の定時実行は混雑時に遅れることがある
 - 配信: GitHub Pages — **https://oubakiou.github.io/x-security-rss/feed.xml**
 
 ## セットアップ
