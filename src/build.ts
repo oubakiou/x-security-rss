@@ -25,6 +25,7 @@ const meta: FeedMeta = {
     "X (旧Twitter) から毎日収集したサイバーセキュリティの話題。Grok (x_search) による自動収集・自動要約で、内容は未検証です。必ず元の投稿と一次情報を確認してください。",
   siteUrl: site,
   feedUrl: `${site}feed.xml`,
+  sourceUrl: "https://github.com/oubakiou/x-security-rss",
 };
 
 /** Snapshots restored from Pages are only as trustworthy as past runs, so the status is re-validated. */

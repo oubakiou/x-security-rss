@@ -5,6 +5,7 @@ export interface FeedMeta {
   description: string;
   siteUrl: string;
   feedUrl: string;
+  sourceUrl: string;
 }
 
 export function escapeXml(s: string): string {
@@ -141,7 +142,7 @@ article{border-top:1px solid var(--line);padding:16px 0}.meta{color:var(--muted)
 </head>
 <body>
 <h1>${escapeXml(meta.title)}</h1>
-<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a></p>
+<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · <a href="${escapeXml(meta.sourceUrl)}" rel="noopener noreferrer">GitHub</a></p>
 ${alert ? `<p id="status">${escapeXml(alert.title)}\n${escapeXml(alert.summary)}</p>` : ""}
 ${rows || "<p>まだ記事がありません。</p>"}
 </body>
@@ -157,6 +158,7 @@ if (import.meta.vitest) {
     description: "D",
     siteUrl: "https://example.github.io/r/",
     feedUrl: "https://example.github.io/r/feed.xml",
+    sourceUrl: "https://github.com/o/r",
   };
   const topic: Topic = {
     id: "123",
@@ -215,6 +217,7 @@ if (import.meta.vitest) {
     it("escapes content and links the feed", () => {
       const html = renderHtml([topic], meta);
       expect(html).toContain('type="application/rss+xml"');
+      expect(html).toContain('<a href="https://github.com/o/r" rel="noopener noreferrer">GitHub</a>');
       expect(html).toContain("A &amp; B &lt;script&gt;");
       expect(html).not.toContain("<script>");
     });
