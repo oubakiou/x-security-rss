@@ -5,6 +5,7 @@ export interface FeedMeta {
   description: string;
   siteUrl: string;
   feedUrl: string;
+  sourceUrl: string;
 }
 
 export function escapeXml(s: string): string {
@@ -16,11 +17,20 @@ export function escapeXml(s: string): string {
     .replace(/'/g, "&apos;");
 }
 
-function relatedHtml(t: Topic): string {
+/** Opens in a new tab on the site page; the mark and hidden text tell sighted and screen-reader users before they click. */
+function externalLink(href: string, text: string): string {
+  return `<a href="${escapeXml(href)}" target="_blank" rel="noopener noreferrer">${escapeXml(text)}<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>`;
+}
+
+function relatedHtml(t: Topic, newTab = false): string {
   const ids = (t.related ?? []).filter((id) => /^\d{1,20}$/.test(id));
   if (!ids.length) return "";
   const links = ids
-    .map((id, i) => `<a href="https://x.com/i/status/${id}" rel="noopener noreferrer">関連投稿${i + 1}</a>`)
+    .map((id, i) =>
+      newTab
+        ? externalLink(`https://x.com/i/status/${id}`, `関連投稿${i + 1}`)
+        : `<a href="https://x.com/i/status/${id}" rel="noopener noreferrer">関連投稿${i + 1}</a>`,
+    )
     .join(" / ");
   return `<p>同じCVEの関連投稿: ${links}</p>`;
 }
@@ -91,15 +101,29 @@ ${items}
 `;
 }
 
+/** Link previews are built from the site's own metadata only, never from collected posts, so post text cannot dress up a shared card. */
+function ogpHtml(meta: FeedMeta): string {
+  const tags: [string, string, string][] = [
+    ["property", "og:type", "website"],
+    ["property", "og:site_name", meta.title],
+    ["property", "og:title", meta.title],
+    ["property", "og:description", meta.description],
+    ["property", "og:url", meta.siteUrl],
+    ["property", "og:locale", "ja_JP"],
+    ["name", "twitter:card", "summary"],
+  ];
+  return tags.map(([attr, key, value]) => `<meta ${attr}="${key}" content="${escapeXml(value)}">`).join("\n");
+}
+
 export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): string {
   const alert = statusAlert(status, meta);
   const rows = topics
     .map(
       (t) => `<article>
-  <h2><a href="${escapeXml(t.url)}" rel="noopener noreferrer">${escapeXml(t.title)}</a></h2>
+  <h2>${externalLink(t.url, t.title)}</h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
   <p>${escapeXml(t.summary)}</p>
-  ${relatedHtml(t)}
+  ${relatedHtml(t, true)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
 </article>`,
     )
@@ -112,6 +136,8 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>${escapeXml(meta.title)}</title>
+<meta name="description" content="${escapeXml(meta.description)}">
+${ogpHtml(meta)}
 <link rel="alternate" type="application/rss+xml" title="${escapeXml(meta.title)}" href="${escapeXml(meta.feedUrl)}">
 <style>
 :root{color-scheme:light dark;--fg:#1a1a1a;--muted:#666;--bg:#fff;--line:#e5e5e5;--warn:#b45309}
@@ -120,12 +146,13 @@ body{margin:0 auto;max-width:760px;padding:24px 16px;font:16px/1.7 system-ui,san
 a{color:inherit}h1{font-size:1.4rem}h2{font-size:1.05rem;margin:0 0 4px}
 article{border-top:1px solid var(--line);padding:16px 0}.meta{color:var(--muted);font-size:.85rem;margin:0}
 .tags span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin:0 4px 4px 0;font-size:.8rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #status{border:1px solid var(--warn);color:var(--warn);padding:12px;border-radius:6px;white-space:pre-wrap}
 </style>
 </head>
 <body>
 <h1>${escapeXml(meta.title)}</h1>
-<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a></p>
+<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · ${externalLink(meta.sourceUrl, "GitHub")}</p>
 ${alert ? `<p id="status">${escapeXml(alert.title)}\n${escapeXml(alert.summary)}</p>` : ""}
 ${rows || "<p>まだ記事がありません。</p>"}
 </body>
@@ -141,6 +168,7 @@ if (import.meta.vitest) {
     description: "D",
     siteUrl: "https://example.github.io/r/",
     feedUrl: "https://example.github.io/r/feed.xml",
+    sourceUrl: "https://github.com/o/r",
   };
   const topic: Topic = {
     id: "123",
@@ -199,8 +227,45 @@ if (import.meta.vitest) {
     it("escapes content and links the feed", () => {
       const html = renderHtml([topic], meta);
       expect(html).toContain('type="application/rss+xml"');
+      expect(html).toContain(
+        '<a href="https://github.com/o/r" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>',
+      );
       expect(html).toContain("A &amp; B &lt;script&gt;");
       expect(html).not.toContain("<script>");
+    });
+
+    it("opens post links in a new tab with a visible and spoken notice, but not in the feed", () => {
+      const t = { ...topic, related: ["456"] };
+      const html = renderHtml([t], meta);
+      expect(html).toContain(
+        '<a href="https://x.com/u/status/123" target="_blank" rel="noopener noreferrer">A &amp; B &lt;script&gt;<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>',
+      );
+      expect(html).toContain(
+        '<a href="https://x.com/i/status/456" target="_blank" rel="noopener noreferrer">関連投稿1',
+      );
+      expect(html).not.toMatch(/<a href="https:\/\/example\.github\.io\/r\/feed\.xml"[^>]*target=/);
+      expect(renderRss([t], meta)).not.toContain("target=");
+    });
+
+    it("emits OGP tags from the site metadata only", () => {
+      const html = renderHtml(
+        [topic],
+        { ...meta, title: `T "&" <x>` },
+        {
+          ok: false,
+          message: "xAI API エラー HTTP 401",
+          checked_at: "2026-11-03T21:00:00Z",
+        },
+      );
+      expect(html).toContain('<meta property="og:title" content="T &quot;&amp;&quot; &lt;x&gt;">');
+      expect(html).toContain('<meta property="og:description" content="D">');
+      expect(html).toContain('<meta name="description" content="D">');
+      expect(html).toContain('<meta property="og:url" content="https://example.github.io/r/">');
+      expect(html).toContain('<meta property="og:type" content="website">');
+      expect(html).toContain('<meta name="twitter:card" content="summary">');
+      const head = html.slice(0, html.indexOf("</head>"));
+      expect(head).not.toContain("A &amp; B");
+      expect(head).not.toContain("HTTP 401");
     });
   });
 }
