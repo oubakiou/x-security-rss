@@ -43,6 +43,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 - [@DarkReading](https://x.com/DarkReading)
 - [@piyokango](https://x.com/piyokango)
 - [@cyber_forecast](https://x.com/cyber_forecast)
+- [@yousukezan](https://x.com/yousukezan)
 
 ## 失敗したとき
 

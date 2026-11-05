@@ -17,6 +17,7 @@ export const DEFAULT_TRUSTED_HANDLES = [
   "DarkReading",
   "piyokango",
   "cyber_forecast",
+  "yousukezan",
 ] as const;
 
 export function parseHandles(raw: string | undefined, fallback: readonly string[]): string[] {
