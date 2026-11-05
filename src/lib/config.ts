@@ -6,22 +6,18 @@ const HANDLE_RE = /^[A-Za-z0-9_]{1,15}$/;
  * Actions variable (comma separated, without @).
  */
 export const DEFAULT_TRUSTED_HANDLES = [
-  "CISAgov",
   "CISACyber",
-  "NCSC",
-  "CERT_CC",
   "jpcert",
   "MsftSecIntel",
-  "msftsecresponse",
   "Mandiant",
-  "TalosSecurity",
   "Unit42_Intel",
-  "thezdi",
-  "Shadowserver",
   "BleepinComputer",
   "TheHackersNews",
   "SecurityWeek",
   "DarkReading",
+  "piyokango",
+  "cyber_forecast",
+  "yousukezan",
 ] as const;
 
 export function parseHandles(raw: string | undefined, fallback: readonly string[]): string[] {
