@@ -2,8 +2,9 @@ name: Daily X security feed
 
 on:
   schedule:
-    # 05:00 and 11:00 JST (20:00 and 02:00 UTC) every day
-    - cron: "0 2,20 * * *"
+    # 04:17 and 10:17 JST (19:17 and 01:17 UTC) every day. Off the top of the hour because
+    # GitHub delays scheduled runs most at :00; runs still start hours late under load.
+    - cron: "17 1,19 * * *"
   workflow_dispatch:
     inputs:
       bootstrap:
