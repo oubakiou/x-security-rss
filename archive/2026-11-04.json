@@ -1,0 +1,612 @@
+{
+  "version": 1,
+  "date": "2026-11-04",
+  "snapshots": [
+    {
+      "name": "2026-11-04-04.json",
+      "sha256": "1904a511959a44ec24c3c0a076049f3c701435f4b6b9b337da26d137909f9e14",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-04T04:18:15Z",
+        "window": {
+          "from": "2026-11-03T04:16:34.877Z",
+          "to": "2026-11-04T04:16:34.877Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "20 件を取得しました",
+          "checked_at": "2026-11-04T04:18:15Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 5827,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 2209,
+            "output_tokens_details": {
+              "reasoning_tokens": 1274
+            },
+            "total_tokens": 8036,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 460590500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 7,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4134,
+              "output_tokens": 1435
+            }
+          },
+          "general": {
+            "input_tokens": 20615,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 4543,
+            "output_tokens_details": {
+              "reasoning_tokens": 1635
+            },
+            "total_tokens": 25158,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 8,
+            "cost_in_usd_ticks": 2321262500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 8,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 18783,
+              "output_tokens": 3032
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2117579274274374082",
+            "url": "https://x.com/i/status/2117579274274374082",
+            "title": "Ubuntu TCP RCE脆弱性(CVSS 9.8)テストパッチ公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-03T11:26:56Z",
+            "summary": "UbuntuがLinux TCP RCE脆弱性(CVSS 9.8)に対しテストパッチを公開。Red HatはRHEL 8/9/10で修正済み。MPTCP無効化では不十分。IPv4 TCPのバグ。早急にテストチャネル有効化またはアップデートを推奨。",
+            "tags": [
+              "CVE",
+              "Ubuntu",
+              "Linux",
+              "RCE"
+            ],
+            "collected_at": "2026-11-04T04:16:50Z"
+          },
+          {
+            "id": "2117531014545510695",
+            "url": "https://x.com/i/status/2117531014545510695",
+            "title": "Synology NASが古いDSMでランサムウェア攻撃",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-03T08:15:10Z",
+            "summary": "Synology NASが2024年12月修正済み脆弱性を悪用したランサムウェア攻撃を受けている。古いDSMバージョンが標的。Synologyは即時アップデートを呼びかけ。",
+            "tags": [
+              "ransomware",
+              "Synology",
+              "NAS"
+            ],
+            "collected_at": "2026-11-04T04:16:50Z"
+          },
+          {
+            "id": "2117572922936291445",
+            "url": "https://x.com/i/status/2117572922936291445",
+            "title": "WinRAR既知脆弱性を悪用したGorbag攻撃",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-03T11:01:42Z",
+            "summary": "ロシア系Gorbagグループがパッチ済みWinRAR脆弱性を悪用しGIFTEDCROOKマルウェアを展開。ウクライナ政府・防衛組織を標的にブラウザデータ・認証情報を窃取。",
+            "tags": [
+              "WinRAR",
+              "malware",
+              "Ukraine"
+            ],
+            "collected_at": "2026-11-04T04:16:50Z"
+          },
+          {
+            "id": "2117570910500626882",
+            "url": "https://x.com/i/status/2117570910500626882",
+            "title": "Harvard大学で85.1万件アカウント情報漏えい",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-03T10:53:42Z",
+            "summary": "Harvard大学データ侵害で85.1万件のアカウント情報が暴露。個人情報流出の可能性あり。影響範囲と対処を確認する必要あり。",
+            "tags": [
+              "data breach",
+              "Harvard"
+            ],
+            "collected_at": "2026-11-04T04:16:50Z"
+          },
+          {
+            "id": "2117667754048151597",
+            "url": "https://x.com/i/status/2117667754048151597",
+            "title": "CISA、ICSセキュリティアドバイザリを1件発行",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-03T17:18:31Z",
+            "summary": "CISAがICS向け新規公開アドバイザリを1件発行。ICSの脆弱性・悪用情報を提供。詳細はhttps://go.dhs.gov/iEvで確認を。",
+            "tags": [
+              "ICS",
+              "CISA",
+              "advisory"
+            ],
+            "collected_at": "2026-11-04T04:16:50Z"
+          },
+          {
+            "id": "2117829210924298476",
+            "url": "https://x.com/i/status/2117829210924298476",
+            "title": "Linksys E5600にCVSS10.0の認証バイパス脆弱性",
+            "author": "cve.new (@cvedotnew)",
+            "posted_at": "2026-11-04T04:00:05Z",
+            "summary": "Linksys E5600 v1.1.0.26のmesh_login.cgiにリモート不適切認証の脆弱性。CVSS 10.0。ベンダー未対応。影響：認証バイパスによるリモートアクセス。対処：パッチなし、回避策未公表。",
+            "tags": [
+              "CVE-2026-121615",
+              "Linksys",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117813248263365111",
+            "url": "https://x.com/i/status/2117813248263365111",
+            "title": "python-joseでJWT偽造の脆弱性 CVE-2026-120459",
+            "author": "D3 Bytes (@D3bytes)",
+            "posted_at": "2026-11-04T02:56:40Z",
+            "summary": "python-jose 3.5.0以前で空HMACシークレット受理の脆弱性。CVSS未公表。影響：JWT任意主張の偽造。対処：空シークレット使用禁止。",
+            "tags": [
+              "CVE-2026-120459",
+              "python-jose",
+              "JWT"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117799050368135419",
+            "url": "https://x.com/i/status/2117799050368135419",
+            "title": "Qihoo 360デバイスにCVSS10.0コマンドインジェクション",
+            "author": "cve.new (@cvedotnew)",
+            "posted_at": "2026-11-04T02:00:15Z",
+            "summary": "Qihoo 360 D603-2などv6.4.9以前のtestspeed_commandにOSコマンドインジェクション。CVSS 10.0。影響：リモートコード実行。対処：パッチ未公表。",
+            "tags": [
+              "CVE-2026-121607",
+              "Qihoo 360",
+              "command injection"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117773827019100185",
+            "url": "https://x.com/i/status/2117773827019100185",
+            "title": "SolarWinds DamewareにCVSS9.9コマンドインジェクション",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-04T00:20:01Z",
+            "summary": "SolarWinds Dameware 2026.3以前にコマンドインジェクション CVE-2026-28336 CVSS9.9。影響：リモートシステム乗っ取り。対処：2026.3.1へアップデート。",
+            "tags": [
+              "CVE-2026-28336",
+              "SolarWinds",
+              "Dameware"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117768370871267545",
+            "url": "https://x.com/i/status/2117768370871267545",
+            "title": "SonicWall GMSにCVSS9.1未認証ファイルアクセス",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-03T23:58:20Z",
+            "summary": "SonicWall GMS 9.5.2以前に未認証内部ファイルアクセス CVE-2026-109593 CVSS9.1とSQLインジェクション。影響：機密データ漏えい。対処：EOLのためパッチなし。",
+            "tags": [
+              "CVE-2026-109593",
+              "SonicWall",
+              "GMS"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117827325677224078",
+            "url": "https://x.com/i/status/2117827325677224078",
+            "title": "Red Hat Linux TCP RCE脆弱性を修正 CVE-2026-98432",
+            "author": "Machina Record (@MachinaRecord)",
+            "posted_at": "2026-11-04T03:52:36Z",
+            "summary": "Red Hat Linux TCPにRCE脆弱性 CVE-2026-98432。Ubuntuテストチャネルで修正提供。影響：リモートコード実行。対処：パッチ適用。",
+            "tags": [
+              "CVE-2026-98432",
+              "Red Hat",
+              "Linux",
+              "RCE"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117814913678889264",
+            "url": "https://x.com/i/status/2117814913678889264",
+            "title": "WordPress Coreに脆弱性 CVE-2026-119977",
+            "author": "NANACO JAPAN LLC (@NANACO_JAPAN)",
+            "posted_at": "2026-11-04T03:03:17Z",
+            "summary": "WordPress Coreの脆弱性 CVE-2026-119977。影響：日本企業に確認必要。対処：即時更新と防御策実施。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117822268403322929",
+            "url": "https://x.com/i/status/2117822268403322929",
+            "title": "Singapore Airlinesがソフトウェアプロバイダー侵害でデータ漏えい",
+            "author": "Bloomberg (@business)",
+            "posted_at": "2026-11-04T03:32:30Z",
+            "summary": "Singapore Airlinesがソフトウェアプロバイダーのデータ侵害で予約データ漏えい。影響：20万件超の予約情報。対処：調査中。",
+            "tags": [
+              "data breach",
+              "Singapore Airlines",
+              "software provider"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117820669132234838",
+            "url": "https://x.com/i/status/2117820669132234838",
+            "title": "韓国大統領団データがVirusTotalに露出",
+            "author": "Dark Web Intelligence (@DailyDarkWeb)",
+            "posted_at": "2026-11-04T03:26:09Z",
+            "summary": "韓国大統領団168人分のパスポート情報などがVirusTotalに露出。影響：個人情報漏えい。対処：調査・パスポート再発行中。",
+            "tags": [
+              "data leak",
+              "South Korea",
+              "VirusTotal"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117789557957730386",
+            "url": "https://x.com/i/status/2117789557957730386",
+            "title": "Aoqinランサムウェアがチリ国営石油ENAPを主張",
+            "author": "Dark Web Intelligence (@DailyDarkWeb)",
+            "posted_at": "2026-11-04T01:22:31Z",
+            "summary": "AoqinランサムウェアグループがチリENAPエジプト支部を漏えいサイトに掲載。影響：契約・現場データ露出の可能性。対処：未確認、監視推奨。",
+            "tags": [
+              "ransomware",
+              "Aoqin",
+              "ENAP"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117826693511758111",
+            "url": "https://x.com/i/status/2117826693511758111",
+            "title": "ビックカメラG 1490万件メールアドレス漏えいの恐れ",
+            "author": "ITmedia Top (@topitmedia)",
+            "posted_at": "2026-11-04T03:50:05Z",
+            "summary": "アララシステムへの不正アクセスでビックカメラなど3社1490万件メールアドレス漏えいの可能性。影響：メルマガ配信データ。対処：二次被害確認なし、リンク注意。",
+            "tags": [
+              "data breach",
+              "Big Camera",
+              "Arara"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117756247344927078",
+            "url": "https://x.com/i/status/2117756247344927078",
+            "title": "AndroidにゼロクリックRCE CVE-2026-58868を11月パッチで修正",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-03T23:10:10Z",
+            "summary": "Android Frameworkにheap buffer overflow CVE-2026-58868。影響：ゼロクリックRCE。対処：2026-11-05以降パッチ適用。",
+            "tags": [
+              "CVE-2026-58868",
+              "Android",
+              "RCE"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117833120833839521",
+            "url": "https://x.com/i/status/2117833120833839521",
+            "title": "Chrome 157に213件脆弱性修正パッチ公開",
+            "author": "GrEarl (@Iamwonderingif)",
+            "posted_at": "2026-11-04T04:15:38Z",
+            "summary": "Chrome 157.0.8103.38にメモリ破壊含む213件脆弱性修正。影響：クリティカル7件。対処：即時アップデート。",
+            "tags": [
+              "Chrome",
+              "security patch",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117818874330829077",
+            "url": "https://x.com/i/status/2117818874330829077",
+            "title": "Binanceが北朝鮮系APTで63億ドル規模被害",
+            "author": "Sujal Jethwani (@SujalJethwani)",
+            "posted_at": "2026-11-04T03:19:01Z",
+            "summary": "Binanceが北朝鮮系ハッカーによるサプライチェーン攻撃で63億ドル被害。影響：ウォレットアクセス。対処：98%資産凍結・補填、システム再構築。",
+            "tags": [
+              "APT",
+              "Binance",
+              "North Korea",
+              "supply chain"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          },
+          {
+            "id": "2117823492192452936",
+            "url": "https://x.com/i/status/2117823492192452936",
+            "title": "勝利の女神NIKKE PCランチャーがサプライチェーン攻撃",
+            "author": "Kultur (@Kultur_t)",
+            "posted_at": "2026-11-04T03:37:22Z",
+            "summary": "NIKKE PCランチャーがサプライチェーン攻撃を受けマルウェア感染。影響：マルウェア配布。対処：ランチャー更新・スキャン推奨。",
+            "tags": [
+              "supply chain",
+              "NIKKE",
+              "malware"
+            ],
+            "collected_at": "2026-11-04T04:18:15Z"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-04-05.json",
+      "sha256": "3d6bdce302b618a011a86f041be13dccbb984c7a6f2a462e49a97017b76b9e8b",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-04T05:27:53Z",
+        "window": {
+          "from": "2026-11-03T05:26:59.966Z",
+          "to": "2026-11-04T05:26:59.966Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "11 件を取得しました",
+          "checked_at": "2026-11-04T05:27:53Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 5949,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 2601,
+            "output_tokens_details": {
+              "reasoning_tokens": 1576
+            },
+            "total_tokens": 8550,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 421915500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 6,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4256,
+              "output_tokens": 1463
+            }
+          },
+          "general": {
+            "input_tokens": 14408,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 2819,
+            "output_tokens_details": {
+              "reasoning_tokens": 1383
+            },
+            "total_tokens": 17227,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 6,
+            "cost_in_usd_ticks": 1631759000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 6,
+              "x_posts_fetched": 28,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 12576,
+              "output_tokens": 1607
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2117579274274374082",
+            "url": "https://x.com/i/status/2117579274274374082",
+            "title": "Ubuntu、Linux TCP RCE脆弱性（CVSS 9.8）向けテストパッチ公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-03T11:26:56Z",
+            "summary": "UbuntuがLinux TCP RCE脆弱性（CVSS 9.8）向けテストパッチを公開。IPv4 TCPのバグでMPTCP無効化では不十分。Red HatはRHEL 8/9/10を既に修正。Ubuntuユーザーはopt-inテストチャネル有効化で即時対応可能。定期更新は未定。",
+            "tags": [
+              "Linux",
+              "RCE",
+              "Ubuntu",
+              "TCP"
+            ],
+            "collected_at": "2026-11-04T05:27:15Z"
+          },
+          {
+            "id": "2117531014545510695",
+            "url": "https://x.com/i/status/2117531014545510695",
+            "title": "Synology NAS、2024年12月修正済み脆弱性悪用でランサムウェア攻撃",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-03T08:15:10Z",
+            "summary": "Synology NASが古いDSMバージョンで2024年12月パッチ済み脆弱性を悪用したランサムウェア攻撃を受けている。Synologyは即時更新を推奨。影響：NASデバイスが標的化。",
+            "tags": [
+              "ransomware",
+              "Synology",
+              "NAS"
+            ],
+            "collected_at": "2026-11-04T05:27:15Z"
+          },
+          {
+            "id": "2117570910500626882",
+            "url": "https://x.com/i/status/2117570910500626882",
+            "title": "Harvard University、851,000アカウントのデータ侵害",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-03T10:53:42Z",
+            "summary": "Harvard Universityで851,000アカウントの個人情報が漏洩。データ侵害の詳細は公表中。影響：大学関係者の機密情報露出。",
+            "tags": [
+              "data breach",
+              "Harvard"
+            ],
+            "collected_at": "2026-11-04T05:27:15Z"
+          },
+          {
+            "id": "2117626701828231382",
+            "url": "https://x.com/i/status/2117626701828231382",
+            "title": "Frontline Education、130万人超のデータ侵害",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-03T14:35:23Z",
+            "summary": "Frontline Educationで130万人超のデータ侵害が発生。個人情報漏洩の可能性。影響：教育関連データの露出。",
+            "tags": [
+              "data breach",
+              "Frontline Education"
+            ],
+            "collected_at": "2026-11-04T05:27:15Z"
+          },
+          {
+            "id": "2117617847413146103",
+            "url": "https://x.com/i/status/2117617847413146103",
+            "title": "英国学校施設、AI支援疑いの3AMランサムウェア攻撃",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-03T14:00:12Z",
+            "summary": "英国の学校施設が3AMランサムウェア攻撃を受け、AI支援が疑われる。影響：教育機関のシステム停止。",
+            "tags": [
+              "ransomware",
+              "UK",
+              "education"
+            ],
+            "collected_at": "2026-11-04T05:27:15Z"
+          },
+          {
+            "id": "2117667754048151597",
+            "url": "https://x.com/i/status/2117667754048151597",
+            "title": "CISA、ICS向け新規セキュリティアドバイザリ発行",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-03T17:18:31Z",
+            "summary": "CISAがICS向け新規公開アドバイザリを発行。ICSの脆弱性・悪用情報を提供。詳細はhttps://go.dhs.gov/iEvで確認可能。実務者向け緊急対応推奨。",
+            "tags": [
+              "ICS",
+              "CISA",
+              "advisory"
+            ],
+            "collected_at": "2026-11-04T05:27:15Z"
+          },
+          {
+            "id": "2117768752414773342",
+            "url": "https://x.com/i/status/2117768752414773342",
+            "title": "Xenハイパーバイザー脱出脆弱性、11年ぶり発見（CVE-2026-102703/102704）",
+            "author": "Amartya Jha (@amartya_jha_)",
+            "posted_at": "2026-11-03T23:59:51Z",
+            "summary": "CodeAntAIがXenハイパーバイザーの11年古い脆弱性を発見。悪意あるVMが他VMのメモリを読み書き可能（Dom0含む）。Citrix XenServerなど全Xenホストに影響。XSA-523として本日パッチ適用済み（CVE-2026-102703/102704）。",
+            "tags": [
+              "CVE-2026-102703",
+              "CVE-2026-102704",
+              "Xen",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-04T05:27:53Z"
+          },
+          {
+            "id": "2117768685322699018",
+            "url": "https://x.com/i/status/2117768685322699018",
+            "title": "Android 11月セキュリティ更新、216件修正（CVE-2026-58868など）",
+            "author": "しーにゃ♪@公式 (@Syynya)",
+            "posted_at": "2026-11-03T23:59:35Z",
+            "summary": "Android 11月のセキュリティ更新で216件の脆弱性を修正。23件がCriticalで、操作不要の遠隔コード実行脆弱性（CVE-2026-58868、CVE-2026-58876、CVE-2026-58936、CVE-2026-58882）を含む。",
+            "tags": [
+              "CVE-2026-58868",
+              "CVE-2026-58876",
+              "CVE-2026-58936",
+              "CVE-2026-58882",
+              "Android"
+            ],
+            "collected_at": "2026-11-04T05:27:53Z"
+          },
+          {
+            "id": "2117768537926508890",
+            "url": "https://x.com/i/status/2117768537926508890",
+            "title": "Synology NASランサムウェア攻撃、CVE-2026-13639/13684悪用",
+            "author": "테크워처 (@TheHour2359)",
+            "posted_at": "2026-11-03T23:59:00Z",
+            "summary": "Synology NASを標的としたC3RB3Rランサムウェア攻撃でCVE-2026-13639とCVE-2026-13684が悪用。Synology-SA-26:13のパッチ適用版（DSM 7.4: 7.4-90075以上など）が必要。KISAも11月3日に注意喚起。",
+            "tags": [
+              "CVE-2026-13639",
+              "CVE-2026-13684",
+              "ransomware",
+              "Synology"
+            ],
+            "collected_at": "2026-11-04T05:27:53Z"
+          },
+          {
+            "id": "2117768370871267545",
+            "url": "https://x.com/i/status/2117768370871267545",
+            "title": "SonicWall GMSにCritical脆弱性（CVE-2026-109593）",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-03T23:58:20Z",
+            "summary": "SonicWall Global Management System（GMS）に未認証で内部ファイルアクセス可能なCritical脆弱性（CVE-2026-109593、CVSS 9.1）。SQLインジェクション（CVE-2026-109594）も。GMS 9.5.2以前が影響、EoLでパッチなし。",
+            "tags": [
+              "CVE-2026-109593",
+              "CVE-2026-109594",
+              "SonicWall"
+            ],
+            "collected_at": "2026-11-04T05:27:53Z"
+          },
+          {
+            "id": "2117767917190463966",
+            "url": "https://x.com/i/status/2117767917190463966",
+            "title": "NIKKEゲームにサプライチェーン攻撃、マルウェアk2f拡散",
+            "author": "みかんサブレ (@mikansbr)",
+            "posted_at": "2026-11-03T23:56:32Z",
+            "summary": "勝利の女神:NIKKEのDiscordでサプライチェーン攻撃発覚。公式ファイル改ざんでローダー設置、k2fマルウェアがSSH鍵・クラウド認証情報・npm設定などを窃取。insightjs[.]comへ送信。",
+            "tags": [
+              "supply chain",
+              "malware",
+              "NIKKE",
+              "npm"
+            ],
+            "collected_at": "2026-11-04T05:27:53Z"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
