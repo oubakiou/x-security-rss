@@ -29,6 +29,21 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 | `TRUSTED_HANDLES` | `src/lib/config.ts` の一覧 | 優先検索するアカウント (カンマ区切り、最大20)     |
 | `WINDOW_HOURS`    | `24`                       | 対象期間 (時間、1〜72)                            |
 
+`TRUSTED_HANDLES` を設定しない場合は、次のアカウントを優先検索します (`src/lib/config.ts` の `DEFAULT_TRUSTED_HANDLES`)。
+変数を設定すると、この一覧を置き換えます (追加ではありません)。一覧を変えたいときは、変数で上書きするか、`DEFAULT_TRUSTED_HANDLES` を変更する PR を出してください。
+
+- [@CISACyber](https://x.com/CISACyber)
+- [@jpcert](https://x.com/jpcert)
+- [@MsftSecIntel](https://x.com/MsftSecIntel)
+- [@Mandiant](https://x.com/Mandiant)
+- [@Unit42_Intel](https://x.com/Unit42_Intel)
+- [@BleepinComputer](https://x.com/BleepinComputer)
+- [@TheHackersNews](https://x.com/TheHackersNews)
+- [@SecurityWeek](https://x.com/SecurityWeek)
+- [@DarkReading](https://x.com/DarkReading)
+- [@piyokango](https://x.com/piyokango)
+- [@cyber_forecast](https://x.com/cyber_forecast)
+
 ## 失敗したとき
 
 収集に失敗すると次のようになります。
