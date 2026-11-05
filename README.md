@@ -30,7 +30,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 | `WINDOW_HOURS`    | `24`                       | 対象期間 (時間、1〜72)                            |
 
 `TRUSTED_HANDLES` を設定しない場合は、次のアカウントを優先検索します (`src/lib/config.ts` の `DEFAULT_TRUSTED_HANDLES`)。
-変数を設定すると、この一覧を置き換えます (追加ではありません)。一覧を変えたいときは、変数で上書きするか、`DEFAULT_TRUSTED_HANDLES` を変更する PR を出してください。
+変数を設定すると、この一覧を置き換えます (追加ではありません)。自分の環境で一覧を変えたいときは、フォークしたリポジトリで変数を設定するか、`DEFAULT_TRUSTED_HANDLES` を書き換えてください。
 
 - [@CISACyber](https://x.com/CISACyber)
 - [@jpcert](https://x.com/jpcert)
