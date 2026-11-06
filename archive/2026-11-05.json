@@ -1,0 +1,492 @@
+{
+  "version": 1,
+  "date": "2026-11-05",
+  "snapshots": [
+    {
+      "name": "2026-11-05-00.json",
+      "sha256": "a0c05723daf02ef492bb5dba636046b8d2f569f323ec9b2a0837d592d41c5f13",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-05T00:39:27Z",
+        "window": {
+          "from": "2026-11-04T00:38:15.543Z",
+          "to": "2026-11-05T00:38:15.543Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "20 件を取得しました",
+          "checked_at": "2026-11-05T00:39:27Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 8180,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 2824,
+            "output_tokens_details": {
+              "reasoning_tokens": 1427
+            },
+            "total_tokens": 11004,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 905378000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 15,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 6487,
+              "output_tokens": 1804
+            }
+          },
+          "general": {
+            "input_tokens": 10897,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 3786,
+            "output_tokens_details": {
+              "reasoning_tokens": 1655
+            },
+            "total_tokens": 14683,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 5,
+            "cost_in_usd_ticks": 1412046500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 5,
+              "x_posts_fetched": 24,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9065,
+              "output_tokens": 2740
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118083150345597189",
+            "url": "https://x.com/i/status/2118083150345597189",
+            "title": "CISA、Appleの認証不備脆弱性CVE-2024-27834をKEV追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-04T20:49:09Z",
+            "summary": "CISAがApple製品複数に影響する不適切な認証脆弱性CVE-2024-27834をKnown Exploited Vulnerabilities Catalogに追加。https://go.dhs.gov/Z3Q で緩和策を適用し組織を保護せよ。",
+            "tags": [
+              "CVE-2024-27834",
+              "Apple",
+              "KEV",
+              "CISA"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2118057250015109177",
+            "url": "https://x.com/i/status/2118057250015109177",
+            "title": "DreamHost、FTP/ウェブメールログイン情報漏洩のデータ侵害確認",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-04T19:06:14Z",
+            "summary": "DreamHostがFTPログインとウェブメールセッションが露出したデータ侵害を確認。影響を受けたユーザーはパスワード変更と2FA有効化を推奨。",
+            "tags": [
+              "data breach",
+              "DreamHost",
+              "FTP"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2118026062932431252",
+            "url": "https://x.com/i/status/2118026062932431252",
+            "title": "SonicWall、EOL GMSの2脆弱性CVE-2026-109593/109594を修正せず",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-04T17:02:19Z",
+            "summary": "SonicWall GMS 9.5.2以前のEOL版に未認証ファイル読み取り(CVE-2026-109593)と認証済みSQLインジェクション(CVE-2026-109594)。パッチなし、NSMへの移行を推奨。",
+            "tags": [
+              "CVE-2026-109593",
+              "CVE-2026-109594",
+              "SonicWall",
+              "EOL"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2118022366098006308",
+            "url": "https://x.com/i/status/2118022366098006308",
+            "title": "Debian/UbuntuのAPT脆弱性CVE-2026-109518、MitMでroot権限取得可能",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-04T16:47:37Z",
+            "summary": "Debian 12+とUbuntu 22.04+のAPTにMitM攻撃で検証済みパッケージを置き換えrootコード実行可能な脆弱性CVE-2026-109518。パッチ配布中、速やかに更新を。",
+            "tags": [
+              "CVE-2026-109518",
+              "Debian",
+              "Ubuntu",
+              "Linux",
+              "APT"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2118014870394380622",
+            "url": "https://x.com/i/status/2118014870394380622",
+            "title": "OPSSHIELDのcPGuard侵害、3,000台Linuxサーバにマルウェア拡散",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-04T16:17:50Z",
+            "summary": "cPGuard攻撃者が偽アカウントでOPSSHIELD請求サーバを侵害、署名キーを盗み3,000台Linuxサーバにマルウェア配布。OPSSHIELDは全ライセンスキー再発行中。",
+            "tags": [
+              "Linux",
+              "malware",
+              "cPGuard",
+              "OPSSHIELD"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2117977473044697537",
+            "url": "https://x.com/i/status/2117977473044697537",
+            "title": "Node.js、11月11日にHIGH深刻度脆弱性修正予定",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-04T13:49:14Z",
+            "summary": "Node.js 26.x/24.x/22.xにHIGH深刻度セキュリティ脆弱性。2026年11月11日に修正リリース予定。運用環境は更新を優先。",
+            "tags": [
+              "Node.js",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2117952556437745740",
+            "url": "https://x.com/i/status/2117952556437745740",
+            "title": "CISA、WordPress RCE脆弱性CVE-2026-119977をKEV追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-04T12:10:13Z",
+            "summary": "CISAがWordPressのリモートコード実行脆弱性CVE-2026-119977をKEV Catalogに追加。https://go.dhs.gov/Z3Q で緩和策を適用せよ。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "KEV",
+              "CISA"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2118025248251547670",
+            "url": "https://x.com/i/status/2118025248251547670",
+            "title": "NIKKE PCゲームランチャー改ざん、リモートアクセス/データ窃取マルウェア拡散",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-04T16:59:04Z",
+            "summary": "NIKKE PCゲームランチャーが改ざんされ、リモートアクセスとデータ窃取マルウェアを拡散。公式ソースから再インストールを推奨。",
+            "tags": [
+              "malware",
+              "NIKKE",
+              "game"
+            ],
+            "collected_at": "2026-11-05T00:38:44Z"
+          },
+          {
+            "id": "2118129095708127589",
+            "url": "https://x.com/i/status/2118129095708127589",
+            "title": "Debian/Ubuntu APTにCVE-2026-109518",
+            "author": "藤原和将 (@KazumasaFujiwr)",
+            "posted_at": "2026-11-04T23:51:44Z",
+            "summary": "Debian・UbuntuのAPTに脆弱性（CVE-2026-109518、CVSS 7.7）。HTTP通信介入で不正パッケージをroot実行可能。一次情報: ubuntu.com/blog/apt-vulnerability-fixes-available。パッチ適用を推奨。",
+            "tags": [
+              "CVE-2026-109518",
+              "APT",
+              "Debian",
+              "Ubuntu"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118129553021489502",
+            "url": "https://x.com/i/status/2118129553021489502",
+            "title": "Node.js 11/11にHIGH脆弱性更新",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-04T23:53:33Z",
+            "summary": "Node.js 26.x/24.x/22.x向けセキュリティ更新を11月11日公開予定。最高深刻度HIGH。CVE未公開。最新サポート版利用を推奨。",
+            "tags": [
+              "Node.js",
+              "security update",
+              "HIGH"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118119509198291324",
+            "url": "https://x.com/i/status/2118119509198291324",
+            "title": "LiteSpeed Cache CVE-2026-93389修正",
+            "author": "株式会社mgn (@mgn_jpn)",
+            "posted_at": "2026-11-04T23:13:38Z",
+            "summary": "LiteSpeed Cacheの脆弱性（CVE-2026-93389、CVSS 8.2）修正。700万サイト以上影響。7.9.2へ更新を。",
+            "tags": [
+              "CVE-2026-93389",
+              "LiteSpeed Cache",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118115253275996575",
+            "url": "https://x.com/i/status/2118115253275996575",
+            "title": "Xen XSA-523 CVE-2026-102703/102704",
+            "author": "kokumօtօ (@__kokumoto)",
+            "posted_at": "2026-11-04T22:56:43Z",
+            "summary": "Xenに仮想マシン間メモリ読み書き脆弱性（XSA-523、CVE-2026-102703/102704）。XCP-ng/Qubes OS影響。パッチ適用を。",
+            "tags": [
+              "CVE-2026-102703",
+              "CVE-2026-102704",
+              "Xen",
+              "XSA-523"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118131842503041517",
+            "url": "https://x.com/i/status/2118131842503041517",
+            "title": "Edimax BR-6208AC CVE-2026-122051",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-05T00:02:38Z",
+            "summary": "Edimax BR-6208ACにコマンドインジェクション（CVE-2026-122051）。認証不要でリモートコマンド実行可能。パッチ未公開。",
+            "tags": [
+              "CVE-2026-122051",
+              "Edimax"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118114721245368321",
+            "url": "https://x.com/i/status/2118114721245368321",
+            "title": "Node2Shell CVE-2026-111497拡大",
+            "author": "Securin (@securin_inc)",
+            "posted_at": "2026-11-04T22:54:36Z",
+            "summary": "Node2Shell（CVE-2026-111497）が1週間で7→35ベンダー、227製品へ拡大。.NET/Splunk/Mitel等影響。早期パッチを。",
+            "tags": [
+              "CVE-2026-111497",
+              "Node2Shell"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118114234206650560",
+            "url": "https://x.com/i/status/2118114234206650560",
+            "title": "pocket-id CVE-2026-115770",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-04T22:52:40Z",
+            "summary": "pocket-idにメール検証トークン悪用（CVE-2026-115770）。未使用メールを検証可能。パッチ: 2.12.0。",
+            "tags": [
+              "CVE-2026-115770",
+              "pocket-id"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118111458370220481",
+            "url": "https://x.com/i/status/2118111458370220481",
+            "title": "GLPI CVE-2026-52848 MFAバイパス",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-04T22:41:38Z",
+            "summary": "glpi-project glpiにMFAバイパス（CVE-2026-52848）。未認証で2要素認証回避可能。パッチ: 11.0.8。",
+            "tags": [
+              "CVE-2026-52848",
+              "GLPI"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118107933724561797",
+            "url": "https://x.com/i/status/2118107933724561797",
+            "title": "VitaFit CVE-2026-54378",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-04T22:27:38Z",
+            "summary": "Shenzhen Shine VitaFitにアクセス制御欠陥（CVE-2026-54378）。AWS認証情報取得可能。パッチ: 2026-10-30。",
+            "tags": [
+              "CVE-2026-54378",
+              "VitaFit"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118134133482483917",
+            "url": "https://x.com/i/status/2118134133482483917",
+            "title": "NIKKE公式CDNにマルウェア",
+            "author": "情報の灯台 (@joho_no_todai)",
+            "posted_at": "2026-11-05T00:11:45Z",
+            "summary": "NIKKE公式CDN経由でマルウェア配布。ブラウザパスワード・Cookie・SSHキー・ウォレット窃取。9/27から5週間継続。",
+            "tags": [
+              "malware",
+              "supply chain",
+              "NIKKE"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118109083156804042",
+            "url": "https://x.com/i/status/2118109083156804042",
+            "title": "unitedlegionランサムウェア被害",
+            "author": "ThreatMon Ransomware Monitoring (@TMRansomMon)",
+            "posted_at": "2026-11-04T22:32:12Z",
+            "summary": "unitedlegionが新被害者「3.72小时」を主張。データ公開・鍵削除。2026-11-05日付。",
+            "tags": [
+              "ransomware",
+              "unitedlegion"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          },
+          {
+            "id": "2118104043591532823",
+            "url": "https://x.com/i/status/2118104043591532823",
+            "title": "safepayランサムウェア複数被害",
+            "author": "ThreatMon Ransomware Monitoring (@TMRansomMon)",
+            "posted_at": "2026-11-04T22:12:11Z",
+            "summary": "safepayがtitres-services.net（ベルギー）等を被害主張。2026-11-04日付。複数組織影響。",
+            "tags": [
+              "ransomware",
+              "safepay"
+            ],
+            "collected_at": "2026-11-05T00:39:27Z"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-05-08.json",
+      "sha256": "e28f72ba27b0e1a72e40a4e74495c12b63b2d0ce15c8515fe7e88f25bf7cd77e",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-05T08:46:51Z",
+        "window": {
+          "from": "2026-11-04T08:46:12.705Z",
+          "to": "2026-11-05T08:46:12.705Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "3 件を取得しました",
+          "checked_at": "2026-11-05T08:46:51Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 5866,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 2405,
+            "output_tokens_details": {
+              "reasoning_tokens": 1610
+            },
+            "total_tokens": 8271,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 1,
+            "cost_in_usd_ticks": 365978000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 1,
+              "x_posts_fetched": 5,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4173,
+              "output_tokens": 1131
+            }
+          },
+          "general": {
+            "input_tokens": 5253,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 1545,
+            "output_tokens_details": {
+              "reasoning_tokens": 1077
+            },
+            "total_tokens": 6798,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 104287500,
+            "context_details": {
+              "input_tokens": 3421,
+              "output_tokens": 184
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118083150345597189",
+            "url": "https://x.com/i/status/2118083150345597189",
+            "title": "Apple脆弱性CVE-2024-27834が悪用確認、CISA KEV追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-04T20:49:09Z",
+            "summary": "CISAがApple複数製品の不適切認証脆弱性CVE-2024-27834をKnown Exploited Vulnerabilities Catalogに追加。情報窃取マルウェア配信攻撃で悪用確認。パッチ適用済みだが2年以上前の修正を悪用。組織はhttps://go.dhs.gov/Z3Qで緩和策適用を。",
+            "tags": [
+              "CVE-2024-27834",
+              "Apple",
+              "KEV",
+              "exploited"
+            ],
+            "collected_at": "2026-11-05T08:46:33Z"
+          },
+          {
+            "id": "2118022366098006308",
+            "url": "https://x.com/i/status/2118022366098006308",
+            "title": "Debian/Ubuntu APT脆弱性CVE-2026-109518、MitMでroot実行",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-04T16:47:37Z",
+            "summary": "Debian 12+ / Ubuntu 22.04+のAPTにMitM攻撃で検証済みパッケージ置換・rootコード実行の脆弱性CVE-2026-109518。デフォルト設定で影響。パッチロールアウト中。更新適用を。",
+            "tags": [
+              "CVE-2026-109518",
+              "Linux",
+              "APT",
+              "MitM"
+            ],
+            "collected_at": "2026-11-05T08:46:33Z"
+          },
+          {
+            "id": "2117934582402277814",
+            "url": "https://x.com/i/status/2117934582402277814",
+            "title": "cPGuard供給チェーン攻撃、悪意更新配信",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-04T10:58:48Z",
+            "summary": "OpsShield供給チェーン攻撃でcPGuardの悪意更新が配信。影響を受ける組織は更新検証とロールバックを。詳細はSecurityWeek記事参照。",
+            "tags": [
+              "supply-chain",
+              "malware",
+              "cPGuard"
+            ],
+            "collected_at": "2026-11-05T08:46:33Z"
+          }
+        ],
+        "rejected": [
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2117855457901715501",
+            "posted_at": "2026-11-04T05:44:23Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
