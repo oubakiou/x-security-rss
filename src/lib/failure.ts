@@ -26,6 +26,28 @@ export function httpFailureKind(status: number, detail: string): FailureKind {
   return "api_error";
 }
 
+/**
+ * Error bodies can carry account details or part of the key, and Actions logs of a public
+ * repository are public, so only a short identifier such as "invalid_api_key" is ever logged.
+ */
+export function errorCode(body: string): string | undefined {
+  const parsed = (() => {
+    try {
+      return JSON.parse(body) as unknown;
+    } catch {
+      return undefined;
+    }
+  })();
+  const o = (parsed ?? {}) as { code?: unknown; type?: unknown; error?: unknown };
+  const e = (typeof o.error === "object" && o.error !== null ? o.error : {}) as {
+    code?: unknown;
+    type?: unknown;
+  };
+  return [e.code, e.type, o.code, o.type, o.error].find(
+    (v): v is string => typeof v === "string" && /^[A-Za-z0-9_.-]{1,64}$/.test(v),
+  );
+}
+
 export function pickFailure(kinds: readonly FailureKind[]): FailureKind {
   return FAILURE_KINDS.find((k) => kinds.includes(k)) ?? "unknown";
 }
@@ -113,6 +135,22 @@ if (import.meta.vitest) {
       expect(httpFailureKind(429, "")).toBe("credit");
       expect(httpFailureKind(400, "spending limit reached")).toBe("credit");
       expect(httpFailureKind(502, "bad gateway")).toBe("api_error");
+    });
+  });
+
+  describe("errorCode", () => {
+    it("returns only a short identifier from the body", () => {
+      expect(
+        errorCode(
+          '{"error":{"code":"invalid_api_key","message":"Incorrect API key provided: xai-****abcd"}}',
+        ),
+      ).toBe("invalid_api_key");
+      expect(errorCode('{"code":"rate_limited","error":"Too many requests for team 1234"}')).toBe(
+        "rate_limited",
+      );
+      expect(errorCode('{"error":"Incorrect API key provided: xai-****abcd"}')).toBeUndefined();
+      expect(errorCode("<html>Bad Gateway</html>")).toBeUndefined();
+      expect(errorCode('{"error":{"code":"a b <c>"}}')).toBeUndefined();
     });
   });
 

@@ -64,7 +64,8 @@ jobs:
         with:
           name: xai-responses
           path: .work/debug/
-          retention-days: 3
+          # Artifacts of a public repository can be downloaded by anyone signed in to GitHub.
+          retention-days: 1
           if-no-files-found: ignore
 
       - name: Build feed and manifest
