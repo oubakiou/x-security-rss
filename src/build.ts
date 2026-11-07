@@ -1,7 +1,8 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { intEnv, logSafe } from "./lib/env.ts";
-import { cleanText, mergeTopics } from "./lib/items.ts";
+import { toStatus } from "./lib/failure.ts";
+import { mergeTopics } from "./lib/items.ts";
 import { PENDING_ARCHIVE_DIR, PREV_MANIFEST, SITE_DIR, siteUrl } from "./lib/paths.ts";
 import { renderHtml, renderRss, type FeedMeta } from "./lib/rss.ts";
 import {
@@ -15,7 +16,6 @@ import {
   type Snapshot,
 } from "./lib/snapshot.ts";
 import { archivedShas, loadArchives, readSiteSnapshots } from "./lib/store.ts";
-import type { Status } from "./lib/types.ts";
 
 const site = siteUrl();
 const limit = intEnv("FEED_LIMIT", 100, 1, 500);
@@ -27,13 +27,6 @@ const meta: FeedMeta = {
   feedUrl: `${site}feed.xml`,
   sourceUrl: "https://github.com/oubakiou/x-security-rss",
 };
-
-/** Snapshots restored from Pages are only as trustworthy as past runs, so the status is re-validated. */
-function toStatus(raw: unknown): Status | undefined {
-  const s = raw as Partial<Status> | undefined;
-  if (typeof s?.ok !== "boolean" || typeof s.checked_at !== "string") return undefined;
-  return { ok: s.ok, message: cleanText(s.message, 1000), checked_at: cleanText(s.checked_at, 30) };
-}
 
 async function readPrevManifest(): Promise<Manifest | undefined> {
   const text = await readFile(PREV_MANIFEST, "utf8").catch(() => undefined);

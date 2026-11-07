@@ -6,14 +6,14 @@
  */
 import { mkdir, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { errorHint } from "./lib/api-errors.ts";
 import { DEFAULT_TRUSTED_HANDLES, parseHandles, rollingWindow } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
+import { httpFailureKind, pickFailure, type FailureKind } from "./lib/failure.ts";
 import {
   citedStatuses,
   extractOutputText,
   normalizeItems,
-  toolCallFailure,
+  failedToolCalls,
   TOPICS_SCHEMA,
   type NormalizeOptions,
   type NormalizeResult,
@@ -70,12 +70,24 @@ function rejectSummary(rejected: Snapshot["rejected"]): string {
   return [...counts].map(([k, v]) => `${k}=${v}`).join(", ");
 }
 
-function runStatus(items: Topic[], errors: string[], rejected: Snapshot["rejected"], at: string): Status {
-  if (errors.length) {
+function runStatus(
+  items: Topic[],
+  failures: SearchError[],
+  succeeded: number,
+  rejected: Snapshot["rejected"],
+  at: string,
+): Status {
+  if (failures.length) {
+    const kind = pickFailure(failures.map((f) => f.kind));
+    const first = failures.find((f) => f.kind === kind);
     return {
       ok: false,
-      message: `一部または全部の検索に失敗しました (${errors.join(" / ")})`,
+      message: `一部または全部の検索に失敗しました (${failures.map((f) => f.publicMessage).join(" / ")})`,
       checked_at: at,
+      kind,
+      ...(succeeded > 0 ? { partial: true } : {}),
+      ...(first?.httpStatus !== undefined ? { http_status: first.httpStatus } : {}),
+      ...(first?.failedCalls !== undefined ? { failed_calls: first.failedCalls } : {}),
     };
   }
   if (items.length === 0) {
@@ -84,6 +96,7 @@ function runStatus(items: Topic[], errors: string[], rejected: Snapshot["rejecte
       ok: false,
       message: `検証を通った投稿が0件でした (破棄 ${rejected.length} 件${summary ? `: ${summary}` : ""})`,
       checked_at: at,
+      kind: "no_results",
     };
   }
   return {
@@ -94,16 +107,26 @@ function runStatus(items: Topic[], errors: string[], rejected: Snapshot["rejecte
   };
 }
 
+interface SearchErrorInfo {
+  detail?: string;
+  httpStatus?: number;
+  failedCalls?: number;
+}
+
 class SearchError extends Error {
+  readonly kind: FailureKind;
   readonly publicMessage: string;
   readonly detail: string | undefined;
-  readonly response: unknown;
+  readonly httpStatus: number | undefined;
+  readonly failedCalls: number | undefined;
 
-  constructor(publicMessage: string, detail?: string, response?: unknown) {
+  constructor(kind: FailureKind, publicMessage: string, info: SearchErrorInfo = {}) {
     super(publicMessage);
+    this.kind = kind;
     this.publicMessage = publicMessage;
-    this.detail = detail;
-    this.response = response;
+    this.detail = info.detail;
+    this.httpStatus = info.httpStatus;
+    this.failedCalls = info.failedCalls;
   }
 }
 
@@ -137,12 +160,15 @@ async function runSearch(
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(600_000),
   }).catch((e: unknown) => {
-    throw new SearchError("xAI API に接続できませんでした", String(e));
+    throw new SearchError("api_error", "xAI API に接続できませんでした", { detail: String(e) });
   });
 
   if (!res.ok) {
     const detail = (await res.text()).slice(0, 500);
-    throw new SearchError(`xAI API エラー HTTP ${res.status}${errorHint(res.status, detail)}`, detail);
+    throw new SearchError(httpFailureKind(res.status, detail), `xAI API エラー HTTP ${res.status}`, {
+      detail,
+      httpStatus: res.status,
+    });
   }
   return res.json();
 }
@@ -151,7 +177,7 @@ function parseSearchResult(resp: unknown, opts: NormalizeOptions): NormalizeResu
   try {
     return normalizeItems(JSON.parse(extractOutputText(resp)), citedStatuses(resp), opts);
   } catch (e) {
-    throw new SearchError("応答の解析に失敗しました", String(e));
+    throw new SearchError("bad_response", "応答の解析に失敗しました", { detail: String(e) });
   }
 }
 
@@ -195,7 +221,11 @@ async function main(): Promise<void> {
   const errors: string[] = [];
   const rejected: Snapshot["rejected"] = [];
   await mkdir(DEBUG_DIR, { recursive: true });
-  if (!apiKey) errors.push("XAI_API_KEY が設定されていません");
+  const failures: SearchError[] = [];
+  if (!apiKey) {
+    failures.push(new SearchError("no_key", "XAI_API_KEY が設定されていません"));
+    errors.push("XAI_API_KEY が設定されていません");
+  }
 
   if (apiKey) {
     for (const spec of specs) {
@@ -204,8 +234,16 @@ async function main(): Promise<void> {
         // Raw responses are kept for diagnosis only (never published; uploaded as a short-lived artifact on failure).
         await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(resp, null, 2));
         usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
-        const toolFailure = toolCallFailure(resp);
-        if (toolFailure) throw new SearchError(toolFailure);
+        const failedCalls = failedToolCalls(resp);
+        if (failedCalls) {
+          throw new SearchError(
+            "tool_outage",
+            `X検索ツールの呼び出しがすべて失敗しました (${failedCalls}回)`,
+            {
+              failedCalls,
+            },
+          );
+        }
         const result = parseSearchResult(resp, {
           collectedAt: nowIso(),
           notBefore,
@@ -222,7 +260,11 @@ async function main(): Promise<void> {
             (reasons.length ? `: ${reasons.join(", ")}` : ""),
         );
       } catch (e) {
-        const err = e instanceof SearchError ? e : new SearchError("予期しないエラー", String(e));
+        const err =
+          e instanceof SearchError
+            ? e
+            : new SearchError("unknown", "予期しないエラー", { detail: String(e) });
+        failures.push(err);
         errors.push(`${spec.label}: ${err.publicMessage}`);
         logSafe(`[${spec.label}] ${err.publicMessage}${err.detail ? ` | detail: ${err.detail}` : ""}`);
       }
@@ -231,7 +273,8 @@ async function main(): Promise<void> {
 
   const items = collected.slice(0, maxItems + specs[0]!.maxItems);
   const fetchedAt = nowIso();
-  const status = runStatus(items, errors, rejected, fetchedAt);
+  const succeeded = apiKey ? specs.length - failures.length : 0;
+  const status = runStatus(items, failures, succeeded, rejected, fetchedAt);
   const name = await writeSnapshot({
     version: 1,
     fetched_at: fetchedAt,
