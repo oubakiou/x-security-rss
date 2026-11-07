@@ -12,6 +12,7 @@ import {
   citedStatuses,
   extractOutputText,
   normalizeItems,
+  toolCallFailure,
   TOPICS_SCHEMA,
   type NormalizeOptions,
   type NormalizeResult,
@@ -211,6 +212,8 @@ async function main(): Promise<void> {
         // Raw responses are kept for diagnosis only (never published; uploaded as a short-lived artifact on failure).
         await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(resp, null, 2));
         usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
+        const toolFailure = toolCallFailure(resp);
+        if (toolFailure) throw new SearchError(toolFailure);
         const result = parseSearchResult(resp, {
           collectedAt: nowIso(),
           notBefore,
