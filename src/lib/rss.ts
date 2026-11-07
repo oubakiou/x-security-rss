@@ -1,3 +1,4 @@
+import { failureNotice } from "./failure.ts";
 import { topicCves } from "./items.ts";
 import type { Status, Topic } from "./types.ts";
 
@@ -76,16 +77,14 @@ function rfc822(iso: string): string {
 export function statusAlert(status: Status | undefined, meta: FeedMeta): Topic | undefined {
   if (!status || status.ok) return undefined;
   const day = status.checked_at.slice(0, 10);
+  const notice = failureNotice(status);
   return {
     id: `status-error-${day}`,
-    title: `⚠️ 収集に失敗しました (${day})`,
+    title: `⚠️ ${notice.title} (${day})`,
     url: `${meta.siteUrl}#status`,
     author: "x-security-rss",
     posted_at: status.checked_at,
-    summary:
-      `${status.message}\n\n` +
-      "GitHub Actions の実行ログを確認してください。APIキーの失効やクレジット不足の場合は、" +
-      "console.x.ai でキーの再発行・チャージを行い、リポジトリの Secrets (XAI_API_KEY) を更新してください。",
+    summary: notice.body,
     tags: ["status"],
     collected_at: status.checked_at,
   };
@@ -236,16 +235,34 @@ if (import.meta.vitest) {
       expect(xml).not.toContain("収集に失敗");
     });
 
-    it("prepends an alert item when the last run failed", () => {
+    it("prepends an alert item with the fixed notice for the failure kind", () => {
       const xml = renderRss([topic], meta, {
         ok: false,
-        message: "xAI API エラー HTTP 401",
+        message: "xAI API エラー HTTP 401 raw <detail>",
         checked_at: "2026-11-03T21:00:00Z",
+        kind: "auth",
+        http_status: 401,
       });
       const first = xml.indexOf("<item>");
-      expect(xml.slice(first, first + 200)).toContain("⚠️ 収集に失敗しました (2026-11-03)");
+      expect(xml.slice(first, first + 200)).toContain("⚠️ xAI API キーが無効です (2026-11-03)");
       expect(xml).toContain("status-error-2026-11-03");
-      expect(xml).toContain("HTTP 401");
+      expect(xml).toContain("キーを再発行");
+      expect(xml).toContain("(HTTP 401)");
+      expect(xml).not.toContain("raw &lt;detail&gt;");
+    });
+
+    it("does not suggest key or credit problems for other failures", () => {
+      const xml = renderRss([topic], meta, {
+        ok: false,
+        message: "",
+        checked_at: "2026-11-07T01:32:09Z",
+        kind: "tool_outage",
+        partial: true,
+        failed_calls: 8,
+      });
+      expect(xml).toContain("⚠️ 一部の検索に失敗しました: X 検索ツールが利用できませんでした (2026-11-07)");
+      expect(xml).toContain("ツール呼び出し 8 回がすべて失敗");
+      expect(xml).not.toContain("console.x.ai");
     });
   });
 

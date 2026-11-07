@@ -1,3 +1,5 @@
+import type { FailureKind } from "./failure.ts";
+
 export interface Topic {
   /** X status id (also used as RSS guid) */
   id: string;
@@ -14,7 +16,13 @@ export interface Topic {
 
 export interface Status {
   ok: boolean;
+  /** For the Actions log; the published notice is built from `kind` and the numbers below. */
   message: string;
   checked_at: string;
   dropped_unverified?: number;
+  kind?: FailureKind;
+  /** Some searches succeeded. */
+  partial?: boolean;
+  http_status?: number;
+  failed_calls?: number;
 }
