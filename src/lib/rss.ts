@@ -1,6 +1,6 @@
 import { failureNotice } from "./failure.ts";
 import { topicCves } from "./items.ts";
-import type { Status, Topic } from "./types.ts";
+import type { Category, Status, Topic } from "./types.ts";
 
 export interface FeedMeta {
   title: string;
@@ -74,6 +74,18 @@ function stripCves(title: string, ids: readonly string[]): string {
       },
     );
   return tidy.trim();
+}
+
+const CATEGORY_EMOJI: Record<Category, string> = {
+  vulnerability: "🔓",
+  incident: "🔥",
+  campaign: "🕵️",
+  other: "📝",
+};
+
+function displayTitle(t: Topic): string {
+  const title = titleWithCves(t);
+  return t.category ? `${CATEGORY_EMOJI[t.category]} ${title}` : title;
 }
 
 function titleWithCves(t: Topic): string {
@@ -152,7 +164,7 @@ export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): str
       const cats = t.tags.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n");
       return [
         "    <item>",
-        `      <title>${escapeXml(titleWithCves(t))}</title>`,
+        `      <title>${escapeXml(displayTitle(t))}</title>`,
         `      <link>${escapeXml(t.url)}</link>`,
         `      <guid isPermaLink="false">${escapeXml(t.id)}</guid>`,
         `      <pubDate>${rfc822(t.posted_at)}</pubDate>`,
@@ -200,7 +212,7 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
   const rows = topics
     .map(
       (t) => `<article>
-  <h2>${externalLink(t.url, titleWithCves(t))}</h2>
+  <h2>${externalLink(t.url, displayTitle(t))}</h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
   ${cveHtml(t, true)}
   <p>${escapeXml(t.summary)}</p>
@@ -319,6 +331,29 @@ if (import.meta.vitest) {
       expect(xml).toContain("https://x.com/i/status/456");
       expect(xml).not.toContain("javascript:x");
       expect(renderHtml([{ ...topic, related: ["456"] }], meta)).toContain("関連投稿1");
+    });
+  });
+
+  describe("category emoji", () => {
+    it("prefixes the title with the category emoji before the CVE prefix", () => {
+      const vuln = {
+        ...topic,
+        title: "GitLab RCE CVE-2026-1111",
+        tags: [],
+        category: "vulnerability" as const,
+      };
+      expect(renderRss([vuln], meta)).toContain("<title>🔓 [CVE-2026-1111] GitLab RCE</title>");
+      expect(renderHtml([{ ...topic, category: "campaign" }], meta)).toContain(
+        ">🕵️ A &amp; B &lt;script&gt;<span",
+      );
+      expect(renderRss([{ ...topic, category: "incident" }], meta)).toContain("<title>🔥 A &amp; B");
+      expect(renderRss([{ ...topic, category: "other" }], meta)).toContain("<title>📝 A &amp; B");
+    });
+
+    it("adds nothing without a category, including the failure notice", () => {
+      const xml = renderRss([topic], meta, { ok: false, message: "", checked_at: "2026-11-03T21:00:00Z" });
+      expect(xml).toContain("<title>A &amp; B &lt;script&gt;</title>");
+      expect(xml).toContain("<title>⚠️ 収集に失敗しました (2026-11-03)</title>");
     });
   });
 

@@ -1,4 +1,4 @@
-import type { Topic } from "./types.ts";
+import { CATEGORIES, toCategory, type Topic } from "./types.ts";
 
 export const LIMITS = { title: 120, summary: 600, author: 80, tags: 10, tag: 40 } as const;
 const X_HOSTS = new Set(["x.com", "www.x.com", "twitter.com", "www.twitter.com", "mobile.twitter.com"]);
@@ -68,6 +68,11 @@ export function cleanText(v: unknown, max: number): string {
   return chars.length > max ? chars.slice(0, max - 1).join("") + "…" : cleaned;
 }
 
+function withCategory(v: unknown): { category?: Topic["category"] } {
+  const category = toCategory(v);
+  return category ? { category } : {};
+}
+
 export const TOPICS_SCHEMA = {
   type: "object",
   properties: {
@@ -82,8 +87,13 @@ export const TOPICS_SCHEMA = {
           posted_at: { type: "string", description: "ISO 8601 UTC" },
           summary: { type: "string", description: "日本語の要約 (200字程度)" },
           tags: { type: "array", items: { type: "string" } },
+          category: {
+            type: "string",
+            enum: CATEGORIES,
+            description: "vulnerability (脆弱性) / incident (被害) / campaign (攻撃キャンペーン) / other",
+          },
         },
-        required: ["title", "url", "author", "posted_at", "summary", "tags"],
+        required: ["title", "url", "author", "posted_at", "summary", "tags", "category"],
         additionalProperties: false,
       },
     },
@@ -243,6 +253,7 @@ export function normalizeItems(
         .filter(Boolean)
         .slice(0, LIMITS.tags),
       collected_at: opts.collectedAt,
+      ...withCategory(r.category),
     });
   }
   return { items, dropped: rejected.length, rejected };
@@ -281,6 +292,7 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
         summary: cleanText(t.summary, LIMITS.summary),
         tags: (Array.isArray(t.tags) ? t.tags : []).map((x) => cleanText(x, LIMITS.tag)).filter(Boolean),
         collected_at: cleanText(t.collected_at, 30),
+        ...withCategory(t.category),
       });
     }
   }
@@ -416,6 +428,25 @@ if (import.meta.vitest) {
       });
     });
 
+    it("keeps only a known category from the model", () => {
+      const cited = new Map<string, string | undefined>([
+        [ID1, undefined],
+        [ID2, undefined],
+      ]);
+      const { items } = normalizeItems(
+        {
+          items: [
+            { ...base, url: `https://x.com/a/status/${ID1}`, category: "incident" },
+            { ...base, url: `https://x.com/b/status/${ID2}`, category: "<b>breaking</b>" },
+          ],
+        },
+        cited,
+        opts,
+      );
+      expect(items.map((i) => i.category)).toEqual(["incident", undefined]);
+      expect(items[1]).not.toHaveProperty("category");
+    });
+
     it("uses the cited handle and rejects a mismatching one", () => {
       const cited = new Map<string, string | undefined>([
         [ID1, "realacct"],
@@ -542,6 +573,22 @@ if (import.meta.vitest) {
       tags: [],
       collected_at: AT,
     });
+    it("keeps a stored category only when it is known", () => {
+      const merged = mergeTopics(
+        [
+          [
+            { ...t(ID1), category: "campaign" },
+            { ...t(ID2), category: "spam" as unknown as Topic["category"] },
+          ],
+        ],
+        10,
+      );
+      expect(Object.fromEntries(merged.map((m) => [m.id, m.category]))).toEqual({
+        [ID1]: "campaign",
+        [ID2]: undefined,
+      });
+    });
+
     it("drops the per-item unverified notice from stored authors", () => {
       const merged = mergeTopics(
         [

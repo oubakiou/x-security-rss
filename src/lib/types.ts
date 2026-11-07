@@ -12,6 +12,15 @@ export interface Topic {
   collected_at: string;
   /** ids of other posts merged into this topic (same CVE) */
   related?: string[];
+  category?: Category;
+}
+
+export const CATEGORIES = ["vulnerability", "incident", "campaign", "other"] as const;
+export type Category = (typeof CATEGORIES)[number];
+
+/** The model picks the category, so stored or returned values are accepted only from the fixed list. */
+export function toCategory(v: unknown): Category | undefined {
+  return typeof v === "string" && (CATEGORIES as readonly string[]).includes(v) ? (v as Category) : undefined;
 }
 
 export interface Status {

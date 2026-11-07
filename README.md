@@ -8,6 +8,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 - 保存: 取得結果は1回の実行ごとに `snapshots/YYYY-MM-DD-HH.json` として Pages に置き、日が確定したら
   `archive/YYYY-MM-DD.json` として git にコミット (`src/restore.ts` / `src/build.ts`、詳細は [development.md](development.md))
 - 生成: RSS 2.0 (`feed.xml`) と一覧ページ (`index.html`) — `src/build.ts`
+  - 見出しの先頭に分類の絵文字 (🔓 脆弱性 / 🔥 インシデント / 🕵️ 攻撃キャンペーン / 📝 その他) と CVE 番号を付ける。分類はモデルの判定
 - 実行: GitHub Actions で毎日 04:17 と 08:17 JST の2回 (`.github/workflows/daily.yml`)。GitHub の定時実行は混雑時に数時間遅れることがある
 - 配信: GitHub Pages — RSS: **https://oubakiou.github.io/x-security-rss/feed.xml** / HTML: **https://oubakiou.github.io/x-security-rss/**
 
