@@ -19,10 +19,13 @@ import {
   type NormalizeResult,
 } from "./lib/items.ts";
 import { DEBUG_DIR, SITE_DIR } from "./lib/paths.ts";
+import { withRetry } from "./lib/retry.ts";
 import { serializeSnapshot, snapshotName, SNAPSHOT_DIR, type Snapshot } from "./lib/snapshot.ts";
 import type { Status, Topic } from "./lib/types.ts";
 
 const API_URL = "https://api.x.ai/v1/responses";
+const TOOL_OUTAGE_RETRIES = 2;
+const TOOL_OUTAGE_RETRY_DELAY_MS = 15_000;
 const MODEL_RE = /^[A-Za-z0-9._-]{1,64}$/;
 
 const COMMON_RULES = `各項目の url は実際に検索で見つけた投稿の URL (https://x.com/<handle>/status/<id>) をそのまま使い、
@@ -241,21 +244,30 @@ async function main(): Promise<void> {
   if (apiKey) {
     for (const spec of specs) {
       try {
-        const resp = await runSearch(apiKey, model, maxTurns, spec);
-        // Raw responses are for diagnosis: never in Pages or git, but uploaded as a one-day artifact on failure,
-        // which anyone signed in to GitHub can download from a public repository.
-        await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(resp, null, 2));
-        usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
-        const failedCalls = failedToolCalls(resp);
-        if (failedCalls) {
-          throw new SearchError(
-            "tool_outage",
-            `X検索ツールの呼び出しがすべて失敗しました (${failedCalls}回)`,
-            {
-              failedCalls,
-            },
-          );
-        }
+        // x_search fails intermittently for a whole request while the same request succeeds on
+        // another try, and failed tool calls are not billed, so only that case is retried.
+        const resp = await withRetry(
+          async (attempt) => {
+            const r = await runSearch(apiKey, model, maxTurns, spec);
+            // Raw responses are for diagnosis: never in Pages or git, but uploaded as a one-day artifact on failure,
+            // which anyone signed in to GitHub can download from a public repository.
+            await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(r, null, 2));
+            usage[spec.label] = (r as { usage?: unknown }).usage ?? null;
+            const failedCalls = failedToolCalls(r);
+            if (failedCalls) {
+              logSafe(`[${spec.label}] attempt ${attempt}: all ${failedCalls} x_search calls failed`);
+              throw new SearchError(
+                "tool_outage",
+                `X検索ツールの呼び出しがすべて失敗しました (${failedCalls}回)`,
+                { failedCalls },
+              );
+            }
+            return r;
+          },
+          (e) => e instanceof SearchError && e.kind === "tool_outage",
+          TOOL_OUTAGE_RETRIES,
+          TOOL_OUTAGE_RETRY_DELAY_MS,
+        );
         const result = parseSearchResult(resp, {
           collectedAt: nowIso(),
           notBefore,
