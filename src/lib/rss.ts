@@ -1,3 +1,4 @@
+import { topicCves } from "./items.ts";
 import type { Status, Topic } from "./types.ts";
 
 export interface FeedMeta {
@@ -20,6 +21,38 @@ export function escapeXml(s: string): string {
 /** Opens in a new tab on the site page; the mark and hidden text tell sighted and screen-reader users before they click. */
 function externalLink(href: string, text: string): string {
   return `<a href="${escapeXml(href)}" target="_blank" rel="noopener noreferrer">${escapeXml(text)}<span aria-hidden="true"> ↗</span><span class="sr">(新しいタブで開く)</span></a>`;
+}
+
+const MAX_CVE_LINKS = 10;
+const MAX_CVE_IN_TITLE = 2;
+
+/** CVE ids come from the title and tags (model output) but are matched to a fixed pattern, so they are safe to put in a URL. */
+function cveIds(t: Topic): string[] {
+  return [...topicCves(t)].slice(0, MAX_CVE_LINKS);
+}
+
+function titleWithCves(t: Topic): string {
+  const ids = cveIds(t);
+  if (!ids.length) return t.title;
+  const rest = ids.length - MAX_CVE_IN_TITLE;
+  return `[${ids.slice(0, MAX_CVE_IN_TITLE).join(", ")}${rest > 0 ? ` ほか${rest}件` : ""}] ${t.title}`;
+}
+
+function nvdUrl(id: string): string {
+  return `https://nvd.nist.gov/vuln/detail/${id}`;
+}
+
+function cveHtml(t: Topic, newTab = false): string {
+  const ids = cveIds(t);
+  if (!ids.length) return "";
+  const links = ids
+    .map((id) =>
+      newTab
+        ? externalLink(nvdUrl(id), id)
+        : `<a href="${escapeXml(nvdUrl(id))}" rel="noopener noreferrer">${escapeXml(id)}</a>`,
+    )
+    .join(" / ");
+  return `<p class="cves">CVE: ${links}</p>`;
 }
 
 function relatedHtml(t: Topic, newTab = false): string {
@@ -66,13 +99,14 @@ export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): str
   const items = all
     .map((t) => {
       const desc =
+        cveHtml(t) +
         `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` +
         `<p>投稿者: ${escapeXml(t.author)}</p>` +
         relatedHtml(t);
       const cats = t.tags.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n");
       return [
         "    <item>",
-        `      <title>${escapeXml(t.title)}</title>`,
+        `      <title>${escapeXml(titleWithCves(t))}</title>`,
         `      <link>${escapeXml(t.url)}</link>`,
         `      <guid isPermaLink="false">${escapeXml(t.id)}</guid>`,
         `      <pubDate>${rfc822(t.posted_at)}</pubDate>`,
@@ -120,8 +154,9 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
   const rows = topics
     .map(
       (t) => `<article>
-  <h2>${externalLink(t.url, t.title)}</h2>
+  <h2>${externalLink(t.url, titleWithCves(t))}</h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
+  ${cveHtml(t, true)}
   <p>${escapeXml(t.summary)}</p>
   ${relatedHtml(t, true)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
@@ -220,6 +255,47 @@ if (import.meta.vitest) {
       expect(xml).toContain("https://x.com/i/status/456");
       expect(xml).not.toContain("javascript:x");
       expect(renderHtml([{ ...topic, related: ["456"] }], meta)).toContain("関連投稿1");
+    });
+  });
+
+  describe("CVE links", () => {
+    const cveTopic: Topic = {
+      ...topic,
+      title: "GitLab RCE cve-2026-1111",
+      tags: ["CVE-2026-2222", "CVE-2026-1111"],
+    };
+
+    it("prefixes the title and links each CVE to NVD in the feed", () => {
+      const xml = renderRss([cveTopic], meta);
+      expect(xml).toContain("<title>[CVE-2026-1111, CVE-2026-2222] GitLab RCE cve-2026-1111</title>");
+      const desc = xml.slice(xml.indexOf("<![CDATA["));
+      expect(
+        desc.startsWith(
+          '<![CDATA[<p class="cves">CVE: <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1111"',
+        ),
+      ).toBe(true);
+      expect(desc).toContain('href="https://nvd.nist.gov/vuln/detail/CVE-2026-2222"');
+    });
+
+    it("prefixes the title and puts NVD links before the summary on the page", () => {
+      const html = renderHtml([cveTopic], meta);
+      expect(html).toContain("[CVE-2026-1111, CVE-2026-2222] GitLab RCE cve-2026-1111<span");
+      const article = html.slice(html.indexOf("<article>"));
+      const links = article.indexOf(
+        '<p class="cves">CVE: <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1111" target="_blank"',
+      );
+      expect(links).toBeGreaterThan(0);
+      expect(links).toBeLessThan(article.indexOf("line1"));
+    });
+
+    it("shortens long CVE lists in the title and leaves CVE-less topics alone", () => {
+      const many = { ...topic, tags: ["CVE-2026-1001", "CVE-2026-1002", "CVE-2026-1003", "CVE-2026-1004"] };
+      expect(renderRss([many], meta)).toContain(
+        "<title>[CVE-2026-1001, CVE-2026-1002 ほか2件] A &amp; B &lt;script&gt;</title>",
+      );
+      const plain = renderRss([topic], meta);
+      expect(plain).toContain("<title>A &amp; B &lt;script&gt;</title>");
+      expect(plain).not.toContain("nvd.nist.gov");
     });
   });
 
