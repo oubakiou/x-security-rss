@@ -92,6 +92,20 @@ export const TOPICS_SCHEMA = {
   additionalProperties: false,
 } as const;
 
+/**
+ * x_search runs server-side. When every call fails the model still answers (usually with no
+ * items), so without this check the run would only report "0 verified posts".
+ */
+export function toolCallFailure(resp: unknown): string | undefined {
+  const output = (resp as { output?: unknown } | null)?.output;
+  const calls = (Array.isArray(output) ? output : []).filter(
+    (o: unknown) =>
+      typeof (o as { type?: unknown })?.type === "string" && (o as { type: string }).type.endsWith("_call"),
+  ) as Array<{ status?: unknown }>;
+  if (!calls.length || calls.some((c) => c.status !== "failed")) return undefined;
+  return `X検索ツールの呼び出しがすべて失敗しました (${calls.length}回)。xAI 側の障害の可能性があります`;
+}
+
 export function extractOutputText(resp: unknown): string {
   const output = (resp as { output?: unknown[] })?.output ?? [];
   for (const item of output as Array<{ type?: string; content?: Array<{ type?: string; text?: string }> }>) {
@@ -504,6 +518,18 @@ if (import.meta.vitest) {
     });
     it("throws without a message", () => {
       expect(() => extractOutputText({ output: [] })).toThrow();
+    });
+
+    it("reports a search whose tool calls all failed", () => {
+      const call = (status: string) => ({ type: "custom_tool_call", name: "x_keyword_search", status });
+      const answer = { type: "message", content: [{ type: "output_text", text: '{"items":[]}' }] };
+      expect(toolCallFailure({ output: [call("failed"), call("failed"), answer] })).toBe(
+        "X検索ツールの呼び出しがすべて失敗しました (2回)。xAI 側の障害の可能性があります",
+      );
+      expect(toolCallFailure({ output: [call("failed"), call("completed"), answer] })).toBeUndefined();
+      expect(toolCallFailure({ output: [answer] })).toBeUndefined();
+      expect(toolCallFailure(null)).toBeUndefined();
+      expect(toolCallFailure({ output: "x" })).toBeUndefined();
     });
   });
 
