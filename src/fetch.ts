@@ -6,6 +6,7 @@
  */
 import { mkdir, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { errorHint } from "./lib/api-errors.ts";
 import { DEFAULT_TRUSTED_HANDLES, parseHandles, rollingWindow } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
 import {
@@ -144,15 +145,6 @@ async function runSearch(
     throw new SearchError(`xAI API エラー HTTP ${res.status}${errorHint(res.status, detail)}`, detail);
   }
   return res.json();
-}
-
-function errorHint(status: number, detail: string): string {
-  // xAI answers an invalid key with HTTP 400, so the body has to be checked too.
-  if (status === 401 || status === 403 || /api key/i.test(detail)) return " (APIキーが無効か失効しています)";
-  if (status === 402 || status === 429 || /credit|balance|spend/i.test(detail)) {
-    return " (クレジット不足またはレート制限の可能性があります)";
-  }
-  return "";
 }
 
 function parseSearchResult(resp: unknown, opts: NormalizeOptions): NormalizeResult {

@@ -82,10 +82,7 @@ export function statusAlert(status: Status | undefined, meta: FeedMeta): Topic |
     url: `${meta.siteUrl}#status`,
     author: "x-security-rss",
     posted_at: status.checked_at,
-    summary:
-      `${status.message}\n\n` +
-      "GitHub Actions の実行ログを確認してください。APIキーの失効やクレジット不足の場合は、" +
-      "console.x.ai でキーの再発行・チャージを行い、リポジトリの Secrets (XAI_API_KEY) を更新してください。",
+    summary: `${status.message}\n\nGitHub Actions の実行ログを確認してください。`,
     tags: ["status"],
     collected_at: status.checked_at,
   };
@@ -246,6 +243,7 @@ if (import.meta.vitest) {
       expect(xml.slice(first, first + 200)).toContain("⚠️ 収集に失敗しました (2026-11-03)");
       expect(xml).toContain("status-error-2026-11-03");
       expect(xml).toContain("HTTP 401");
+      expect(xml).not.toContain("console.x.ai");
     });
   });
 
