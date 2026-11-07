@@ -38,12 +38,16 @@ const SEPARATORS = "\\s,、/／・:：\\-–—";
 const KEEP_BEFORE = /の$/;
 const KEEP_AFTER = /^(?:[をがはにでのもとへや等]|など)/;
 
+// Marks where an id was removed; titles never contain it because cleanText drops control characters.
+const GAP = "\u0000";
+
 /**
  * Drops the ids already shown in the prefix (with shorthand lists such as "CVE-2026-1/2") and the
  * separators or brackets they leave behind, unless that would break the sentence around them.
+ * Only the text around a removed id is tidied, so the rest of the title stays as written.
  */
 function stripCves(title: string, ids: readonly string[]): string {
-  const strip = (s: string, re: RegExp) => s.replace(re, "");
+  if (title.includes(GAP)) return title;
   const shown = new Set(ids);
   const removed = title.replace(
     /CVE-(\d{4})-(\d{4,7})((?:\s*[/／、,]\s*\d{4,7}(?!\d))*)/gi,
@@ -52,19 +56,23 @@ function stripCves(title: string, ids: readonly string[]): string {
       const before = whole.slice(0, offset);
       const after = whole.slice(offset + match.length);
       const keep = !all.every((id) => shown.has(id)) || KEEP_BEFORE.test(before) || KEEP_AFTER.test(after);
-      return keep ? match : "";
+      return keep ? match : GAP;
     },
   );
-  const tidy = strip(
-    strip(removed, /[(（[［]\s*[)）\]］]/g),
-    new RegExp(`^[${SEPARATORS}]+|[${SEPARATORS}]+$`, "g"),
-  )
-    // A run with two or more separators is where a removed id sat in a list; keep only the first one.
-    .replace(new RegExp(`\\s*[${SEPARATORS}]+`, "g"), (run) => {
-      const marks = run.replace(/\s/g, "");
-      return marks.length >= 2 ? `${/^\s/.test(run) ? " " : ""}${marks[0]} ` : run;
-    })
-    .replace(/\s{2,}/g, " ");
+  if (!removed.includes(GAP)) return title;
+  const tidy = removed
+    .replace(new RegExp(`[(（[［]\\s*${GAP}[\\s${GAP}]*[)）\\]］]`, "g"), GAP)
+    .replace(
+      new RegExp(`[${SEPARATORS}]*${GAP}[${SEPARATORS}${GAP}]*`, "g"),
+      (run, offset: number, whole: string) => {
+        if (offset === 0 || offset + run.length === whole.length) return "";
+        const marks = run.replace(new RegExp(`[\\s${GAP}]`, "g"), "");
+        const space = /^\s/.test(run) ? " " : "";
+        // Two or more separators around a gap are where the id sat in a list; keep only the first one.
+        if (marks.length >= 2) return `${space}${marks[0]} `;
+        return marks ? run.replaceAll(GAP, "").replace(/\s+/g, " ") : /\s/.test(run) ? " " : "";
+      },
+    );
   return tidy.trim();
 }
 
@@ -382,6 +390,18 @@ if (import.meta.vitest) {
         "[CVE-2026-104935] Ivanti ゼロデイ連鎖 CVE-2026-104935等",
       );
       expect(title("Fortinet - CVE-2026-7777 - 修正")).toBe("[CVE-2026-7777] Fortinet - 修正");
+    });
+
+    it("leaves separators away from removed ids untouched", () => {
+      const title = (t: string, tags: string[]) =>
+        renderRss([{ ...topic, title: t, tags }], meta).match(/<item>\s*<title>(.*?)<\/title>/)?.[1];
+      expect(title("curl --proxy の認証情報漏洩", ["CVE-2026-1234"])).toBe(
+        "[CVE-2026-1234] curl --proxy の認証情報漏洩",
+      );
+      expect(title("https://example.org の脆弱性 CVE-2026-1234", [])).toBe(
+        "[CVE-2026-1234] https://example.org の脆弱性",
+      );
+      expect(title("A -- B (x) CVE-2026-1234", [])).toBe("[CVE-2026-1234] A -- B (x)");
     });
 
     it("shortens long CVE lists in the title and leaves CVE-less topics alone", () => {
