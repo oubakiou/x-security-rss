@@ -170,7 +170,9 @@ async function runSearch(
       httpStatus: res.status,
     });
   }
-  return res.json();
+  return res.json().catch((e: unknown) => {
+    throw new SearchError("bad_response", "応答の JSON を解析できませんでした", { detail: String(e) });
+  });
 }
 
 function parseSearchResult(resp: unknown, opts: NormalizeOptions): NormalizeResult {
