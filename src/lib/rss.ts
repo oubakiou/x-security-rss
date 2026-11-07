@@ -32,11 +32,58 @@ function cveIds(t: Topic): string[] {
   return [...topicCves(t)].slice(0, MAX_CVE_LINKS);
 }
 
+const SEPARATORS = "\\s,、/／・:：\\-–—";
+
+// Removing an id that a Japanese particle attaches to ("…のCVE-x", "CVE-xを…") would break the sentence.
+const KEEP_BEFORE = /の$/;
+const KEEP_AFTER = /^(?:[をがはにでのもとへや等]|など)/;
+
+// Marks where an id was removed; titles never contain it because cleanText drops control characters.
+const GAP = "\u0000";
+
+/**
+ * Drops the ids already shown in the prefix (with shorthand lists such as "CVE-2026-1/2") and the
+ * separators or brackets they leave behind, unless that would break the sentence around them.
+ * Only the text around a removed id is tidied, so the rest of the title stays as written.
+ */
+function stripCves(title: string, ids: readonly string[]): string {
+  if (title.includes(GAP)) return title;
+  const shown = new Set(ids);
+  const removed = title.replace(
+    /CVE-(\d{4})-(\d{4,7})((?:\s*[/／、,]\s*\d{4,7}(?!\d))*)/gi,
+    (match: string, year: string, num: string, tail: string, offset: number, whole: string) => {
+      const all = [num, ...(tail.match(/\d{4,7}/g) ?? [])].map((n) => `CVE-${year}-${n}`);
+      const before = whole.slice(0, offset);
+      const after = whole.slice(offset + match.length);
+      const keep = !all.every((id) => shown.has(id)) || KEEP_BEFORE.test(before) || KEEP_AFTER.test(after);
+      return keep ? match : GAP;
+    },
+  );
+  if (!removed.includes(GAP)) return title;
+  const tidy = removed
+    .replace(new RegExp(`[(（[［]\\s*${GAP}[\\s${GAP}]*[)）\\]］]`, "g"), GAP)
+    .replace(
+      new RegExp(`[${SEPARATORS}]*${GAP}[${SEPARATORS}${GAP}]*`, "g"),
+      (run, offset: number, whole: string) => {
+        if (offset === 0 || offset + run.length === whole.length) return "";
+        const marks = run.replace(new RegExp(`[\\s${GAP}]`, "g"), "");
+        const space = /^\s/.test(run) ? " " : "";
+        // Two or more separators around a gap are where the id sat in a list; keep only the first one.
+        if (marks.length >= 2) return `${space}${marks[0]} `;
+        return marks ? run.replaceAll(GAP, "").replace(/\s+/g, " ") : /\s/.test(run) ? " " : "";
+      },
+    );
+  return tidy.trim();
+}
+
 function titleWithCves(t: Topic): string {
   const ids = cveIds(t);
   if (!ids.length) return t.title;
-  const rest = ids.length - MAX_CVE_IN_TITLE;
-  return `[${ids.slice(0, MAX_CVE_IN_TITLE).join(", ")}${rest > 0 ? ` ほか${rest}件` : ""}] ${t.title}`;
+  const shown = ids.slice(0, MAX_CVE_IN_TITLE);
+  const rest = ids.length - shown.length;
+  const prefix = `[${shown.join(", ")}${rest > 0 ? ` ほか${rest}件` : ""}]`;
+  const title = stripCves(t.title, shown);
+  return title ? `${prefix} ${title}` : prefix;
 }
 
 function nvdUrl(id: string): string {
@@ -284,7 +331,7 @@ if (import.meta.vitest) {
 
     it("prefixes the title and links each CVE to NVD in the feed", () => {
       const xml = renderRss([cveTopic], meta);
-      expect(xml).toContain("<title>[CVE-2026-1111, CVE-2026-2222] GitLab RCE cve-2026-1111</title>");
+      expect(xml).toContain("<title>[CVE-2026-1111, CVE-2026-2222] GitLab RCE</title>");
       const desc = xml.slice(xml.indexOf("<![CDATA["));
       expect(
         desc.startsWith(
@@ -296,13 +343,65 @@ if (import.meta.vitest) {
 
     it("prefixes the title and puts NVD links before the summary on the page", () => {
       const html = renderHtml([cveTopic], meta);
-      expect(html).toContain("[CVE-2026-1111, CVE-2026-2222] GitLab RCE cve-2026-1111<span");
+      expect(html).toContain("[CVE-2026-1111, CVE-2026-2222] GitLab RCE<span");
       const article = html.slice(html.indexOf("<article>"));
       const links = article.indexOf(
         '<p class="cves">CVE: <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1111" target="_blank"',
       );
       expect(links).toBeGreaterThan(0);
       expect(links).toBeLessThan(article.indexOf("line1"));
+    });
+
+    it("does not repeat the prefixed CVE ids in the title text", () => {
+      const title = (t: string, tags: string[] = []) =>
+        renderRss([{ ...topic, title: t, tags }], meta).match(/<item>\s*<title>(.*?)<\/title>/)?.[1];
+      expect(title("CVE-2026-109469 Microsoft Entra Device Registration権限昇格")).toBe(
+        "[CVE-2026-109469] Microsoft Entra Device Registration権限昇格",
+      );
+      expect(title("Zyxel GS1900スイッチ CVE-2026-107441ゼロデイ悪用")).toBe(
+        "[CVE-2026-107441] Zyxel GS1900スイッチ ゼロデイ悪用",
+      );
+      expect(title("Debian/UbuntuのAPT脆弱性CVE-2026-109518、MitMでroot権限取得可能")).toBe(
+        "[CVE-2026-109518] Debian/UbuntuのAPT脆弱性、MitMでroot権限取得可能",
+      );
+      expect(title("Xen脱出脆弱性、11年ぶり発見（CVE-2026-102703/102704）", ["CVE-2026-102704"])).toBe(
+        "[CVE-2026-102703, CVE-2026-102704] Xen脱出脆弱性、11年ぶり発見",
+      );
+      expect(title("GitLab KEV CVE-2026-97229/CVE-2026-110264")).toBe(
+        "[CVE-2026-97229, CVE-2026-110264] GitLab KEV",
+      );
+      expect(title("Chrome (CVE-2026-5555) 修正")).toBe("[CVE-2026-5555] Chrome 修正");
+      expect(title("CVE-2026-5555")).toBe("[CVE-2026-5555]");
+      expect(title("A: CVE-2026-1001, CVE-2026-1002, CVE-2026-1003")).toBe(
+        "[CVE-2026-1001, CVE-2026-1002 ほか1件] A: CVE-2026-1003",
+      );
+    });
+
+    it("keeps an id that a Japanese particle attaches to, and leaves other text alone", () => {
+      const title = (t: string) =>
+        renderRss([{ ...topic, title: t, tags: [] }], meta).match(/<item>\s*<title>(.*?)<\/title>/)?.[1];
+      expect(title("OpenSSHのCVE-2026-123158が開示数時間で悪用")).toBe(
+        "[CVE-2026-123158] OpenSSHのCVE-2026-123158が開示数時間で悪用",
+      );
+      expect(title("Apple脆弱性CVE-2024-27834が悪用確認")).toBe(
+        "[CVE-2024-27834] Apple脆弱性CVE-2024-27834が悪用確認",
+      );
+      expect(title("Ivanti ゼロデイ連鎖 CVE-2026-104935等")).toBe(
+        "[CVE-2026-104935] Ivanti ゼロデイ連鎖 CVE-2026-104935等",
+      );
+      expect(title("Fortinet - CVE-2026-7777 - 修正")).toBe("[CVE-2026-7777] Fortinet - 修正");
+    });
+
+    it("leaves separators away from removed ids untouched", () => {
+      const title = (t: string, tags: string[]) =>
+        renderRss([{ ...topic, title: t, tags }], meta).match(/<item>\s*<title>(.*?)<\/title>/)?.[1];
+      expect(title("curl --proxy の認証情報漏洩", ["CVE-2026-1234"])).toBe(
+        "[CVE-2026-1234] curl --proxy の認証情報漏洩",
+      );
+      expect(title("https://example.org の脆弱性 CVE-2026-1234", [])).toBe(
+        "[CVE-2026-1234] https://example.org の脆弱性",
+      );
+      expect(title("A -- B (x) CVE-2026-1234", [])).toBe("[CVE-2026-1234] A -- B (x)");
     });
 
     it("shortens long CVE lists in the title and leaves CVE-less topics alone", () => {
