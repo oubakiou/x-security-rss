@@ -1,0 +1,330 @@
+{
+  "version": 1,
+  "date": "2026-11-06",
+  "snapshots": [
+    {
+      "name": "2026-11-06-00.json",
+      "sha256": "277f2f5a954e0c6f816296f1bbb534a7cbc501ed8634a56ffa53978e40879a3d",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-06T00:19:25Z",
+        "window": {
+          "from": "2026-11-05T00:18:49.229Z",
+          "to": "2026-11-06T00:18:49.229Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "4 件を取得しました",
+          "checked_at": "2026-11-06T00:19:25Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 6567,
+            "input_tokens_details": {
+              "cached_tokens": 1152
+            },
+            "output_tokens": 2325,
+            "output_tokens_details": {
+              "reasoning_tokens": 1528
+            },
+            "total_tokens": 8892,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 478116500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 7,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4874,
+              "output_tokens": 1188
+            }
+          },
+          "general": {
+            "input_tokens": 5179,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 1435,
+            "output_tokens_details": {
+              "reasoning_tokens": 761
+            },
+            "total_tokens": 6614,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 81796500,
+            "context_details": {
+              "input_tokens": 3347,
+              "output_tokens": 148
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118419030285447632",
+            "url": "https://x.com/i/status/2118419030285447632",
+            "title": "CISA、ICSアドバイザリを更新：ICSの脆弱性・悪用情報を公開",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-05T19:03:49Z",
+            "summary": "CISAがICSアドバイザリを1件更新。ICS環境のセキュリティ問題、脆弱性、悪用に関する最新情報を提供。詳細は https://go.dhs.gov/iEv を参照。実務者はICS機器の脆弱性確認とパッチ適用を優先。",
+            "tags": [
+              "ICS",
+              "advisory",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-06T00:19:12Z"
+          },
+          {
+            "id": "2118376075277340952",
+            "url": "https://x.com/i/status/2118376075277340952",
+            "title": "DigiCertデータ侵害：顧客情報と身分証明書が漏えい",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-05T16:13:08Z",
+            "summary": "DigiCertのデータ侵害で顧客情報と身分証明書が暴露。影響は大規模で、証明書発行サービス利用者は漏えい確認とパスワード変更を推奨。",
+            "tags": [
+              "data breach",
+              "DigiCert"
+            ],
+            "collected_at": "2026-11-06T00:19:12Z"
+          },
+          {
+            "id": "2118373742283825422",
+            "url": "https://x.com/i/status/2118373742283825422",
+            "title": "Microsoft、Q3 2026メール脅威レポート：ビジネスワークフロー悪用キャンペーンを分析",
+            "author": "Microsoft Threat Intelligence (@MsftSecIntel)",
+            "posted_at": "2026-11-05T16:03:52Z",
+            "summary": "2026年7-9月のメール脅威動向。129百万件の悪意メッセージがビジネスドメインをスプーフィング。Agent Teslaマルウェア配信やデバイスコードフィッシングを確認。例外設定の見直しとMicrosoft 365の検知強化を推奨。",
+            "tags": [
+              "phishing",
+              "malware",
+              "Microsoft"
+            ],
+            "collected_at": "2026-11-06T00:19:12Z"
+          },
+          {
+            "id": "2118284028080243165",
+            "url": "https://x.com/i/status/2118284028080243165",
+            "title": "The Hacker News：5つのサイバー脅威キャンペーン（SkyW4lkerなど）を公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-05T10:07:22Z",
+            "summary": "米国企業を標的とする5キャンペーン（Microsoft 365 device-code phishing、AIアプリ偽装、Defender無効化マルウェア）。SkyW4lker、Mir0Authなどの分析と対策を提示。実務者はメールセキュリティとEDR強化を。",
+            "tags": [
+              "phishing",
+              "malware",
+              "campaign"
+            ],
+            "collected_at": "2026-11-06T00:19:12Z"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-06-07.json",
+      "sha256": "77cba8146e98ed59f72aecfb32f9fe1bcd2345b0f5c2a35f639196e1f54fe101",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-06T07:57:41Z",
+        "window": {
+          "from": "2026-11-05T07:57:00.331Z",
+          "to": "2026-11-06T07:57:00.331Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "8 件を取得しました",
+          "checked_at": "2026-11-06T07:57:41Z",
+          "dropped_unverified": 2
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 4346,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 1038,
+            "output_tokens_details": {
+              "reasoning_tokens": 838
+            },
+            "total_tokens": 5384,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 62803000,
+            "context_details": {
+              "input_tokens": 2653,
+              "output_tokens": 170
+            }
+          },
+          "general": {
+            "input_tokens": 19374,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 3882,
+            "output_tokens_details": {
+              "reasoning_tokens": 1641
+            },
+            "total_tokens": 23256,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 8,
+            "cost_in_usd_ticks": 2289225000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 8,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 17542,
+              "output_tokens": 2431
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118613500012503393",
+            "url": "https://x.com/i/status/2118613500012503393",
+            "title": "CVE-2026-118423: WP Libre Formで未認証コード実行",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-06T07:56:34Z",
+            "summary": "WP Libre Formプラグインで未認証のファイルアップロードによるコード実行の脆弱性（CVE-2026-118423）が公開。ログインなしでPHPファイルをアップロード・実行可能。パッチ未公開。WordPressサイト管理者は直ちにフォーム機能を無効化または監視を強化すべき。",
+            "tags": [
+              "CVE-2026-118423",
+              "WordPress",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118613449802649910",
+            "url": "https://x.com/i/status/2118613449802649910",
+            "title": "CVE-2026-98432: Linuxカーネル脆弱性でCardanoプール警告",
+            "author": "👩🌾0xAirdropFarmer (@0xairdropfarmer)",
+            "posted_at": "2026-11-06T07:56:23Z",
+            "summary": "Linuxカーネル脆弱性CVE-2026-98432（CVSS 9.8）がCardanoステークプール運用者に警告。リモートコード実行・メモリ破損の恐れ。Red Hatがリモート攻撃可能性を指摘。現在標的攻撃報告なし。プール管理者はサーバー再起動とパッチ適用を推奨。",
+            "tags": [
+              "CVE-2026-98432",
+              "Linux",
+              "Cardano"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118613226007195793",
+            "url": "https://x.com/i/status/2118613226007195793",
+            "title": "CVE-2026-119977: WordPressアップグレード中脆弱性にCISA期限",
+            "author": "PHP Site Audit (@PHPSiteAudit)",
+            "posted_at": "2026-11-06T07:55:29Z",
+            "summary": "WordPressのステージングインストーラー経路悪用脆弱性CVE-2026-119977がCISA連邦期限（11/6）。パッチはWordPress 7.1.4。PoC公開済みで18,500件以上の攻撃試行確認。アップデート前に一時ディレクトリアクセス制限を。PHP2Shellとは別脆弱性。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "CISA"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118613090032074805",
+            "url": "https://x.com/i/status/2118613090032074805",
+            "title": "ロート製薬で279万人個人情報不正取得確認",
+            "author": "🍌おなしゃす⭐︎バナナ総本部 (@YozawaPe)",
+            "posted_at": "2026-11-06T07:54:57Z",
+            "summary": "ロート製薬で通信販売顧客279万7,545人分の氏名・住所・電話番号・クレカ情報が不正取得。侵入経路は電話システムアカウント悪用。9月発覚の事案が11/6に大規模確定。関連アカウント停止・PW変更実施。PHP2Shell関連は未確認。",
+            "tags": [
+              "data breach",
+              "ロート製薬",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118607675420488179",
+            "url": "https://x.com/i/status/2118607675420488179",
+            "title": "ワークマン、メルマガ145万件メールアドレス流出",
+            "author": "NOVAIST (@NOVAIST_AI)",
+            "posted_at": "2026-11-06T07:33:26Z",
+            "summary": "ワークマンが委託先アララへの不正アクセスでメルマガ利用者メールアドレス最大145万件流出を公表。メールアドレス以外の情報は対象外。10/28発覚のアララ被害の一部。",
+            "tags": [
+              "data breach",
+              "ワークマン",
+              "サプライチェーン"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118613634352066839",
+            "url": "https://x.com/i/status/2118613634352066839",
+            "title": "ソフトバンク「タカコレ」1万723件メールアドレス漏えい",
+            "author": "とも (@mmchh000)",
+            "posted_at": "2026-11-06T07:57:07Z",
+            "summary": "ソフトバンクが「タカコレ」利用者などメールアドレス1万723件漏えいを発表。委託先VOLZが使用のアララメッセージへの不正アクセスが原因。アララ社大規模被害（最大7,700万アドレス）の関連。アドレス流出でなりすまし注意。",
+            "tags": [
+              "data breach",
+              "ソフトバンク",
+              "サプライチェーン"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118613417061941632",
+            "url": "https://x.com/i/status/2118613417061941632",
+            "title": "国家サイバー統括室、不正アクセス注意喚起を発出",
+            "author": "AGIおやZ (@AGIOyaZ)",
+            "posted_at": "2026-11-06T07:56:15Z",
+            "summary": "内閣官房国家サイバー統括室がWeb/アプリ事業者向け注意喚起（11/5）。AI活用攻撃対策としてAI防御検討を推奨。資産把握・ASM・SBOM・委託先管理徹底を具体策として提示。相次ぐ個人情報漏えい事案を受けたもの。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "日本政府"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          },
+          {
+            "id": "2118608060822556785",
+            "url": "https://x.com/i/status/2118608060822556785",
+            "title": "Chainalysisでユーザー名・PWハッシュ漏えい",
+            "author": "NFT NEWS (@NFTNews_EU)",
+            "posted_at": "2026-11-06T07:34:58Z",
+            "summary": "Chainalysisがデータ侵害を確認。ユーザー名・PWハッシュ・認証トークンが露出。KYT・Reactorなど複数サービスを停止し、PWリセット・APIキー更新を要求。ハッカーによる露出。",
+            "tags": [
+              "data breach",
+              "Chainalysis",
+              "暗号資産"
+            ],
+            "collected_at": "2026-11-06T07:57:41Z"
+          }
+        ],
+        "rejected": [
+          {
+            "search": "general",
+            "reason": "duplicate",
+            "id": "2118613090032074805",
+            "posted_at": "2026-11-06T07:54:57Z"
+          },
+          {
+            "search": "general",
+            "reason": "duplicate",
+            "id": "2118613226007195793",
+            "posted_at": "2026-11-06T07:55:29Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
