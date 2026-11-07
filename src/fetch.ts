@@ -8,7 +8,7 @@ import { mkdir, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { DEFAULT_TRUSTED_HANDLES, parseHandles, rollingWindow } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
-import { httpFailureKind, pickFailure, type FailureKind } from "./lib/failure.ts";
+import { errorCode, httpFailureKind, pickFailure, type FailureKind } from "./lib/failure.ts";
 import {
   citedStatuses,
   extractOutputText,
@@ -168,14 +168,19 @@ async function runSearch(
   });
 
   if (!res.ok) {
-    const detail = (await res.text()).slice(0, 500);
-    throw new SearchError(httpFailureKind(res.status, detail), `xAI API エラー HTTP ${res.status}`, {
-      detail,
+    // The body is used only to classify the failure; it never reaches the (public) log.
+    const body = (await res.text()).slice(0, 2000);
+    const code = errorCode(body);
+    throw new SearchError(httpFailureKind(res.status, body), `xAI API エラー HTTP ${res.status}`, {
+      ...(code ? { detail: `code=${code}` } : {}),
       httpStatus: res.status,
     });
   }
   return res.json().catch((e: unknown) => {
-    throw new SearchError("bad_response", "応答の JSON を解析できませんでした", { detail: String(e) });
+    // A JSON SyntaxError message quotes the start of the body, so only its name is kept.
+    throw new SearchError("bad_response", "応答の JSON を解析できませんでした", {
+      detail: e instanceof Error ? e.name : "error",
+    });
   });
 }
 
@@ -237,7 +242,8 @@ async function main(): Promise<void> {
     for (const spec of specs) {
       try {
         const resp = await runSearch(apiKey, model, maxTurns, spec);
-        // Raw responses are kept for diagnosis only (never published; uploaded as a short-lived artifact on failure).
+        // Raw responses are for diagnosis: never in Pages or git, but uploaded as a one-day artifact on failure,
+        // which anyone signed in to GitHub can download from a public repository.
         await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(resp, null, 2));
         usage[spec.label] = (resp as { usage?: unknown }).usage ?? null;
         const failedCalls = failedToolCalls(resp);
