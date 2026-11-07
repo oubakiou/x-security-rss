@@ -1,6 +1,6 @@
 import { failureNotice } from "./failure.ts";
 import { topicCves } from "./items.ts";
-import type { Status, Topic } from "./types.ts";
+import { CATEGORIES, type Category, type Status, type Topic } from "./types.ts";
 
 export interface FeedMeta {
   title: string;
@@ -74,6 +74,47 @@ function stripCves(title: string, ids: readonly string[]): string {
       },
     );
   return tidy.trim();
+}
+
+const CATEGORY_EMOJI: Record<Category, string> = {
+  vulnerability: "🔓",
+  incident: "🔥",
+  campaign: "🕵️",
+  other: "📝",
+};
+
+const CATEGORY_LABEL: Record<Category, string> = {
+  vulnerability: "脆弱性",
+  incident: "インシデント",
+  campaign: "攻撃キャンペーン",
+  other: "その他",
+};
+
+/**
+ * The page allows no scripts (CSP), so filtering is CSS only: each category has an empty anchor,
+ * and while it is the URL fragment (e.g. #vulnerability) other articles are hidden. The fragment
+ * doubles as the permalink.
+ */
+function filterHtml(topics: Topic[]): { nav: string; anchors: string; css: string } {
+  const count = (c: Category) => topics.filter((t) => t.category === c).length;
+  const links = CATEGORIES.map(
+    (c) => `<a href="#${c}">${CATEGORY_EMOJI[c]} ${CATEGORY_LABEL[c]} (${count(c)})</a>`,
+  );
+  const css = CATEGORIES.map(
+    (c) =>
+      `body:has(#${c}:target) article:not(.cat-${c}){display:none}` +
+      `body:has(#${c}:target) .filters a[href="#${c}"]{font-weight:bold}`,
+  ).join("\n");
+  return {
+    nav: `<nav class="filters" aria-label="カテゴリーで絞り込み"><a href="#">すべて (${topics.length})</a> ${links.join(" ")}</nav>`,
+    anchors: CATEGORIES.map((c) => `<span id="${c}" class="anchor"></span>`).join(""),
+    css: `body:not(:has(.anchor:target)) .filters a[href="#"]{font-weight:bold}\n${css}`,
+  };
+}
+
+function displayTitle(t: Topic): string {
+  const title = titleWithCves(t);
+  return t.category ? `${CATEGORY_EMOJI[t.category]} ${title}` : title;
 }
 
 function titleWithCves(t: Topic): string {
@@ -152,7 +193,7 @@ export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): str
       const cats = t.tags.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n");
       return [
         "    <item>",
-        `      <title>${escapeXml(titleWithCves(t))}</title>`,
+        `      <title>${escapeXml(displayTitle(t))}</title>`,
         `      <link>${escapeXml(t.url)}</link>`,
         `      <guid isPermaLink="false">${escapeXml(t.id)}</guid>`,
         `      <pubDate>${rfc822(t.posted_at)}</pubDate>`,
@@ -197,10 +238,11 @@ function ogpHtml(meta: FeedMeta): string {
 
 export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): string {
   const alert = statusAlert(status, meta);
+  const filter = filterHtml(topics);
   const rows = topics
     .map(
-      (t) => `<article>
-  <h2>${externalLink(t.url, titleWithCves(t))}</h2>
+      (t) => `<article${t.category ? ` class="cat-${t.category}"` : ""}>
+  <h2>${externalLink(t.url, displayTitle(t))}</h2>
   <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
   ${cveHtml(t, true)}
   <p>${escapeXml(t.summary)}</p>
@@ -229,12 +271,16 @@ article{border-top:1px solid var(--line);padding:16px 0}.meta{color:var(--muted)
 .tags span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 6px;margin:0 4px 4px 0;font-size:.8rem}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #status{border:1px solid var(--warn);color:var(--warn);padding:12px;border-radius:6px;white-space:pre-wrap}
+.filters{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.9rem;margin:0 0 8px}.filters a{text-decoration:none}
+${filter.css}
 </style>
 </head>
 <body>
+${filter.anchors}
 <h1>${escapeXml(meta.title)}</h1>
 <p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · ${externalLink(meta.sourceUrl, "GitHub")}</p>
 ${alert ? `<p id="status">${escapeXml(alert.title)}\n${escapeXml(alert.summary)}</p>` : ""}
+${filter.nav}
 ${rows || "<p>まだ記事がありません。</p>"}
 </body>
 </html>
@@ -319,6 +365,57 @@ if (import.meta.vitest) {
       expect(xml).toContain("https://x.com/i/status/456");
       expect(xml).not.toContain("javascript:x");
       expect(renderHtml([{ ...topic, related: ["456"] }], meta)).toContain("関連投稿1");
+    });
+  });
+
+  describe("category emoji", () => {
+    it("prefixes the title with the category emoji before the CVE prefix", () => {
+      const vuln = {
+        ...topic,
+        title: "GitLab RCE CVE-2026-1111",
+        tags: [],
+        category: "vulnerability" as const,
+      };
+      expect(renderRss([vuln], meta)).toContain("<title>🔓 [CVE-2026-1111] GitLab RCE</title>");
+      expect(renderHtml([{ ...topic, category: "campaign" }], meta)).toContain(
+        ">🕵️ A &amp; B &lt;script&gt;<span",
+      );
+      expect(renderRss([{ ...topic, category: "incident" }], meta)).toContain("<title>🔥 A &amp; B");
+      expect(renderRss([{ ...topic, category: "other" }], meta)).toContain("<title>📝 A &amp; B");
+    });
+
+    it("adds nothing without a category, including the failure notice", () => {
+      const xml = renderRss([topic], meta, { ok: false, message: "", checked_at: "2026-11-03T21:00:00Z" });
+      expect(xml).toContain("<title>A &amp; B &lt;script&gt;</title>");
+      expect(xml).toContain("<title>⚠️ 収集に失敗しました (2026-11-03)</title>");
+    });
+  });
+
+  describe("category filter", () => {
+    it("offers fragment links per category with counts and tags articles", () => {
+      const html = renderHtml(
+        [
+          { ...topic, id: "1", category: "vulnerability" },
+          { ...topic, id: "2", category: "incident" },
+          { ...topic, id: "3", category: "vulnerability" },
+          { ...topic, id: "4" },
+        ],
+        meta,
+      );
+      expect(html).toContain('<a href="#">すべて (4)</a>');
+      expect(html).toContain('<a href="#vulnerability">🔓 脆弱性 (2)</a>');
+      expect(html).toContain('<a href="#incident">🔥 インシデント (1)</a>');
+      expect(html).toContain('<a href="#campaign">🕵️ 攻撃キャンペーン (0)</a>');
+      expect(html).toContain('<span id="vulnerability" class="anchor"></span>');
+      expect(html.match(/<article class="cat-vulnerability">/g)).toHaveLength(2);
+      expect(html).toContain("<article>\n");
+      expect(html).toContain("body:has(#vulnerability:target) article:not(.cat-vulnerability){display:none}");
+    });
+
+    it("keeps the CSP free of scripts", () => {
+      const html = renderHtml([{ ...topic, category: "other" }], meta);
+      expect(html).toContain("default-src 'none'; style-src 'unsafe-inline'");
+      expect(html).not.toMatch(/<script|onclick=|javascript:/i);
     });
   });
 
