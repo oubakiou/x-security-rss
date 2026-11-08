@@ -4,6 +4,8 @@ const ROOT = join(import.meta.dirname, "..", "..");
 
 /** Directory uploaded to GitHub Pages as a whole. */
 export const SITE_DIR = join(ROOT, "site");
+/** Static files (icons, OGP image) copied into the site as-is on every build. */
+export const PUBLIC_DIR = join(ROOT, "public");
 /** Finalized days, committed to git and never rewritten. */
 export const ARCHIVE_DIR = join(ROOT, "archive");
 export const WORK_DIR = join(ROOT, ".work");

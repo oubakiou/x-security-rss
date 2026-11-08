@@ -82,6 +82,7 @@ API キーは安全な環境変数や Secrets から渡し、コード・テス�
 - `archive/YYYY-MM-DD.json` (git): 確定した日の取得結果。一度コミットしたら書き換えない。
 - Pages の `snapshots/YYYY-MM-DD-HH.json`: 未確定の日の取得結果 (1回の実行で1ファイル、上書きしない)。
   `manifest.json` に一覧とハッシュ、`feed-state.json` にフィードの元になった状態を置く。
+- `public/` (git): favicon と OGP 画像。ビルド時に `site/` へそのままコピーする。`assets/ogp.svg` は OGP 画像 (`public/ogp.png`) の元データで、公開しない。
 - `site/`、`.work/`、`.temp/` は生成物・作業用。コミットしない。
 
 ## Review guidelines
