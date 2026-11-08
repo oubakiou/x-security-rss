@@ -49,7 +49,8 @@ ${COMMON_RULES}`;
 const GENERAL_PROMPT = `あなたはセキュリティニュースの編集者です。X検索ツールで、{window} に
 投稿されたサイバーセキュリティの重要な話題を最大 {max} 件集めてください。
 
-検索は次の分野ごとに分けて行い、それぞれ英語と日本語のキーワードで探すこと (1回の検索で済ませないこと):
+検索は次の分野ごとに分けて行うこと。英語と日本語のキーワードは OR でまとめて1回の検索に含め、
+x_search の呼び出しは1分野につき1回を基本とし、多くても合計6回までにすること:
 1. 新しい脆弱性・CVE・ゼロデイ・実際に悪用されている脆弱性 (例: CVE, zero-day, actively exploited, PoC)
 2. ランサムウェア・データ侵害・情報漏えい・サイバー攻撃の被害 (例: ransomware, data breach, 不正アクセス, 情報漏えい)
 3. セキュリティパッチ・アドバイザリ・緊急アップデート (例: security advisory, patch, 脆弱性 修正)
@@ -199,9 +200,9 @@ async function main(): Promise<void> {
   const apiKey = process.env.XAI_API_KEY?.trim();
 
   const modelEnv = process.env.XAI_MODEL?.trim();
-  const model = modelEnv && MODEL_RE.test(modelEnv) ? modelEnv : "grok-4.3";
+  const model = modelEnv && MODEL_RE.test(modelEnv) ? modelEnv : "grok-build-0.1";
   const maxItems = intEnv("MAX_ITEMS", 15, 1, 30);
-  const maxTurns = intEnv("MAX_TURNS", 6, 1, 10);
+  const maxTurns = intEnv("MAX_TURNS", 3, 1, 10);
   const handles = parseHandles(process.env.TRUSTED_HANDLES, DEFAULT_TRUSTED_HANDLES);
 
   const now = new Date();
