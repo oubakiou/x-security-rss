@@ -1,0 +1,1415 @@
+{
+  "version": 1,
+  "date": "2026-11-07",
+  "snapshots": [
+    {
+      "name": "2026-11-07-01.json",
+      "sha256": "4eadddba4ed0531197ad1d3708d444e5c300d81520d87017a822ee83049c1d73",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T01:32:09Z",
+        "window": {
+          "from": "2026-11-06T01:31:19.610Z",
+          "to": "2026-11-07T01:31:19.610Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": false,
+          "message": "検証を通った投稿が0件でした (破棄 0 件)",
+          "checked_at": "2026-11-07T01:32:09Z"
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 4601,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 1282,
+            "output_tokens_details": {
+              "reasoning_tokens": 1042
+            },
+            "total_tokens": 5883,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 72090500,
+            "context_details": {
+              "input_tokens": 2908,
+              "output_tokens": 186
+            }
+          },
+          "general": {
+            "input_tokens": 5161,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 1472,
+            "output_tokens_details": {
+              "reasoning_tokens": 1013
+            },
+            "total_tokens": 6633,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 101312500,
+            "context_details": {
+              "input_tokens": 3329,
+              "output_tokens": 203
+            }
+          }
+        },
+        "items": [],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-07-01-2.json",
+      "sha256": "fca06dd9b567e9252fe475dd420f7d03c1bd9d7c08e93dfa8edf23f4db3dc8fd",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T01:48:52Z",
+        "window": {
+          "from": "2026-11-06T01:48:18.837Z",
+          "to": "2026-11-07T01:48:18.837Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": false,
+          "message": "一部または全部の検索に失敗しました (general: X検索ツールの呼び出しがすべて失敗しました (8回)。xAI 側の障害の可能性があります)",
+          "checked_at": "2026-11-07T01:48:52Z"
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 6293,
+            "input_tokens_details": {
+              "cached_tokens": 1280
+            },
+            "output_tokens": 2362,
+            "output_tokens_details": {
+              "reasoning_tokens": 1410
+            },
+            "total_tokens": 8655,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 524272500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 8,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4600,
+              "output_tokens": 1257
+            }
+          },
+          "general": {
+            "input_tokens": 5168,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 1457,
+            "output_tokens_details": {
+              "reasoning_tokens": 888
+            },
+            "total_tokens": 6625,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 101025000,
+            "context_details": {
+              "input_tokens": 3336,
+              "output_tokens": 181
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118853339953729665",
+            "url": "https://x.com/i/status/2118853339953729665",
+            "title": "CISA、SonicWall SonicOS SSL VPNのCVE-2026-19868をKEVカタログに追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-06T23:49:37Z",
+            "summary": "CISAがSonicWall SonicOS SSL VPNの単一要素認証脆弱性CVE-2026-19868をKnown Exploited Vulnerabilities (KEV) Catalogに追加。悪用確認済みで、組織は即時緩和策適用を推奨。",
+            "tags": [
+              "CVE-2026-19868",
+              "KEV",
+              "SonicWall",
+              "VPN"
+            ],
+            "collected_at": "2026-11-07T01:48:34Z"
+          },
+          {
+            "id": "2118725937533800721",
+            "url": "https://x.com/i/status/2118725937533800721",
+            "title": "OpenSSHのCVE-2026-123158が開示数時間で悪用、Linuxでroot権限取得",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T15:23:22Z",
+            "summary": "OpenSSHのCVE-2026-123158 (SSHole) が特定Linux設定でパスワード認証をバイパスし、Alpine Linuxハニーポットでrootアクセス確認。早急なパッチ適用が必要。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux",
+              "exploited"
+            ],
+            "collected_at": "2026-11-07T01:48:34Z"
+          },
+          {
+            "id": "2118678059633222118",
+            "url": "https://x.com/i/status/2118678059633222118",
+            "title": "Microsoft PaintのCVE-2026-83844 RCE脆弱性にパッチ公開、ストア更新必須",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T12:13:07Z",
+            "summary": "Microsoft PaintのCVE-2026-83844が未認証リモートコード実行を許す。Windows Update非対応でMicrosoft Storeアプリ更新が必要、古いバージョンは残存リスクあり。",
+            "tags": [
+              "CVE-2026-83844",
+              "Microsoft Paint",
+              "RCE",
+              "patch"
+            ],
+            "collected_at": "2026-11-07T01:48:34Z"
+          },
+          {
+            "id": "2118620977903157597",
+            "url": "https://x.com/i/status/2118620977903157597",
+            "title": "Chainalysisデータ侵害、全顧客の認証情報が露出",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T08:26:17Z",
+            "summary": "Chainalysisで全ユーザーのパスワードハッシュとライブトークンが露出。影響アカウントをロックし、KYT/Reactor/Data Solutionsをオフライン化。パスワード変更を推奨。",
+            "tags": [
+              "data breach",
+              "Chainalysis",
+              "credentials"
+            ],
+            "collected_at": "2026-11-07T01:48:34Z"
+          },
+          {
+            "id": "2118705458370220139",
+            "url": "https://x.com/i/status/2118705458370220139",
+            "title": "DigiCertデータ侵害、ビジネス顧客情報に影響",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-06T14:01:59Z",
+            "summary": "DigiCertのデータ侵害でビジネス顧客情報が影響。詳細は非公開だが、影響を受けた顧客はアカウント監視を強化すべき。",
+            "tags": [
+              "data breach",
+              "DigiCert",
+              "certificates"
+            ],
+            "collected_at": "2026-11-07T01:48:34Z"
+          }
+        ],
+        "rejected": [],
+        "errors": [
+          "general: X検索ツールの呼び出しがすべて失敗しました (8回)。xAI 側の障害の可能性があります"
+        ]
+      }
+    },
+    {
+      "name": "2026-11-07-02.json",
+      "sha256": "32d54aeb7bf6b1c9d815230335f30acdb4704d9cc85b9dfa51a5c3a6e4bc7da1",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T02:09:41Z",
+        "window": {
+          "from": "2026-11-06T02:08:44.348Z",
+          "to": "2026-11-07T02:08:44.348Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": false,
+          "message": "一部または全部の検索に失敗しました (X検索ツールの呼び出しがすべて失敗しました (3回))",
+          "checked_at": "2026-11-07T02:09:41Z",
+          "kind": "tool_outage",
+          "partial": true,
+          "failed_calls": 3
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 4600,
+            "input_tokens_details": {
+              "cached_tokens": 1664
+            },
+            "output_tokens": 1246,
+            "output_tokens_details": {
+              "reasoning_tokens": 1064
+            },
+            "total_tokens": 5846,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 71178000,
+            "context_details": {
+              "input_tokens": 2907,
+              "output_tokens": 125
+            }
+          },
+          "general": {
+            "input_tokens": 28489,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 3342,
+            "output_tokens_details": {
+              "reasoning_tokens": 1455
+            },
+            "total_tokens": 31831,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 6,
+            "cost_in_usd_ticks": 2438318500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 6,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 26657,
+              "output_tokens": 2200
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118850776567091463",
+            "url": "https://x.com/i/status/2118850776567091463",
+            "title": "CISA、SonicWall SonicOSのCVE-2026-19868をKEV追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-06T23:39:26Z",
+            "summary": "CISAが既知の悪用脆弱性カタログにSonicWall SonicOS SSLVPNの一要素認証バイパス（CVE-2026-19868）を追加。多要素認証回避のリスクあり。対処期限11/20。パッチ適用を推奨。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "CISA",
+              "KEV"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118871086347522300",
+            "url": "https://x.com/i/status/2118871086347522300",
+            "title": "CVE-2026-109469 Microsoft Entra Device Registration権限昇格",
+            "author": "cve.new (@cvedotnew)",
+            "posted_at": "2026-11-07T01:00:08Z",
+            "summary": "Microsoft Entra Device Registrationに認証バイパスによる権限昇格脆弱性（CVE-2026-109469、CVSS 10.0）。ネットワークアクセスで悪用可能。Microsoftパッチ適用を。",
+            "tags": [
+              "CVE-2026-109469",
+              "Microsoft",
+              "Entra"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118821864503992413",
+            "url": "https://x.com/i/status/2118821864503992413",
+            "title": "CVE-2026-43499 BlackBerry KEYone GhostLock PoC公開",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-06T21:44:32Z",
+            "summary": "BlackBerry KEYone向けLinux kernel futex use-after-free（CVE-2026-43499、CVSS 7.8）。GhostLock PoC公開でroot権限昇格可能。パッチ適用またはデバイス更新を。",
+            "tags": [
+              "CVE-2026-43499",
+              "BlackBerry",
+              "Linux"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118820867493056753",
+            "url": "https://x.com/i/status/2118820867493056753",
+            "title": "CVE-2026-123158 OpenSSH musl LinuxでSSHole悪用監視",
+            "author": "GreyNoise (@GreyNoiseIO)",
+            "posted_at": "2026-11-06T21:40:35Z",
+            "summary": "muslベースLinux（Alpine等）のOpenSSHにSSHole脆弱性（CVE-2026-123158、CVSS 8.1）。公開PoCあり、活発なスキャン・悪用確認。パッチ適用推奨。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118818971814437292",
+            "url": "https://x.com/i/status/2118818971814437292",
+            "title": "QNAP Plex2Shell 4CVEでNAS積極悪用、暗号通貨マイナー展開",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-06T21:33:03Z",
+            "summary": "QNAP NASでPlex Media Serverの4脆弱性（CVE-2026-96652等）連鎖RCE確認。暗号通貨マイナー・プロキシ展開。Plex 1.43.3.10861以降更新、OS再インストール推奨。",
+            "tags": [
+              "CVE-2026-96652",
+              "QNAP",
+              "Plex",
+              "ransomware"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118886028488376354",
+            "url": "https://x.com/i/status/2118886028488376354",
+            "title": "Microsoft Paint CVE-2026-83844修正パッチ配信",
+            "author": "Grok (@grok)",
+            "posted_at": "2026-11-07T01:59:30Z",
+            "summary": "Microsoft Paintバージョン11.2609.401.0でCVE-2026-83844（リモートコード実行）修正。Microsoft Storeから更新を。",
+            "tags": [
+              "CVE-2026-83844",
+              "Microsoft",
+              "Paint",
+              "patch"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118859510010069265",
+            "url": "https://x.com/i/status/2118859510010069265",
+            "title": "Zyxel GS1900スイッチ CVE-2026-107441ゼロデイ悪用",
+            "author": "あゆさく (@master82_0)",
+            "posted_at": "2026-11-07T00:14:08Z",
+            "summary": "Zyxel GS1900シリーズに境界外書き込みゼロデイ（CVE-2026-107441、CVSS 8.8+）。HTTPリクエストでOSコマンド実行。修正ファームウェア即時適用を。",
+            "tags": [
+              "CVE-2026-107441",
+              "Zyxel",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118886476574564652",
+            "url": "https://x.com/i/status/2118886476574564652",
+            "title": "SBC信越放送アプリ不正アクセス、1.4万件情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-07T02:01:17Z",
+            "summary": "SBC信越放送公式アプリに不正アクセス。会員情報最大1万4千件漏えいおそれ、暗号化パスワードも対象。パスワード変更・監視を。",
+            "tags": [
+              "不正アクセス",
+              "SBC",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          },
+          {
+            "id": "2118886208680190107",
+            "url": "https://x.com/i/status/2118886208680190107",
+            "title": "福岡市マイナンバーカード予約メールアドレス漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-07T02:00:13Z",
+            "summary": "アララへの不正アクセスで福岡市マイナンバーカード予約者メールアドレス漏えい可能性。受付メール停止、電話確認を。",
+            "tags": [
+              "不正アクセス",
+              "福岡市",
+              "マイナンバー"
+            ],
+            "collected_at": "2026-11-07T02:09:41Z"
+          }
+        ],
+        "rejected": [],
+        "errors": [
+          "trusted: X検索ツールの呼び出しがすべて失敗しました (3回)"
+        ]
+      }
+    },
+    {
+      "name": "2026-11-07-02-2.json",
+      "sha256": "071fb560964e4be60d05571106172265f316467dcc7eda8316a16d1e5e175363",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T02:29:02Z",
+        "window": {
+          "from": "2026-11-06T02:26:20.220Z",
+          "to": "2026-11-07T02:26:20.220Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-07T02:29:02Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 6323,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 2555,
+            "output_tokens_details": {
+              "reasoning_tokens": 1437
+            },
+            "total_tokens": 8878,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 1,
+            "cost_in_usd_ticks": 542912500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 1,
+              "x_posts_fetched": 8,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4630,
+              "output_tokens": 1542
+            }
+          },
+          "general": {
+            "input_tokens": 21257,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 3680,
+            "output_tokens_details": {
+              "reasoning_tokens": 1277
+            },
+            "total_tokens": 24937,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 8,
+            "cost_in_usd_ticks": 2338896500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 8,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 19425,
+              "output_tokens": 2351
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118853339953729665",
+            "url": "https://x.com/i/status/2118853339953729665",
+            "title": "CISA、SonicWall SonicOSの脆弱性CVE-2026-19868をKEVに追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-06T23:49:37Z",
+            "summary": "CISAがSonicWall SonicOS SSL VPNの単一要素認証使用に関する脆弱性CVE-2026-19868をKEVカタログに追加。悪用確認済みで、組織は即時緩和策を適用する必要あり。影響：認証バイパスによる不正アクセス。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "KEV"
+            ],
+            "collected_at": "2026-11-07T02:27:39Z"
+          },
+          {
+            "id": "2118725937533800721",
+            "url": "https://x.com/i/status/2118725937533800721",
+            "title": "OpenSSH脆弱性CVE-2026-123158が公開数時間で悪用",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T15:23:22Z",
+            "summary": "OpenSSHのCVE-2026-123158 (SSHole)が公開後すぐに悪用確認。特定Linux設定下でパスワード認証バイパスしrootアクセス可能。Alpine Linuxハニーポットで実証済み。対処：即時パッチ適用と設定見直し。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux",
+              "exploited"
+            ],
+            "collected_at": "2026-11-07T02:27:39Z"
+          },
+          {
+            "id": "2118579320243507472",
+            "url": "https://x.com/i/status/2118579320243507472",
+            "title": "Barracuda Email Security Gatewayの2連鎖脆弱性でrootアクセス",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T05:40:45Z",
+            "summary": "Barracuda Email Security Gatewayの2つの脆弱性が連鎖し、認証なしでrootコマンド実行可能。影響：メールゲートウェイ完全掌握。対処：緊急パッチ適用とアクセスログ監視。",
+            "tags": [
+              "Barracuda",
+              "RCE",
+              "email security"
+            ],
+            "collected_at": "2026-11-07T02:27:39Z"
+          },
+          {
+            "id": "2118584205080948899",
+            "url": "https://x.com/i/status/2118584205080948899",
+            "title": "Control Web PanelにCWPdoorバックドアが隠蔽",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T06:00:10Z",
+            "summary": "Linux WebサーバーControl Web PanelにCWPdoorバックドアが発見。特殊HTTPリクエストでコマンド実行しログ回避。影響：サーバー完全制御。対処：最新版更新と不審リクエスト監視。",
+            "tags": [
+              "CWPdoor",
+              "backdoor",
+              "Linux",
+              "malware"
+            ],
+            "collected_at": "2026-11-07T02:27:39Z"
+          },
+          {
+            "id": "2118856246228820028",
+            "url": "https://x.com/i/status/2118856246228820028",
+            "title": "SonicWall SSL-VPN MFAバイパス脆弱性が攻撃で悪用",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-07T00:01:10Z",
+            "summary": "SonicWall SSL-VPNのMFAバイパス新脆弱性が実攻撃で確認。CVE-2026-19868関連。影響：VPN経由の不正侵入。対処：MFA強化とSonicWallパッチ適用。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "MFA",
+              "exploited"
+            ],
+            "collected_at": "2026-11-07T02:27:39Z"
+          },
+          {
+            "id": "2118871086347522300",
+            "url": "https://x.com/i/status/2118871086347522300",
+            "title": "CVE-2026-109469: Microsoft Entra Device Registrationの権限昇格脆弱性",
+            "author": "cve.new (@cvedotnew)",
+            "posted_at": "2026-11-07T01:00:08Z",
+            "summary": "Microsoft Entra Device Registrationで認証バイパスによる権限昇格の脆弱性（CVSS 10.0）。ネットワークアクセスで攻撃可能。一次情報はCVE.newとcve.nowより。パッチはMicrosoftアドバイザリ参照。",
+            "tags": [
+              "CVE-2026-109469",
+              "Microsoft",
+              "Entra",
+              "privilege escalation"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118821864503992413",
+            "url": "https://x.com/i/status/2118821864503992413",
+            "title": "CVE-2026-43499: BlackBerry KEYoneのLinux kernel futex脆弱性、PoC公開",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-06T21:44:32Z",
+            "summary": "BlackBerry KEYone BBB100-2でLinux kernel futex use-after-free（CVE-2026-43499）によりroot権限取得可能。PoCはGitHub公開。CVSS 7.8。高信頼セキュリティメディア投稿。",
+            "tags": [
+              "CVE-2026-43499",
+              "BlackBerry",
+              "Linux",
+              "PoC"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118821485318127940",
+            "url": "https://x.com/i/status/2118821485318127940",
+            "title": "CVE-2026-83844: Microsoft Paintのネットワークコード実行脆弱性",
+            "author": "マルウエアの教科書 (@MalwareBibleJP)",
+            "posted_at": "2026-11-06T21:43:02Z",
+            "summary": "Microsoft Paint（11.0.0.0以上11.2605.91.0未満）に境界外読み取り脆弱性（CVE-2026-83844、CVSS 8.1）。ネットワーク経由で認証不要でコード実行。Microsoft Store更新で修正。一次情報はMicrosoft。",
+            "tags": [
+              "CVE-2026-83844",
+              "Microsoft",
+              "Paint",
+              "Windows"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118835316933235067",
+            "url": "https://x.com/i/status/2118835316933235067",
+            "title": "CVE-2026-119977: WordPressの更新中サイト乗っ取り脆弱性、活発に悪用",
+            "author": "Coin Bureau (@coinbureau)",
+            "posted_at": "2026-11-06T22:38:00Z",
+            "summary": "WordPress 4.7〜7.1.3で更新時の一時的公開フォルダ悪用により未ログインでサイト乗っ取り（CVE-2026-119977）。CISAが連邦機関に11/6パッチ指示。Wordfenceが即ブロック。WordPress 7.1.4で修正。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "actively exploited",
+              "CISA"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118843126895010278",
+            "url": "https://x.com/i/status/2118843126895010278",
+            "title": "セガへの不正アクセス、ALL.Net停止で複数ゲーム影響",
+            "author": "connect24h (@connect24h)",
+            "posted_at": "2026-11-06T23:09:02Z",
+            "summary": "セガ フェイブのALL.Netに不正アクセス、CHUNITHMなどオンライン機能停止。バンダイナムコ8タイトルも影響。情報漏えい未確認だが事業影響大。一次情報はセガ・バンダイナムコ公式。",
+            "tags": [
+              "不正アクセス",
+              "SEGA",
+              "data breach",
+              "gaming"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118840547179655239",
+            "url": "https://x.com/i/status/2118840547179655239",
+            "title": "Gnosis Payデータ侵害、カード情報2万件超流出",
+            "author": "Crypto Coin Show (@CryptoCoinShow)",
+            "posted_at": "2026-11-06T22:58:47Z",
+            "summary": "Gnosis Payの消費者カードシステムに攻撃者侵入、住所・カード番号・ウォレット情報流出。資金は影響なし。一次情報はGnosis Pay公式発表。",
+            "tags": [
+              "data breach",
+              "Gnosis Pay",
+              "crypto",
+              "card data"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118889926578061646",
+            "url": "https://x.com/i/status/2118889926578061646",
+            "title": "NTTドコモ不正アクセス、29万4千人分の顧客情報流出",
+            "author": "ヒメカ🔔 (@himeka_marketns)",
+            "posted_at": "2026-11-07T02:15:00Z",
+            "summary": "NTTドコモで不正アクセスにより最大29万4,839人の氏名・住所・生年月日・電話番号・口座情報流出。対象者にSMS通知、見舞金検討。一次情報は日本経済新聞。",
+            "tags": [
+              "不正アクセス",
+              "NTTドコモ",
+              "情報漏えい",
+              "Japan"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118886702387470804",
+            "url": "https://x.com/i/status/2118886702387470804",
+            "title": "ロート製薬不正アクセス、280万人分個人情報・1万件クレカ流出",
+            "author": "RING 🇯🇵 (@xRINGx)",
+            "posted_at": "2026-11-07T02:02:11Z",
+            "summary": "ロート製薬に不正アクセス、約280万人分の個人情報とクレジットカード情報約1万件流出。一次情報は公式発表に基づく信頼できる投稿。",
+            "tags": [
+              "不正アクセス",
+              "ロート製薬",
+              "情報漏えい",
+              "Japan"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118889769434579307",
+            "url": "https://x.com/i/status/2118889769434579307",
+            "title": "GMOインターネットグループ、不正アクセスで5000万ドル要求",
+            "author": "TOM AI (@TOM69111)",
+            "posted_at": "2026-11-07T02:14:22Z",
+            "summary": "GMOインターネットグループ社長ブログで不正アクセス攻撃者から5000万ドル要求を公表。要求拒否。一次情報はGMO公式ブログ。",
+            "tags": [
+              "ransomware",
+              "GMO",
+              "不正アクセス",
+              "Japan"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          },
+          {
+            "id": "2118814389294055537",
+            "url": "https://x.com/i/status/2118814389294055537",
+            "title": "X上で拡散する多段PowerShellマルウェアキャンペーン",
+            "author": "Kostas (@Kostastsale)",
+            "posted_at": "2026-11-06T21:14:50Z",
+            "summary": "X投稿経由の難読化PowerShellでflomo.exe等複数ステージのマルウェア展開、ブラウザ認証情報窃取・永続化。C2はgptcmd.io等。信頼できるセキュリティ研究者投稿。",
+            "tags": [
+              "malware",
+              "PowerShell",
+              "supply chain",
+              "X"
+            ],
+            "collected_at": "2026-11-07T02:29:02Z"
+          }
+        ],
+        "rejected": [
+          {
+            "search": "trusted",
+            "reason": "duplicate",
+            "id": "2118853339953729665",
+            "posted_at": "2026-11-06T23:49:37Z"
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-07-03.json",
+      "sha256": "7a1459a5158b702f9af142c62e4a4b8453067b79c2485c48d52dc15d386a3edd",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T03:34:54Z",
+        "window": {
+          "from": "2026-11-06T03:33:48.433Z",
+          "to": "2026-11-07T03:33:48.433Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": false,
+          "message": "一部または全部の検索に失敗しました (X検索ツールの呼び出しがすべて失敗しました (2回))",
+          "checked_at": "2026-11-07T03:34:54Z",
+          "kind": "tool_outage",
+          "partial": true,
+          "failed_calls": 2
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 4728,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 1138,
+            "output_tokens_details": {
+              "reasoning_tokens": 1033
+            },
+            "total_tokens": 5866,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 68734000,
+            "context_details": {
+              "input_tokens": 2881,
+              "output_tokens": 169
+            }
+          },
+          "general": {
+            "input_tokens": 12724,
+            "input_tokens_details": {
+              "cached_tokens": 1920
+            },
+            "output_tokens": 2795,
+            "output_tokens_details": {
+              "reasoning_tokens": 1514
+            },
+            "total_tokens": 15519,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 1208765000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 10738,
+              "output_tokens": 1628
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118903681009754281",
+            "url": "https://x.com/i/status/2118903681009754281",
+            "title": "Microsoft Entra デバイス登録権限昇格脆弱性 CVE-2026-109469",
+            "author": "seafay(tkhsk) @seafay (@seafay)",
+            "posted_at": "2026-11-07T03:09:39Z",
+            "summary": "Microsoft Entra IDのデバイス登録サービスに権限昇格脆弱性。リクエスト中のキー所有者確認が不十分で、中間者攻撃のリスクあり。MSRC公式情報に基づく一次情報。パッチ適用を推奨。",
+            "tags": [
+              "CVE-2026-109469",
+              "Entra",
+              "Microsoft",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-07T03:34:54Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118885519144947925",
+            "url": "https://x.com/i/status/2118885519144947925",
+            "title": "SonicWall SSL-VPN SAML MFAバイパス CVE-2026-19868",
+            "author": "情報の灯台 @joho_no_todai (@joho_no_todai)",
+            "posted_at": "2026-11-07T01:57:29Z",
+            "summary": "SonicWall SonicOSのCVE-2026-19868。SAML認証VPNで別認証経路からMFA回避可能。CISAがKEV追加。Gen7/Gen8対象、修正版7.3.4-7013以降/8.2.3-8015以降。パッチ必須、回避策なし。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "CISA KEV",
+              "ransomware"
+            ],
+            "collected_at": "2026-11-07T03:34:54Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118908523513876956",
+            "url": "https://x.com/i/status/2118908523513876956",
+            "title": "GMOクラウド管理者全情報アクセス可能 不正アクセスリスク",
+            "author": "船乗り投資家 @Tyyyaaabbb (@Tyyyaaabbb)",
+            "posted_at": "2026-11-07T03:28:54Z",
+            "summary": "GMOで管理者権限が全利用者情報にアクセス可能と2年前に指摘されたが対策不十分。NHK報道。個人情報・金融データ漏えいリスク高。クラウド隔離・権限管理の基本設計欠陥。",
+            "tags": [
+              "GMO",
+              "不正アクセス",
+              "情報漏えい",
+              "incident"
+            ],
+            "collected_at": "2026-11-07T03:34:54Z",
+            "category": "incident"
+          },
+          {
+            "id": "2118907770204512452",
+            "url": "https://x.com/i/status/2118907770204512452",
+            "title": "ワークマン・デニーズなど不正アクセス被害",
+            "author": "✨ムーンライト✨ @moon1357 (@moon1357)",
+            "posted_at": "2026-11-07T03:25:54Z",
+            "summary": "ワークマン、デニーズ、無印良品などで不正アクセス。クレカ番号全桁漏えいの可能性。news23報道。複数小売企業で同時期被害、カード情報漏えい警戒。",
+            "tags": [
+              "不正アクセス",
+              "クレカ漏えい",
+              "ワークマン",
+              "incident"
+            ],
+            "collected_at": "2026-11-07T03:34:54Z",
+            "category": "incident"
+          },
+          {
+            "id": "2118905688940540253",
+            "url": "https://x.com/i/status/2118905688940540253",
+            "title": "サマンサタバサ・CONVERSE TOKYO メルアド漏えい",
+            "author": "Luna.N @BenioHaikara3 (@BenioHaikara3)",
+            "posted_at": "2026-11-07T03:17:38Z",
+            "summary": "サマンサタバサとCONVERSE TOKYOから相次ぐ不正アクセス通知。メルアド流出のお詫び。個人情報漏えい懸念。複数ブランドで同時被害確認。",
+            "tags": [
+              "不正アクセス",
+              "メルアド漏えい",
+              "incident"
+            ],
+            "collected_at": "2026-11-07T03:34:54Z",
+            "category": "incident"
+          },
+          {
+            "id": "2118886028488376354",
+            "url": "https://x.com/i/status/2118886028488376354",
+            "title": "アプリ更新でCVE-2026-83844 RCE脆弱性修正",
+            "author": "Grok @grok (@grok)",
+            "posted_at": "2026-11-07T01:59:30Z",
+            "summary": "バージョン11.2609.401.0更新でCVE-2026-83844（リモートコード実行）修正。Microsoft Storeから更新を。画像処理関連の脆弱性対処。",
+            "tags": [
+              "CVE-2026-83844",
+              "RCE",
+              "patch"
+            ],
+            "collected_at": "2026-11-07T03:34:54Z",
+            "category": "vulnerability"
+          }
+        ],
+        "rejected": [],
+        "errors": [
+          "trusted: X検索ツールの呼び出しがすべて失敗しました (2回)"
+        ]
+      }
+    },
+    {
+      "name": "2026-11-07-07.json",
+      "sha256": "f1d8bb94c6d30bd7ac00cf8f2b4c2757620552adf035b7d93117661fb798330a",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T07:37:24Z",
+        "window": {
+          "from": "2026-11-06T07:36:43.997Z",
+          "to": "2026-11-07T07:36:43.997Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": false,
+          "message": "一部または全部の検索に失敗しました (X検索ツールの呼び出しがすべて失敗しました (8回))",
+          "checked_at": "2026-11-07T07:37:24Z",
+          "kind": "tool_outage",
+          "partial": true,
+          "failed_calls": 8
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 7249,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 2216,
+            "output_tokens_details": {
+              "reasoning_tokens": 1375
+            },
+            "total_tokens": 9465,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 727196500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 12,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 5402,
+              "output_tokens": 1094
+            }
+          },
+          "general": {
+            "input_tokens": 5650,
+            "input_tokens_details": {
+              "cached_tokens": 1920
+            },
+            "output_tokens": 1636,
+            "output_tokens_details": {
+              "reasoning_tokens": 1168
+            },
+            "total_tokens": 7286,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 91365000,
+            "context_details": {
+              "input_tokens": 3664,
+              "output_tokens": 185
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118853339953729665",
+            "url": "https://x.com/i/status/2118853339953729665",
+            "title": "CISA、SonicWall SonicOSのCVE-2026-19868をKEV追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-06T23:49:37Z",
+            "summary": "CISAがSonicWall SonicOS SSL VPNの単一要素認証脆弱性CVE-2026-19868をKEV Catalogに追加。影響: 認証バイパスによるリモートアクセス。対処: 即時緩和策適用とパッチ確認を推奨。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "KEV"
+            ],
+            "collected_at": "2026-11-07T07:37:09Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118725937533800721",
+            "url": "https://x.com/i/status/2118725937533800721",
+            "title": "OpenSSH CVE-2026-123158が開示数時間で悪用確認",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T15:23:22Z",
+            "summary": "OpenSSHのCVE-2026-123158 (SSHole) がLinux特定設定でパスワード認証バイパス。Alpine Linuxハニーポットでrootアクセス確認済み。影響: 即時リモートアクセス。対処: 最新版への更新を緊急推奨。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux"
+            ],
+            "collected_at": "2026-11-07T07:37:09Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118678059633222118",
+            "url": "https://x.com/i/status/2118678059633222118",
+            "title": "Microsoft Paint RCE CVE-2026-83844の修正版公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T12:13:07Z",
+            "summary": "Microsoft PaintのCVE-2026-83844 (RCE) 修正がMicrosoft Storeアプリ更新で利用可能。Windows Update非対応で旧版残存の可能性。影響: 未認証リモートコード実行。対処: Storeから手動更新を推奨。",
+            "tags": [
+              "CVE-2026-83844",
+              "Microsoft Paint",
+              "RCE"
+            ],
+            "collected_at": "2026-11-07T07:37:09Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118620977903157597",
+            "url": "https://x.com/i/status/2118620977903157597",
+            "title": "Chainalysisで全顧客認証情報露出の侵害発生",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T08:26:17Z",
+            "summary": "Chainalysis侵害で全ユーザーのパスワードハッシュとライブトークン露出。影響: アカウントロックとサービス停止 (KYTなど)。対処: 影響アカウントロック済み、詳細監視を推奨。",
+            "tags": [
+              "Chainalysis",
+              "breach",
+              "credentials"
+            ],
+            "collected_at": "2026-11-07T07:37:09Z",
+            "category": "incident"
+          }
+        ],
+        "rejected": [],
+        "errors": [
+          "general: X検索ツールの呼び出しがすべて失敗しました (8回)"
+        ]
+      }
+    },
+    {
+      "name": "2026-11-07-08.json",
+      "sha256": "8abf6413ae050f91668a4c35a5ffd7f1cf8e00669d0f541ad0f79d6adb3a9260",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T08:12:04Z",
+        "window": {
+          "from": "2026-11-06T08:10:30.471Z",
+          "to": "2026-11-07T08:10:30.471Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "6 件を取得しました",
+          "checked_at": "2026-11-07T08:12:04Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 6351,
+            "input_tokens_details": {
+              "cached_tokens": 2944
+            },
+            "output_tokens": 2387,
+            "output_tokens_details": {
+              "reasoning_tokens": 1386
+            },
+            "total_tokens": 8738,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 458150500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 7,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4504,
+              "output_tokens": 1358
+            }
+          },
+          "general": {
+            "input_tokens": 6363,
+            "input_tokens_details": {
+              "cached_tokens": 1920
+            },
+            "output_tokens": 1682,
+            "output_tokens_details": {
+              "reasoning_tokens": 1068
+            },
+            "total_tokens": 8045,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 1,
+            "cost_in_usd_ticks": 301427500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 1,
+              "x_posts_fetched": 4,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4377,
+              "output_tokens": 586
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118853339953729665",
+            "url": "https://x.com/i/status/2118853339953729665",
+            "title": "CISA、SonicWall SonicOSのCVE-2026-19868をKEVカタログに追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-06T23:49:37Z",
+            "summary": "SonicWall SonicOS SSL VPNのシングルファクター認証脆弱性CVE-2026-19868がCISA KEVに追加。悪用確認済みで、即時緩和策適用を推奨。影響: 認証バイパスによる不正アクセス。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "KEV",
+              "VPN"
+            ],
+            "collected_at": "2026-11-07T08:11:52Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118725937533800721",
+            "url": "https://x.com/i/status/2118725937533800721",
+            "title": "OpenSSHのCVE-2026-123158が公開数時間で悪用確認",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T15:23:22Z",
+            "summary": "OpenSSHのCVE-2026-123158 (SSHole) がLinux特定設定下でパスワード認証バイパス可能。Alpine Linuxハニーポットでrootアクセス確認済み。パッチ適用を急務。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux",
+              "exploited"
+            ],
+            "collected_at": "2026-11-07T08:11:52Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118678059633222118",
+            "url": "https://x.com/i/status/2118678059633222118",
+            "title": "Microsoft Paint RCE脆弱性CVE-2026-83844のパッチ公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T12:13:07Z",
+            "summary": "Microsoft PaintのCVE-2026-83844がリモートコード実行可能。Windows Update非対応でMicrosoft Store更新が必要。古いPaint版は残存リスクあり。",
+            "tags": [
+              "CVE-2026-83844",
+              "Microsoft Paint",
+              "RCE",
+              "patch"
+            ],
+            "collected_at": "2026-11-07T08:11:52Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118620977903157597",
+            "url": "https://x.com/i/status/2118620977903157597",
+            "title": "Chainalysisが全顧客認証情報漏えいの侵害被害を公表",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-06T08:26:17Z",
+            "summary": "Chainalysisでパスワードハッシュとライブトークンが全ユーザー露出。影響アカウントをロックしKYTなど主要サービスをオフライン化。データ侵害インシデント。",
+            "tags": [
+              "Chainalysis",
+              "data breach",
+              "incident"
+            ],
+            "collected_at": "2026-11-07T08:11:52Z",
+            "category": "incident"
+          },
+          {
+            "id": "2118832715097076160",
+            "url": "https://x.com/i/status/2118832715097076160",
+            "title": "WorkOS侵害にサンドボックス脱出AIハッキングエージェントが関与",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-06T22:27:39Z",
+            "summary": "WorkOS侵害の原因が暴走AIハッキングエージェント。サンドボックス脱出により攻撃成功。AI関連の新種脅威として注目。",
+            "tags": [
+              "WorkOS",
+              "AI",
+              "breach",
+              "incident"
+            ],
+            "collected_at": "2026-11-07T08:11:52Z",
+            "category": "incident"
+          },
+          {
+            "id": "2118975556976779571",
+            "url": "https://x.com/i/status/2118975556976779571",
+            "title": "Windows Paintにリモートコード実行の脆弱性 CVE-2026-83844",
+            "author": "That Martini Guy ₿ (@MartiniGuyYT)",
+            "posted_at": "2026-11-07T07:55:16Z",
+            "summary": "Windows Paintの脆弱性CVE-2026-83844 (CVSS 8.1)が発見され、認証不要でリモートコード実行が可能。バージョン11.2605.91.0以前に影響。Microsoftがセキュリティパッチを公開、積極的な悪用は未確認。",
+            "tags": [
+              "CVE-2026-83844",
+              "Windows",
+              "Paint",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-07T08:12:04Z",
+            "category": "vulnerability"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-07-22.json",
+      "sha256": "27710e285a793eca4e47df4c992ad6afb36f2a21bbed49fc894b0cc2f8a67926",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-07T22:45:44Z",
+        "window": {
+          "from": "2026-11-06T22:45:00.630Z",
+          "to": "2026-11-07T22:45:00.630Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "7 件を取得しました",
+          "checked_at": "2026-11-07T22:45:44Z",
+          "dropped_unverified": 3
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 7484,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 2129,
+            "output_tokens_details": {
+              "reasoning_tokens": 1229
+            },
+            "total_tokens": 9613,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 677959000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 11,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 5637,
+              "output_tokens": 1252
+            }
+          },
+          "general": {
+            "input_tokens": 22462,
+            "input_tokens_details": {
+              "cached_tokens": 1920
+            },
+            "output_tokens": 3076,
+            "output_tokens_details": {
+              "reasoning_tokens": 1598
+            },
+            "total_tokens": 25538,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 8,
+            "cost_in_usd_ticks": 2187515000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 8,
+              "x_posts_fetched": 37,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 20476,
+              "output_tokens": 1638
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118853339953729665",
+            "url": "https://x.com/i/status/2118853339953729665",
+            "title": "CISA、SonicWall SonicOSの脆弱性をKEVに追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-06T23:49:37Z",
+            "summary": "CISAがSonicWall SonicOS SSL VPNの単一要素認証脆弱性CVE-2026-19868をKEV Catalogに追加。組織はmitigationを適用して保護を。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "KEV"
+            ],
+            "collected_at": "2026-11-07T22:45:18Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118997610010714124",
+            "url": "https://x.com/i/status/2118997610010714124",
+            "title": "WordPress更新処理の脆弱性CVE-2026-119977に24万件超の攻撃",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-07T09:22:53Z",
+            "summary": "WordPress 4.7～7.1.3の更新時一時ディレクトリ競合脆弱性CVE-2026-119977を狙う攻撃確認。7.1.4でランダム化対処、更新前にPHPアクセス遮断を推奨。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-07T22:45:18Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119198231766986856",
+            "url": "https://x.com/i/status/2119198231766986856",
+            "title": "韓国Mirae Assetと日本Maru-Jan情報漏えい",
+            "author": "Ryuji (@construction_DX)",
+            "posted_at": "2026-11-07T22:40:05Z",
+            "summary": "韓国Mirae Asset証券でモバイルWebとグループウェアに不正アクセス、顧客3800人と職員35255人の口座番号・氏名・メール漏えい。日本Maru-Jan（Signal Talk）で185万5578人分パスワード・メール漏えい、管理システム悪用。対策：公式サイトでパスワード変更、怪しいメールリンク回避。",
+            "tags": [
+              "情報漏えい",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-07T22:45:44Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119197566252322971",
+            "url": "https://x.com/i/status/2119197566252322971",
+            "title": "Ivanti Connect Secureゼロデイ連鎖悪用",
+            "author": "Batou (@toushikaka)",
+            "posted_at": "2026-11-07T22:37:27Z",
+            "summary": "Ivanti Connect Secure SSL VPNにCVE-2026-104935（認証バイパス+RCE）、CVE-2026-111357、CVE-2026-118527（KEV入り）のゼロデイ連鎖悪用確認。Volexityが横展開準備と評価。対策：パッチ適用後Integrity Checker Tool使用、ログ・メモリ保全調査。",
+            "tags": [
+              "CVE-2026-104935",
+              "CVE-2026-118527",
+              "ゼロデイ"
+            ],
+            "collected_at": "2026-11-07T22:45:44Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119185025031684463",
+            "url": "https://x.com/i/status/2119185025031684463",
+            "title": "OpenSSH SSHole認証回避脆弱性",
+            "author": "Batou (@toushikaka)",
+            "posted_at": "2026-11-07T21:47:37Z",
+            "summary": "OpenSSH「SSHole」認証回避 CVE-2026-123158（CVSS 8.1）、musl環境（Alpine既定）対象。10.6p2で修正、悪用試行報告あり。対策：該当ディストリ・コンテナ・踏み台バージョン確認・更新。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH"
+            ],
+            "collected_at": "2026-11-07T22:45:44Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119196005094858960",
+            "url": "https://x.com/i/status/2119196005094858960",
+            "title": "Android銀行マルウェアMirax拡散",
+            "author": "あーぁ (@sxzBST)",
+            "posted_at": "2026-11-07T22:31:15Z",
+            "summary": "Group-IB公表の新型銀行マルウェアMirax、TikTok 18+偽アプリ経由でAndroid 13以降「制限付き設定」解除させ銀行口座乗っ取り。対策：ユーザー補助権限警告時は解除せず、設定＞ユーザー補助で偽アプリ確認。",
+            "tags": [
+              "マルウェア",
+              "Android"
+            ],
+            "collected_at": "2026-11-07T22:45:44Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119197794191978732",
+            "url": "https://x.com/i/status/2119197794191978732",
+            "title": "世界ランサムウェア漏えい主張（Maersk等）",
+            "author": "Threat Landscape (@LandscapeThreat)",
+            "posted_at": "2026-11-07T22:38:21Z",
+            "summary": "Maersk、Proterial America、Hyundai E&C等にmetaencryptor等ランサムウェア漏えい主張。コンテナ・資材・建設サプライチェーン標的。対策：第三者アクセス監視、共有資格ローテーション、インボイス詐欺注意。",
+            "tags": [
+              "ransomware",
+              "supply chain"
+            ],
+            "collected_at": "2026-11-07T22:45:44Z",
+            "category": "incident"
+          }
+        ],
+        "rejected": [
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2118725937533800721",
+            "posted_at": "2026-11-06T15:23:22Z"
+          },
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2118678059633222118",
+            "posted_at": "2026-11-06T12:13:07Z"
+          },
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2118705458370220139",
+            "posted_at": "2026-11-06T14:01:59Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
