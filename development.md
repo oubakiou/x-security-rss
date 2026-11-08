@@ -100,6 +100,10 @@ Actions の変数 `XAI_MODEL` なら、コードを変えずに切り替えと�
 - **回答の形**: 最終メッセージが JSON として解析でき、出典の検証を通った件数が十分あること。
   検索の途中で応答が終わり、最終回答がないことがある。
 
+収集の最後に、費用と件数を `cost-summary ` で始まる JSON の1行でログに出す (`src/lib/usage.ts`)。
+検索ごとの `x_search_calls`・`x_posts_fetched`・トークン数・`cost_usd`・採用件数と合計を含み、
+エージェントが Actions のログから集計する用途を想定している。
+
 ローカルで試す場合は、API キーを環境のシークレット (`api.x.ai` 宛ての Bearer) で渡し、
 `NODE_USE_ENV_PROXY=1` を付けて `stream: true` で呼ぶ。Claude Code on the web のプロキシは
 応答の開始まで約30秒で接続を切る (`upstream request failed` の 502) ため、ストリームでないと
