@@ -258,6 +258,7 @@ export function normalizeItems(
         .filter(Boolean)
         .slice(0, LIMITS.tags),
       collected_at: opts.collectedAt,
+      ...(citedHandle ? { author_handle: citedHandle } : {}),
       ...withCategory(r.category),
     });
   }
@@ -297,6 +298,9 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
         summary: cleanText(t.summary, LIMITS.summary),
         tags: (Array.isArray(t.tags) ? t.tags : []).map((x) => cleanText(x, LIMITS.tag)).filter(Boolean),
         collected_at: cleanText(t.collected_at, 30),
+        ...(typeof t.author_handle === "string" && HANDLE_RE.test(t.author_handle)
+          ? { author_handle: t.author_handle.toLowerCase() }
+          : {}),
         ...withCategory(t.category),
       });
     }
@@ -521,6 +525,26 @@ if (import.meta.vitest) {
       expect(dropped).toBe(1);
     });
 
+    it("records author_handle only when the citation confirms it", () => {
+      const cited = new Map<string, string | undefined>([
+        [ID1, "realacct"],
+        [ID2, undefined],
+      ]);
+      const { items } = normalizeItems(
+        {
+          items: [
+            { ...base, url: `https://x.com/RealAcct/status/${ID1}` },
+            { ...base, url: `https://x.com/ClaimedAcct/status/${ID2}` },
+          ],
+        },
+        cited,
+        opts,
+      );
+      expect(items[0]!.author_handle).toBe("realacct");
+      expect(items[1]!.author).toContain("(@ClaimedAcct)");
+      expect(items[1]!.author_handle).toBeUndefined();
+    });
+
     it("rejects posts from excluded handles, case-insensitively", () => {
       const cited = new Map<string, string | undefined>([
         [ID1, "spambot"],
@@ -597,6 +621,16 @@ if (import.meta.vitest) {
       tags: [],
       collected_at: AT,
     });
+    it("keeps a stored author_handle only when it is a valid handle", () => {
+      const merged = mergeTopics(
+        [[{ ...t("1"), author_handle: "Good_1" }, { ...t("2"), author_handle: "bad handle!" }, t("3")]],
+        10,
+      );
+      expect(merged.find((x) => x.id === "1")!.author_handle).toBe("good_1");
+      expect(merged.find((x) => x.id === "2")!.author_handle).toBeUndefined();
+      expect(merged.find((x) => x.id === "3")!.author_handle).toBeUndefined();
+    });
+
     it("keeps a stored category only when it is known", () => {
       const merged = mergeTopics(
         [

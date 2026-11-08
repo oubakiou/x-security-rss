@@ -1,5 +1,6 @@
 import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { DEFAULT_TRUSTED_HANDLES, parseHandles } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
 import { toStatus } from "./lib/failure.ts";
 import { mergeTopics } from "./lib/items.ts";
@@ -27,6 +28,9 @@ const meta: FeedMeta = {
   feedUrl: `${site}feed.xml`,
   jsonFeedUrl: `${site}feed.json`,
   sourceUrl: "https://github.com/oubakiou/x-security-rss",
+  trustedHandles: new Set(
+    parseHandles(process.env.TRUSTED_HANDLES, DEFAULT_TRUSTED_HANDLES).map((h) => h.toLowerCase()),
+  ),
 };
 
 async function readPrevManifest(): Promise<Manifest | undefined> {
