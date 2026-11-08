@@ -163,6 +163,8 @@ export interface NormalizeOptions {
   maxItems: number;
   /** ids already taken by an earlier search (skipped, not counted as dropped) */
   exclude?: Set<string>;
+  /** lowercase handles whose posts are never published */
+  excludedHandles?: Set<string>;
 }
 
 export type RejectReason =
@@ -171,6 +173,7 @@ export type RejectReason =
   | "not_cited"
   | "duplicate"
   | "handle_mismatch"
+  | "excluded_handle"
   | "before_window"
   | "after_window"
   | "over_limit";
@@ -224,13 +227,15 @@ export function normalizeItems(
         ? "duplicate"
         : citedHandle && citedHandle !== ref.handle?.toLowerCase()
           ? "handle_mismatch"
-          : time.getTime() < opts.notBefore
-            ? "before_window"
-            : time.getTime() > notAfter
-              ? "after_window"
-              : items.length >= opts.maxItems
-                ? "over_limit"
-                : undefined;
+          : opts.excludedHandles?.has((citedHandle ?? ref.handle ?? "").toLowerCase())
+            ? "excluded_handle"
+            : time.getTime() < opts.notBefore
+              ? "before_window"
+              : time.getTime() > notAfter
+                ? "after_window"
+                : items.length >= opts.maxItems
+                  ? "over_limit"
+                  : undefined;
     if (reason) {
       rejected.push({ reason, id: ref.id, posted_at });
       continue;
@@ -514,6 +519,25 @@ if (import.meta.vitest) {
       );
       expect(items).toEqual([]);
       expect(dropped).toBe(1);
+    });
+
+    it("rejects posts from excluded handles, case-insensitively", () => {
+      const cited = new Map<string, string | undefined>([
+        [ID1, "spambot"],
+        [ID2, undefined],
+      ]);
+      const { items, rejected } = normalizeItems(
+        {
+          items: [
+            { ...base, url: `https://x.com/SpamBot/status/${ID1}` },
+            { ...base, url: `https://x.com/SPAMBOT/status/${ID2}` },
+          ],
+        },
+        cited,
+        { ...opts, excludedHandles: new Set(["spambot"]) },
+      );
+      expect(items).toEqual([]);
+      expect(rejected.map((r) => r.reason)).toEqual(["excluded_handle", "excluded_handle"]);
     });
 
     it("caps field sizes", () => {
