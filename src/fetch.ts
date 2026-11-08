@@ -6,7 +6,7 @@
  */
 import { mkdir, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { DEFAULT_TRUSTED_HANDLES, parseHandles, rollingWindow } from "./lib/config.ts";
+import { DEFAULT_TRUSTED_HANDLES, parseExcludedHandles, parseHandles, rollingWindow } from "./lib/config.ts";
 import { intEnv, logSafe } from "./lib/env.ts";
 import { errorCode, httpFailureKind, pickFailure, type FailureKind } from "./lib/failure.ts";
 import {
@@ -204,7 +204,12 @@ async function main(): Promise<void> {
   const model = modelEnv && MODEL_RE.test(modelEnv) ? modelEnv : "grok-build-0.1";
   const maxItems = intEnv("MAX_ITEMS", 15, 1, 30);
   const maxTurns = intEnv("MAX_TURNS", 3, 1, 10);
-  const handles = parseHandles(process.env.TRUSTED_HANDLES, DEFAULT_TRUSTED_HANDLES);
+  const excluded = parseExcludedHandles(process.env.EXCLUDED_HANDLES);
+  const excludedSet = new Set(excluded);
+  // x_search refuses allowed_x_handles together with excluded_x_handles, so exclusion is applied to the list instead.
+  const handles = parseHandles(process.env.TRUSTED_HANDLES, DEFAULT_TRUSTED_HANDLES).filter(
+    (h) => !excludedSet.has(h.toLowerCase()),
+  );
 
   const now = new Date();
   const windowHours = intEnv("WINDOW_HOURS", 24, 1, 72);
@@ -217,19 +222,29 @@ async function main(): Promise<void> {
 
   const trustedMax = Math.max(1, Math.round(maxItems / 2));
   const specs: SearchSpec[] = [
-    {
-      label: "trusted",
-      prompt: fill(TRUSTED_PROMPT, trustedMax),
-      tool: { type: "x_search", from_date: w.fromDate, to_date: w.toDate, allowed_x_handles: handles },
-      maxItems: trustedMax,
-    },
+    ...(handles.length
+      ? [
+          {
+            label: "trusted",
+            prompt: fill(TRUSTED_PROMPT, trustedMax),
+            tool: { type: "x_search", from_date: w.fromDate, to_date: w.toDate, allowed_x_handles: handles },
+            maxItems: trustedMax,
+          },
+        ]
+      : []),
     {
       label: "general",
       prompt: fill(GENERAL_PROMPT, maxItems),
-      tool: { type: "x_search", from_date: w.fromDate, to_date: w.toDate },
+      tool: {
+        type: "x_search",
+        from_date: w.fromDate,
+        to_date: w.toDate,
+        ...(excluded.length ? { excluded_x_handles: excluded } : {}),
+      },
       maxItems,
     },
   ];
+  if (excluded.length) logSafe(`excluding ${excluded.length} handle(s) via EXCLUDED_HANDLES`);
 
   const collected: Topic[] = [];
   const taken = new Set<string>();
@@ -281,6 +296,7 @@ async function main(): Promise<void> {
           notAfter,
           maxItems: spec.maxItems,
           exclude: taken,
+          excludedHandles: excludedSet,
         });
         outcome.kept = result.items.length;
         outcome.dropped = result.dropped;
@@ -304,7 +320,10 @@ async function main(): Promise<void> {
     }
   }
 
-  const items = collected.slice(0, maxItems + specs[0]!.maxItems);
+  const items = collected.slice(
+    0,
+    specs.reduce((n, s) => n + s.maxItems, 0),
+  );
   const fetchedAt = nowIso();
   const succeeded = apiKey ? specs.length - failures.length : 0;
   const status = runStatus(items, failures, succeeded, rejected, fetchedAt);

@@ -31,6 +31,15 @@ export function parseHandles(raw: string | undefined, fallback: readonly string[
 }
 
 /**
+ * Accounts never to publish, from the EXCLUDED_HANDLES Actions variable only (no default list).
+ * Passed to x_search as `excluded_x_handles` and also enforced on results, because posts the
+ * model reaches through thread fetches are not filtered by the tool. Returned lowercase.
+ */
+export function parseExcludedHandles(raw: string | undefined): string[] {
+  return [...new Set(parseHandles(raw, []).map((h) => h.toLowerCase()))];
+}
+
+/**
  * Rolling window ending at `now`. x_search's from_date/to_date are not
  * strictly honored (it favors the most recent posts), so the window is
  * enforced by us from snowflake times; the tool dates only hint the range.
@@ -67,6 +76,15 @@ if (import.meta.vitest) {
     it("default list fits the API limit", () => {
       expect(DEFAULT_TRUSTED_HANDLES.length).toBeLessThanOrEqual(20);
       for (const h of DEFAULT_TRUSTED_HANDLES) expect(HANDLE_RE.test(h), h).toBe(true);
+    });
+  });
+
+  describe("parseExcludedHandles", () => {
+    it("is empty unless set, and lowercases valid handles", () => {
+      expect(parseExcludedHandles(undefined)).toEqual([]);
+      expect(parseExcludedHandles(" ")).toEqual([]);
+      expect(parseExcludedHandles("bad-handle")).toEqual([]);
+      expect(parseExcludedHandles("@SpamBot, other_Acct spambot")).toEqual(["spambot", "other_acct"]);
     });
   });
 
