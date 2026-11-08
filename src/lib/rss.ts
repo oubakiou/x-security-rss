@@ -233,7 +233,11 @@ function ogpHtml(meta: FeedMeta): string {
     ["property", "og:description", meta.description],
     ["property", "og:url", meta.siteUrl],
     ["property", "og:locale", "ja_JP"],
-    ["name", "twitter:card", "summary"],
+    ["property", "og:image", `${meta.siteUrl}ogp.png`],
+    ["property", "og:image:width", "1200"],
+    ["property", "og:image:height", "630"],
+    ["property", "og:image:alt", meta.title],
+    ["name", "twitter:card", "summary_large_image"],
   ];
   return tags.map(([attr, key, value]) => `<meta ${attr}="${key}" content="${escapeXml(value)}">`).join("\n");
 }
@@ -264,11 +268,14 @@ ${d.topics.map(article).join("\n")}
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>${escapeXml(meta.title)}</title>
 <meta name="description" content="${escapeXml(meta.description)}">
 ${ogpHtml(meta)}
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="${escapeXml(meta.title)}" href="${escapeXml(meta.feedUrl)}">
 <style>
 :root{color-scheme:light dark;--fg:#1a1a1a;--muted:#666;--bg:#fff;--line:#e5e5e5;--warn:#b45309;--bar:#c7d2fe;--bar-on:#4f46e5}
@@ -448,7 +455,7 @@ if (import.meta.vitest) {
 
     it("keeps the CSP free of scripts", () => {
       const html = renderHtml([{ ...topic, category: "other" }], meta);
-      expect(html).toContain("default-src 'none'; style-src 'unsafe-inline'");
+      expect(html).toContain("default-src 'none'; style-src 'unsafe-inline'; img-src 'self';");
       expect(html).not.toMatch(/<script|onclick=|javascript:/i);
     });
   });
@@ -585,7 +592,9 @@ if (import.meta.vitest) {
       expect(html).toContain('<meta name="description" content="D">');
       expect(html).toContain('<meta property="og:url" content="https://example.github.io/r/">');
       expect(html).toContain('<meta property="og:type" content="website">');
-      expect(html).toContain('<meta name="twitter:card" content="summary">');
+      expect(html).toContain('<meta name="twitter:card" content="summary_large_image">');
+      expect(html).toContain('<meta property="og:image" content="https://example.github.io/r/ogp.png">');
+      expect(html).toContain('<link rel="icon" href="favicon.svg" type="image/svg+xml">');
       const head = html.slice(0, html.indexOf("</head>"));
       expect(head).not.toContain("A &amp; B");
       expect(head).not.toContain("HTTP 401");

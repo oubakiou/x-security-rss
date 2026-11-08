@@ -1,9 +1,9 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { intEnv, logSafe } from "./lib/env.ts";
 import { toStatus } from "./lib/failure.ts";
 import { mergeTopics } from "./lib/items.ts";
-import { PENDING_ARCHIVE_DIR, PREV_MANIFEST, SITE_DIR, siteUrl } from "./lib/paths.ts";
+import { PENDING_ARCHIVE_DIR, PREV_MANIFEST, PUBLIC_DIR, SITE_DIR, siteUrl } from "./lib/paths.ts";
 import { renderHtml, renderRss, type FeedMeta } from "./lib/rss.ts";
 import {
   buildArchive,
@@ -77,6 +77,7 @@ if (problems.length) {
 }
 
 await mkdir(SITE_DIR, { recursive: true });
+await cp(PUBLIC_DIR, SITE_DIR, { recursive: true });
 await writeFile(join(SITE_DIR, "feed.xml"), renderRss(topics, meta, status));
 await writeFile(join(SITE_DIR, "index.html"), renderHtml(topics, meta, status));
 await writeFile(

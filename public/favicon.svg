@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+ <linearGradient id="icbg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#12192B"/><stop offset="1" stop-color="#080F1D"/></linearGradient>
+ <radialGradient id="icspot" cx="0.45" cy="0.30" r="0.8"><stop stop-color="#5A3229"/><stop offset="1" stop-color="#161726" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="512" height="512" rx="110" fill="url(#icbg)"/>
+ <circle cx="257" cy="240" r="250" fill="url(#icspot)" opacity=".45"/>
+ <path d="M39 416 L161 512 M-18 225 L172 0 M340 512 L520 290" stroke="#99715F" stroke-opacity=".11" stroke-width="2"/>
+ <path d="M256 79 C302 104 351 114 406 127 L406 252 C406 350 343 421 256 459 C169 421 106 350 106 252 L106 127 C161 114 210 104 256 79 Z" fill="#0C1525" stroke="#FF7900" stroke-width="20" stroke-linejoin="round"/><circle cx="184" cy="327" r="23" fill="#FF6254"/>
+<path d="M184 254 C226 254 257 287 257 328" fill="none" stroke="#FFC13A" stroke-width="31" stroke-linecap="round"/>
+<path d="M184 183 C266 183 330 245 330 328" fill="none" stroke="#FFC13A" stroke-width="31" stroke-linecap="round"/>
+</svg>
