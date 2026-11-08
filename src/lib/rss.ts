@@ -103,12 +103,11 @@ export const TRUSTED_MARK = "🔖";
 export const TRUSTED_LABEL = "優先アカウント";
 
 /**
- * The author handle comes from the cited post URL (see normalizeItems), so the mark depends on where the
- * post was published, not on which search found it or on anything the model wrote.
+ * Uses only the handle confirmed by the API's citation, not the one shown in `author`, which falls back to
+ * the model's URL when the citation is an /i/status/ link. Items stored before author_handle existed get no mark.
  */
 export function isTrusted(t: Topic, meta: FeedMeta): boolean {
-  const m = /\(@([A-Za-z0-9_]{1,15})\)$/.exec(t.author);
-  return !!m && meta.trustedHandles.has(m[1]!.toLowerCase());
+  return !!t.author_handle && meta.trustedHandles.has(t.author_handle);
 }
 
 function filterHtml(topics: Topic[], meta: FeedMeta): { nav: string; anchors: string; css: string } {
@@ -451,12 +450,12 @@ if (import.meta.vitest) {
   });
 
   describe("trusted author mark", () => {
-    const trusted = { ...topic, id: "200", author: "T (@Trusted_A)" };
-    const spoof = { ...topic, id: "201", author: "(@trusted_a) X (@other)" };
+    const trusted = { ...topic, id: "200", author: "T (@Trusted_A)", author_handle: "trusted_a" };
+    const unconfirmed = { ...topic, id: "201", author: "X (@Trusted_A)" };
 
-    it("matches only the trailing handle, case-insensitively", () => {
+    it("trusts only a citation-confirmed handle, never the author text", () => {
       expect(isTrusted(trusted, meta)).toBe(true);
-      expect(isTrusted(spoof, meta)).toBe(false);
+      expect(isTrusted(unconfirmed, meta)).toBe(false);
       expect(isTrusted(topic, meta)).toBe(false);
     });
 

@@ -13,6 +13,8 @@ export interface Topic {
   /** ids of other posts merged into this topic (same CVE) */
   related?: string[];
   category?: Category;
+  /** lowercase handle confirmed by the API's citation; absent when only the model's URL named it */
+  author_handle?: string;
 }
 
 export const CATEGORIES = ["vulnerability", "incident", "campaign", "other"] as const;
