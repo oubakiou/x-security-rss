@@ -10,6 +10,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 - 生成: RSS 2.0 (`feed.xml`) と一覧ページ (`index.html`) — `src/build.ts`
   - 見出しの先頭に分類の絵文字 (🔓 脆弱性 / 🔥 インシデント / 🕵️ 攻撃キャンペーン / 📝 その他) と CVE 番号を付ける。分類はモデルの判定
   - 一覧ページはカテゴリーで絞り込める。URL の末尾に `#vulnerability` / `#incident` / `#campaign` / `#other` を付けるとそのカテゴリーだけを表示する (例: https://oubakiou.github.io/x-security-rss/#vulnerability)
+  - 投稿日 (日本時間) ごとに見出しを付け、上部の棒グラフで日付を選ぶとその日だけを表示する。URL の末尾に `#dYYYY-MM-DD` を付けても同じ (例: https://oubakiou.github.io/x-security-rss/#d2026-11-07)。カテゴリーと日付の絞り込みは同時には使えない
 - 実行: GitHub Actions で毎日 04:17 と 08:17 JST の2回 (`.github/workflows/daily.yml`)。GitHub の定時実行は混雑時に数時間遅れることがある
 - 配信: GitHub Pages — RSS: **https://oubakiou.github.io/x-security-rss/feed.xml** / HTML: **https://oubakiou.github.io/x-security-rss/**
 

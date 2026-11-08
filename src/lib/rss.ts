@@ -1,5 +1,6 @@
 import { failureNotice } from "./failure.ts";
 import { topicCves } from "./items.ts";
+import { groupByDay, jstTime, timelineHtml } from "./timeline.ts";
 import { CATEGORIES, type Category, type Status, type Topic } from "./types.ts";
 
 export interface FeedMeta {
@@ -103,6 +104,7 @@ function filterHtml(topics: Topic[]): { nav: string; anchors: string; css: strin
   const css = CATEGORIES.map(
     (c) =>
       `body:has(#${c}:target) article:not(.cat-${c}){display:none}` +
+      `body:has(#${c}:target) .day:not(:has(.cat-${c})){display:none}` +
       `body:has(#${c}:target) .filters a[href="#${c}"]{font-weight:bold}`,
   ).join("\n");
   return {
@@ -239,16 +241,22 @@ function ogpHtml(meta: FeedMeta): string {
 export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): string {
   const alert = statusAlert(status, meta);
   const filter = filterHtml(topics);
-  const rows = topics
-    .map(
-      (t) => `<article${t.category ? ` class="cat-${t.category}"` : ""}>
+  const days = groupByDay(topics);
+  const timeline = timelineHtml(days);
+  const article = (t: Topic) => `<article${t.category ? ` class="cat-${t.category}"` : ""}>
   <h2>${externalLink(t.url, displayTitle(t))}</h2>
-  <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(t.posted_at.slice(0, 16).replace("T", " "))} UTC</time></p>
+  <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(jstTime(t.posted_at))} JST</time></p>
   ${cveHtml(t, true)}
   <p>${escapeXml(t.summary)}</p>
   ${relatedHtml(t, true)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
-</article>`,
+</article>`;
+  const rows = days
+    .map(
+      (d) => `<details class="day day-${d.key}" open>
+<summary>${d.label}<small>${d.topics.length}件</small></summary>
+${d.topics.map(article).join("\n")}
+</details>`,
     )
     .join("\n");
   return `<!doctype html>
@@ -263,8 +271,8 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
 ${ogpHtml(meta)}
 <link rel="alternate" type="application/rss+xml" title="${escapeXml(meta.title)}" href="${escapeXml(meta.feedUrl)}">
 <style>
-:root{color-scheme:light dark;--fg:#1a1a1a;--muted:#666;--bg:#fff;--line:#e5e5e5;--warn:#b45309}
-@media (prefers-color-scheme:dark){:root{--fg:#eee;--muted:#aaa;--bg:#141414;--line:#333;--warn:#f59e0b}}
+:root{color-scheme:light dark;--fg:#1a1a1a;--muted:#666;--bg:#fff;--line:#e5e5e5;--warn:#b45309;--bar:#c7d2fe;--bar-on:#4f46e5}
+@media (prefers-color-scheme:dark){:root{--fg:#eee;--muted:#aaa;--bg:#141414;--line:#333;--warn:#f59e0b;--bar:#3730a3;--bar-on:#818cf8}}
 body{margin:0 auto;max-width:760px;padding:24px 16px;font:16px/1.7 system-ui,sans-serif;color:var(--fg);background:var(--bg)}
 a{color:inherit}h1{font-size:1.4rem}h2{font-size:1.05rem;margin:0 0 4px}
 article{border-top:1px solid var(--line);padding:16px 0}.meta{color:var(--muted);font-size:.85rem;margin:0}
@@ -272,15 +280,23 @@ article{border-top:1px solid var(--line);padding:16px 0}.meta{color:var(--muted)
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #status{border:1px solid var(--warn);color:var(--warn);padding:12px;border-radius:6px;white-space:pre-wrap}
 .filters{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.9rem;margin:0 0 8px}.filters a{text-decoration:none}
+.timeline{display:flex;align-items:flex-end;gap:6px;height:96px;border-bottom:1px solid var(--line);margin:8px 0 12px}
+.timeline a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;text-decoration:none;color:var(--muted);font-size:.7rem;line-height:1.3}
+.timeline .bar{width:100%;background:var(--bar);border-radius:4px 4px 0 0}
+.day-note{display:none;font-size:.85rem;color:var(--muted);margin:0 0 8px}
+details.day{border-top:1px solid var(--line)}summary{cursor:pointer;padding:10px 0;font-weight:bold}summary small{color:var(--muted);font-weight:normal;margin-left:8px}
 ${filter.css}
+${timeline.css}
 </style>
 </head>
 <body>
-${filter.anchors}
+${filter.anchors}${timeline.anchors}
 <h1>${escapeXml(meta.title)}</h1>
 <p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · ${externalLink(meta.sourceUrl, "GitHub")}</p>
 ${alert ? `<p id="status">${escapeXml(alert.title)}\n${escapeXml(alert.summary)}</p>` : ""}
 ${filter.nav}
+${timeline.bars}
+${timeline.notes}
 ${rows || "<p>まだ記事がありません。</p>"}
 </body>
 </html>
@@ -410,6 +426,24 @@ if (import.meta.vitest) {
       expect(html.match(/<article class="cat-vulnerability">/g)).toHaveLength(2);
       expect(html).toContain("<article>\n");
       expect(html).toContain("body:has(#vulnerability:target) article:not(.cat-vulnerability){display:none}");
+    });
+
+    it("groups articles under open JST day sections with a timeline", () => {
+      const html = renderHtml(
+        [
+          { ...topic, id: "1", posted_at: "2026-11-07T16:30:00Z", category: "incident" },
+          { ...topic, id: "2", posted_at: "2026-11-07T10:00:00Z" },
+        ],
+        meta,
+      );
+      expect(html).toContain(
+        '<details class="day day-2026-11-08" open>\n<summary>11月8日 (日)<small>1件</small></summary>',
+      );
+      expect(html).toContain('<details class="day day-2026-11-07" open>');
+      expect(html).toContain(">01:30 JST</time>");
+      expect(html).toContain('<nav class="timeline" aria-label="日付で絞り込み">');
+      expect(html).toContain("body:has(#incident:target) .day:not(:has(.cat-incident)){display:none}");
+      expect(html.indexOf('id="d2026-11-08"')).toBeLessThan(html.indexOf("<h1>"));
     });
 
     it("keeps the CSP free of scripts", () => {
