@@ -73,6 +73,7 @@ jobs:
         run: vp run build
         env:
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          TRUSTED_HANDLES: ${{ vars.TRUSTED_HANDLES }}
 
       - name: Detect days ready to archive
         id: pending

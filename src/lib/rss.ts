@@ -10,6 +10,8 @@ export interface FeedMeta {
   feedUrl: string;
   jsonFeedUrl: string;
   sourceUrl: string;
+  /** lowercase handles shown as 優先アカウント */
+  trustedHandles: ReadonlySet<string>;
 }
 
 export function escapeXml(s: string): string {
@@ -97,20 +99,40 @@ const CATEGORY_LABEL: Record<Category, string> = {
  * and while it is the URL fragment (e.g. #vulnerability) other articles are hidden. The fragment
  * doubles as the permalink.
  */
-function filterHtml(topics: Topic[]): { nav: string; anchors: string; css: string } {
+export const TRUSTED_MARK = "🔖";
+export const TRUSTED_LABEL = "優先アカウント";
+
+/**
+ * The author handle comes from the cited post URL (see normalizeItems), so the mark depends on where the
+ * post was published, not on which search found it or on anything the model wrote.
+ */
+export function isTrusted(t: Topic, meta: FeedMeta): boolean {
+  const m = /\(@([A-Za-z0-9_]{1,15})\)$/.exec(t.author);
+  return !!m && meta.trustedHandles.has(m[1]!.toLowerCase());
+}
+
+function filterHtml(topics: Topic[], meta: FeedMeta): { nav: string; anchors: string; css: string } {
   const count = (c: Category) => topics.filter((t) => t.category === c).length;
   const links = CATEGORIES.map(
     (c) => `<a href="#${c}">${CATEGORY_EMOJI[c]} ${CATEGORY_LABEL[c]} (${count(c)})</a>`,
   );
+  const trusted = topics.filter((t) => isTrusted(t, meta)).length;
+  links.push(`<a href="#trusted">${TRUSTED_MARK} ${TRUSTED_LABEL} (${trusted})</a>`);
   const css = CATEGORIES.map(
     (c) =>
       `body:has(#${c}:target) article:not(.cat-${c}){display:none}` +
       `body:has(#${c}:target) .day:not(:has(.cat-${c})){display:none}` +
       `body:has(#${c}:target) .filters a[href="#${c}"]{font-weight:bold}`,
-  ).join("\n");
+  )
+    .concat(
+      "body:has(#trusted:target) article:not(.trusted){display:none}" +
+        "body:has(#trusted:target) .day:not(:has(.trusted)){display:none}" +
+        'body:has(#trusted:target) .filters a[href="#trusted"]{font-weight:bold}',
+    )
+    .join("\n");
   return {
     nav: `<nav class="filters" aria-label="カテゴリーで絞り込み"><a href="#">すべて (${topics.length})</a> ${links.join(" ")}</nav>`,
-    anchors: CATEGORIES.map((c) => `<span id="${c}" class="anchor"></span>`).join(""),
+    anchors: [...CATEGORIES, "trusted"].map((c) => `<span id="${c}" class="anchor"></span>`).join(""),
     css: `body:not(:has(.anchor:target)) .filters a[href="#"]{font-weight:bold}\n${css}`,
   };
 }
@@ -181,11 +203,11 @@ export function statusAlert(status: Status | undefined, meta: FeedMeta): Topic |
   };
 }
 
-function itemHtml(t: Topic): string {
+function itemHtml(t: Topic, meta: FeedMeta): string {
   return (
     cveHtml(t) +
     `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` +
-    `<p>投稿者: ${escapeXml(t.author)}</p>` +
+    `<p>投稿者: ${escapeXml(t.author)}${isTrusted(t, meta) ? ` ${TRUSTED_MARK}` : ""}</p>` +
     relatedHtml(t)
   );
 }
@@ -207,11 +229,12 @@ export function renderJsonFeed(topics: Topic[], meta: FeedMeta, status?: Status)
       id: t.id,
       url: t.url,
       title: displayTitle(t),
-      content_html: itemHtml(t),
+      content_html: itemHtml(t, meta),
       summary: t.summary,
       date_published: t.posted_at,
       authors: [{ name: t.author }],
-      tags: t.tags,
+      tags: isTrusted(t, meta) ? [...t.tags, TRUSTED_LABEL] : t.tags,
+      _x_security: { trusted_author: isTrusted(t, meta) },
     })),
   };
   return JSON.stringify(feed, null, 2) + "\n";
@@ -224,8 +247,10 @@ export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): str
 
   const items = all
     .map((t) => {
-      const desc = itemHtml(t);
-      const cats = t.tags.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n");
+      const desc = itemHtml(t, meta);
+      const cats = (isTrusted(t, meta) ? [...t.tags, TRUSTED_LABEL] : t.tags)
+        .map((c) => `      <category>${escapeXml(c)}</category>`)
+        .join("\n");
       return [
         "    <item>",
         `      <title>${escapeXml(displayTitle(t))}</title>`,
@@ -277,17 +302,24 @@ function ogpHtml(meta: FeedMeta): string {
 
 export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): string {
   const alert = statusAlert(status, meta);
-  const filter = filterHtml(topics);
+  const filter = filterHtml(topics, meta);
   const days = groupByDay(topics);
   const timeline = timelineHtml(days);
-  const article = (t: Topic) => `<article${t.category ? ` class="cat-${t.category}"` : ""}>
+  const article = (t: Topic) => {
+    const trusted = isTrusted(t, meta);
+    const cls = [t.category ? `cat-${t.category}` : "", trusted ? "trusted" : ""].filter(Boolean).join(" ");
+    const mark = trusted
+      ? ` <span class="trusted-mark" title="${TRUSTED_LABEL}" aria-hidden="true">${TRUSTED_MARK}</span><span class="sr">(${TRUSTED_LABEL})</span>`
+      : "";
+    return `<article${cls ? ` class="${cls}"` : ""}>
   <h2>${externalLink(t.url, displayTitle(t))}</h2>
-  <p class="meta">${escapeXml(t.author)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(jstTime(t.posted_at))} JST</time></p>
+  <p class="meta">${escapeXml(t.author)}${mark} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(jstTime(t.posted_at))} JST</time></p>
   ${cveHtml(t, true)}
   <p>${escapeXml(t.summary)}</p>
   ${relatedHtml(t, true)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
 </article>`;
+  };
   const rows = days
     .map(
       (d) => `<details class="day day-${d.key}" open>
@@ -354,6 +386,7 @@ if (import.meta.vitest) {
     feedUrl: "https://example.github.io/r/feed.xml",
     jsonFeedUrl: "https://example.github.io/r/feed.json",
     sourceUrl: "https://github.com/o/r",
+    trustedHandles: new Set(["trusted_a"]),
   };
   const topic: Topic = {
     id: "123",
@@ -414,6 +447,40 @@ if (import.meta.vitest) {
       expect(xml).toContain("⚠️ 一部の検索に失敗しました: X 検索ツールが利用できませんでした (2026-11-07)");
       expect(xml).toContain("ツール呼び出し 8 回がすべて失敗");
       expect(xml).not.toContain("console.x.ai");
+    });
+  });
+
+  describe("trusted author mark", () => {
+    const trusted = { ...topic, id: "200", author: "T (@Trusted_A)" };
+    const spoof = { ...topic, id: "201", author: "(@trusted_a) X (@other)" };
+
+    it("matches only the trailing handle, case-insensitively", () => {
+      expect(isTrusted(trusted, meta)).toBe(true);
+      expect(isTrusted(spoof, meta)).toBe(false);
+      expect(isTrusted(topic, meta)).toBe(false);
+    });
+
+    it("marks the author and adds a CSS-only filter in HTML", () => {
+      const html = renderHtml([trusted, topic], meta);
+      expect(html).toContain('<article class="trusted">');
+      expect(html).toContain(
+        'T (@Trusted_A) <span class="trusted-mark" title="優先アカウント" aria-hidden="true">🔖</span>',
+      );
+      expect(html).toContain('<a href="#trusted">🔖 優先アカウント (1)</a>');
+      expect(html).toContain('<span id="trusted" class="anchor"></span>');
+      expect(html).toContain("body:has(#trusted:target) article:not(.trusted){display:none}");
+      expect(html.match(/trusted-mark/g)).toHaveLength(1);
+    });
+
+    it("adds the mark, a category and a flag in the feeds", () => {
+      const rss = renderRss([trusted, topic], meta);
+      expect(rss).toContain("投稿者: T (@Trusted_A) 🔖");
+      expect(rss.match(/<category>優先アカウント<\/category>/g)).toHaveLength(1);
+      const feed = JSON.parse(renderJsonFeed([trusted, topic], meta));
+      expect(feed.items[0].tags).toContain("優先アカウント");
+      expect(feed.items[0]._x_security).toEqual({ trusted_author: true });
+      expect(feed.items[1].tags).not.toContain("優先アカウント");
+      expect(feed.items[1]._x_security).toEqual({ trusted_author: false });
     });
   });
 
