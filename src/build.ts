@@ -4,7 +4,7 @@ import { intEnv, logSafe } from "./lib/env.ts";
 import { toStatus } from "./lib/failure.ts";
 import { mergeTopics } from "./lib/items.ts";
 import { PENDING_ARCHIVE_DIR, PREV_MANIFEST, PUBLIC_DIR, SITE_DIR, siteUrl } from "./lib/paths.ts";
-import { renderHtml, renderRss, type FeedMeta } from "./lib/rss.ts";
+import { renderHtml, renderJsonFeed, renderRss, type FeedMeta } from "./lib/rss.ts";
 import {
   buildArchive,
   compareSnapshotNamesDesc,
@@ -25,6 +25,7 @@ const meta: FeedMeta = {
     "X (旧Twitter) から毎日収集したサイバーセキュリティの話題。Grok (x_search) による自動収集・自動要約で、投稿者名を含め内容は未検証です。必ず元の投稿と一次情報を確認してください。",
   siteUrl: site,
   feedUrl: `${site}feed.xml`,
+  jsonFeedUrl: `${site}feed.json`,
   sourceUrl: "https://github.com/oubakiou/x-security-rss",
 };
 
@@ -79,6 +80,7 @@ if (problems.length) {
 await mkdir(SITE_DIR, { recursive: true });
 await cp(PUBLIC_DIR, SITE_DIR, { recursive: true });
 await writeFile(join(SITE_DIR, "feed.xml"), renderRss(topics, meta, status));
+await writeFile(join(SITE_DIR, "feed.json"), renderJsonFeed(topics, meta, status));
 await writeFile(join(SITE_DIR, "index.html"), renderHtml(topics, meta, status));
 await writeFile(
   join(SITE_DIR, "feed-state.json"),

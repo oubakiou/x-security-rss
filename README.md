@@ -1,18 +1,30 @@
 # x-security-rss
 
-X (旧Twitter) からサイバーセキュリティの話題を毎日収集し、RSS として配信します。
+X (旧Twitter) からサイバーセキュリティの話題を毎日収集し、一覧ページ・RSS・JSON Feed として配信します。
+
+## 📰 読む・購読する
+
+| 形式                     | URL                                                     | 用途                                                                             |
+| ------------------------ | ------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| 🌐 **一覧ページ (HTML)** | **https://oubakiou.github.io/x-security-rss/**          | ブラウザで読む。カテゴリー・日付で絞り込み可                                     |
+| 📡 **RSS 2.0**           | **https://oubakiou.github.io/x-security-rss/feed.xml**  | フィードリーダーで購読する                                                       |
+| 🧩 **JSON Feed 1.1**     | **https://oubakiou.github.io/x-security-rss/feed.json** | プログラムやエージェントから読む ([仕様](https://www.jsonfeed.org/version/1.1/)) |
+
+内容は Grok による自動収集・自動要約で、投稿者名を含め未検証です。必ず元の投稿と一次情報を確認してください。
+
+## 仕組み
 
 - 収集: xAI Responses API の `x_search` ツール (Grok) — `src/fetch.ts`
   - 対象期間は実行時点から過去24時間。1日2回の実行で期間が重なるが、同じ投稿は最初の収集を保持して重複を除く。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
   - 信頼できるアカウント限定の検索と、分野別の一般検索の2本立て
 - 保存: 取得結果は1回の実行ごとに `snapshots/YYYY-MM-DD-HH.json` として Pages に置き、日が確定したら
   `archive/YYYY-MM-DD.json` として git にコミット (`src/restore.ts` / `src/build.ts`、詳細は [development.md](development.md))
-- 生成: RSS 2.0 (`feed.xml`) と一覧ページ (`index.html`) — `src/build.ts`
+- 生成: 一覧ページ (`index.html`)、RSS 2.0 (`feed.xml`)、JSON Feed 1.1 (`feed.json`) — `src/build.ts`。RSS と JSON Feed は同じ記事と失敗のお知らせを含む
   - 見出しの先頭に分類の絵文字 (🔓 脆弱性 / 🔥 インシデント / 🕵️ 攻撃キャンペーン / 📝 その他) と CVE 番号を付ける。分類はモデルの判定
   - 一覧ページはカテゴリーで絞り込める。URL の末尾に `#vulnerability` / `#incident` / `#campaign` / `#other` を付けるとそのカテゴリーだけを表示する (例: https://oubakiou.github.io/x-security-rss/#vulnerability)
   - 投稿日 (日本時間) ごとに見出しを付け、上部の棒グラフで日付を選ぶとその日だけを表示する。URL の末尾に `#dYYYY-MM-DD` を付けても同じ (例: https://oubakiou.github.io/x-security-rss/#d2026-11-07)。カテゴリーと日付の絞り込みは同時には使えない
 - 実行: GitHub Actions で毎日 04:17 と 08:17 JST の2回 (`.github/workflows/daily.yml`)。GitHub の定時実行は混雑時に数時間遅れることがある
-- 配信: GitHub Pages — RSS: **https://oubakiou.github.io/x-security-rss/feed.xml** / HTML: **https://oubakiou.github.io/x-security-rss/**
+- 配信: GitHub Pages (URL は冒頭の「読む・購読する」を参照)
 
 ## セットアップ
 
@@ -39,7 +51,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 
 | モデル           | 1回の費用の目安 | 特徴                                                                                                                                   |
 | ---------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `grok-build-0.1` | 約 $0.5〜1      | 既定。検索回数が多く採用件数も多い。要約は CVE・CVSS・影響・対処を簡潔にまとめる。一般検索はプロンプトで検索回数を絞っている           |
+| `grok-build-0.1` | 約 $0.4         | 既定。検索回数が多く採用件数も多い。要約は CVE・CVSS・影響・対処を簡潔にまとめる。一般検索はプロンプトで検索回数を絞っている           |
 | `grok-4.3`       | 約 $0.3         | 最も安い。文章はやや自然だが、要約に出典の評価 (「一次情報に基づく」など) が混ざることがある。採用件数は少なめで回によるばらつきがある |
 | `grok-4.5`       | -               | そのままでは x_search を呼ばず、毎回0件で失敗する。検索を強制すると動くが、費用は grok-4.3 の約6倍                                     |
 | `grok-4.6`       | -               | そのままでは x_search を呼ばない。検索を強制すると最終回答の前に応答が終わる                                                           |

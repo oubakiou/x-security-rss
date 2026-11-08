@@ -8,6 +8,7 @@ export interface FeedMeta {
   description: string;
   siteUrl: string;
   feedUrl: string;
+  jsonFeedUrl: string;
   sourceUrl: string;
 }
 
@@ -180,6 +181,42 @@ export function statusAlert(status: Status | undefined, meta: FeedMeta): Topic |
   };
 }
 
+function itemHtml(t: Topic): string {
+  return (
+    cveHtml(t) +
+    `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` +
+    `<p>投稿者: ${escapeXml(t.author)}</p>` +
+    relatedHtml(t)
+  );
+}
+
+/** JSON Feed 1.1 (https://www.jsonfeed.org/version/1.1/) with the same items and notice as the RSS feed. */
+export function renderJsonFeed(topics: Topic[], meta: FeedMeta, status?: Status): string {
+  const alert = statusAlert(status, meta);
+  const all = alert ? [alert, ...topics] : topics;
+  const feed = {
+    version: "https://jsonfeed.org/version/1.1",
+    title: meta.title,
+    home_page_url: meta.siteUrl,
+    feed_url: meta.jsonFeedUrl,
+    description: meta.description,
+    icon: `${meta.siteUrl}icon-512.png`,
+    favicon: `${meta.siteUrl}favicon.svg`,
+    language: "ja",
+    items: all.map((t) => ({
+      id: t.id,
+      url: t.url,
+      title: displayTitle(t),
+      content_html: itemHtml(t),
+      summary: t.summary,
+      date_published: t.posted_at,
+      authors: [{ name: t.author }],
+      tags: t.tags,
+    })),
+  };
+  return JSON.stringify(feed, null, 2) + "\n";
+}
+
 export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): string {
   const alert = statusAlert(status, meta);
   const all = alert ? [alert, ...topics] : topics;
@@ -187,11 +224,7 @@ export function renderRss(topics: Topic[], meta: FeedMeta, status?: Status): str
 
   const items = all
     .map((t) => {
-      const desc =
-        cveHtml(t) +
-        `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` +
-        `<p>投稿者: ${escapeXml(t.author)}</p>` +
-        relatedHtml(t);
+      const desc = itemHtml(t);
       const cats = t.tags.map((c) => `      <category>${escapeXml(c)}</category>`).join("\n");
       return [
         "    <item>",
@@ -277,6 +310,7 @@ ${ogpHtml(meta)}
 <link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="${escapeXml(meta.title)}" href="${escapeXml(meta.feedUrl)}">
+<link rel="alternate" type="application/feed+json" title="${escapeXml(meta.title)}" href="${escapeXml(meta.jsonFeedUrl)}">
 <style>
 :root{color-scheme:light dark;--fg:#1a1a1a;--muted:#666;--bg:#fff;--line:#e5e5e5;--warn:#b45309;--bar:#c7d2fe;--bar-on:#4f46e5}
 @media (prefers-color-scheme:dark){:root{--fg:#eee;--muted:#aaa;--bg:#141414;--line:#333;--warn:#f59e0b;--bar:#3730a3;--bar-on:#818cf8}}
@@ -299,7 +333,7 @@ ${timeline.css}
 <body>
 ${filter.anchors}${timeline.anchors}
 <h1>${escapeXml(meta.title)}</h1>
-<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · ${externalLink(meta.sourceUrl, "GitHub")}</p>
+<p>${escapeXml(meta.description)} — <a href="${escapeXml(meta.feedUrl)}">RSS</a> · <a href="${escapeXml(meta.jsonFeedUrl)}">JSON Feed</a> · ${externalLink(meta.sourceUrl, "GitHub")}</p>
 ${alert ? `<p id="status">${escapeXml(alert.title)}\n${escapeXml(alert.summary)}</p>` : ""}
 ${filter.nav}
 ${timeline.bars}
@@ -318,6 +352,7 @@ if (import.meta.vitest) {
     description: "D",
     siteUrl: "https://example.github.io/r/",
     feedUrl: "https://example.github.io/r/feed.xml",
+    jsonFeedUrl: "https://example.github.io/r/feed.json",
     sourceUrl: "https://github.com/o/r",
   };
   const topic: Topic = {
@@ -379,6 +414,35 @@ if (import.meta.vitest) {
       expect(xml).toContain("⚠️ 一部の検索に失敗しました: X 検索ツールが利用できませんでした (2026-11-07)");
       expect(xml).toContain("ツール呼び出し 8 回がすべて失敗");
       expect(xml).not.toContain("console.x.ai");
+    });
+  });
+
+  describe("renderJsonFeed", () => {
+    it("emits a JSON Feed 1.1 with the same items and the failure notice first", () => {
+      const json = renderJsonFeed([{ ...topic, related: ["456", "javascript:x"] }], meta, {
+        ok: false,
+        message: "x",
+        checked_at: "2026-11-03T21:00:00Z",
+      });
+      const feed = JSON.parse(json);
+      expect(feed.version).toBe("https://jsonfeed.org/version/1.1");
+      expect(feed.feed_url).toBe("https://example.github.io/r/feed.json");
+      expect(feed.home_page_url).toBe("https://example.github.io/r/");
+      expect(feed.items).toHaveLength(2);
+      expect(feed.items[0].id).toBe("status-error-2026-11-03");
+      const item = feed.items[1];
+      expect(item).toMatchObject({
+        id: "123",
+        url: "https://x.com/u/status/123",
+        date_published: "2026-11-02T12:00:00Z",
+        summary: "line1\nline2 ]]> end",
+        authors: [{ name: "U (@u)" }],
+        tags: ["CVE-2026-1", "Linux"],
+      });
+      expect(item.title).toContain("A & B <script>");
+      expect(item.content_html).toContain("line1<br/>line2 ]]&gt; end");
+      expect(item.content_html).toContain("https://x.com/i/status/456");
+      expect(item.content_html).not.toContain("javascript:x");
     });
   });
 
