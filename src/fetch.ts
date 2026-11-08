@@ -20,6 +20,7 @@ import {
 } from "./lib/items.ts";
 import { DEBUG_DIR, SITE_DIR } from "./lib/paths.ts";
 import { withRetry } from "./lib/retry.ts";
+import { costSummary, costSummaryLine, type SearchOutcome } from "./lib/usage.ts";
 import { serializeSnapshot, snapshotName, SNAPSHOT_DIR, type Snapshot } from "./lib/snapshot.ts";
 import type { Status, Topic } from "./lib/types.ts";
 
@@ -233,6 +234,7 @@ async function main(): Promise<void> {
   const collected: Topic[] = [];
   const taken = new Set<string>();
   const usage: Record<string, unknown> = {};
+  const outcomes: Record<string, SearchOutcome> = {};
   const errors: string[] = [];
   const rejected: Snapshot["rejected"] = [];
   await mkdir(DEBUG_DIR, { recursive: true });
@@ -244,16 +246,20 @@ async function main(): Promise<void> {
 
   if (apiKey) {
     for (const spec of specs) {
+      const outcome: SearchOutcome = { usage: null, attempts: 0 };
+      outcomes[spec.label] = outcome;
       try {
         // x_search fails intermittently for a whole request while the same request succeeds on
         // another try, and failed tool calls are not billed, so only that case is retried.
         const resp = await withRetry(
           async (attempt) => {
+            outcome.attempts = attempt;
             const r = await runSearch(apiKey, model, maxTurns, spec);
             // Raw responses are for diagnosis: never in Pages or git, but uploaded as a one-day artifact on failure,
             // which anyone signed in to GitHub can download from a public repository.
             await writeFile(join(DEBUG_DIR, `${spec.label}.json`), JSON.stringify(r, null, 2));
             usage[spec.label] = (r as { usage?: unknown }).usage ?? null;
+            outcome.usage = usage[spec.label];
             const failedCalls = failedToolCalls(r);
             if (failedCalls) {
               logSafe(`[${spec.label}] attempt ${attempt}: all ${failedCalls} x_search calls failed`);
@@ -276,6 +282,8 @@ async function main(): Promise<void> {
           maxItems: spec.maxItems,
           exclude: taken,
         });
+        outcome.kept = result.items.length;
+        outcome.dropped = result.dropped;
         for (const t of result.items) taken.add(t.id);
         collected.push(...result.items);
         rejected.push(...result.rejected.map((r) => ({ search: spec.label, ...r })));
@@ -312,6 +320,7 @@ async function main(): Promise<void> {
     errors,
   });
   logSafe(`${name}: window ${w.label}, total ${items.length}, usage=${JSON.stringify(usage)}`);
+  logSafe(costSummaryLine(costSummary({ snapshot: name, model, maxTurns }, outcomes)));
   if (!status.ok) {
     logSafe(status.message);
     process.exit(1);
