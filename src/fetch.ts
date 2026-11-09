@@ -33,6 +33,8 @@ const MODEL_RE = /^[A-Za-z0-9._-]{1,64}$/;
 const COMMON_RULES = `各項目の url は実際に検索で見つけた投稿の URL (https://x.com/<handle>/status/<id>) をそのまま使い、
 推測や作成は絶対にしないこと。期間外の投稿は含めないこと。
 title と summary は日本語で書き、CVE番号・製品名・影響・対処 (パッチ/回避策) を含めること。
+1つの項目は1つの投稿に対応させ、title と summary はその url の投稿に書かれている内容だけで書くこと (複数の投稿の情報を混ぜない)。
+quote には、その url の投稿の本文から 30〜100 字を、翻訳や言い換えをせずそのまま抜き出すこと。
 tags には CVE番号や分野 (例: "CVE-2026-1234", "ransomware", "Linux") を入れること。
 category は次から1つ選ぶこと: vulnerability (脆弱性の公開・悪用確認・パッチ・アドバイザリ)、
 incident (特定の組織で起きた侵害・情報漏えい・ランサムウェアなどの被害)、
@@ -333,6 +335,11 @@ async function main(): Promise<void> {
   logSafe(
     `authors via oEmbed: verified ${check.verified}, corrected ${check.corrected}, unverified ${check.failed}` +
       (check.rateLimited ? " (rate limited)" : ""),
+  );
+  // Logged only for now: how often the model's quote matches decides whether mismatches should be dropped.
+  logSafe(
+    `quote check: matched ${check.quoteMatched}, mismatched ${check.quoteMismatched.length}, unchecked ${check.quoteUnchecked}` +
+      (check.quoteMismatched.length ? ` (${check.quoteMismatched.join(", ")})` : ""),
   );
   // The model's handle passed the exclusion check in normalizeItems; the verified one may differ.
   const items = capped.filter((t) => {
