@@ -336,15 +336,21 @@ async function main(): Promise<void> {
     `authors via oEmbed: verified ${check.verified}, corrected ${check.corrected}, unverified ${check.failed}` +
       (check.rateLimited ? " (rate limited)" : ""),
   );
-  // Logged only for now: how often the model's quote matches decides whether mismatches should be dropped.
   logSafe(
     `quote check: matched ${check.quoteMatched}, mismatched ${check.quoteMismatched.length}, unchecked ${check.quoteUnchecked}` +
       (check.quoteMismatched.length ? ` (${check.quoteMismatched.join(", ")})` : ""),
   );
   // The model's handle passed the exclusion check in normalizeItems; the verified one may differ.
   const items = capped.filter((t) => {
-    if (!t.author_handle || !excludedSet.has(t.author_handle)) return true;
-    rejected.push({ search: "verify", reason: "excluded_handle", id: t.id, posted_at: t.posted_at });
+    // A quote missing from the linked post means the summary was written about another post.
+    const reason =
+      t.author_handle && excludedSet.has(t.author_handle)
+        ? "excluded_handle"
+        : t.quote_match === false
+          ? "quote_mismatch"
+          : undefined;
+    if (!reason) return true;
+    rejected.push({ search: "verify", reason, id: t.id, posted_at: t.posted_at });
     return false;
   });
   const fetchedAt = nowIso();
