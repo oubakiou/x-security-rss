@@ -15,7 +15,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 ## 仕組み
 
 - 収集: xAI Responses API の `x_search` ツール (Grok) — `src/fetch.ts`
-  - 対象期間は実行時点から過去24時間。1日2回の実行で期間が重なるが、同じ投稿は最初の収集を保持して重複を除く。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
+  - 対象期間は実行時点から過去24時間。実行の間隔が24時間より短いと期間が重なるが、同じ投稿は最初の収集を保持して重複を除く。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
   - 信頼できるアカウント限定の検索と、分野別の一般検索の2本立て
 - 保存: 取得結果は1回の実行ごとに `snapshots/YYYY-MM-DD-HH.json` として Pages に置き、日が確定したら
   `archive/YYYY-MM-DD.json` として git にコミット (`src/restore.ts` / `src/build.ts`、詳細は [development.md](development.md))
@@ -23,10 +23,10 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
   - 見出しの先頭に分類の絵文字 (🔓 脆弱性 / 🔥 インシデント / 🕵️ 攻撃キャンペーン / 📝 その他) と CVE 番号を付ける。分類はモデルの判定
   - 投稿者は X の oEmbed (`publish.x.com/oembed`、認証不要) で確認し、モデルが書いた投稿者と違えば X の値に直す。x_search の出典はアカウント名を含まない `/i/status/<id>` 形式のため。確認できなかった記事はモデルの値のまま
   - モデルには各項目の投稿本文の抜粋 (`quote`) も書かせ、oEmbed の本文に含まれるかを照合する (要約と投稿の取り違えの検出)。含まれない記事は、要約がリンク先とは別の投稿について書かれているとみなして `quote_mismatch` として破棄する (ログの `quote check: …` と snapshot に記録)。照合できなかった記事は残す
-  - 投稿者が優先アカウント (`TRUSTED_HANDLES`) であることを oEmbed で確認できた記事は、投稿者名の後ろに 🔖 を付ける。RSS / JSON Feed では本文の投稿者の行に 🔖、カテゴリー (tags) に「優先アカウント」、JSON Feed には `_x_security.trusted_author` も付ける。一覧ページは URL の末尾に `#trusted` を付けると優先アカウントの記事だけを表示する
+  - 投稿者が優先アカウント (`TRUSTED_HANDLES`) であることを oEmbed で確認できた記事は、投稿者名の前に 🔖 を付け、`@ハンドル` をプロフィール (`https://x.com/<handle>`) へのリンクにする。RSS / JSON Feed の本文の投稿者の行も同じ形にし、カテゴリー (tags) に「優先アカウント」、JSON Feed には `_x_security.trusted_author` も付ける。一覧ページは URL の末尾に `#trusted` を付けると優先アカウントの記事だけを表示する
   - 一覧ページはカテゴリーで絞り込める。URL の末尾に `#vulnerability` / `#incident` / `#campaign` / `#other` を付けるとそのカテゴリーだけを表示する (例: [#vulnerability](https://oubakiou.github.io/x-security-rss/#vulnerability))
   - 投稿日 (日本時間) ごとに見出しを付け、上部の棒グラフで日付を選ぶとその日だけを表示する。URL の末尾に `#dYYYY-MM-DD` を付けても同じ (例: [#d2026-11-07](https://oubakiou.github.io/x-security-rss/#d2026-11-07))。カテゴリーと日付の絞り込みは同時には使えない
-- 実行: GitHub Actions で毎日 04:17 と 08:17 JST の2回 (`.github/workflows/daily.yml`)。GitHub の定時実行は混雑時に数時間遅れることがある
+- 実行: GitHub Actions の定期実行 (時刻は `.github/workflows/daily.yml` の `schedule` を参照)。GitHub の定時実行は混雑時に数時間遅れることがある
 - 配信: GitHub Pages (URL は冒頭の「読む・購読する」を参照)
 
 ## セットアップ
