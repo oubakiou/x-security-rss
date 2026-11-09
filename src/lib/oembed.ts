@@ -35,12 +35,16 @@ export function embedText(html: unknown): string {
 
 const MIN_QUOTE = 8;
 
-/** Letters and digits only, so spacing, punctuation, emoji and links do not decide the comparison. */
+/**
+ * Letters and digits only, so spacing, punctuation, emoji and links do not decide the comparison.
+ * URL-like tokens are removed with or without a scheme: the embed shows a link's display text
+ * (e.g. "vendor.example/advisory…") while the model tends to copy the full https:// URL.
+ */
 function normalizeForMatch(s: string): string {
   return s
     .normalize("NFKC")
     .toLowerCase()
-    .replace(/(https?:\/\/|pic\.twitter\.com\/)\S+/g, "")
+    .replace(/(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/\S*)?/g, "")
     .replace(/[^\p{L}\p{N}]+/gu, "");
 }
 
@@ -175,6 +179,17 @@ if (import.meta.vitest) {
       expect(quoteMatches(text, "ＦＢＩ・ＣＩＳＡ 冷凍設備への攻撃を警告")).toBe(true);
       expect(quoteMatches(text, "ランサムウェアで病院のシステム停止")).toBe(false);
     });
+    it("matches a quote that spans a link shown without its scheme in the embed", () => {
+      const html =
+        '<p lang="en" dir="ltr">Patch now: details at <a href="https://t.co/a">vendor.example/advisory…</a> for CVE-2026-1234 in Product X</p>';
+      expect(
+        quoteMatches(
+          embedText(html),
+          "details at https://vendor.example/advisory for CVE-2026-1234 in Product X",
+        ),
+      ).toBe(true);
+    });
+
     it("skips quotes that are too short or missing text", () => {
       expect(quoteMatches(text, "FBI")).toBeUndefined();
       expect(quoteMatches(text, undefined)).toBeUndefined();
