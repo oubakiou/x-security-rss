@@ -18,6 +18,7 @@ import {
   type NormalizeOptions,
   type NormalizeResult,
 } from "./lib/items.ts";
+import { verifyAuthors } from "./lib/oembed.ts";
 import { DEBUG_DIR, SITE_DIR } from "./lib/paths.ts";
 import { withRetry } from "./lib/retry.ts";
 import { costSummary, costSummaryLine, type SearchOutcome } from "./lib/usage.ts";
@@ -324,10 +325,21 @@ async function main(): Promise<void> {
     }
   }
 
-  const items = collected.slice(
+  const capped = collected.slice(
     0,
     specs.reduce((n, s) => n + s.maxItems, 0),
   );
+  const check = await verifyAuthors(capped, (url) => fetch(url, { signal: AbortSignal.timeout(10_000) }));
+  logSafe(
+    `authors via oEmbed: verified ${check.verified}, corrected ${check.corrected}, unverified ${check.failed}` +
+      (check.rateLimited ? " (rate limited)" : ""),
+  );
+  // The model's handle passed the exclusion check in normalizeItems; the verified one may differ.
+  const items = capped.filter((t) => {
+    if (!t.author_handle || !excludedSet.has(t.author_handle)) return true;
+    rejected.push({ search: "verify", reason: "excluded_handle", id: t.id, posted_at: t.posted_at });
+    return false;
+  });
   const fetchedAt = nowIso();
   const succeeded = apiKey ? specs.length - failures.length : 0;
   const status = runStatus(items, failures, succeeded, rejected, fetchedAt);

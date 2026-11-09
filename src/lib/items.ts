@@ -2,7 +2,7 @@ import { CATEGORIES, toCategory, type Topic } from "./types.ts";
 
 export const LIMITS = { title: 120, summary: 600, author: 80, tags: 10, tag: 40 } as const;
 const X_HOSTS = new Set(["x.com", "www.x.com", "twitter.com", "www.twitter.com", "mobile.twitter.com"]);
-const HANDLE_RE = /^[A-Za-z0-9_]{1,15}$/;
+export const HANDLE_RE = /^[A-Za-z0-9_]{1,15}$/;
 const SNOWFLAKE_EPOCH = 1288834974657n;
 
 export interface StatusRef {
