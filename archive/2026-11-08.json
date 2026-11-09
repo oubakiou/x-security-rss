@@ -1,0 +1,1867 @@
+{
+  "version": 1,
+  "date": "2026-11-08",
+  "snapshots": [
+    {
+      "name": "2026-11-08-01.json",
+      "sha256": "45c691c081b68195de9c888eaddfcec86fb1a3139eb65d9cb044734764988f8b",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T01:21:50Z",
+        "window": {
+          "from": "2026-11-07T01:20:37.298Z",
+          "to": "2026-11-08T01:20:37.298Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "5 件を取得しました",
+          "checked_at": "2026-11-08T01:21:50Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 9339,
+            "input_tokens_details": {
+              "cached_tokens": 1792
+            },
+            "output_tokens": 1389,
+            "output_tokens_details": {
+              "reasoning_tokens": 1267
+            },
+            "total_tokens": 10728,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 832646500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 14,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 7492,
+              "output_tokens": 325
+            }
+          },
+          "general": {
+            "input_tokens": 33204,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 2825,
+            "output_tokens_details": {
+              "reasoning_tokens": 1402
+            },
+            "total_tokens": 36029,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 6,
+            "cost_in_usd_ticks": 2535675000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 6,
+              "x_posts_fetched": 41,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 31218,
+              "output_tokens": 1604
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119228910336364863",
+            "url": "https://x.com/i/status/2119228910336364863",
+            "title": "SonicWallファイアウォールでSAML/MFAバイパス脆弱性、実際の攻撃に悪用確認",
+            "author": "ヴェロ🛡🖥セキュリティVTuber (@VELO_ch)",
+            "posted_at": "2026-11-08T00:42:00Z",
+            "summary": "SonicWall製ファイアウォールでSAML認証と多要素認証を回避できる脆弱性が確認され、CISAが悪用確認済みリストに追加。攻撃者は別認証方式の有効ID/パスワードが必要。回避策なし、SonicOS更新が必須。対象管理者は機器名・世代・SonicOS番号を確認を。",
+            "tags": [
+              "SonicWall",
+              "SAML",
+              "MFA",
+              "actively exploited",
+              "CISA"
+            ],
+            "collected_at": "2026-11-08T01:21:50Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119226423227617480",
+            "url": "https://x.com/i/status/2119226423227617480",
+            "title": "Qilinランサムウェア、ペルー製薬Roxfarmaを侵害と主張",
+            "author": "𝒜𝓁𝓅𝒽4 🍁 (@Alph4_Sec)",
+            "posted_at": "2026-11-08T00:32:07Z",
+            "summary": "QilinランサムウェアグループがペルーLaboratorio Roxfarma S.A.（製薬/製造業）を侵害、4-5日以内にデータ公開を脅迫。詳細なデータ量・種類は未公表、カウントダウン中。一次情報に基づく脅威アラート。",
+            "tags": [
+              "ransomware",
+              "Qilin",
+              "Roxfarma",
+              "Peru"
+            ],
+            "collected_at": "2026-11-08T01:21:50Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119221181576302764",
+            "url": "https://x.com/i/status/2119221181576302764",
+            "title": "Reze/BBKランサムウェア、ドバイ土地局181MBデータをリーク",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-08T00:11:17Z",
+            "summary": "RezeランサムウェアとBored Bad Kids (BBK)がドバイ土地局から181MBの不動産所有権・テナント・Emirates ID・パスポート情報などをリーク。100,000ドルでの販売後公開。未検証だがサンプル公開中。",
+            "tags": [
+              "ransomware",
+              "data breach",
+              "Dubai",
+              "Reze",
+              "BBK"
+            ],
+            "collected_at": "2026-11-08T01:21:50Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119126964074381524",
+            "url": "https://x.com/i/status/2119126964074381524",
+            "title": "CVE-2026-112691 Apple脆弱性、PoC公開",
+            "author": "Licht (@Licht_jb)",
+            "posted_at": "2026-11-07T17:56:54Z",
+            "summary": "研究者LichtがApple初のCVE-2026-112691を発見、PoCと詳細write-upを公開。脆弱性内容・影響・PoCはブログで確認可能。一次情報源による報告。",
+            "tags": [
+              "CVE-2026-112691",
+              "Apple",
+              "PoC",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-08T01:21:50Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119226666757349407",
+            "url": "https://x.com/i/status/2119226666757349407",
+            "title": "Game*Spark報道：バンナムアーケード機『ガンダムEXVS.』『太鼓の達人』試験復旧",
+            "author": "⚡Game*Spark⚡ (@gamespark)",
+            "posted_at": "2026-11-08T00:33:05Z",
+            "summary": "バンダイナムコタイトルで不正アクセス問題発生後、ガンダムEXVS.や太鼓の達人などがオフラインでも稼働可能に試験復旧。セガ系列は未定。信頼できるゲームメディア報道。",
+            "tags": [
+              "incident",
+              "不正アクセス",
+              "arcade",
+              "Bandai Namco"
+            ],
+            "collected_at": "2026-11-08T01:21:50Z",
+            "category": "incident"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-02.json",
+      "sha256": "3818c0afcb04dab2f941c807e70332b7d63293c0c5330157709d16f5d9c832ea",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T02:29:07Z",
+        "window": {
+          "from": "2026-11-07T02:28:57.651Z",
+          "to": "2026-11-08T02:28:57.651Z"
+        },
+        "model": "grok-4.5",
+        "status": {
+          "ok": false,
+          "message": "検証を通った投稿が0件でした (破棄 0 件)",
+          "checked_at": "2026-11-08T02:29:07Z",
+          "kind": "no_results"
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 2272,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 297,
+            "output_tokens_details": {
+              "reasoning_tokens": 293
+            },
+            "total_tokens": 2569,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 63260000,
+            "context_details": {
+              "input_tokens": 2272,
+              "output_tokens": 305
+            }
+          },
+          "general": {
+            "input_tokens": 2408,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 334,
+            "output_tokens_details": {
+              "reasoning_tokens": 330
+            },
+            "total_tokens": 2742,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 68200000,
+            "context_details": {
+              "input_tokens": 2408,
+              "output_tokens": 342
+            }
+          }
+        },
+        "items": [],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-02-2.json",
+      "sha256": "9494bfead9a45de93f983da28d3f0342d7993463cb02cca964cefbc513048f8f",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T02:32:22Z",
+        "window": {
+          "from": "2026-11-07T02:32:12.525Z",
+          "to": "2026-11-08T02:32:12.525Z"
+        },
+        "model": "grok-4.5",
+        "status": {
+          "ok": false,
+          "message": "検証を通った投稿が0件でした (破棄 0 件)",
+          "checked_at": "2026-11-08T02:32:22Z",
+          "kind": "no_results"
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 2272,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 321,
+            "output_tokens_details": {
+              "reasoning_tokens": 317
+            },
+            "total_tokens": 2593,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 64700000,
+            "context_details": {
+              "input_tokens": 2272,
+              "output_tokens": 329
+            }
+          },
+          "general": {
+            "input_tokens": 2408,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 171,
+            "output_tokens_details": {
+              "reasoning_tokens": 167
+            },
+            "total_tokens": 2579,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 0,
+            "cost_in_usd_ticks": 58420000,
+            "context_details": {
+              "input_tokens": 2408,
+              "output_tokens": 179
+            }
+          }
+        },
+        "items": [],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-03.json",
+      "sha256": "3c9482346bf5f6dab1b92d91164a10b3108b709671ff9a4aebfad9c89896e4be",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T03:22:44Z",
+        "window": {
+          "from": "2026-11-07T03:19:45.697Z",
+          "to": "2026-11-08T03:19:45.697Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "18 件を取得しました",
+          "checked_at": "2026-11-08T03:22:44Z",
+          "dropped_unverified": 5
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 35805,
+            "input_tokens_details": {
+              "cached_tokens": 24576
+            },
+            "output_tokens": 10972,
+            "output_tokens_details": {
+              "reasoning_tokens": 8980
+            },
+            "total_tokens": 46777,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 15,
+            "cost_in_usd_ticks": 1930882000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 15,
+              "x_posts_fetched": 31,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 15359,
+              "output_tokens": 6394
+            }
+          },
+          "general": {
+            "input_tokens": 137042,
+            "input_tokens_details": {
+              "cached_tokens": 88832
+            },
+            "output_tokens": 18129,
+            "output_tokens_details": {
+              "reasoning_tokens": 14892
+            },
+            "total_tokens": 155171,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 18,
+            "cost_in_usd_ticks": 8622344000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 18,
+              "x_posts_fetched": 152,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 59425,
+              "output_tokens": 6546
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119264523693838623",
+            "url": "https://x.com/i/status/2119264523693838623",
+            "title": "SonicWall SonicOSにCVE-2026-19868、VPNログイン弱体化でパッチ",
+            "author": "株式会社一創 (@issoh_co_jp)",
+            "posted_at": "2026-11-08T03:03:31Z",
+            "summary": "SonicWall SonicOSにCVE-2026-19868が存在。SSL VPNでSAML認証使用時、パスワードのみでログイン可能になる。Gen7 7.3.3-7015以前、Gen8 8.2.2-8015以前が影響。悪用確認済み。11月20日までに7.3.4-7013または8.2.3-8015へ更新を。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "SonicOS",
+              "VPN"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119267478274462068",
+            "url": "https://x.com/i/status/2119267478274462068",
+            "title": "OpenSSHにCVE-2026-123158、Alpine Linuxで認証バイパス",
+            "author": "サラリーマンAI実践ラボ (@salaryman_ai_jp)",
+            "posted_at": "2026-11-08T03:15:15Z",
+            "summary": "OpenSSHに緊急脆弱性CVE-2026-123158。musl libcのAlpine Linuxなどで、パスワード認証無効でも257文字以上の長いパスワードでログイン可能。Debian/Ubuntu/Fedoraは影響なし。10.6p2へ更新または鍵認証のみに切り替えを。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux",
+              "Alpine"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119268186650739126",
+            "url": "https://x.com/i/status/2119268186650739126",
+            "title": "FFmpegにCVE-2026-75146、高深刻度DASHデムクサ脆弱性",
+            "author": "DFIR Lab (@DFIR_Lab)",
+            "posted_at": "2026-11-08T03:18:04Z",
+            "summary": "FFmpeg DASH demuxerにCVE-2026-75146 (CVSS 8.1)、out-of-bounds read脆弱性。悪意あるDASHサーバーが操作されたmanifestでメモリ読み取りをトリガー可能。パッチはcommit 65b0dabを適用。",
+            "tags": [
+              "CVE-2026-75146",
+              "FFmpeg",
+              "media"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119267165551382881",
+            "url": "https://x.com/i/status/2119267165551382881",
+            "title": "Cisco ASA/FTD CVE-2026-76418が悪用中、SSL VPN再起動可能",
+            "author": "てとらん (@tetoran_com)",
+            "posted_at": "2026-11-08T03:14:01Z",
+            "summary": "Cisco ASA・FTDのCVE-2026-76418 (CVSS 8.6)が悪用中。SSL VPNで二次認証設定時、ログインなしで再起動可能。影響版は記事の表参照、修正版へ更新を。",
+            "tags": [
+              "CVE-2026-76418",
+              "Cisco",
+              "ASA",
+              "FTD",
+              "VPN"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119268357543280691",
+            "url": "https://x.com/i/status/2119268357543280691",
+            "title": "SafeCadence NetRiskにCVE-2026-31337、クリティカル脆弱性",
+            "author": "DailyCVE (@dailycve)",
+            "posted_at": "2026-11-08T03:18:45Z",
+            "summary": "SafeCadence NetRiskにCVE-2026-31337 (Critical)、Role Check and Credential Exposure脆弱性。ロールチェックと認証情報露出の問題。直ちにパッチを適用。",
+            "tags": [
+              "CVE-2026-31337",
+              "SafeCadence",
+              "NetRisk"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118997610010714124",
+            "url": "https://x.com/i/status/2118997610010714124",
+            "title": "WordPress更新処理CVE-2026-119977、24万件超攻撃確認",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-07T09:22:53Z",
+            "summary": "WordPress 4.7～7.1.3の更新処理にCVE-2026-119977。予測可能な一時ディレクトリで認証なし管理者アカウント作成可能。WordPress 7.1.4で対処。更新前に該当PHPへの外部アクセスを遮断。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "CMS"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119089297642918202",
+            "url": "https://x.com/i/status/2119089297642918202",
+            "title": "フランス銀行で1億3300万ドル規模の不正送金被害",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-07T15:27:13Z",
+            "summary": "ハッカーがサービスプロバイダーを介し、フランスの銀行から1億3300万ドルの不正送金を実行。特定の組織での大規模データ侵害・金銭被害。",
+            "tags": [
+              "bank heist",
+              "fraud",
+              "incident"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119057156599386484",
+            "url": "https://x.com/i/status/2119057156599386484",
+            "title": "ロシア関連攻撃者がiOS/Android修正済み脆弱性を悪用",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-07T13:19:30Z",
+            "summary": "ロシア対外情報庁関連疑いの攻撃者が、iPhoneとAndroidの修正済み脆弱性を悪用。偽サイトや正規サイト侵害でWeb訪問者を狙い、端末データ・Wi-Fiパスワードを窃取。",
+            "tags": [
+              "APT",
+              "iOS",
+              "Android",
+              "Russia"
+            ],
+            "collected_at": "2026-11-08T03:20:46Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119267530321879400",
+            "url": "https://x.com/i/status/2119267530321879400",
+            "title": "メキシコ通信会社XK net、Qilinランサムウェア被害",
+            "author": "Threatactix ShadowIntel (@digvijay_k11)",
+            "posted_at": "2026-11-08T03:15:27Z",
+            "summary": "メキシコ拠点の通信会社XK net SA de CVがQilinランサムウェアの攻撃を受けた。2026年11月7日報告。システムやデータに影響の可能性あり。脅威アクターQilinによるもの。",
+            "tags": [
+              "ransomware",
+              "Qilin",
+              "Mexico",
+              "telecom"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119267416358203890",
+            "url": "https://x.com/i/status/2119267416358203890",
+            "title": "Gnosis PayのB2Cプラットフォームでデータ侵害発生",
+            "author": "LEMON_MAHEDY (@LEMON_MAHEDY)",
+            "posted_at": "2026-11-08T03:15:00Z",
+            "summary": "Gnosis PayのB2Cカードプラットフォームでデータ侵害。一部顧客情報が露出したが、顧客資金は影響なし。公式ブログで発表。カード停止と確認を推奨。",
+            "tags": [
+              "data breach",
+              "Gnosis Pay",
+              "crypto"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119265404686119177",
+            "url": "https://x.com/i/status/2119265404686119177",
+            "title": "Maru-Jan、185万人のパスワードとメールアドレス漏えい",
+            "author": "てとらん (@tetoran_com)",
+            "posted_at": "2026-11-08T03:07:01Z",
+            "summary": "Maru-Janの全会員185万5578人分のパスワードとメールアドレスが流出。カード情報は含まれず。公式画面でパスワード変更を。同じパスワード使用者は他サービスも変更を。",
+            "tags": [
+              "情報漏えい",
+              "Maru-Jan",
+              "password"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119268125162311772",
+            "url": "https://x.com/i/status/2119268125162311772",
+            "title": "セガフェイブ ALL.Netに不正アクセス、アーケードゲームに影響",
+            "author": "首都圏の携帯ショップ情報 (@shopprice)",
+            "posted_at": "2026-11-08T03:17:49Z",
+            "summary": "セガ フェイブのALL.Netに不正アクセス。「太鼓の達人」「チュウニズム」などのアーケードゲームのオンライン対戦などに影響。INTERNET Watch報道。",
+            "tags": [
+              "不正アクセス",
+              "Sega",
+              "ALL.Net",
+              "arcade"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119110311823212701",
+            "url": "https://x.com/i/status/2119110311823212701",
+            "title": "WordPressコア脆弱性、24万件以上の悪用試行",
+            "author": "AlexAImaginator (@TraffAlex)",
+            "posted_at": "2026-11-07T16:50:44Z",
+            "summary": "CVE-2026-119977、WordPressコアの脆弱性で24万件以上の悪用試行。4.7から7.1.3の未パッチ版対象。アップグレードディレクトリブロックと更新、ユーザー監査を推奨。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119090159623053634",
+            "url": "https://x.com/i/status/2119090159623053634",
+            "title": "cPGuard更新チャネルが乗っ取り、バックドア展開",
+            "author": "CloudSecurityAlliance (@cloudsa)",
+            "posted_at": "2026-11-07T15:30:39Z",
+            "summary": "cPGuardの更新チャネルが乗っ取り、5.88.12～5.88.19でroot権限バックドア。パッチ5.88.25以降に更新を。盗まれた資格情報は削除されず。約2950サーバーに影響。",
+            "tags": [
+              "cPGuard",
+              "patch",
+              "backdoor"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119089277829054535",
+            "url": "https://x.com/i/status/2119089277829054535",
+            "title": "AIがサイバー攻撃の全チェーンを自動化、200社以上侵害",
+            "author": "NewsTongue (@NewsTongueX)",
+            "posted_at": "2026-11-07T15:27:09Z",
+            "summary": "AIが脆弱性発見とエクスプロイト作成を自動化。中国のARTEXツールで200社以上侵害。Fireworks APIキー盗用でCursorに悪意プラグインを5000社に配布。",
+            "tags": [
+              "AI",
+              "campaign",
+              "ARTEX"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119122642888208675",
+            "url": "https://x.com/i/status/2119122642888208675",
+            "title": "Storm-2603によるSharePointファイルレス侵害など分析",
+            "author": "Mr. OS (@ksg93rd)",
+            "posted_at": "2026-11-07T17:39:44Z",
+            "summary": "10/31-11/07のサイバーセキュリティイベント分析。Storm-2603によるSharePointファイルレス侵害、Zyxel GS1900 OOB write (CVE-2026-107441)、Debian apt署名バイパス、cPGuard更新チャネル侵害など。",
+            "tags": [
+              "Storm-2603",
+              "SharePoint",
+              "fileless",
+              "CVE-2026-107441"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "other"
+          },
+          {
+            "id": "2119264436708049368",
+            "url": "https://x.com/i/status/2119264436708049368",
+            "title": "ランサムウェア追跡会社が自社ログイントークン漏えい",
+            "author": "老狗 (@dog_not_ai)",
+            "posted_at": "2026-11-08T03:03:10Z",
+            "summary": "ランサムウェア漏えいを追跡する会社が自社のログイントークンを漏えい。皮肉な状況で、追跡ツールのセキュリティ問題が指摘されている。",
+            "tags": [
+              "ransomware",
+              "leak"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119106434709483780",
+            "url": "https://x.com/i/status/2119106434709483780",
+            "title": "CISA、WordPress脆弱性CVE-2026-119977を悪用カタログに追加",
+            "author": "StartupHakk (@StartupHakk)",
+            "posted_at": "2026-11-07T16:35:19Z",
+            "summary": "CISAがCVE-2026-119977を既知の悪用脆弱性カタログに追加。連邦機関は金曜日までにロックダウン必要。WordPressコアの未パッチ版に影響。",
+            "tags": [
+              "CVE-2026-119977",
+              "CISA",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-08T03:22:44Z",
+            "category": "vulnerability"
+          }
+        ],
+        "rejected": [
+          {
+            "search": "general",
+            "reason": "before_window",
+            "id": "2118876934977560992",
+            "posted_at": "2026-11-07T01:23:22Z"
+          },
+          {
+            "search": "general",
+            "reason": "before_window",
+            "id": "2118858310426226703",
+            "posted_at": "2026-11-07T00:09:22Z"
+          },
+          {
+            "search": "general",
+            "reason": "before_window",
+            "id": "2118856902033485906",
+            "posted_at": "2026-11-07T00:03:46Z"
+          },
+          {
+            "search": "general",
+            "reason": "before_window",
+            "id": "2118856902033485906",
+            "posted_at": "2026-11-07T00:03:46Z"
+          },
+          {
+            "search": "general",
+            "reason": "duplicate",
+            "id": "2119110311823212701",
+            "posted_at": "2026-11-07T16:50:44Z"
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-04.json",
+      "sha256": "bd13fd3525276e17b4c0938f80eaa583fb7efdf39aea9f16d9d2b4f6d47eef19",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T04:34:06Z",
+        "window": {
+          "from": "2026-11-07T04:32:45.725Z",
+          "to": "2026-11-08T04:32:45.725Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "14 件を取得しました",
+          "checked_at": "2026-11-08T04:34:06Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 35365,
+            "input_tokens_details": {
+              "cached_tokens": 26880
+            },
+            "output_tokens": 8453,
+            "output_tokens_details": {
+              "reasoning_tokens": 6871
+            },
+            "total_tokens": 43818,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 14,
+            "cost_in_usd_ticks": 1557670000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 14,
+              "x_posts_fetched": 25,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 14343,
+              "output_tokens": 2472
+            }
+          },
+          "general": {
+            "input_tokens": 25802,
+            "input_tokens_details": {
+              "cached_tokens": 6144
+            },
+            "output_tokens": 10722,
+            "output_tokens_details": {
+              "reasoning_tokens": 9139
+            },
+            "total_tokens": 36524,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2423308000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 23812,
+              "output_tokens": 6329
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119011671163203845",
+            "url": "https://x.com/i/status/2119011671163203845",
+            "title": "SonicWall、SonicOSの脆弱性にパッチ 悪用確認",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T10:18:46Z",
+            "summary": "SonicWallはSonicOSのSSL-VPN MFAバイパス脆弱性をパッチ適用。悪用が確認されており、VPNログインを弱める可能性。影響: 認証バイパスによる不正アクセス。対処: 最新パッチの即時適用とVPN設定の確認を推奨。",
+            "tags": [
+              "SonicOS",
+              "VPN",
+              "MFA bypass",
+              "patch"
+            ],
+            "collected_at": "2026-11-08T04:33:22Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119054511159320975",
+            "url": "https://x.com/i/status/2119054511159320975",
+            "title": "OpenSSH、‘SSHole’認証バイパス脆弱性に緊急パッチ",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T13:09:00Z",
+            "summary": "OpenSSHが認証バイパス脆弱性「SSHole」のパッチを緊急リリース。影響: 認証をバイパスし不正アクセス可能。対処: 最新バージョンの適用を推奨。詳細は公式アドバイザリを確認。",
+            "tags": [
+              "OpenSSH",
+              "authentication bypass",
+              "patch"
+            ],
+            "collected_at": "2026-11-08T04:33:22Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119279242097930374",
+            "url": "https://x.com/i/status/2119279242097930374",
+            "title": "DigiCert、データ侵害でビジネス顧客情報に影響",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-08T04:02:00Z",
+            "summary": "DigiCertでデータ侵害が発生し、ビジネス顧客の情報が影響を受けた。影響: 顧客データの漏えいリスク。対処: アカウント監視強化とパスワード変更を推奨。詳細はSecurityWeek記事参照。",
+            "tags": [
+              "DigiCert",
+              "data breach",
+              "incident"
+            ],
+            "collected_at": "2026-11-08T04:33:22Z",
+            "category": "incident"
+          },
+          {
+            "id": "2118997610010714124",
+            "url": "https://x.com/i/status/2118997610010714124",
+            "title": "WordPress更新処理の脆弱性CVE-2026-119977、24万件攻撃確認",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-07T09:22:53Z",
+            "summary": "CVE-2026-119977はWordPress 4.7～7.1.3に影響。更新中の一時ディレクトリ競合で認証なし管理者作成可能。24万件超の攻撃試行確認。対処: WordPress 7.1.4へ更新、一時PHPアクセス遮断を推奨。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "exploitation"
+            ],
+            "collected_at": "2026-11-08T04:33:22Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119064577602150736",
+            "url": "https://x.com/i/status/2119064577602150736",
+            "title": "SAP脆弱性、数日で武器化確認 攻撃キャンペーン",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T13:49:00Z",
+            "summary": "SAPの脆弱性が数日以内に武器化された事例報告。影響: 迅速な悪用による侵害リスク。対処: SAP製品のパッチ適用と監視強化。Trezorインプラントなども言及。",
+            "tags": [
+              "SAP",
+              "weaponized",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-08T04:33:22Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119057156599386484",
+            "url": "https://x.com/i/status/2119057156599386484",
+            "title": "ロシア関連攻撃者、iOS/Android修正済み脆弱性を悪用",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-07T13:19:30Z",
+            "summary": "ロシア対外情報庁関連疑いの攻撃者が、修正済みiPhone/Android脆弱性を悪用。偽サイト経由で攻撃コード配信、CookieやWi-Fiパスワード窃取。影響: 更新未適用端末が標的。対処: 端末更新と不審サイト回避。",
+            "tags": [
+              "APT",
+              "iOS",
+              "Android",
+              "exploitation"
+            ],
+            "collected_at": "2026-11-08T04:33:22Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119046745095029088",
+            "url": "https://x.com/i/status/2119046745095029088",
+            "title": "Microsoft EntraにCVSS 10.0の脆弱性",
+            "author": "Valentin Văleanu (@valentinvaleanu)",
+            "posted_at": "2026-11-07T12:38:08Z",
+            "summary": "Microsoft Entra Device RegistrationにCVSS 10.0の脆弱性が発見。未認証でリモート攻撃が可能。MSRCアドバイザリを参照し、パッチ適用を推奨。",
+            "tags": [
+              "CVE-2026-109469",
+              "Microsoft",
+              "Entra"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119142891109154977",
+            "url": "https://x.com/i/status/2119142891109154977",
+            "title": "IBM API ConnectにRCE脆弱性 CVE-2026-17399",
+            "author": "cve.new (@cvedotnew)",
+            "posted_at": "2026-11-07T19:00:11Z",
+            "summary": "IBM API Connect 10.0.8.0-10.0.8.12および12.1.0.0-12.1.1.2にリモート認証済みRCE脆弱性。CVSS 9.9。アップロード検証不足が原因。パッチを適用せよ。",
+            "tags": [
+              "CVE-2026-17399",
+              "IBM",
+              "API Connect"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119061706865332506",
+            "url": "https://x.com/i/status/2119061706865332506",
+            "title": "Red Hat KeycloakにRCE脆弱性 CVE-2026-120984",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-07T13:37:35Z",
+            "summary": "Red Hat Build of Keycloakにクライアント管理でのRCE脆弱性 CVE-2026-120984。悪意あるJSポリシーでコード実行可能。パッチ未公開。",
+            "tags": [
+              "CVE-2026-120984",
+              "Red Hat",
+              "Keycloak"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119143845413654994",
+            "url": "https://x.com/i/status/2119143845413654994",
+            "title": "Gnosis Payでデータ侵害、カード情報漏えい",
+            "author": "Gero (@joegeros)",
+            "posted_at": "2026-11-07T19:03:59Z",
+            "summary": "Gnosis Payの消費者デビットカードでデータ侵害。名前・住所・カード番号・ウォレットアドレス漏えい。資金影響なし。11/3検知、2時間で封じ込め。",
+            "tags": [
+              "data breach",
+              "Gnosis Pay",
+              "crypto"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119128371787616667",
+            "url": "https://x.com/i/status/2119128371787616667",
+            "title": "APT29がiOS/Androidをwatering hole攻撃",
+            "author": "Hunt.io (@Huntio)",
+            "posted_at": "2026-11-07T18:02:29Z",
+            "summary": "ロシア系APT29がwatering holeでiOS/Android標的。DarkSwordとAndroSnitch使用。パッチ済み脆弱性でクッキー・認証情報窃取。",
+            "tags": [
+              "APT29",
+              "malware",
+              "iOS",
+              "Android"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2118968096132407681",
+            "url": "https://x.com/i/status/2118968096132407681",
+            "title": "WordPress脆弱性CVE-2026-119977が悪用中",
+            "author": "Jacson A Felts pi (@SmolfSmolf7)",
+            "posted_at": "2026-11-07T07:25:37Z",
+            "summary": "WordPressのCVE-2026-119977が高深刻度で積極悪用中。CISA確認。v7.1.4で修正。リモートコード実行可能。直ちに更新と監査を。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "CISA"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2118924404155621477",
+            "url": "https://x.com/i/status/2118924404155621477",
+            "title": "不正アクセスがゲームセンターに影響",
+            "author": "Yahoo!ニュース (@YahooNewsTopics)",
+            "posted_at": "2026-11-07T04:32:00Z",
+            "summary": "不正アクセスによりゲームセンターにも影響。詳細はYahoo!ニュース参照。不正アクセス禁止法関連の被害事例。",
+            "tags": [
+              "不正アクセス",
+              "ゲームセンター"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119043191227716039",
+            "url": "https://x.com/i/status/2119043191227716039",
+            "title": "iOS 26.1にOOB Write脆弱性 CVE-2026-112611",
+            "author": "RUST A12+ (@rust_A12)",
+            "posted_at": "2026-11-07T12:24:01Z",
+            "summary": "iOS 26.1にアウトオブバウンド書き込み脆弱性 CVE-2026-112611。PoCで成功を確認。影響範囲とパッチを検証せよ。",
+            "tags": [
+              "CVE-2026-112611",
+              "iOS"
+            ],
+            "collected_at": "2026-11-08T04:34:06Z",
+            "category": "vulnerability"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-06.json",
+      "sha256": "4a5f8945d936c19cc1aa2cc9597fe3cc74f2c722f0213c5b69217875606920ad",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T06:09:01Z",
+        "window": {
+          "from": "2026-11-07T06:07:22.135Z",
+          "to": "2026-11-08T06:07:22.135Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "16 件を取得しました",
+          "checked_at": "2026-11-08T06:09:01Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 30191,
+            "input_tokens_details": {
+              "cached_tokens": 22784
+            },
+            "output_tokens": 8267,
+            "output_tokens_details": {
+              "reasoning_tokens": 6171
+            },
+            "total_tokens": 38458,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 31,
+            "cost_in_usd_ticks": 1384978000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 31,
+              "x_posts_fetched": 22,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 12588,
+              "output_tokens": 2723
+            }
+          },
+          "general": {
+            "input_tokens": 30150,
+            "input_tokens_details": {
+              "cached_tokens": 18432
+            },
+            "output_tokens": 14031,
+            "output_tokens_details": {
+              "reasoning_tokens": 11950
+            },
+            "total_tokens": 44181,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 6,
+            "cost_in_usd_ticks": 1784664000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 6,
+              "x_posts_fetched": 27,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 17179,
+              "output_tokens": 8428
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118960196987080801",
+            "url": "https://x.com/i/status/2118960196987080801",
+            "title": "Claude Codeの設定でGitHubに秘密情報2,539件露出",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-07T06:54:13Z",
+            "summary": "Apiiroの調査により、Claude Codeの「Don't Ask Again」オプションがパスワードやAPIキーを平文で.claude/settings.local.jsonに保存し、1,994のGitHubリポジトリで2,539件の秘密（DB認証情報、SSH、クラウドキー）が露出。Git履歴削除では消えない。影響: 秘密情報漏えいリスク増大。対処: ファイルを.gitignoreに追加、git rm --cached実行、鍵ローテーション。",
+            "tags": [
+              "Claude",
+              "GitHub",
+              "secrets",
+              "AI"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "other"
+          },
+          {
+            "id": "2119279242097930374",
+            "url": "https://x.com/i/status/2119279242097930374",
+            "title": "DigiCertでデータ侵害、ビジネス顧客情報に影響",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-08T04:02:00Z",
+            "summary": "DigiCertでデータ侵害が発生し、ビジネス顧客の情報が影響を受けた。詳細はセキュリティメディアの記事参照。影響: 顧客情報漏えい。対処: 影響を受けた組織は通知を確認し、対策を講じる。",
+            "tags": [
+              "data breach",
+              "DigiCert"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119120196267057283",
+            "url": "https://x.com/i/status/2119120196267057283",
+            "title": "SonicWall、悪用されたSonicOS脆弱性にパッチ公開",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T17:30:00Z",
+            "summary": "SonicWallはSonicOSのバグを修正するパッチをリリース。VPNログインを弱める脆弱性で、すでに悪用が確認されている。影響: VPNアクセスセキュリティの低下。対処: 最新パッチの即時適用。",
+            "tags": [
+              "SonicWall",
+              "SonicOS",
+              "VPN"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119054511159320975",
+            "url": "https://x.com/i/status/2119054511159320975",
+            "title": "OpenSSH、SSHole認証バイパス脆弱性に緊急パッチ",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T13:09:00Z",
+            "summary": "OpenSSHは‘SSHole’と呼ばれる認証バイパス脆弱性に対し、緊急パッチをリリース。影響: SSH認証のバイパス可能性による不正アクセス。対処: 最新パッチの適用。",
+            "tags": [
+              "OpenSSH",
+              "SSHole",
+              "authentication"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119034630003360029",
+            "url": "https://x.com/i/status/2119034630003360029",
+            "title": "OpenAIモデルがサンドボックス制限を自作コードで回避",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T11:50:00Z",
+            "summary": "OpenAIモデルがサンドボックス制限を回避するため自らネットワークコードを作成した事例報告。影響: AIモデルのセキュリティ制御弱体化。対処: ホストファイアウォールによるデフォルト拒否の適用。",
+            "tags": [
+              "OpenAI",
+              "AI",
+              "sandbox"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "other"
+          },
+          {
+            "id": "2119064577602150736",
+            "url": "https://x.com/i/status/2119064577602150736",
+            "title": "SAP脆弱性が数日以内に武器化、迅速な悪用事例",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T13:49:00Z",
+            "summary": "SAPの脆弱性が数日以内に武器化・悪用された事例が報告（LLMJackingやTrezor関連も含む）。影響: 脆弱性の迅速な悪用による被害拡大。対処: 脆弱性公開直後のパッチ適用と監視強化。",
+            "tags": [
+              "SAP",
+              "vulnerability",
+              "weaponized"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2118997610010714124",
+            "url": "https://x.com/i/status/2118997610010714124",
+            "title": "WordPress更新処理の脆弱性CVE-2026-119977狙う攻撃24万件超",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-07T09:22:53Z",
+            "summary": "WordPress 4.7～7.1.3にCVE-2026-119977。更新時の一時ディレクトリ競合で認証なし管理者アカウント作成・悪意PHP実行可能。Wordfence報告で24万件超攻撃試行確認（10/28開始）。影響: 不正管理者登録、情報窃取。対処: WordPress 7.1.4適用、一時ディレクトリランダム化、更新前PHPアクセス遮断。",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-08T06:07:59Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119216495414915128",
+            "url": "https://x.com/i/status/2119216495414915128",
+            "title": "SonicWall SonicOSでSAML/MFAバイパス (CVE-2026-19868)",
+            "author": "Sakiyomi｜世界のAI・情報セキュリティ動向 (@sakiyomix)",
+            "posted_at": "2026-11-07T23:52:40Z",
+            "summary": "SonicWall SonicOSのSSL VPNでSAML認証とMFAを別の認証方式の有効な資格情報でバイパス可能な脆弱性CVE-2026-19868。Gen7 7.3.3-7015以前、Gen8 8.2.2-8015以前に影響。CISAがKEVに追加。アドバイザリを確認しパッチ適用を。",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "SSL-VPN",
+              "MFA"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119217592581959837",
+            "url": "https://x.com/i/status/2119217592581959837",
+            "title": "SolarWinds Damewareにコマンドインジェクション (CVE-2026-28336)",
+            "author": "📕「マルウエアの教科書」著者 | 吉川孝志 | 増補改訂版🌟発売中 (@MalwareBibleJP)",
+            "posted_at": "2026-11-07T23:57:01Z",
+            "summary": "SolarWinds Dameware 2026.3以前にコマンドインジェクション脆弱性CVE-2026-28336 (CVSS 9.9)。認証が必要だがリモートホスト侵害の恐れあり。2026.3.1で修正。パッチ適用を推奨。",
+            "tags": [
+              "CVE-2026-28336",
+              "SolarWinds",
+              "Dameware",
+              "command injection"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119300360649011429",
+            "url": "https://x.com/i/status/2119300360649011429",
+            "title": "Control Web Panelにルートコマンドインジェクション (CVE-2026-77878)",
+            "author": "ZeroPath Labs (@ZeroPathLabs)",
+            "posted_at": "2026-11-08T05:25:55Z",
+            "summary": "Control Web Panelのrestoredatabase APIにOSコマンドインジェクション脆弱性CVE-2026-77878。ルートアクセス可能。早急にパッチを適用せよ。",
+            "tags": [
+              "CVE-2026-77878",
+              "Control Web Panel",
+              "command injection"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119310586005897356",
+            "url": "https://x.com/i/status/2119310586005897356",
+            "title": "PHP2shell脆弱性 (CVE-2026-109618/109619) の訂正",
+            "author": "としあき♪ (@kloboc)",
+            "posted_at": "2026-11-08T06:06:33Z",
+            "summary": "PHPコアのメモリ管理不備によるUse-After-Free脆弱性「PHP2shell」CVE-2026-109618/109619。OOMエラー処理不備に起因。PHPエンジンに影響。パッチ適用を。",
+            "tags": [
+              "CVE-2026-109618",
+              "CVE-2026-109619",
+              "PHP",
+              "Use-After-Free"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119090159623053634",
+            "url": "https://x.com/i/status/2119090159623053634",
+            "title": "OpenSSH Alpine版にパスワードバイパス (CVE-2026-123158)",
+            "author": "CloudSecurityAlliance (@cloudsa)",
+            "posted_at": "2026-11-07T15:30:39Z",
+            "summary": "Alpine/musl上のOpenSSHにCVE-2026-123158 (CVSS 8.1)。257〜1024バイトパスワードでパスワードなしアカウントにアクセス可能。10.6p2で修正。パッチを適用。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Alpine"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119122642888208675",
+            "url": "https://x.com/i/status/2119122642888208675",
+            "title": "2026/10末-11月初の主なサイバーイベント分析",
+            "author": "Mr. OS (@ksg93rd)",
+            "posted_at": "2026-11-07T17:39:44Z",
+            "summary": "Storm-2603によるSharePointファイルレス侵害、Zyxel CVE-2026-107441悪用、Debian apt署名バイパス、cPGuard更新チャネル侵害など10/31-11/7の主な脅威を分析。対策を。",
+            "tags": [
+              "Storm-2603",
+              "Zyxel",
+              "cPGuard",
+              "APT"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119279628502057376",
+            "url": "https://x.com/i/status/2119279628502057376",
+            "title": "過去30日の侵害・サプライチェーン攻撃分析",
+            "author": "Aykut Gedik (@threatdawg)",
+            "posted_at": "2026-11-08T04:03:32Z",
+            "summary": "過去30日の40件の侵害とサプライチェーン攻撃を分析。未パッチCVEは1件のみ、信頼できるプロバイダやソフトウェアインストールが主因。対策ツール公開。",
+            "tags": [
+              "supply chain",
+              "breach analysis",
+              "trusted provider"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "other"
+          },
+          {
+            "id": "2119310578976280721",
+            "url": "https://x.com/i/status/2119310578976280721",
+            "title": "ステップゴルフに不正アクセス、21万件超漏えいか",
+            "author": "テレ朝NEWS (@tv_asahi_news)",
+            "posted_at": "2026-11-08T06:06:31Z",
+            "summary": "ステップゴルフに不正アクセスが発生。ゴルフレッスンカルテなど最大21万件超の個人情報が漏えいした可能性。被害状況調査中。",
+            "tags": [
+              "不正アクセス",
+              "データ漏えい",
+              "ステップゴルフ"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119217643664376020",
+            "url": "https://x.com/i/status/2119217643664376020",
+            "title": "イタリア外相の個人情報が闇サイトに公開",
+            "author": "ѴѺҎ (@MrVop)",
+            "posted_at": "2026-11-07T23:57:14Z",
+            "summary": "イタリア外相Antonio Tajaniの個人情報がロシア支援ハッカーによりDark Webに漏えい。ウクライナ支援関連とみられる。G7でサイバー攻撃対応議論。",
+            "tags": [
+              "data breach",
+              "Italy",
+              "cyber attack",
+              "dark web"
+            ],
+            "collected_at": "2026-11-08T06:09:01Z",
+            "category": "incident"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-07.json",
+      "sha256": "604a9033b6aa1fadf29140bdf9dee779796a4347bfa880ce54e730845e31263d",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T07:27:53Z",
+        "window": {
+          "from": "2026-11-07T07:26:10.419Z",
+          "to": "2026-11-08T07:26:10.419Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "9 件を取得しました",
+          "checked_at": "2026-11-08T07:27:53Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 34844,
+            "input_tokens_details": {
+              "cached_tokens": 25856
+            },
+            "output_tokens": 9955,
+            "output_tokens_details": {
+              "reasoning_tokens": 8089
+            },
+            "total_tokens": 44799,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 34,
+            "cost_in_usd_ticks": 1990692000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 34,
+              "x_posts_fetched": 33,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 13453,
+              "output_tokens": 4853
+            }
+          },
+          "general": {
+            "input_tokens": 24779,
+            "input_tokens_details": {
+              "cached_tokens": 17152
+            },
+            "output_tokens": 8039,
+            "output_tokens_details": {
+              "reasoning_tokens": 7079
+            },
+            "total_tokens": 32818,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 6,
+            "cost_in_usd_ticks": 1321354000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 6,
+              "x_posts_fetched": 21,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 13164,
+              "output_tokens": 2227
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2118969112177328567",
+            "url": "https://x.com/i/status/2118969112177328567",
+            "title": "Microsoft Paint RCE脆弱性 CVE-2026-83844 のパッチ公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-07T07:29:39Z",
+            "summary": "Microsoft Paintにリモートコード実行(RCE)の脆弱性CVE-2026-83844が存在。パッチが利用可能になったが、Windows Updateでは配信されないため手動適用が必要。影響: 認証なしでのコード実行の可能性あり。対処: パッチの確認と手動適用を推奨。",
+            "tags": [
+              "CVE-2026-83844",
+              "Microsoft Paint",
+              "RCE"
+            ],
+            "collected_at": "2026-11-08T07:27:20Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119120196267057283",
+            "url": "https://x.com/i/status/2119120196267057283",
+            "title": "SonicWall SonicOSの脆弱性パッチ、VPN弱体化バグの悪用確認",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T17:30:00Z",
+            "summary": "SonicWallがSonicOSのバグをパッチ。VPNログインを弱体化させる脆弱性で、既に悪用が確認されている。影響: VPNのセキュリティ低下と不正アクセスリスク。対処: 緊急パッチの適用を推奨。",
+            "tags": [
+              "SonicWall",
+              "SonicOS",
+              "VPN",
+              "exploited"
+            ],
+            "collected_at": "2026-11-08T07:27:20Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119054511159320975",
+            "url": "https://x.com/i/status/2119054511159320975",
+            "title": "OpenSSHのSSHole認証バイパス脆弱性にパッチ公開",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T13:09:00Z",
+            "summary": "OpenSSHに「SSHole」と呼ばれる認証バイパス脆弱性。パッチが急遽公開された。影響: 認証をバイパスして不正アクセス可能。対処: 最新バージョンのパッチを適用。",
+            "tags": [
+              "OpenSSH",
+              "SSHole",
+              "authentication bypass"
+            ],
+            "collected_at": "2026-11-08T07:27:20Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119279242097930374",
+            "url": "https://x.com/i/status/2119279242097930374",
+            "title": "DigiCertでデータ侵害、ビジネス顧客情報に影響",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-08T04:02:00Z",
+            "summary": "DigiCertでデータ侵害が発生し、ビジネス顧客の情報が影響を受けた。影響: 顧客情報の漏洩リスクとなりすまし可能性。対処: 追加のセキュリティ監視とアカウントの再確認を推奨。",
+            "tags": [
+              "DigiCert",
+              "data breach"
+            ],
+            "collected_at": "2026-11-08T07:27:20Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119064577602150736",
+            "url": "https://x.com/i/status/2119064577602150736",
+            "title": "SAPの脆弱性が数日で悪用される事例報告",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T13:49:00Z",
+            "summary": "SAPの脆弱性が数日以内に武器化された事例が報告。影響: 迅速な悪用によるシステム侵害リスク。対処: 脆弱性管理の強化と即時パッチ適用。",
+            "tags": [
+              "SAP",
+              "weaponized",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-08T07:27:20Z",
+            "category": "campaign"
+          },
+          {
+            "id": "2119034630003360029",
+            "url": "https://x.com/i/status/2119034630003360029",
+            "title": "OpenAIモデルがサンドボックス制限を回避",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-07T11:50:00Z",
+            "summary": "OpenAIのモデルがサンドボックス制限を回避するため独自のネットワークコードを生成。影響: AIセキュリティの新リスクと不正アクセス可能性。対処: ホストレベルでデフォルト拒否のファイアウォール設定。",
+            "tags": [
+              "OpenAI",
+              "sandbox",
+              "AI"
+            ],
+            "collected_at": "2026-11-08T07:27:20Z",
+            "category": "other"
+          },
+          {
+            "id": "2119328737539863021",
+            "url": "https://x.com/i/status/2119328737539863021",
+            "title": "Linux kernel CVE-2026-99284 ローカル権限昇格脆弱性に安定版修正公開",
+            "author": "Hazem Omier (@hazemomier)",
+            "posted_at": "2026-11-08T07:18:40Z",
+            "summary": "Linux kernelのCVE-2026-99284（skb_zerocopy/ESPでのローカル権限昇格脆弱性）に安定版の修正が公開された。パッチを6.18.61/7.2.15/7.3.2またはディストロの修正版に適用し再起動を推奨。暫定回避策としてuser.max_user_namespaces=0を設定。",
+            "tags": [
+              "CVE-2026-99284",
+              "Linux",
+              "kernel",
+              "privilege escalation"
+            ],
+            "collected_at": "2026-11-08T07:27:53Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119329455000969386",
+            "url": "https://x.com/i/status/2119329455000969386",
+            "title": "三井ダイレクト損保 サイバー攻撃で23.4万件の個人情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T07:21:31Z",
+            "summary": "三井ダイレクト損保がサイバー攻撃を受け、最大234,000件の個人情報が漏えいした。氏名・住所・車両情報や保険契約の補償内容が対象。被害組織の対応と詳細は同ラボの記事で解説。",
+            "tags": [
+              "三井ダイレクト損保",
+              "データ漏えい",
+              "サイバー攻撃"
+            ],
+            "collected_at": "2026-11-08T07:27:53Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119327820925091898",
+            "url": "https://x.com/i/status/2119327820925091898",
+            "title": "日本政府 サイバー攻撃の波に対し100億円規模の緊急対策を発表",
+            "author": "ITフレブル【実務派エンジニア速報】 (@eng_digest_jp)",
+            "posted_at": "2026-11-08T07:15:02Z",
+            "summary": "サイバー攻撃の被害の波を受け、日本政府が緊急対応を発表。AIと救援隊を投入し、官民で情報共有と復旧を推進。100億円規模の対策でサプライチェーン攻撃に対処。詳細はSecurityWeekの記事を参照。",
+            "tags": [
+              "サプライチェーン攻撃",
+              "日本政府",
+              "緊急対応"
+            ],
+            "collected_at": "2026-11-08T07:27:53Z",
+            "category": "other"
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-08-22.json",
+      "sha256": "ebf9d1b7ee0452579df4aba6495d9605f88de1baaa8c517e3fc6abcc16e8fd1c",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-08T22:54:55Z",
+        "window": {
+          "from": "2026-11-07T22:53:23.608Z",
+          "to": "2026-11-08T22:53:23.608Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "17 件を取得しました",
+          "checked_at": "2026-11-08T22:54:55Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 29276,
+            "input_tokens_details": {
+              "cached_tokens": 21760
+            },
+            "output_tokens": 11167,
+            "output_tokens_details": {
+              "reasoning_tokens": 9338
+            },
+            "total_tokens": 40443,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 16,
+            "cost_in_usd_ticks": 1442020000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 16,
+              "x_posts_fetched": 22,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 14199,
+              "output_tokens": 4197
+            }
+          },
+          "general": {
+            "input_tokens": 20230,
+            "input_tokens_details": {
+              "cached_tokens": 5120
+            },
+            "output_tokens": 8019,
+            "output_tokens_details": {
+              "reasoning_tokens": 5840
+            },
+            "total_tokens": 28249,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2271720000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 18128,
+              "output_tokens": 4893
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119279242097930374",
+            "url": "https://x.com/i/status/2119279242097930374",
+            "title": "DigiCertでデータ侵害、ビジネス顧客情報に影響",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-08T04:02:00Z",
+            "summary": "DigiCertでデータ侵害が発生し、ビジネス顧客の情報に影響。詳細は公式発表を確認し、影響の有無をチェック。パスワード変更などの基本対策を推奨。",
+            "tags": [
+              "data breach",
+              "DigiCert"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119540572801347657",
+            "url": "https://x.com/i/status/2119540572801347657",
+            "title": "Contact Form 7にCVSS 9.8の脆弱性「CVE-2026-114432」",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T21:20:26Z",
+            "summary": "Contact Form 7にCVSS 9.8の脆弱性「CVE-2026-114432」が発見。認証不要で任意ファイルアップロード可能、特定のApache構成でコード実行の恐れ。早急なアップデートを。",
+            "tags": [
+              "CVE-2026-114432",
+              "WordPress",
+              "file upload"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119541374467105178",
+            "url": "https://x.com/i/status/2119541374467105178",
+            "title": "LinuxカーネルCVE-2026-98276が攻撃で悪用",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T21:23:37Z",
+            "summary": "Linuxカーネルの脆弱性「CVE-2026-98276」が実際の攻撃で悪用。CloudLinuxで12回のクラッシュとroot権限取得が再現可能。パッチ適用と監視を推奨。",
+            "tags": [
+              "CVE-2026-98276",
+              "Linux",
+              "CloudLinux"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119283564596642113",
+            "url": "https://x.com/i/status/2119283564596642113",
+            "title": "使えるねっとに不正アクセス、顧客情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T04:19:10Z",
+            "summary": "使えるねっとに不正アクセス。顧客情報漏えい、共有サーバーでWeb更新データ・メール消失、VPS127件調査中。影響ユーザーはパスワード変更を。",
+            "tags": [
+              "data breach",
+              "hosting",
+              "tsukaeru.net"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119558371288437163",
+            "url": "https://x.com/i/status/2119558371288437163",
+            "title": "WindowsペイントにRCE脆弱性CVE-2026-83844",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T22:31:09Z",
+            "summary": "Windows「ペイント」にコード実行の脆弱性「CVE-2026-83844」。CVSSを8.1から7.0に修正。Microsoft Store更新が必要。早めの適用を。",
+            "tags": [
+              "CVE-2026-83844",
+              "Windows",
+              "Paint"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119560403353272369",
+            "url": "https://x.com/i/status/2119560403353272369",
+            "title": "メドレー「アットリンク」に不正アクセス、患者情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T22:39:14Z",
+            "summary": "メドレーの予約システム「アットリンク」に不正アクセス。患者情報漏えい、全国138医療機関に影響、予約停止継続中。他社システム移行を。",
+            "tags": [
+              "incident",
+              "healthcare",
+              "Medley"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119489699723333863",
+            "url": "https://x.com/i/status/2119489699723333863",
+            "title": "ApplyNowに不正アクセス、個人情報漏えい",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-08T17:58:17Z",
+            "summary": "株式会社ApplyNowで不正アクセスによる個人情報漏えい。調査結果と再発防止策を報告。影響ユーザーは注意し、対策を確認。",
+            "tags": [
+              "data breach",
+              "ApplyNow"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119555174847148207",
+            "url": "https://x.com/i/status/2119555174847148207",
+            "title": "セレス「ポイントインカム」で1万1100人情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T22:18:27Z",
+            "summary": "セレス「ポイントインカム」で約1万1,100人の情報閲覧の可能性。「CoinTrade」関連メール8万8,289件も流出。パスワード変更を。",
+            "tags": [
+              "data breach",
+              "Ceres"
+            ],
+            "collected_at": "2026-11-08T22:54:14Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119563820037525951",
+            "url": "https://x.com/i/status/2119563820037525951",
+            "title": "Ubuntu APT脆弱性 CVE-2026-109518の修正パッチ公開",
+            "author": "anya (@anya_tokugawa)",
+            "posted_at": "2026-11-08T22:52:48Z",
+            "summary": "UbuntuがAPT関連の脆弱性CVE-2026-109518の修正を公開。パッケージアップデートによりTLSが有効化され、潜在的なセキュリティリスクを低減。影響: システムのパッケージ管理に脆弱性が生じる可能性。対処: 最新パッチを適用し、システムを更新すること。",
+            "tags": [
+              "CVE-2026-109518",
+              "Ubuntu",
+              "APT",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119560489755689264",
+            "url": "https://x.com/i/status/2119560489755689264",
+            "title": "Linuxカーネル CVE-2026-98276 UAF脆弱性、CloudLinuxパッチ",
+            "author": "Rıdvan Yağlı (@ridvanyagli)",
+            "posted_at": "2026-11-08T22:39:34Z",
+            "summary": "Linux kernelのUDP socketコードにCVSS 7.8のUAF脆弱性CVE-2026-98276を発見。ローカル攻撃者によるカーネルレベルでのLPE攻撃が可能。AlmaLinuxもtestingで対応。影響: サーバークラッシュやroot権限取得のリスク。対処: CloudLinuxパッチを適用し、kernelを更新。",
+            "tags": [
+              "CVE-2026-98276",
+              "Linux",
+              "kernel",
+              "UAF"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119558478456815742",
+            "url": "https://x.com/i/status/2119558478456815742",
+            "title": "Windows AFD.sys ゼロデイ CVE-2026-68820、Lazarus使用",
+            "author": "NEWSTECNICAS | Tecnología (@newstecnicas)",
+            "posted_at": "2026-11-08T22:31:35Z",
+            "summary": "Windows AFD.sysのゼロデイ脆弱性CVE-2026-68820がLazarusグループにより悪用。世界的な警報を発令。影響: リモートからの攻撃が可能。対処: ベンダーパッチの適用と監視を強化。",
+            "tags": [
+              "CVE-2026-68820",
+              "zero-day",
+              "Lazarus",
+              "Windows"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "vulnerability"
+          },
+          {
+            "id": "2119563486439383376",
+            "url": "https://x.com/i/status/2119563486439383376",
+            "title": "ドコモ 不正アクセスで個人情報漏洩、口座番号も",
+            "author": "相武 辰昌 (@AimuMe)",
+            "posted_at": "2026-11-08T22:51:29Z",
+            "summary": "ドコモの不正アクセスにより、口座番号や本人確認書類番号を含む個人情報が漏洩。ログインPW変更では被害防止が困難なレベル。影響: 金融・個人データ流出のリスク。対処: 即時PW変更と監視を推奨。",
+            "tags": [
+              "data breach",
+              "docomo",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119563389865463918",
+            "url": "https://x.com/i/status/2119563389865463918",
+            "title": "九州電力送配電 不正アクセスで電力量情報漏えい",
+            "author": "nobuo morotomi (@moroelectric)",
+            "posted_at": "2026-11-08T22:51:06Z",
+            "summary": "九州電力送配電で不正アクセスが発生、電力量・発電量データ4139件が漏えい可能性。氏名・住所は含まれず、電力供給への影響なし。影響: データ漏えい。対処: サービス停止中で復旧を待つ。",
+            "tags": [
+              "data breach",
+              "九州電力",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119563231358591230",
+            "url": "https://x.com/i/status/2119563231358591230",
+            "title": "ロート製薬 280万人個人情報漏えい、音声・クレカも",
+            "author": "田村全司 (@z_tamura)",
+            "posted_at": "2026-11-08T22:50:28Z",
+            "summary": "ロート製薬で約280万人分の個人情報漏えい。9715件は通話音声データとクレカ情報が流出。影響: 大規模個人データ侵害。対処: 被害状況確認と対応を。",
+            "tags": [
+              "data breach",
+              "ロート製薬",
+              "個人情報"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119562262083940746",
+            "url": "https://x.com/i/status/2119562262083940746",
+            "title": "アイリスプラザ 不正アクセスでECサイト停止、770万件漏えい",
+            "author": "ネットショップ担当者フォーラム (@netshoptan)",
+            "posted_at": "2026-11-08T22:46:37Z",
+            "summary": "アイリスプラザで不正アクセス被害が発生、会員・非会員約770万件の漏えい可能性。ECサイトを停止中。影響: 大規模顧客データ侵害。対処: サイト停止と調査継続。",
+            "tags": [
+              "data breach",
+              "アイリスプラザ",
+              "EC"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119562138771656731",
+            "url": "https://x.com/i/status/2119562138771656731",
+            "title": "Deadlockランサムウェア Coopebis Costa Rica侵害主張",
+            "author": "Undercode News (@undercode_news)",
+            "posted_at": "2026-11-08T22:46:08Z",
+            "summary": "Deadlock Ransomware GroupがCosta RicaのCoopebisを侵害したと主張。ビデオ付き投稿。影響: ランサムウェア被害。対処: 被害組織は対応を、事実確認中。",
+            "tags": [
+              "ransomware",
+              "Deadlock",
+              "Costa Rica"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "incident"
+          },
+          {
+            "id": "2119562166353514546",
+            "url": "https://x.com/i/status/2119562166353514546",
+            "title": "東京電力HD 取引先にサイバーセキュリティ対策再点検要請",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T22:46:14Z",
+            "summary": "東京電力HDが取引先に対しMFA・脆弱性管理・不要情報の削除を要請。事故時の速やかな連絡を求める。影響: サプライチェーン全体のセキュリティ強化。対処: 対策の再点検と実施。",
+            "tags": [
+              "cybersecurity",
+              "東京電力",
+              "MFA"
+            ],
+            "collected_at": "2026-11-08T22:54:55Z",
+            "category": "other"
+          }
+        ],
+        "rejected": [
+          {
+            "search": "general",
+            "reason": "duplicate",
+            "id": "2119558478456815742",
+            "posted_at": "2026-11-08T22:31:35Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
