@@ -22,6 +22,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 - 生成: 一覧ページ (`index.html`)、RSS 2.0 (`feed.xml`)、JSON Feed 1.1 (`feed.json`) — `src/build.ts`。RSS と JSON Feed は同じ記事と失敗のお知らせを含む
   - 見出しの先頭に分類の絵文字 (🔓 脆弱性 / 🔥 インシデント / 🕵️ 攻撃キャンペーン / 📝 その他) と CVE 番号を付ける。分類はモデルの判定
   - 投稿者は X の oEmbed (`publish.x.com/oembed`、認証不要) で確認し、モデルが書いた投稿者と違えば X の値に直す。x_search の出典はアカウント名を含まない `/i/status/<id>` 形式のため。確認できなかった記事はモデルの値のまま
+  - モデルには各項目の投稿本文の抜粋 (`quote`) も書かせ、oEmbed の本文に含まれるかを照合する (要約と投稿の取り違えの検出)。現在はログ (`quote check: …`) と snapshot の `quote_match` に記録するだけで、記事は破棄しない
   - 投稿者が優先アカウント (`TRUSTED_HANDLES`) であることを oEmbed で確認できた記事は、投稿者名の後ろに 🔖 を付ける。RSS / JSON Feed では本文の投稿者の行に 🔖、カテゴリー (tags) に「優先アカウント」、JSON Feed には `_x_security.trusted_author` も付ける。一覧ページは URL の末尾に `#trusted` を付けると優先アカウントの記事だけを表示する
   - 一覧ページはカテゴリーで絞り込める。URL の末尾に `#vulnerability` / `#incident` / `#campaign` / `#other` を付けるとそのカテゴリーだけを表示する (例: [#vulnerability](https://oubakiou.github.io/x-security-rss/#vulnerability))
   - 投稿日 (日本時間) ごとに見出しを付け、上部の棒グラフで日付を選ぶとその日だけを表示する。URL の末尾に `#dYYYY-MM-DD` を付けても同じ (例: [#d2026-11-07](https://oubakiou.github.io/x-security-rss/#d2026-11-07))。カテゴリーと日付の絞り込みは同時には使えない

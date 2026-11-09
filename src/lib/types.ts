@@ -15,6 +15,10 @@ export interface Topic {
   category?: Category;
   /** lowercase handle confirmed by the API's citation; absent when only the model's URL named it */
   author_handle?: string;
+  /** excerpt the model claims to have copied from the post; kept in snapshots only, not in the feed */
+  quote?: string;
+  /** whether quote was found in the post text returned by X (snapshots only) */
+  quote_match?: boolean;
 }
 
 export const CATEGORIES = ["vulnerability", "incident", "campaign", "other"] as const;

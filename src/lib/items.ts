@@ -1,6 +1,6 @@
 import { CATEGORIES, toCategory, type Topic } from "./types.ts";
 
-export const LIMITS = { title: 120, summary: 600, author: 80, tags: 10, tag: 40 } as const;
+export const LIMITS = { title: 120, summary: 600, author: 80, tags: 10, tag: 40, quote: 200 } as const;
 const X_HOSTS = new Set(["x.com", "www.x.com", "twitter.com", "www.twitter.com", "mobile.twitter.com"]);
 export const HANDLE_RE = /^[A-Za-z0-9_]{1,15}$/;
 const SNOWFLAKE_EPOCH = 1288834974657n;
@@ -86,6 +86,10 @@ export const TOPICS_SCHEMA = {
           author: { type: "string", description: "表示名 (@handle)" },
           posted_at: { type: "string", description: "ISO 8601 UTC" },
           summary: { type: "string", description: "日本語の要約 (200字程度)" },
+          quote: {
+            type: "string",
+            description: "url の投稿の本文から 30〜100 字をそのまま抜き出したもの (翻訳・言い換えをしない)",
+          },
           tags: { type: "array", items: { type: "string" } },
           category: {
             type: "string",
@@ -93,7 +97,7 @@ export const TOPICS_SCHEMA = {
             description: "vulnerability (脆弱性) / incident (被害) / campaign (攻撃キャンペーン) / other",
           },
         },
-        required: ["title", "url", "author", "posted_at", "summary", "tags", "category"],
+        required: ["title", "url", "author", "posted_at", "summary", "quote", "tags", "category"],
         additionalProperties: false,
       },
     },
@@ -253,6 +257,7 @@ export function normalizeItems(
         : `${name || "不明"}${handle ? ` (@${handle})` : ""}`,
       posted_at,
       summary: cleanText(r.summary, LIMITS.summary),
+      ...(cleanText(r.quote, LIMITS.quote) ? { quote: cleanText(r.quote, LIMITS.quote) } : {}),
       tags: (Array.isArray(r.tags) ? r.tags : [])
         .map((t) => cleanText(t, LIMITS.tag))
         .filter(Boolean)
