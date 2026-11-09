@@ -280,7 +280,7 @@ export function topicCves(t: Pick<Topic, "title" | "tags">): Set<string> {
 }
 
 /**
- * For a CVE reported more than once, the earliest collected topic is kept so
+ * For a CVE reported more than once, the earliest collected topic within the limit is kept so
  * items already delivered to readers stay stable. Stored data is re-sanitized
  * (defense in depth) because stored snapshots are only as trustworthy as past runs.
  */
@@ -291,6 +291,8 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
   for (const day of [...days].reverse()) {
     for (const t of day) {
       if (typeof t?.id !== "string" || !/^\d{1,20}$/.test(t.id) || byId.has(t.id)) continue;
+      // Stored before quote mismatches were dropped at fetch time.
+      if (t.quote_match === false) continue;
       const time = snowflakeTime(t.id);
       byId.set(t.id, {
         id: t.id,
@@ -311,9 +313,23 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
     }
   }
 
+  // Grouping only among topics that stay within the limit: if a CVE's first topic ages out, its later
+  // reports would otherwise vanish with it as related posts. The oldest remaining report then leads the group.
+  let candidates = [...byId.values()];
+  for (;;) {
+    const kept = groupByCve(candidates).sort((a, b) => toTime(b.posted_at) - toTime(a.posted_at));
+    if (kept.length <= limit) return kept;
+    const cut = new Set(kept.slice(limit).map((t) => t.id));
+    candidates = candidates.filter((t) => !cut.has(t.id));
+  }
+}
+
+/** Topics in first-collection order; later topics sharing a CVE become related posts of the first. */
+function groupByCve(topics: Topic[]): Topic[] {
   const kept: Topic[] = [];
   const owner = new Map<string, Topic>(); // CVE -> kept topic
-  for (const t of byId.values()) {
+  for (const src of topics) {
+    const t: Topic = { ...src, tags: [...src.tags] };
     const cves = topicCves(t);
     const target = [...cves].map((c) => owner.get(c)).find(Boolean);
     if (target) {
@@ -325,7 +341,7 @@ export function mergeTopics(days: Topic[][], limit: number): Topic[] {
     kept.push(t);
     for (const c of cves) owner.set(c, t);
   }
-  return kept.sort((a, b) => toTime(b.posted_at) - toTime(a.posted_at)).slice(0, limit);
+  return kept;
 }
 
 function toTime(s: string): number {
@@ -616,6 +632,55 @@ if (import.meta.vitest) {
   });
 
   describe("mergeTopics", () => {
+    it("skips stored topics whose quote did not match the post", () => {
+      const base = {
+        posted_at: "2026-11-08T00:00:00Z",
+        url: "",
+        author: "u",
+        summary: "",
+        tags: [],
+        collected_at: AT,
+      };
+      const merged = mergeTopics(
+        [
+          [
+            { ...base, id: "1", title: "a", quote_match: false },
+            { ...base, id: "2", title: "b", quote_match: true },
+          ],
+        ],
+        10,
+      );
+      expect(merged.map((t) => t.id)).toEqual(["2"]);
+    });
+
+    it("lets a newer report lead the CVE group once the first report falls outside the limit", () => {
+      const cve = (id: string, posted: string, extra = ""): Topic => ({
+        id,
+        posted_at: posted,
+        title: `CVE-2026-1234 ${extra}`,
+        url: "",
+        author: "u",
+        summary: "",
+        tags: [],
+        collected_at: AT,
+      });
+      const other = (id: string, posted: string): Topic => ({ ...cve(id, posted), title: `other ${id}` });
+      const days = [
+        [cve("4", "2026-11-07T00:00:00Z"), other("5", "2026-11-08T00:00:00Z")],
+        [cve("3", "2026-11-06T00:00:00Z"), other("6", "2026-11-05T00:00:00Z")],
+        [cve("2", "2026-11-03T00:00:00Z")],
+        [cve("1", "2026-11-01T00:00:00Z")],
+      ];
+      const all = mergeTopics(days, 10);
+      expect(all.map((t) => t.id)).toEqual(["5", "6", "1"]);
+      expect(all[2]!.related).toEqual(["2", "3", "4"]);
+
+      // Before: 1 was cut and took 2, 3 and 4 with it, leaving only 5 and 6.
+      const limited = mergeTopics(days, 2);
+      expect(limited.map((t) => t.id)).toEqual(["5", "3"]);
+      expect(limited[1]!.related).toEqual(["4"]);
+    });
+
     const t = (id: string): Topic => ({
       id,
       posted_at: "2099-01-01T00:00:00Z",
