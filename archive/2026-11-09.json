@@ -1,0 +1,590 @@
+{
+  "version": 1,
+  "date": "2026-11-09",
+  "snapshots": [
+    {
+      "name": "2026-11-09-00.json",
+      "sha256": "aa83d4c3e434cf9cf719ee895c22a30f0870883145878bd37030e127c8e718e3",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-09T00:31:38Z",
+        "window": {
+          "from": "2026-11-08T00:30:26.222Z",
+          "to": "2026-11-09T00:30:26.222Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-09T00:31:38Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 9876,
+            "input_tokens_details": {
+              "cached_tokens": 4096
+            },
+            "output_tokens": 8943,
+            "output_tokens_details": {
+              "reasoning_tokens": 6803
+            },
+            "total_tokens": 18819,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 19,
+            "cost_in_usd_ticks": 894852000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 19,
+              "x_posts_fetched": 13,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 7943,
+              "output_tokens": 6555
+            }
+          },
+          "general": {
+            "input_tokens": 17696,
+            "input_tokens_details": {
+              "cached_tokens": 5632
+            },
+            "output_tokens": 9949,
+            "output_tokens_details": {
+              "reasoning_tokens": 8029
+            },
+            "total_tokens": 27645,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2180884000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 37,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 15489,
+              "output_tokens": 6428
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119541374467105178",
+            "url": "https://x.com/i/status/2119541374467105178",
+            "title": "Linuxカーネル CVE-2026-98276 実際の攻撃で悪用",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T21:23:37Z",
+            "summary": "LinuxカーネルのCVE-2026-98276が実際のサイバー攻撃で悪用　CloudLinuxで12回のクラッシュ、root権限取得も再現",
+            "quote": "LinuxカーネルのCVE-2026-98276が実際のサイバー攻撃で悪用　CloudLinuxで12回のクラッシュ、root権限取得も再現",
+            "tags": [
+              "CVE-2026-98276",
+              "Linux",
+              "CloudLinux",
+              "AlmaLinux",
+              "exploited"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119540572801347657",
+            "url": "https://x.com/i/status/2119540572801347657",
+            "title": "Contact Form 7 CVE-2026-114432 CVSS 9.8",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T21:20:26Z",
+            "summary": "Contact Form 7にCVSS 9.8の脆弱性「CVE-2026-114432」　認証不要で任意ファイルをアップロード、特定のApache構成ではコード実行も",
+            "quote": "Contact Form 7にCVSS 9.8の脆弱性「CVE-2026-114432」　認証不要で任意ファイルをアップロード、特定のApache構成ではコード実行も",
+            "tags": [
+              "CVE-2026-114432",
+              "Contact Form 7",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119558371288437163",
+            "url": "https://x.com/i/status/2119558371288437163",
+            "title": "Windowsペイント CVE-2026-83844 コード実行脆弱性",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T22:31:09Z",
+            "summary": "Windows「ペイント」にコード実行の脆弱性、MicrosoftがCVSSを8.1から7.0に修正　CVE-2026-83844、Microsoft Store更新が必要",
+            "quote": "Windows「ペイント」にコード実行の脆弱性、MicrosoftがCVSSを8.1から7.0に修正　CVE-2026-83844、Microsoft Store更新が必要",
+            "tags": [
+              "CVE-2026-83844",
+              "Windows",
+              "Paint"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119283564596642113",
+            "url": "https://x.com/i/status/2119283564596642113",
+            "title": "使えるねっと不正アクセスで顧客情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T04:19:10Z",
+            "summary": "クラウド・ホスティングサービスを展開する使えるねっとに不正アクセス、顧客情報が漏えい　共有サーバーでWeb更新データ・メール消失、VPS127件も調査",
+            "quote": "クラウド・ホスティングサービスを展開する使えるねっとに不正アクセス、顧客情報が漏えい　共有サーバーでWeb更新データ・メール消失、VPS127件も調査",
+            "tags": [
+              "data breach",
+              "hosting",
+              "shared server"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119362095288627391",
+            "url": "https://x.com/i/status/2119362095288627391",
+            "title": "柴田工事調査にランサムウェア攻撃",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T09:31:14Z",
+            "summary": "秋田県の建設コンサルタント 柴田工事調査にランサムウェア 攻撃、秋田県と4市の委託業務に影響　土地所有者の個人情報漏えいのおそれ",
+            "quote": "秋田県の建設コンサルタント 柴田工事調査にランサムウェア 攻撃、秋田県と4市の委託業務に影響　土地所有者の個人情報漏えいのおそれ",
+            "tags": [
+              "ransomware",
+              "Akita"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119489319970967566",
+            "url": "https://x.com/i/status/2119489319970967566",
+            "title": "ロート製薬 不正アクセスで個人データ漏えい",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-08T17:56:46Z",
+            "summary": "不正アクセスによるお客様の個人データ漏えいに関するお詫びとお知らせ 2026年11月6日 ロート製薬株式会社",
+            "quote": "不正アクセスによるお客様の個人データ漏えいに関するお詫びとお知らせ",
+            "tags": [
+              "data breach",
+              "Rohto"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "incident",
+            "author_handle": "piyokango",
+            "quote_match": true
+          },
+          {
+            "id": "2119486642637689109",
+            "url": "https://x.com/i/status/2119486642637689109",
+            "title": "ブックオフグループ 不正アクセスによる個人情報漏えい",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-08T17:46:08Z",
+            "summary": "[PDF] 不正アクセスによる個人情報漏えいに関するお詫びとお知らせ（第 3 報） 2026年11月6日 ブックオフグループホールディングス株式会社",
+            "quote": "[PDF] 不正アクセスによる個人情報漏えいに関するお詫びとお知らせ（第 3 報）",
+            "tags": [
+              "data breach",
+              "Bookoff"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "incident",
+            "author_handle": "piyokango",
+            "quote_match": true
+          },
+          {
+            "id": "2119463019570987170",
+            "url": "https://x.com/i/status/2119463019570987170",
+            "title": "Maru-Jan 不正アクセスで会員情報流出",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-08T16:12:16Z",
+            "summary": "オンライン麻雀「Maru-Jan」への不正アクセスによる会員情報流出のお詫びとご報告 2026年11月7日 株式会社シグナルトーク（Maru-Jan）",
+            "quote": "オンライン麻雀「Maru-Jan」への不正アクセスによる会員情報流出のお詫びとご報告",
+            "tags": [
+              "data breach",
+              "Maru-Jan"
+            ],
+            "collected_at": "2026-11-09T00:31:00Z",
+            "category": "incident",
+            "author_handle": "piyokango",
+            "quote_match": true
+          },
+          {
+            "id": "2119584204149211317",
+            "url": "https://x.com/i/status/2119584204149211317",
+            "title": "CVE-2026-119977 WordPress脆弱性 積極的悪用 更新後も攻撃",
+            "author": "ONE Jailbreak (@onejailbreak_)",
+            "posted_at": "2026-11-09T00:13:48Z",
+            "summary": "CVE-2026-119977のWordPress脆弱性が積極的に悪用されており、更新後も攻撃にさらされているウェブサイトがある。修正情報はSecAlertsで確認可能。",
+            "quote": "Some WordPress websites open to attack even while using update to fix actively exploited flaw.",
+            "tags": [
+              "CVE-2026-119977",
+              "WordPress",
+              "actively exploited"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "vulnerability",
+            "author_handle": "onejailbreak_",
+            "quote_match": false
+          },
+          {
+            "id": "2119586211002270048",
+            "url": "https://x.com/i/status/2119586211002270048",
+            "title": "SonicWall SonicOS SSL VPN 認証回避脆弱性 悪用報告あり",
+            "author": "安全堂 (@anzendo)",
+            "posted_at": "2026-11-09T00:21:47Z",
+            "summary": "SonicOSのSSL VPNに認証回避の脆弱性が公開され、悪用事例が報告されている。SAML認証を有効化している環境に影響し、直ちに対処が必要。",
+            "quote": "#SonicWall #脆弱性 が公開され #悪用事例有 なので直ちに対処が必要。#SSLVPN において #SAML認証 を有効化している環境に影響。#認証回避 の恐れ",
+            "tags": [
+              "SonicWall",
+              "SonicOS",
+              "SSL VPN",
+              "authentication bypass"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "vulnerability",
+            "author_handle": "anzendo",
+            "quote_match": true
+          },
+          {
+            "id": "2119587696360468888",
+            "url": "https://x.com/i/status/2119587696360468888",
+            "title": "React Server Components GHSA-xqc2 認証不要RCE",
+            "author": "AI Heartland (@peaks2314)",
+            "posted_at": "2026-11-09T00:27:41Z",
+            "summary": "React Server Componentsの脆弱性GHSA-xqc2が認証不要のRCEを引き起こす可能性。Next.jsでの確認方法を解説。",
+            "quote": "React Server Components 脆弱性 GHSA-xqc2｜認証不要RCEの対象とNext.jsの確認法 https://ai-heartland.com/security/react-server-components-rce/",
+            "tags": [
+              "GHSA-xqc2",
+              "React",
+              "RCE"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "vulnerability",
+            "author_handle": "peaks2314",
+            "quote_match": true
+          },
+          {
+            "id": "2119587852896157915",
+            "url": "https://x.com/i/status/2119587852896157915",
+            "title": "Maru-Jan 不正アクセスで185万人超情報流出",
+            "author": "おたくま経済新聞📰 (@otakumatch)",
+            "posted_at": "2026-11-09T00:28:18Z",
+            "summary": "22年続く老舗オンライン麻雀「Maru-Jan」で不正アクセスが発生。全会員185万人超の情報が流出した可能性。",
+            "quote": "22年続く老舗オンライン麻雀で不正アクセスが発生しています。\n\n■老舗オンライン麻雀「Maru-Jan」で不正アクセス　全会員185万人超の情報流出",
+            "tags": [
+              "不正アクセス",
+              "Maru-Jan",
+              "データ流出"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "incident",
+            "author_handle": "otakumatch",
+            "quote_match": true
+          },
+          {
+            "id": "2119587372149219650",
+            "url": "https://x.com/i/status/2119587372149219650",
+            "title": "JDL 顧客情報28475件流出可能性 アララ不正アクセス",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-09T00:26:24Z",
+            "summary": "日本デジタル研究所（JDL）の顧客情報28,475件が流出した可能性。アララへの不正アクセスによる第二報で、担当者名や顧客コードも対象。",
+            "quote": "日本デジタル研究所（JDL）、顧客情報28,475件が流出した可能性　アララへの不正アクセスで第二報、担当者名や顧客コードも対象",
+            "tags": [
+              "不正アクセス",
+              "JDL",
+              "データ漏洩"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119586844224659492",
+            "url": "https://x.com/i/status/2119586844224659492",
+            "title": "teket 不正アクセスで全会員氏名メール流出",
+            "author": "サイバ課長 / サイバーセキュリティ.com (@rhino_cyber)",
+            "posted_at": "2026-11-09T00:24:18Z",
+            "summary": "電子チケットのteketが不正アクセスを受け、全会員の氏名とメールが流出した。",
+            "quote": "電子チケットのteketが不正アクセスを受け全会員の氏名とメールが流出",
+            "tags": [
+              "不正アクセス",
+              "teket",
+              "個人情報漏えい"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "incident",
+            "author_handle": "rhino_cyber",
+            "quote_match": true
+          },
+          {
+            "id": "2119583506506662365",
+            "url": "https://x.com/i/status/2119583506506662365",
+            "title": "ClingSTUN マルウェア 感染システムをプロキシノード化",
+            "author": "ASCII.jp (@asciijpeditors)",
+            "posted_at": "2026-11-09T00:11:02Z",
+            "summary": "感染したシステムをリモート制御可能なプロキシノードに変えるマルウェア「ClingSTUN」が発見された。",
+            "quote": "感染したシステムをリモート制御可能なプロキシノードに変えるマルウェア「ClingSTUN」 https://ascii.jp/elem/000/004/449/4449120/ 【PR】",
+            "tags": [
+              "ClingSTUN",
+              "マルウェア",
+              "proxy"
+            ],
+            "collected_at": "2026-11-09T00:31:37Z",
+            "category": "campaign",
+            "author_handle": "asciijpeditors",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "general",
+            "reason": "duplicate",
+            "id": "2119584204149211317",
+            "posted_at": "2026-11-09T00:13:48Z"
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-09-02.json",
+      "sha256": "cee25c8f6c24322d75d9953f04d8972617e368066fe8c357e7438812ec87abdc",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-09T02:41:24Z",
+        "window": {
+          "from": "2026-11-08T02:40:06.326Z",
+          "to": "2026-11-09T02:40:06.326Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "8 件を取得しました",
+          "checked_at": "2026-11-09T02:41:24Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 19879,
+            "input_tokens_details": {
+              "cached_tokens": 15104
+            },
+            "output_tokens": 12030,
+            "output_tokens_details": {
+              "reasoning_tokens": 10070
+            },
+            "total_tokens": 31909,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 10,
+            "cost_in_usd_ticks": 818558000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 10,
+              "x_posts_fetched": 10,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 10968,
+              "output_tokens": 5789
+            }
+          },
+          "general": {
+            "input_tokens": 7698,
+            "input_tokens_details": {
+              "cached_tokens": 5376
+            },
+            "output_tokens": 3956,
+            "output_tokens_details": {
+              "reasoning_tokens": 3664
+            },
+            "total_tokens": 11654,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 113092000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 0,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 5491,
+              "output_tokens": 712
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119540572801347657",
+            "url": "https://x.com/i/status/2119540572801347657",
+            "title": "Contact Form 7にCVSS 9.8の脆弱性 CVE-2026-114432",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T21:20:26Z",
+            "summary": "Contact Form 7プラグインにCVSS 9.8の脆弱性「CVE-2026-114432」が発見された。認証不要で任意ファイルをアップロード可能で、特定のApache構成ではコード実行のリスクがある。セキュリティ対策Labの投稿に基づき、早急なアップデートを推奨。",
+            "quote": "Contact Form 7にCVSS 9.8の脆弱性「CVE-2026-114432」　認証不要で任意ファイルをアップロード、特定のApache構成ではコード実行も",
+            "tags": [
+              "CVE-2026-114432",
+              "Contact Form 7",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119283564596642113",
+            "url": "https://x.com/i/status/2119283564596642113",
+            "title": "使えるねっとに不正アクセス、顧客情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T04:19:10Z",
+            "summary": "クラウド・ホスティングサービスの使えるねっとに不正アクセスが発生。顧客情報が漏えいし、共有サーバーでWeb更新データやメールが消失。VPS127件も調査中。セキュリティ対策Labより。",
+            "quote": "クラウド・ホスティングサービスを展開する使えるねっとに不正アクセス、顧客情報が漏えい　共有サーバーでWeb更新データ・メール消失、VPS127件も調査",
+            "tags": [
+              "data breach",
+              "hosting",
+              "incident"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119541374467105178",
+            "url": "https://x.com/i/status/2119541374467105178",
+            "title": "Linuxカーネル CVE-2026-98276 が実攻撃で悪用",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T21:23:37Z",
+            "summary": "LinuxカーネルのCVE-2026-98276が実際のサイバー攻撃で悪用された。CloudLinuxで12回のクラッシュが発生し、root権限取得も再現可能。AlmaLinuxにも影響の可能性あり。",
+            "quote": "LinuxカーネルのCVE-2026-98276が実際のサイバー攻撃で悪用　CloudLinuxで12回のクラッシュ、root権限取得も再現",
+            "tags": [
+              "CVE-2026-98276",
+              "Linux",
+              "kernel"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119455747553550769",
+            "url": "https://x.com/i/status/2119455747553550769",
+            "title": "Iris Ohyama データクラウド侵害で770万人情報露出",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-08T15:43:22Z",
+            "summary": "Iris Ohyamaのデータクラウドで情報漏えい。770万人の顧客情報が露出した。BleepingComputerの報道。",
+            "quote": "Iris Ohyama data cloud breach exposes info of 7.7 million customers",
+            "tags": [
+              "data breach",
+              "Iris Ohyama"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2119603687480049795",
+            "url": "https://x.com/i/status/2119603687480049795",
+            "title": "iPLAss Ver.2 に認証なし管理機能到達脆弱性",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-09T01:31:14Z",
+            "summary": "電通総研のiPLAss Ver.2に認証なしで管理機能に到達できる脆弱性。顧客環境で実際の不正アクセスと情報取得が確認された。",
+            "quote": "電通総研「iPLAss Ver.2」、認証なしで管理機能に到達できる脆弱性　顧客環境で実際の不正アクセスと情報取得を確認",
+            "tags": [
+              "iPLAss",
+              "vulnerability",
+              "auth bypass"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119596173183054181",
+            "url": "https://x.com/i/status/2119596173183054181",
+            "title": "FORCEDENTRY攻撃 iPhoneスパイウェア感染の仕組み",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-09T01:01:22Z",
+            "summary": "FORCEDENTRY（フォースドエントリー）攻撃により、iPhoneを操作せずにスパイウェアに感染させる仕組みが解説。BlastDoorを突破し、修正後も脅威が残る。",
+            "quote": "FORCEDENTRY（フォースドエントリー）、iPhoneを操作せずスパイウェアに感染させた攻撃の仕組み、BlastDoor突破と修正後の脅威",
+            "tags": [
+              "FORCEDENTRY",
+              "iPhone",
+              "spyware"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "campaign",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2119489699723333863",
+            "url": "https://x.com/i/status/2119489699723333863",
+            "title": "ApplyNow 不正アクセスで個人情報漏えい最終報",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-08T17:58:17Z",
+            "summary": "株式会社ApplyNowで不正アクセスによる個人情報漏えいが発生。調査結果と再発防止策の最終報告が公開された。",
+            "quote": "不正アクセスによる個人情報漏えいに関する調査結果および再発防止策のご報告（最終報）",
+            "tags": [
+              "data breach",
+              "ApplyNow"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "incident",
+            "author_handle": "piyokango",
+            "quote_match": true
+          },
+          {
+            "id": "2119558371288437163",
+            "url": "https://x.com/i/status/2119558371288437163",
+            "title": "Windowsペイントにコード実行脆弱性 CVE-2026-83844",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-08T22:31:09Z",
+            "summary": "Windows「ペイント」にコード実行の脆弱性。CVE-2026-83844で、MicrosoftがCVSSを8.1から7.0に修正。Microsoft Storeからの更新が必要。",
+            "quote": "Windows「ペイント」にコード実行の脆弱性、MicrosoftがCVSSを8.1から7.0に修正　CVE-2026-83844、Microsoft Store更新が必要",
+            "tags": [
+              "CVE-2026-83844",
+              "Windows",
+              "Paint"
+            ],
+            "collected_at": "2026-11-09T02:41:06Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
