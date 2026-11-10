@@ -21,6 +21,8 @@ import {
 import { verifyAuthors } from "./lib/oembed.ts";
 import { DEBUG_DIR, SITE_DIR } from "./lib/paths.ts";
 import { withRetry } from "./lib/retry.ts";
+import { fetchedOnSameJstDay } from "./lib/schedule.ts";
+import { loadAllSnapshots } from "./lib/store.ts";
 import { costSummary, costSummaryLine, type SearchOutcome } from "./lib/usage.ts";
 import { serializeSnapshot, snapshotName, SNAPSHOT_DIR, type Snapshot } from "./lib/snapshot.ts";
 import type { Status, Topic } from "./lib/types.ts";
@@ -205,6 +207,13 @@ function parseSearchResult(resp: unknown, opts: NormalizeOptions): NormalizeResu
 }
 
 async function main(): Promise<void> {
+  if (process.env.SKIP_IF_FETCHED_TODAY === "true") {
+    const at = fetchedOnSameJstDay(await loadAllSnapshots(), new Date());
+    if (at) {
+      logSafe(`skipped: a successful collection already ran today (JST) at ${at}`);
+      return;
+    }
+  }
   const apiKey = process.env.XAI_API_KEY?.trim();
 
   const modelEnv = process.env.XAI_MODEL?.trim();
@@ -219,7 +228,7 @@ async function main(): Promise<void> {
   );
 
   const now = new Date();
-  const windowHours = intEnv("WINDOW_HOURS", 24, 1, 72);
+  const windowHours = intEnv("WINDOW_HOURS", 30, 1, 72);
   const w = rollingWindow(now, windowHours);
   // 1h slack before the window for clock skew; nothing after "now" can exist
   const notBefore = w.start - 3_600_000;
