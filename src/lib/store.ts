@@ -1,7 +1,14 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ARCHIVE_DIR, SITE_DIR } from "./paths.ts";
-import { archiveDate, isSnapshotName, parseArchive, SNAPSHOT_DIR, type ArchiveFile } from "./snapshot.ts";
+import {
+  archiveDate,
+  isSnapshotName,
+  parseArchive,
+  SNAPSHOT_DIR,
+  type ArchiveFile,
+  type Snapshot,
+} from "./snapshot.ts";
 
 export async function loadArchives(dir = ARCHIVE_DIR): Promise<Map<string, ArchiveFile>> {
   const out = new Map<string, ArchiveFile>();
@@ -24,4 +31,11 @@ export async function readSiteSnapshots(): Promise<Array<{ name: string; text: s
   const dir = join(SITE_DIR, SNAPSHOT_DIR);
   const names = (await readdir(dir).catch(() => [] as string[])).filter(isSnapshotName).sort();
   return Promise.all(names.map(async (name) => ({ name, text: await readFile(join(dir, name), "utf8") })));
+}
+
+/** Restore drops snapshots already archived in git, so both places are read. */
+export async function loadAllSnapshots(): Promise<Array<Partial<Snapshot>>> {
+  const site = (await readSiteSnapshots()).map((f) => JSON.parse(f.text) as Partial<Snapshot>);
+  const archived = [...(await loadArchives()).values()].flatMap((a) => a.snapshots.map((e) => e.snapshot));
+  return [...site, ...archived];
 }

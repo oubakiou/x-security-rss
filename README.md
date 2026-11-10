@@ -15,7 +15,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 ## 仕組み
 
 - 収集: xAI Responses API の `x_search` ツール (Grok) — `src/fetch.ts`
-  - 対象期間は実行時点から過去24時間。実行の間隔が24時間より短いと期間が重なるが、同じ投稿は最初の収集を保持して重複を除く。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
+  - 対象期間は実行時点から過去30時間。定期実行の開始時刻のずれで間隔が24時間を超えても取りこぼさないよう、24時間より長くしている。期間が重なった分は、同じ投稿は最初の収集を保持して重複を除く。x_search の日付指定は厳密でないため、投稿 ID から求めた時刻で期間外を除外
   - 信頼できるアカウント限定の検索と、分野別の一般検索の2本立て
 - 保存: 取得結果は1回の実行ごとに `snapshots/YYYY-MM-DD-HH.json` として Pages に置き、日が確定したら
   `archive/YYYY-MM-DD.json` として git にコミット (`src/restore.ts` / `src/build.ts`、詳細は [development.md](development.md))
@@ -26,7 +26,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
   - 投稿者が優先アカウント (`TRUSTED_HANDLES`) であることを oEmbed で確認できた記事は、投稿者名の前に 🔖 を付け、`@ハンドル` をプロフィール (`https://x.com/<handle>`) へのリンクにする。RSS / JSON Feed の本文の投稿者の行も同じ形にし、カテゴリー (tags) に「優先アカウント」、JSON Feed には `_x_security.trusted_author` も付ける。一覧ページは URL の末尾に `#trusted` を付けると優先アカウントの記事だけを表示する
   - 一覧ページはカテゴリーで絞り込める。URL の末尾に `#vulnerability` / `#incident` / `#campaign` / `#other` を付けるとそのカテゴリーだけを表示する (例: [#vulnerability](https://oubakiou.github.io/x-security-rss/#vulnerability))
   - 投稿日 (日本時間) ごとに見出しを付け、上部の棒グラフで日付を選ぶとその日だけを表示する。URL の末尾に `#dYYYY-MM-DD` を付けても同じ (例: [#d2026-11-07](https://oubakiou.github.io/x-security-rss/#d2026-11-07))。カテゴリーと日付の絞り込みは同時には使えない
-- 実行: GitHub Actions の定期実行 (時刻は `.github/workflows/daily.yml` の `schedule` を参照)。GitHub の定時実行は混雑時に数時間遅れることがある
+- 実行: GitHub Actions の定期実行で1日1回収集する (時刻は `.github/workflows/daily.yml` の `schedule` を参照)。GitHub の定時実行は混雑時に数時間遅れ、実行されないこともあるため、1日に2回予約し、その日 (日本時間) にすでに収集が成功していれば後の回は API を呼ばずに終える。手動実行は常に収集し、その日の収集として数える
 - 配信: GitHub Pages (URL は冒頭の「読む・購読する」を参照)
 
 ## セットアップ
@@ -46,7 +46,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 | `MAX_TURNS`        | `3`                        | 検索1本あたりの往復回数の上限 (費用の上限に効く)  |
 | `TRUSTED_HANDLES`  | `src/lib/config.ts` の一覧 | 優先検索するアカウント (カンマ区切り、最大20)     |
 | `EXCLUDED_HANDLES` | なし                       | 除外するアカウント (カンマ区切り、最大20)         |
-| `WINDOW_HOURS`     | `24`                       | 対象期間 (時間、1〜72)                            |
+| `WINDOW_HOURS`     | `30`                       | 対象期間 (時間、1〜72)                            |
 
 `TRUSTED_HANDLES` を設定しない場合は、[`src/lib/config.ts`](src/lib/config.ts) の `DEFAULT_TRUSTED_HANDLES` にあるアカウントを優先検索します。
 変数を設定すると、この一覧を置き換えます (追加ではありません)。自分の環境で一覧を変えたいときは、フォークしたリポジトリで変数を設定するか、`DEFAULT_TRUSTED_HANDLES` を書き換えてください。
