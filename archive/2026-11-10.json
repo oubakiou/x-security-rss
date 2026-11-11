@@ -1,0 +1,795 @@
+{
+  "version": 1,
+  "date": "2026-11-10",
+  "snapshots": [
+    {
+      "name": "2026-11-10-02.json",
+      "sha256": "9810cede8d137a2ffd395293acb2c27cf7de12280035c8a0e5b140a75f3578df",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-10T02:12:48Z",
+        "window": {
+          "from": "2026-11-09T02:10:41.868Z",
+          "to": "2026-11-10T02:10:41.868Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-10T02:12:48Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 12166,
+            "input_tokens_details": {
+              "cached_tokens": 4864
+            },
+            "output_tokens": 10377,
+            "output_tokens_details": {
+              "reasoning_tokens": 8524
+            },
+            "total_tokens": 22543,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 7,
+            "cost_in_usd_ticks": 1290288000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 7,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 10233,
+              "output_tokens": 7250
+            }
+          },
+          "general": {
+            "input_tokens": 12107,
+            "input_tokens_details": {
+              "cached_tokens": 5120
+            },
+            "output_tokens": 8026,
+            "output_tokens_details": {
+              "reasoning_tokens": 6212
+            },
+            "total_tokens": 20133,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 1190630000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 19,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9900,
+              "output_tokens": 5079
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119970694444536014",
+            "url": "https://x.com/i/status/2119970694444536014",
+            "title": "OpenSSH「SSHole」脆弱性悪用攻撃を確認",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-10T01:49:35Z",
+            "summary": "OpenSSHの認証回避脆弱性「SSHole」を悪用する攻撃が確認された。特定のmusl系Linux環境では、パスワードログインを無効化したアカウントにも侵入できる。CVE-2026-123158は、長すぎるパスワードを処理したmuslのハッシュ関数がエラー時に「*」を返し、OpenSSHが保存済みの「*」と一致したと誤認する欠陥だ。修正版OpenSSH 10.6p2は11月5日に公開され、更新やSSHパスワード認証の無効化が推奨される。",
+            "quote": "OpenSSHの認証回避脆弱性「SSHole」を悪用する攻撃が確認された。特定のmusl系Linux環境では、パスワードログインを無効化したアカウントにも侵入できる。",
+            "tags": [
+              "CVE-2026-123158",
+              "OpenSSH",
+              "Linux"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2119850626444390673",
+            "url": "https://x.com/i/status/2119850626444390673",
+            "title": "QuboleのAWSアカウントが侵害、複数顧客データ流出",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-09T17:52:28Z",
+            "summary": "攻撃者がQuboleの信頼されたAWSアカウントの認証情報を使って、複数のQubole顧客のAWSアカウントを侵害。AWSとIDプロバイダーの認証情報を盗み、S3データをコピーした。攻撃の仕組みと確認すべき点を詳述。",
+            "quote": "Attackers breached multiple Qubole customers' AWS accounts using credentials for Qubole's trusted AWS account.",
+            "tags": [
+              "Qubole",
+              "AWS",
+              "data breach"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "incident",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2119846770591363472",
+            "url": "https://x.com/i/status/2119846770591363472",
+            "title": "Ethersphereのnpmパッケージ侵害でマルウェア配信",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-09T17:37:09Z",
+            "summary": "ハッカーがEthersphereのbee-js npmパッケージとSwarm Desktopアプリを侵害し、暗号通貨ウォレットを盗むマルウェアを配信。悪意あるリリースはWindows、macOS、Linuxにバックドアをインストール。バージョンは撤回されたが更新だけではバックドア除去不可。",
+            "quote": "Hackers compromised Ethersphere's bee-js npm package and Swarm Desktop app to deliver crypto wallet-stealing malware.",
+            "tags": [
+              "npm",
+              "Ethersphere",
+              "malware"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2119800258612154773",
+            "url": "https://x.com/i/status/2119800258612154773",
+            "title": "Bitter APTがPapRATバックドアを南アジア組織に展開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-09T14:32:20Z",
+            "summary": "Bitter APTが新しいバックドアPapRATをサイバーエスピオナージ攻撃で展開。南アジアの組織を標的とし、3つの感染チェーン（悪意あるショートカットやMSIインストーラー）を使用。マルウェアはリモートコマンド、ファイル転送、スクリーンショット取得が可能。",
+            "quote": "Bitter APT is deploying a new backdoor called PapRAT in cyberespionage attacks targeting South Asian organizations.",
+            "tags": [
+              "Bitter APT",
+              "PapRAT",
+              "backdoor"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2119948401072574810",
+            "url": "https://x.com/i/status/2119948401072574810",
+            "title": "Amplifon Americasデータ侵害で130万人影響",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-10T00:21:00Z",
+            "summary": "Amplifon Americasのデータ侵害が130万人に影響。個人情報が漏えいした可能性がある。",
+            "quote": "Amplifon Americas Data Breach Impacts 1.3 Million",
+            "tags": [
+              "data breach",
+              "Amplifon"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "incident",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2119855539094003773",
+            "url": "https://x.com/i/status/2119855539094003773",
+            "title": "Frontline Educationデータ侵害で300万人以上被害",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-09T18:12:00Z",
+            "summary": "Frontline Educationのデータ侵害により、300万人以上の人々が影響を受けた。",
+            "quote": "Over 3 Million People Hit by Frontline Education Data Breach",
+            "tags": [
+              "data breach",
+              "Frontline Education"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "incident",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2119941217496559869",
+            "url": "https://x.com/i/status/2119941217496559869",
+            "title": "Vanderbilt大学がBYODランサムウェア攻撃で被害",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-09T23:52:27Z",
+            "summary": "Vanderbilt大学がBYOD環境でのランサムウェア攻撃を受け、データ窃取が主張された。",
+            "quote": "Vanderbilt University hit in BYOD ransomware attack, data theft claimed",
+            "tags": [
+              "ransomware",
+              "Vanderbilt University"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2119902378648289477",
+            "url": "https://x.com/i/status/2119902378648289477",
+            "title": "RØDECaster偽装サイトでSantaStealerマルウェア配信",
+            "author": "Unit 42 (@Unit42_Intel)",
+            "posted_at": "2026-11-09T21:18:07Z",
+            "summary": "Unit 42が検索エンジン結果からRØDECasterを偽装したサイトを観測。#SantaStealerマルウェアを配布。Node.js製のスティーラーで、ブラウザ認証情報、Discordトークン、暗号通貨ウォレット情報を収集。",
+            "quote": "Unit 42 observed search engine results leading to a site impersonating RØDECaster that distributed #SantaStealer malware.",
+            "tags": [
+              "malware",
+              "SantaStealer"
+            ],
+            "collected_at": "2026-11-10T02:11:54Z",
+            "category": "campaign",
+            "author_handle": "unit42_intel",
+            "quote_match": true
+          },
+          {
+            "id": "2119975214989631526",
+            "url": "https://x.com/i/status/2119975214989631526",
+            "title": "CISA KEVに4つの積極悪用CVE追加",
+            "author": "Security Arsenal, LLC (@SecurityAr58409)",
+            "posted_at": "2026-11-10T02:07:33Z",
+            "summary": "CISAが2026年11月9日にGPUStack、FreeSWitch、OpenSSH、IBM Aspera Faspexの4つの脆弱性をKnown Exploited Vulnerabilitiesに追加。検知と修正ガイドを提供。",
+            "quote": "On November 9, 2026, CISA added four new vulnerabilities to its Known Exploited…",
+            "tags": [
+              "CVE",
+              "CISA",
+              "KEV",
+              "GPUStack",
+              "FreeSWitch",
+              "OpenSSH",
+              "IBM Aspera"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "vulnerability",
+            "author_handle": "securityar58409",
+            "quote_match": true
+          },
+          {
+            "id": "2119975578514104523",
+            "url": "https://x.com/i/status/2119975578514104523",
+            "title": "Microsoft PaintにRCE脆弱性、パッチ混乱解決",
+            "author": "Security Arsenal, LLC (@SecurityAr58409)",
+            "posted_at": "2026-11-10T02:08:59Z",
+            "summary": "Microsoft Paintにリモートコード実行の脆弱性。パッチの混乱が解決され、検知と修正ガイドを提供。脅威モデルで心配する必要はないが。",
+            "quote": "Microsoft Paint is not the application your threat model worried about this quarter. It ships…",
+            "tags": [
+              "CVE",
+              "RCE",
+              "Microsoft Paint",
+              "zeroday"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "vulnerability",
+            "author_handle": "securityar58409",
+            "quote_match": true
+          },
+          {
+            "id": "2119974878472286301",
+            "url": "https://x.com/i/status/2119974878472286301",
+            "title": "Confection Wordpress CableにCVSS10の脆弱性",
+            "author": "Erkan Ceran (@erkanceran)",
+            "posted_at": "2026-11-10T02:06:12Z",
+            "summary": "WordpressのConfection Wordpress Cableプラグインに脆弱性あり。サーバーでPHPコード実行可能。スコア10。更新未公開。CVE-2026-115252。",
+            "quote": "Confection Wordpress Cable isimli eklenti varsa acil olarak pasife alın. Açık sayesinde sunucuda PHP kodu çalıştırılabiliyormuş.",
+            "tags": [
+              "CVE-2026-115252",
+              "Wordpress",
+              "plugin"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "vulnerability",
+            "author_handle": "erkanceran",
+            "quote_match": true
+          },
+          {
+            "id": "2119974779314634935",
+            "url": "https://x.com/i/status/2119974779314634935",
+            "title": "SAP Web DispatcherにCSRF脆弱性",
+            "author": "Enclave Radar (@EnclaveRadar)",
+            "posted_at": "2026-11-10T02:05:49Z",
+            "summary": "CVE-2026-89119 (CVSS 9.6)。SAP Web DispatcherとInternet Communication ManagerのCross-Site Request Forgery脆弱性。リモート、ログイン不要。",
+            "quote": "Cross-Site Request Forgery (CSRF) vulnerability in SAP Web Dispatcher and Internet Communication Manager",
+            "tags": [
+              "CVE-2026-89119",
+              "SAP",
+              "CSRF"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "vulnerability",
+            "author_handle": "enclaveradar",
+            "quote_match": true
+          },
+          {
+            "id": "2119975675570643296",
+            "url": "https://x.com/i/status/2119975675570643296",
+            "title": "Revolveで150万人のデータ侵害",
+            "author": "ChrisUK2026 (@chris_uk2026)",
+            "posted_at": "2026-11-10T02:09:22Z",
+            "summary": "オンライン小売Revolveの9月のサイバー攻撃で150万人以上の個人情報が影響。データ侵害の被害を規制当局に報告。",
+            "quote": "Online fashion retailer Revolve has told regulators that the September #cyberattack affected more than 1.5 million individuals.",
+            "tags": [
+              "data breach",
+              "Revolve",
+              "cyberattack"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "incident",
+            "author_handle": "chris_uk2026",
+            "quote_match": true
+          },
+          {
+            "id": "2119974126400249879",
+            "url": "https://x.com/i/status/2119974126400249879",
+            "title": "住友生命、業務委託先システム不正アクセスで情報漏えい",
+            "author": "㈱新日本保険新聞社 (@shin_nihon_ins)",
+            "posted_at": "2026-11-10T02:03:13Z",
+            "summary": "住友生命で業務委託先システムへの不正アクセスによるお客さま情報漏えいについて。詳細は関連リンク参照。",
+            "quote": "住友生命、業務委託先システムへの不正アクセスによるお客さま情報漏えいについて",
+            "tags": [
+              "情報漏えい",
+              "不正アクセス",
+              "住友生命"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "incident",
+            "author_handle": "shin_nihon_ins",
+            "quote_match": true
+          },
+          {
+            "id": "2119974108255682633",
+            "url": "https://x.com/i/status/2119974108255682633",
+            "title": "三井住友海上、MSコンパス不正アクセスで情報漏えい",
+            "author": "㈱新日本保険新聞社 (@shin_nihon_ins)",
+            "posted_at": "2026-11-10T02:03:09Z",
+            "summary": "三井住友海上、MSコンパスへの不正アクセスに伴う情報漏えいについて。詳細は関連リンク参照。",
+            "quote": "三井住友海上、MSコンパスへの不正アクセスに伴う情報漏えいについて",
+            "tags": [
+              "情報漏えい",
+              "不正アクセス",
+              "三井住友海上"
+            ],
+            "collected_at": "2026-11-10T02:12:46Z",
+            "category": "incident",
+            "author_handle": "shin_nihon_ins",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2119974780598182364",
+            "posted_at": "2026-11-10T02:05:49Z"
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-10-15.json",
+      "sha256": "1ce5a60f64a3a2a9679ec657a5df40ed0e160f3110090003dd6ff125d71c5229",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-10T15:39:19Z",
+        "window": {
+          "from": "2026-11-09T15:37:06.521Z",
+          "to": "2026-11-10T15:37:06.521Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "19 件を取得しました",
+          "checked_at": "2026-11-10T15:39:19Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 13657,
+            "input_tokens_details": {
+              "cached_tokens": 9216
+            },
+            "output_tokens": 18007,
+            "output_tokens_details": {
+              "reasoning_tokens": 16379
+            },
+            "total_tokens": 31664,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 11,
+            "cost_in_usd_ticks": 872982000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 11,
+              "x_posts_fetched": 9,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 7714,
+              "output_tokens": 14509
+            }
+          },
+          "general": {
+            "input_tokens": 18186,
+            "input_tokens_details": {
+              "cached_tokens": 4352
+            },
+            "output_tokens": 8161,
+            "output_tokens_details": {
+              "reasoning_tokens": 5245
+            },
+            "total_tokens": 26347,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2310264000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 15979,
+              "output_tokens": 5774
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2119894077340533227",
+            "url": "https://x.com/i/status/2119894077340533227",
+            "title": "CISA、4つのCVEをKEVカタログに追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-09T20:45:08Z",
+            "summary": "CISAが4つのCVEをKnown Exploited Vulnerabilities Catalogに追加した。詳細はhttps://go.dhs.gov/Z3Qを訪問し、組織を保護するための緩和策を適用せよ。",
+            "quote": "We added 4 CVEs to our Known Exploited Vulnerabilities Catalog. Visit https://go.dhs.gov/Z3Q & apply mitigations to protect your org.",
+            "tags": [
+              "KEV",
+              "CISA",
+              "CVE"
+            ],
+            "collected_at": "2026-11-10T15:38:30Z",
+            "category": "vulnerability",
+            "author_handle": "cisacyber",
+            "quote_match": true
+          },
+          {
+            "id": "2120047471544222151",
+            "url": "https://x.com/i/status/2120047471544222151",
+            "title": "Chromeのゼロデイ脆弱性CVE-2026-125350が野外で悪用",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-10T06:54:40Z",
+            "summary": "2026年に8件のChromeゼロデイが野外で悪用。最新のCVE-2026-125350はChromeのXMLコンポーネントのuse-after-free高深刻度脆弱性。Googleがセキュリティアップデートをリリース。悪用が存在するのでChromeを更新。",
+            "quote": "8 Chrome zero-days exploited in the wild in 2026. Google has now released a security update for the latest one: CVE-2026-125350",
+            "tags": [
+              "CVE-2026-125350",
+              "Chrome",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-10T15:38:30Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120178399868309517",
+            "url": "https://x.com/i/status/2120178399868309517",
+            "title": "Fireworks AIの侵害拡大、顧客データとモデルウェイトにアクセス",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-10T15:34:56Z",
+            "summary": "Fireworks AIの侵害が拡大。攻撃者がサードパーティのクラウドプロバイダを通じて開発マシンに到達し、顧客の請求データ、データセット、不完全なモデルウェイトにアクセス。会社は当初シークレットのみの露出と報告。",
+            "quote": "🚨 Fireworks AI's breach has widened. Attackers accessed customer billing data, datasets, and incomplete model weights after reaching development machines through a third-party cloud provider.",
+            "tags": [
+              "data breach",
+              "AI",
+              "Fireworks AI"
+            ],
+            "collected_at": "2026-11-10T15:38:30Z",
+            "category": "incident",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120041948019146966",
+            "url": "https://x.com/i/status/2120041948019146966",
+            "title": "CISA、OpenSSHなど4脆弱性をKEVに追加",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-10T06:32:43Z",
+            "summary": "CISAがOpenSSH、GPUStack、FreeSWITCH、IBM Aspera Faspexの4つの積極的に悪用された脆弱性をKEVカタログに追加。OpenSSHのSSHole攻撃ではTAC Agentマルウェアの展開、ボットネット、クリプトマイニングが関与。",
+            "quote": "CISA adds 4 actively exploited flaws to its KEV catalog, affecting OpenSSH, GPUStack, FreeSWITCH, and IBM Aspera Faspex.",
+            "tags": [
+              "OpenSSH",
+              "KEV",
+              "CISA",
+              "exploited"
+            ],
+            "collected_at": "2026-11-10T15:38:30Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120099000351367471",
+            "url": "https://x.com/i/status/2120099000351367471",
+            "title": "SAP NetWeaverにCVSS 10.0の脆弱性4件、パッチ適用",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-10T10:19:25Z",
+            "summary": "SAPがNetWeaverとWeb DispatcherでCVSS 10.0の脆弱性4件にパッチを適用。2件は認証なしでリモートコード実行可能。もう1件はSAML有効システムで任意のユーザーとしてログイン可能。ユーザー操作は不要。",
+            "quote": "SAP patches 4 vulnerabilities rated CVSS 10.0 in NetWeaver and Web Dispatcher. Two could allow remote code execution without authentication.",
+            "tags": [
+              "SAP",
+              "NetWeaver",
+              "CVSS 10.0",
+              "RCE"
+            ],
+            "collected_at": "2026-11-10T15:38:30Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120122384837734881",
+            "url": "https://x.com/i/status/2120122384837734881",
+            "title": "N-able N-centralのAble2Shell脆弱性で悪用試行が発生",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-10T11:52:21Z",
+            "summary": "N-able N-centralの30以上の#Able2Shell脆弱性公開後、honeypotsを標的とした悪用試行が観測された。watchTowrは一晩の活動を報告し、侵害の兆候を確認しアクセスを制限するよう促している。",
+            "quote": "UPDATE: Exploitation attempts targeting N-able N-central honeypots have been observed following the public disclosure of 30+ #Able2Shell vulnerabilities.",
+            "tags": [
+              "N-able",
+              "Able2Shell",
+              "exploitation",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-10T15:38:30Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120178546979086762",
+            "url": "https://x.com/i/status/2120178546979086762",
+            "title": "Google Chrome CVE-2026-125350 ゼロデイ悪用確認",
+            "author": "Kyle R | Cyber & IT (@thecyberseckyle)",
+            "posted_at": "2026-11-10T15:35:31Z",
+            "summary": "Google、ChromeのCVE-2026-125350（XML use-after-free）の悪用を確認。Windows/Mac/Linux向けに157.0.8103.50/.51などに更新し再起動を推奨。攻撃手法は非公開。",
+            "quote": "Google says an exploit for Chrome CVE-2026-125350 (an XML use-after-free) exists in the wild. Update to 157.0.8103.50/.51 on Windows/Mac or .50 on Linux, then relaunch. Targets and attack method aren…",
+            "tags": [
+              "CVE-2026-125350",
+              "Chrome",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "vulnerability",
+            "author_handle": "thecyberseckyle",
+            "quote_match": true
+          },
+          {
+            "id": "2120178424895451530",
+            "url": "https://x.com/i/status/2120178424895451530",
+            "title": "BeyondTrust Remote Support CVE-2026-102764 RCE",
+            "author": "cat3lyst (@cat3lyst)",
+            "posted_at": "2026-11-10T15:35:02Z",
+            "summary": "BeyondTrust Remote SupportのCVE-2026-102764でファイルアップロードからRCE。Metasploitモジュール公開。バージョン24.1.2でテスト。PHPペイロードで実行。",
+            "quote": "BeyondTrust Remote Support File Upload to RCE metasploit module (CVE-2026-102764)",
+            "tags": [
+              "CVE-2026-102764",
+              "BeyondTrust",
+              "RCE"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "vulnerability",
+            "author_handle": "cat3lyst",
+            "quote_match": true
+          },
+          {
+            "id": "2120178166128083313",
+            "url": "https://x.com/i/status/2120178166128083313",
+            "title": "Apache TomEE CVE-2026-111257 高深刻度",
+            "author": "VulniPulse (@vulnipulse)",
+            "posted_at": "2026-11-10T15:34:00Z",
+            "summary": "Apache TomEE CVE-2026-111257 高深刻度。デフォルト設定で既知パスワードのadminユーザーが追加。リモート認証可能。10.3.0と11.0.0-M2で修正。",
+            "quote": "Apache TomEE (CVE-2026-111257, high severity): with default config and no users defined, it adds an admin user with a well-known password at startup. A remote attacker can authenticate. Fixed in 10.3…",
+            "tags": [
+              "CVE-2026-111257",
+              "Apache",
+              "TomEE"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "vulnerability",
+            "author_handle": "vulnipulse",
+            "quote_match": true
+          },
+          {
+            "id": "2120177346103689581",
+            "url": "https://x.com/i/status/2120177346103689581",
+            "title": "Altinity ClickHouse CVE-2026-116366 パッチ公開",
+            "author": "Altinity (@AltinityDB)",
+            "posted_at": "2026-11-10T15:30:44Z",
+            "summary": "AltinityBuilds of ClickHouseで3つのセキュリティ問題発見。CVE-2026-116366のパッチビルド公開。詳細はアドバイザリ参照。",
+            "quote": "🚨 Running #AltinityBuilds of #ClickHouse®? We recently discovered 3 security issues.",
+            "tags": [
+              "CVE-2026-116366",
+              "ClickHouse",
+              "Altinity"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "vulnerability",
+            "author_handle": "altinitydb",
+            "quote_match": true
+          },
+          {
+            "id": "2120177221533041110",
+            "url": "https://x.com/i/status/2120177221533041110",
+            "title": "Barracuda ESG CVE-2026-116606 悪用確認",
+            "author": "RichTechGuy (@richtechguy)",
+            "posted_at": "2026-11-10T15:30:15Z",
+            "summary": "Barracuda ESGのCVE-2026-116606とCVE-2026-111560が限定的に悪用されroot取得。Admin UI露出が条件。パッチ適用と管理アクセス制限を。",
+            "quote": "Barracuda: limited active exploitation of ESG CVE-2026-116606 + CVE-2026-111560 for root. Admin UI exposure is the key condition. Confirm patches (BNSF-40425/40430 etc.) and restrict management acces…",
+            "tags": [
+              "CVE-2026-116606",
+              "CVE-2026-111560",
+              "Barracuda"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "vulnerability",
+            "author_handle": "richtechguy",
+            "quote_match": true
+          },
+          {
+            "id": "2120177162430902579",
+            "url": "https://x.com/i/status/2120177162430902579",
+            "title": "CISA KEVに4 CVE追加 音声インフラ",
+            "author": "John Blair (@BlairOnSec)",
+            "posted_at": "2026-11-10T15:30:01Z",
+            "summary": "CISAが4つのactively exploited CVEをKEVに追加。SignalWire FreeSwitchコードインジェクションとOpenSSHの脆弱性を含む。音声インフラ関連は即パッチを。",
+            "quote": "Voice infrastructure just made the KEV list. @CISAgov added 4 actively exploited CVEs, including SignalWire FreeSwitch code injection and an OpenSSH flaw.",
+            "tags": [
+              "CISA",
+              "KEV",
+              "FreeSwitch"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "vulnerability",
+            "author_handle": "blaironsec",
+            "quote_match": true
+          },
+          {
+            "id": "2120178809362378846",
+            "url": "https://x.com/i/status/2120178809362378846",
+            "title": "エディオン 通販サイト不正アクセス 情報漏えい",
+            "author": "リアルタイムニュース.com (@RTM_commmmm)",
+            "posted_at": "2026-11-10T15:36:33Z",
+            "summary": "家電量販店のエディオンは、通販サイトへの不正アクセスでクレジットカード決済情報が最大556回分、個人情報流出は最大13,685名分の対象になった可能性があると2026年11月10日時点で公表した。",
+            "quote": "家電量販店のエディオンは、通販サイトへの不正アクセスでクレジットカード決済情報が最大556回分、個人情報流出は最大13,685名分の対象になった可能性があると2026年11月10日時点で公表した。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "Edion"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "incident",
+            "author_handle": "rtm_commmmm",
+            "quote_match": true
+          },
+          {
+            "id": "2120178445271572526",
+            "url": "https://x.com/i/status/2120178445271572526",
+            "title": "シェアフル 不正アクセス 750万件流出の可能性",
+            "author": "首都圏の携帯ショップ情報 (@shopprice)",
+            "posted_at": "2026-11-10T15:35:07Z",
+            "summary": "「シェアフル」に不正アクセス、個人情報最大750万件流出の可能性。給与振込用口座や緊急連絡先含む。",
+            "quote": "「シェアフル」に不正アクセス、個人情報最大750万件流出の可能性。給与振込用口座や緊急連絡先含む - INTERNET Watch",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "シェアフル"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "incident",
+            "author_handle": "shopprice",
+            "quote_match": true
+          },
+          {
+            "id": "2120178109295276530",
+            "url": "https://x.com/i/status/2120178109295276530",
+            "title": "ラフールサーベイ 2.4万人情報漏えい",
+            "author": "空き缶 (@akikankeri)",
+            "posted_at": "2026-11-10T15:33:46Z",
+            "summary": "アクセスキー直書き→委託先がテスト用イメージをネット公開　「ラフールサーベイ」約2.4万人の情報漏えい。",
+            "quote": "アクセスキー直書き→委託先がテスト用イメージをネット公開　「ラフールサーベイ」約2.4万人の情報漏えい - ITmedia NEWS",
+            "tags": [
+              "情報漏えい",
+              "ラフールサーベイ"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "incident",
+            "author_handle": "akikankeri",
+            "quote_match": true
+          },
+          {
+            "id": "2120177998515282195",
+            "url": "https://x.com/i/status/2120177998515282195",
+            "title": "ステップゴルフ 業務システム不正アクセス",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-10T15:33:20Z",
+            "summary": "当社業務システムへの不正アクセスによる個人情報漏えいのおそれに関するお詫びとご報告（第二報）2026年11月10日 ステップゴルフ株式会社",
+            "quote": "当社業務システムへの不正アクセスによる個人情報漏えいのおそれに関するお詫びとご報告（第二報）",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "ステップゴルフ"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "incident",
+            "author_handle": "piyokango",
+            "quote_match": true
+          },
+          {
+            "id": "2120177920651960637",
+            "url": "https://x.com/i/status/2120177920651960637",
+            "title": "ブラジル最大港 ランサムウェア疑いIT障害",
+            "author": "UK News in Pictures(@UKNIP247) (@uknip247)",
+            "posted_at": "2026-11-10T15:33:01Z",
+            "summary": "Brazil’s Largest Port Hit by Major IT Outage Amid Suspected Ransomware Cyberattack",
+            "quote": "Brazil’s Largest Port Hit by Major IT Outage Amid Suspected Ransomware Cyberattack",
+            "tags": [
+              "ransomware",
+              "IT Outage",
+              "Brazil"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "incident",
+            "author_handle": "uknip247",
+            "quote_match": true
+          },
+          {
+            "id": "2120177718482608547",
+            "url": "https://x.com/i/status/2120177718482608547",
+            "title": "広南病院 ホームページ不正アクセス",
+            "author": "piyokango (@piyokango)",
+            "posted_at": "2026-11-10T15:32:13Z",
+            "summary": "当院ホームページへの不正アクセスによる個人情報漏洩に関するご報告とお詫び（第１報）2026年11月10日 一般財団法人広南会（広南病院）",
+            "quote": "当院ホームページへの不正アクセスによる個人情報漏洩に関するご報告とお詫び（第１報）",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "病院"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "incident",
+            "author_handle": "piyokango",
+            "quote_match": true
+          },
+          {
+            "id": "2120176738344784135",
+            "url": "https://x.com/i/status/2120176738344784135",
+            "title": "GhostFrame ESXi implant Settraランサムウェア",
+            "author": "Daily CyberSecurity (@Daily_CyberSec)",
+            "posted_at": "2026-11-10T15:28:20Z",
+            "summary": "Recorded Future uncovered the GhostFrame ESXi implant Settra ransomware framework used by TAG-218 to hijack hypervisors and steal VM credentials.",
+            "quote": "Recorded Future uncovered the GhostFrame ESXi implant Settra ransomware framework used by TAG-218 to hijack hypervisors and steal VM credentials.",
+            "tags": [
+              "malware",
+              "ransomware",
+              "ESXi",
+              "TAG-218"
+            ],
+            "collected_at": "2026-11-10T15:39:16Z",
+            "category": "campaign",
+            "author_handle": "daily_cybersec",
+            "quote_match": true
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
