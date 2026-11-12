@@ -1,0 +1,463 @@
+{
+  "version": 1,
+  "date": "2026-11-11",
+  "snapshots": [
+    {
+      "name": "2026-11-11-23.json",
+      "sha256": "81704858b254163208b03fab6c1100a11acf76dec0305efdb0e5312afd894d7f",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-11T23:48:29Z",
+        "window": {
+          "from": "2026-11-10T17:46:06.509Z",
+          "to": "2026-11-11T23:46:06.509Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "20 件を取得しました",
+          "checked_at": "2026-11-11T23:48:29Z",
+          "dropped_unverified": 2
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 16651,
+            "input_tokens_details": {
+              "cached_tokens": 8192
+            },
+            "output_tokens": 17248,
+            "output_tokens_details": {
+              "reasoning_tokens": 15263
+            },
+            "total_tokens": 33899,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 1945934000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 30,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 14718,
+              "output_tokens": 10897
+            }
+          },
+          "general": {
+            "input_tokens": 24438,
+            "input_tokens_details": {
+              "cached_tokens": 5120
+            },
+            "output_tokens": 17314,
+            "output_tokens_details": {
+              "reasoning_tokens": 14000
+            },
+            "total_tokens": 41752,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 7,
+            "cost_in_usd_ticks": 3199700000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 7,
+              "x_posts_fetched": 53,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 22231,
+              "output_tokens": 14373
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2120357094188790129",
+            "url": "https://x.com/i/status/2120357094188790129",
+            "title": "Microsoft、10月Patch Tuesdayで1,000以上の脆弱性修正",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-11T03:25:00Z",
+            "summary": "Microsoftの2026年10月Patch Tuesdayアップデートは1,000以上の脆弱性を修正。悪用されたOutlookゼロデイ脆弱性CVE-2026-124194を含む。詳細はリンクを参照。",
+            "quote": "October 2026 Patch Tuesday updates fix over 1,000 vulnerabilities, including an exploited Outlook zero-day, CVE-2026-124194",
+            "tags": [
+              "CVE-2026-124194",
+              "Microsoft",
+              "Patch Tuesday",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2120236175378284648",
+            "url": "https://x.com/i/status/2120236175378284648",
+            "title": "Git脆弱性CVE-2026-111760、再帰クローンでコード実行",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-10T19:24:30Z",
+            "summary": "新しいGitの脆弱性CVE-2026-111760により、悪意あるリポジトリが再帰クローン中にマシン上でコードを実行可能。サブモジュールフックを悪用。Gitはこの脆弱性と他5つの脆弱性に修正をリリース。",
+            "quote": "A new Git flaw lets malicious repositories execute code on your machine during recursive clones. Tracked as CVE-2026-111760",
+            "tags": [
+              "CVE-2026-111760",
+              "Git",
+              "RCE"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120564070697038012",
+            "url": "https://x.com/i/status/2120564070697038012",
+            "title": "Next.jsにRCE脆弱性CVE-2026-126187、公的エクスプロイト公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-11T17:07:27Z",
+            "summary": "特定のNext.jsアプリに影響するReact Server ComponentsのクリティカルRCE脆弱性CVE-2026-126187 (CVSS 9.5)。認証なしでサーバー上コード実行可能。特定のCache Components設定が必要で全アプリに影響せず。PoC公開、パッチは10月14日から利用可能。",
+            "quote": "Public exploit code is out for a critical React Server Components RCE flaw affecting certain Next.js apps. CVE-2026-126187 (CVSS 9.5)",
+            "tags": [
+              "CVE-2026-126187",
+              "Next.js",
+              "RCE",
+              "React"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120550548302885046",
+            "url": "https://x.com/i/status/2120550548302885046",
+            "title": "Zoom WorkplaceにCVSS 9.6のクリティカル脆弱性",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-11T16:13:43Z",
+            "summary": "Zoom Workplaceのクリティカル脆弱性により、リモート攻撃者が認証なしで権限を昇格可能。ZoomはWindows向け2つの脆弱性をパッチ、うち1つCVSS 9.6。影響バージョンと修正版はリンク参照。",
+            "quote": "Critical Zoom Workplace flaw could let remote attackers escalate privileges without authentication. Zoom has patched two Windows vulnerabilities",
+            "tags": [
+              "Zoom",
+              "CVSS 9.6",
+              "privilege escalation"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120397273700167986",
+            "url": "https://x.com/i/status/2120397273700167986",
+            "title": "Cisco BroadWorksとOpenwaveの脆弱性が悪用、CISA確認",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-11T06:04:39Z",
+            "summary": "ハッカーがCisco BroadWorksとOpenwave Messagingの脆弱性を悪用。CISAが確認。両脆弱性は既にパッチ済みだが、攻撃方法は不明。連邦機関は11月24日までに修正を適用する必要がある。",
+            "quote": "Hackers are exploiting flaws in Cisco BroadWorks and Openwave Messaging, CISA confirms. Both vulnerabilities are already patched",
+            "tags": [
+              "Cisco BroadWorks",
+              "Openwave",
+              "CISA",
+              "exploited"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120543181414523111",
+            "url": "https://x.com/i/status/2120543181414523111",
+            "title": "Xen Orchestraのクリティカル脆弱性が攻撃で悪用",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-11T15:44:26Z",
+            "summary": "Xen Orchestraのクリティカル脆弱性が攻撃で悪用されている。詳細はリンク先を参照。",
+            "quote": "Critical Xen Orchestra Flaws Exploited in Attacks",
+            "tags": [
+              "Xen Orchestra",
+              "exploited",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2120496567388168643",
+            "url": "https://x.com/i/status/2120496567388168643",
+            "title": "35,578のGrokアプリがサインインなしでアクセス可能",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-11T12:39:13Z",
+            "summary": "35,578のGrokで構築されたアプリがオンラインでサインインなしでアクセス可能だった。一部で機密X文書、従業員パスワード、患者データが露出。検索可能なDNSレコードを通じてURLが発見可能。",
+            "quote": "35,578 Grok-built apps were accessible online without signing in. Some exposed confidential X documents, employee passwords, and patient data.",
+            "tags": [
+              "Grok",
+              "AI apps",
+              "data exposure"
+            ],
+            "collected_at": "2026-11-11T23:47:06Z",
+            "category": "incident",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120661945153913145",
+            "url": "https://x.com/i/status/2120661945153913145",
+            "title": "React Server ComponentsにRCE脆弱性 CVE-2026-126187",
+            "author": "Ricardo Albuquerque (@ralbuque)",
+            "posted_at": "2026-11-11T23:36:22Z",
+            "summary": "React Server Componentsのreact-server-dom-webpackなどにRCEの脆弱性が見つかり、CVE-2026-126187として割り当てられた。認証なしでリモートコード実行が可能。更新版19.0.9以降にアップデートし、Next.jsなどのフレームワークを確認せよ。",
+            "quote": "React Server Components: falha crítica de RCE sem autenticação em react-server-dom-webpack, -parcel e -turbopack, agora com CVE-2026-126187. Atualize para 19.0.9, 19.1.10, 19.2.9 ou 19.3.1 e revise o…",
+            "tags": [
+              "CVE-2026-126187",
+              "React",
+              "RCE"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "ralbuque",
+            "quote_match": true
+          },
+          {
+            "id": "2120661996978790784",
+            "url": "https://x.com/i/status/2120661996978790784",
+            "title": "Fortinet FortiAuthenticatorに認可バイパス脆弱性 CVE-2026-126251",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-11T23:36:34Z",
+            "summary": "Fortinet FortiAuthenticatorの認証ロジックに認可バイパス脆弱性（CVE-2026-126251、CVSS 9.1）。攻撃者がリモートから認証をバイパスし不正アクセス可能。修正版8.0.4で対応。",
+            "quote": "CRITICAL 9.1 · Fortinet FortiAuthenticator: authorization bypass in authentication logic (CVE-2026-126251) An attacker can remotely bypass authentication and gain unauthorized access without logging …",
+            "tags": [
+              "CVE-2026-126251",
+              "Fortinet",
+              "FortiAuthenticator"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "cvedotnow",
+            "quote_match": true
+          },
+          {
+            "id": "2120663651971694805",
+            "url": "https://x.com/i/status/2120663651971694805",
+            "title": "Smushに中程度の脆弱性 CVE-2026-118241 修正",
+            "author": "株式会社mgn (@mgn_jpn)",
+            "posted_at": "2026-11-11T23:43:09Z",
+            "summary": "WordPressプラグインSmushの脆弱性が修正。100万サイト以上影響、CVSS 4.3。バージョン4.3.6に更新を。",
+            "quote": "🛠 Smush の脆弱性が修正されました（深刻度 中） 100万サイト以上が利用 / CVSS 4.3 4.3.6 に更新してください",
+            "tags": [
+              "CVE-2026-118241",
+              "Smush",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "mgn_jpn",
+            "quote_match": true
+          },
+          {
+            "id": "2120661140409852032",
+            "url": "https://x.com/i/status/2120661140409852032",
+            "title": "Forminator Formsに脆弱性 CVE-2026-111597 修正",
+            "author": "株式会社mgn (@mgn_jpn)",
+            "posted_at": "2026-11-11T23:33:10Z",
+            "summary": "Forminator Formsの脆弱性が修正。60万サイト以上、CVSS 5.3。1.58.4に更新。",
+            "quote": "🛠 Forminator Forms の脆弱性が修正されました（深刻度 中） 60万サイト以上が利用 / CVSS 5.3 1.58.4 に更新してください",
+            "tags": [
+              "CVE-2026-111597",
+              "Forminator",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "mgn_jpn",
+            "quote_match": true
+          },
+          {
+            "id": "2120662694902763961",
+            "url": "https://x.com/i/status/2120662694902763961",
+            "title": "Intel 2026年11月セキュリティ情報公開 24件の脆弱性",
+            "author": "しーにゃ♪@公式 (@Syynya)",
+            "posted_at": "2026-11-11T23:39:21Z",
+            "summary": "Intelが2026年11月度のセキュリティ情報を公開。サービス拒否、権限昇格、情報漏洩など24件の脆弱性。Windowsユーザー向けパッチ適用を。",
+            "quote": "Intel、2026年11月度のセキュリティ情報を公開。サービス拒否、権限の昇格、情報漏洩、計24件の脆弱性 | ニッチなPCゲーマーの環境構築Z",
+            "tags": [
+              "Intel",
+              "vulnerability",
+              "PatchTuesday"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "syynya",
+            "quote_match": true
+          },
+          {
+            "id": "2120661038794453381",
+            "url": "https://x.com/i/status/2120661038794453381",
+            "title": "Mozilla Thunderbird 160.0リリース 103件脆弱性修正",
+            "author": "しーにゃ♪@公式 (@Syynya)",
+            "posted_at": "2026-11-11T23:32:46Z",
+            "summary": "Mozilla Thunderbird 160.0がリリース。新機能に加え103件の脆弱性修正。利用者は早めのアップデートを。",
+            "quote": "Mozilla Thunderbird 160.0 Released! https://www.thunderbird.net/en-US/thunderbird/160.0/releasenotes/ 出てますた。多数の新機能や改良のほか、103件の脆弱性修正が行われている風味です。",
+            "tags": [
+              "Thunderbird",
+              "Mozilla",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "syynya",
+            "quote_match": true
+          },
+          {
+            "id": "2120664439817142694",
+            "url": "https://x.com/i/status/2120664439817142694",
+            "title": "Google Chrome セキュリティパッチ配信 注意",
+            "author": "くのいち (Kunoichi) (@kuno_ichi)",
+            "posted_at": "2026-11-11T23:46:17Z",
+            "summary": "Google Chromeを開きっぱなしの人は要注意。またもやセキュリティパッチが配信されました。",
+            "quote": "Google Chromeを開きっぱなしの人は要注意。またもやセキュリティパッチが配信されました(ギズモード・ジャパン)",
+            "tags": [
+              "Chrome",
+              "security patch"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "kuno_ichi",
+            "quote_match": true
+          },
+          {
+            "id": "2120664098824429960",
+            "url": "https://x.com/i/status/2120664098824429960",
+            "title": "Microsoft 11月セキュリティ更新 Outlookなりすまし脆弱性も",
+            "author": "駆け出しBラン@楽天ROOM (@BROOM87059632)",
+            "posted_at": "2026-11-11T23:44:55Z",
+            "summary": "11月のMicrosoft月例更新公開。Outlookのなりすまし脆弱性について公開前の悪用を確認。リンク付き。",
+            "quote": "11月のMicrosoft月例更新が公開されています（11/10米国時間）。 公式ではOutlookのなりすまし脆弱性について、公開前の悪用も確認したと案内。",
+            "tags": [
+              "Microsoft",
+              "PatchTuesday",
+              "Outlook"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "vulnerability",
+            "author_handle": "broom87059632",
+            "quote_match": true
+          },
+          {
+            "id": "2120664505621626884",
+            "url": "https://x.com/i/status/2120664505621626884",
+            "title": "MUJIアプリに不正アクセス ネットストア再開延期",
+            "author": "ℵ ᴷᴵᵞᵁˢᴬᴹᴬ ℵ (@jpsharada)",
+            "posted_at": "2026-11-11T23:46:32Z",
+            "summary": "MUJIアプリへの不正アクセスが発生。総合的セキュリティ対策のためネットストアの再開を延期。心当たりのない通知に注意。",
+            "quote": "「MUJIアプリ」への不正アクセス、さらなる総合的セキュリティ対策が必要と判断しネットストア再開を延期",
+            "tags": [
+              "MUJI",
+              "不正アクセス",
+              "data breach"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "incident",
+            "author_handle": "jpsharada",
+            "quote_match": true
+          },
+          {
+            "id": "2120663759610150987",
+            "url": "https://x.com/i/status/2120663759610150987",
+            "title": "SPH Mediaにサイバー攻撃 顧客情報9%影響",
+            "author": "ほぼ日刊・シンガポールニュース速報🇸🇬 (@global_news_sg)",
+            "posted_at": "2026-11-11T23:43:34Z",
+            "summary": "SPH Mediaがサイバー攻撃を受け、顧客情報9%に影響。航空券予約情報の流出で偽通知詐欺に警戒。",
+            "quote": "SPH Mediaがサイバー攻撃、顧客情報9%に影響🔓 | 航空券予約情報の流出で偽通知詐欺に警戒✈️",
+            "tags": [
+              "SPH Media",
+              "サイバー攻撃",
+              "data breach"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "incident",
+            "author_handle": "global_news_sg",
+            "quote_match": true
+          },
+          {
+            "id": "2120661583022207332",
+            "url": "https://x.com/i/status/2120661583022207332",
+            "title": "SMBC日興 5万人個人情報漏えい",
+            "author": "Earth Defense Force.No.②雪乃＝IQ0 (@ZeppelinLed5)",
+            "posted_at": "2026-11-11T23:34:56Z",
+            "summary": "SMBC日興で5万人の個人情報が漏えい。共同通信報道。",
+            "quote": "SMBC日興、5万人個人情報漏えい（共同通信） - Yahoo!ニュース https://news.yahoo.co.jp/articles/16367c01c483c531a981c8745482b0be77f014f9",
+            "tags": [
+              "SMBC",
+              "情報漏えい",
+              "data breach"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "incident",
+            "author_handle": "zeppelinled5",
+            "quote_match": true
+          },
+          {
+            "id": "2120660893671489996",
+            "url": "https://x.com/i/status/2120660893671489996",
+            "title": "東洋大学 外部メール配信サービス不正アクセスで情報漏えい",
+            "author": "ミスコン・プレイ 研究不正・盗用 (@plagiarismfraud)",
+            "posted_at": "2026-11-11T23:32:11Z",
+            "summary": "外部メール配信サービスへの不正アクセスによる情報漏えいについて。お詫び。",
+            "quote": "外部メール配信サービスへの不正アクセスによる情報漏えいについて（お詫び）｜ニュース・イベント｜東洋大学公式サイト",
+            "tags": [
+              "東洋大学",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "incident",
+            "author_handle": "plagiarismfraud",
+            "quote_match": true
+          },
+          {
+            "id": "2120660777334079816",
+            "url": "https://x.com/i/status/2120660777334079816",
+            "title": "イタリア Energreen S.p.A. SETTRAランサムウェア被害",
+            "author": "FalconFeeds.io (@FalconFeedsio)",
+            "posted_at": "2026-11-11T23:31:43Z",
+            "summary": "イタリアの産業機械メーカーEnergreen S.p.A.がSETTRAランサムウェアの被害に。脅威アクターSETTRA。",
+            "quote": "📢 Ransomware Alert: 🇮🇹 Energreen S.p.A. (https://energreen.it an Italy-based industrial machinery manufacturing company, has reportedly fallen victim to SETTRA ransomware.",
+            "tags": [
+              "ransomware",
+              "SETTRA",
+              "Energreen"
+            ],
+            "collected_at": "2026-11-11T23:48:25Z",
+            "category": "incident",
+            "author_handle": "falconfeedsio",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "general",
+            "reason": "not_cited",
+            "id": "2120669589805048123",
+            "posted_at": "2026-11-12T00:06:45Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2120235463982133629",
+            "posted_at": "2026-11-10T19:21:41Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
