@@ -1,0 +1,400 @@
+{
+  "version": 1,
+  "date": "2026-11-13",
+  "snapshots": [
+    {
+      "name": "2026-11-13-02.json",
+      "sha256": "b8ad3ae3d72fdf0feeff54ddbabc394f72e3758020cd75b36d5e711142c2bcd9",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-13T02:40:07Z",
+        "window": {
+          "from": "2026-11-11T20:38:55.714Z",
+          "to": "2026-11-13T02:38:55.714Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "17 件を取得しました",
+          "checked_at": "2026-11-13T02:40:07Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 11070,
+            "input_tokens_details": {
+              "cached_tokens": 5632
+            },
+            "output_tokens": 10520,
+            "output_tokens_details": {
+              "reasoning_tokens": 8616
+            },
+            "total_tokens": 21590,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 1026044000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 15,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9137,
+              "output_tokens": 6689
+            }
+          },
+          "general": {
+            "input_tokens": 20413,
+            "input_tokens_details": {
+              "cached_tokens": 6912
+            },
+            "output_tokens": 11543,
+            "output_tokens_details": {
+              "reasoning_tokens": 9493
+            },
+            "total_tokens": 31956,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2329694000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 18206,
+              "output_tokens": 6652
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2121051419012968452",
+            "url": "https://x.com/i/status/2121051419012968452",
+            "title": "Red Hat Quayの重大脆弱性、プライベートコンテナイメージ露出の恐れ",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-13T01:24:00Z",
+            "summary": "Red Hat Quayの脆弱性によりプライベートなコンテナイメージが露出する可能性がある。製品名: Red Hat Quay。影響: プライベートイメージの不正露出。対処: パッチ適用を推奨。",
+            "quote": "Critical Red Hat Quay Vulnerability Could Expose Private Container Images",
+            "tags": [
+              "Red Hat Quay",
+              "container",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2120941100441702854",
+            "url": "https://x.com/i/status/2120941100441702854",
+            "title": "MicrosoftがLinuxカーネルに59件のバグを発見、8件にroot exploit",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-12T18:05:38Z",
+            "summary": "MicrosoftがLinuxカーネルに59のバグを発見、そのうち8件はroot exploitsが動作する。製品: Linux kernel。影響: root権限取得の可能性。対処: アップデートを待つ。",
+            "quote": "🚨 Microsoft uncovers 59 Linux kernel bugs, including 8 with working root exploits.",
+            "tags": [
+              "Linux",
+              "kernel",
+              "exploit",
+              "Microsoft"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120938288148316633",
+            "url": "https://x.com/i/status/2120938288148316633",
+            "title": "Windowsに新しいゼロデイエクスプロイト SignDrop公開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-12T17:54:27Z",
+            "summary": "Windows CLFSを標的としたSignDropゼロデイエクスプロイトが公開。Microsoft Defenderを使用してSYSTEM権限取得可能。CVEなし、パッチなし。影響: 特権昇格。対処: 現時点でパッチなし。",
+            "quote": "‼️ NEW WINDOWS ZERO-DAY EXPLOIT! A security feature designed to stop attacks can be abused to gain SYSTEM privileges.",
+            "tags": [
+              "Windows",
+              "zero-day",
+              "exploit",
+              "SignDrop"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120904618498728251",
+            "url": "https://x.com/i/status/2120904618498728251",
+            "title": "Citrixが12件の脆弱性をパッチ、NetScalerにCVSS9.4の認証バイパス",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-12T15:40:40Z",
+            "summary": "Citrixが12のセキュリティ欠陥をパッチ。NetScaler Consoleの認証バイパス(CVSS 9.4)で未認証攻撃者が制限リソースにアクセス可能。別件DoS(CVSS 9.5)。製品: NetScaler。影響: 認証バイパス、DoS。対処: パッチ適用。",
+            "quote": "🚨 Citrix patches 12 security flaws, including a critical NetScaler Console authentication bypass (CVSS 9.4)",
+            "tags": [
+              "Citrix",
+              "NetScaler",
+              "patch",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120889854582288507",
+            "url": "https://x.com/i/status/2120889854582288507",
+            "title": "ChromeとFirefoxが180件の脆弱性をパッチ",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-12T14:42:00Z",
+            "summary": "Chrome、Firefoxのアップデートで180の脆弱性を修正。製品: Chrome, Firefox。影響: 複数脆弱性。対処: 最新版へのアップデート。",
+            "quote": "Chrome, Firefox Updates Patch 180 Vulnerabilities",
+            "tags": [
+              "Chrome",
+              "Firefox",
+              "vulnerability",
+              "patch"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2120866724543398276",
+            "url": "https://x.com/i/status/2120866724543398276",
+            "title": "ScreenConnect攻撃者がITサポート技術者を新標的に、SCKitマルウェア",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-12T13:10:05Z",
+            "summary": "ScreenConnect攻撃者がITサポート技術者を標的。SCKitマルウェアがパッチ済み9.9の脆弱性を悪用し、セッションをハイジャックしてMSP顧客ネットワークに拡散。パッチはエクスプロイトをブロックするがハイジャックは防げない。製品: ScreenConnect。影響: セッション乗っ取り。対処: パッチ適用と監視。",
+            "quote": "🚨 ScreenConnect attackers have a new target: IT support technicians. SCKit malware exploits a patched 9.9-rated flaw",
+            "tags": [
+              "ScreenConnect",
+              "malware",
+              "SCKit",
+              "MSP"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120844091349155877",
+            "url": "https://x.com/i/status/2120844091349155877",
+            "title": "PTCがWindchillとFlexPLMの重大脆弱性をパッチ、RCEの恐れ CVE-2026-126325",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-12T11:40:09Z",
+            "summary": "PTCがWindchillとFlexPLMの重大脆弱性をパッチ。CVE-2026-126325 (CVSS 9.2)でリモートコード実行可能。PTCホスト済みはパッチ済み、他は修正必要。製品: Windchill, FlexPLM。影響: RCE。対処: パッチ適用。",
+            "quote": "🚨 PTC patches critical Windchill and FlexPLM flaw that could allow remote code execution. CVE-2026-126325 scores 9.2.",
+            "tags": [
+              "PTC",
+              "Windchill",
+              "CVE-2026-126325",
+              "RCE"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2120811084764602372",
+            "url": "https://x.com/i/status/2120811084764602372",
+            "title": "MongoDBに重大脆弱性、2リクエストでサーバークラッシュ CVE-2026-118383",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-12T09:29:00Z",
+            "summary": "MongoDBの事前認証脆弱性CVE-2026-118383 (CVSS 9.5)で、2つの未認証リクエストでreplica setメンバーをクラッシュ可能。ログイン不要。パッチ公開済み。製品: MongoDB。影響: サービス拒否。対処: パッチ適用。",
+            "quote": "🚨 Just TWO unauthenticated requests can set up a MongoDB server crash. A critical pre-auth flaw (CVE-2026-118383, CVSS 9.5)",
+            "tags": [
+              "MongoDB",
+              "CVE-2026-118383",
+              "DoS"
+            ],
+            "collected_at": "2026-11-13T02:39:28Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2121069790681026616",
+            "url": "https://x.com/i/status/2121069790681026616",
+            "title": "NetScalerにメモリオーバーフロー脆弱性 CVE-2026-107412",
+            "author": "VulniPulse (@vulnipulse)",
+            "posted_at": "2026-11-13T02:37:00Z",
+            "summary": "NetScaler Gateway and ADCでメモリ溢出の欠陥(CVE-2026-107412)が原因で誤った動作やサービス拒否を引き起こす可能性がある。CVSS 9.5のクリティカル。悪用は報告されていない。バージョン14.1-73.57と13.1-64.39で修正済み。",
+            "quote": "memory overflow flaws (CVE-2026-107412) can cause erroneous behavior and denial of service. Critical, CVSS 9.5. Not reported exploited. Fixed in 14.1-73.57 and 13.1-64.39.",
+            "tags": [
+              "CVE-2026-107412",
+              "NetScaler",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "vulnipulse",
+            "quote_match": true
+          },
+          {
+            "id": "2121068268240728097",
+            "url": "https://x.com/i/status/2121068268240728097",
+            "title": "Adobe 9製品で21件のクリティカル脆弱性を修正",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-13T02:30:57Z",
+            "summary": "Adobeの9製品で脆弱性を修正。21件がクリティカルレベル。詳細はSecurityNEXTで確認可能。",
+            "quote": "Adobe、9製品で脆弱性を修正 - 21件が「クリティカル」 #SecurityNEXT (Nov 12)",
+            "tags": [
+              "Adobe",
+              "vulnerability",
+              "patch"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          },
+          {
+            "id": "2121068212741681441",
+            "url": "https://x.com/i/status/2121068212741681441",
+            "title": "MongoDB ServerにRCE脆弱性、修正版公開",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-13T02:30:44Z",
+            "summary": "「MongoDB Server」にRCE脆弱性が見つかり、修正版が公開された。",
+            "quote": "「MongoDB Server」にRCE脆弱性 - 修正版を公開 #SecurityNEXT (Nov 12)",
+            "tags": [
+              "MongoDB",
+              "RCE",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          },
+          {
+            "id": "2121068167271206978",
+            "url": "https://x.com/i/status/2121068167271206978",
+            "title": "Ivanti 5製品に脆弱性対応、2製品がクリティカル",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-13T02:30:33Z",
+            "summary": "Ivantiの5製品が脆弱性に対応。2製品にクリティカルなものが含まれる。",
+            "quote": "Ivantiの5製品が脆弱性に対応 - 2製品に「クリティカル」 #SecurityNEXT (Nov 12)",
+            "tags": [
+              "Ivanti",
+              "vulnerability",
+              "patch"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          },
+          {
+            "id": "2121068125961466131",
+            "url": "https://x.com/i/status/2121068125961466131",
+            "title": "ManageEngineにSQLインジェクション脆弱性",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-13T02:30:23Z",
+            "summary": "ManageEngine DDI CentralおよびADAudit Plusの脆弱性により、SQLインジェクションおよびルーターコマンドインジェクション攻撃が可能になる。",
+            "quote": "ManageEngine DDI CentralおよびADAudit Plusの脆弱性により、SQLインジェクションおよびルーターコマンドインジェクション攻撃が可能になる #SecurityOnline (Nov 12)",
+            "tags": [
+              "ManageEngine",
+              "SQL injection",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          },
+          {
+            "id": "2121067317081542987",
+            "url": "https://x.com/i/status/2121067317081542987",
+            "title": "PostgreSQL 18.7で52件のCVE修正、14はEOL",
+            "author": "Daily CyberSecurity (@Daily_CyberSec)",
+            "posted_at": "2026-11-13T02:27:10Z",
+            "summary": "PostgreSQL security update 18.7 fixes 52 CVEs, including CVE-2026-6460 and 31 other code execution flaws. PostgreSQL 14 reaches end of life.",
+            "quote": "PostgreSQL security update 18.7 fixes 52 CVEs, including CVE-2026-6460 and 31 other code execution flaws. PostgreSQL 14 reaches end of life.",
+            "tags": [
+              "CVE-2026-6460",
+              "PostgreSQL",
+              "patch"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "daily_cybersec",
+            "quote_match": true
+          },
+          {
+            "id": "2121069166027583533",
+            "url": "https://x.com/i/status/2121069166027583533",
+            "title": "U.S.M.H アプリに不正アクセス、6万件超の個人情報流出可能性",
+            "author": "【公式】日本信用情報サービス株式会社 (@JCIS_official_)",
+            "posted_at": "2026-11-13T02:34:31Z",
+            "summary": "11/12、スーパー大手U.S.M.Hが買い物アプリへの不正アクセスを公表。最大64,003アカウントの個人情報流出の可能性。実際の流出は未確認。",
+            "quote": "11/12、スーパー大手U.S.M.Hが買い物アプリへの不正アクセスを公表。最大64,003アカウントの個人情報流出の可能性。実際の流出は未確認。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "U.S.M.H"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "incident",
+            "author_handle": "jcis_official_",
+            "quote_match": true
+          },
+          {
+            "id": "2121068635472986597",
+            "url": "https://x.com/i/status/2121068635472986597",
+            "title": "パスワード窃取マルウェアネットワークを解体、640万件のデータ確保",
+            "author": "Infobae América (@infobaeamerica)",
+            "posted_at": "2026-11-13T02:32:24Z",
+            "summary": "マルウェアネットワークを解体し、6.4百万の被害者データを確保。パスワードを盗むもの。",
+            "quote": "Desmantelan redes de malware que robaban contraseñas y aseguran 6,4 millones de datos de víctimas",
+            "tags": [
+              "malware",
+              "data breach"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "campaign",
+            "author_handle": "infobaeamerica",
+            "quote_match": true
+          },
+          {
+            "id": "2121068061037932599",
+            "url": "https://x.com/i/status/2121068061037932599",
+            "title": "Citrix NetScalerの重大脆弱性、特定バージョンで修正",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-13T02:30:07Z",
+            "summary": "Citrix NetScalerの重大な脆弱性がバージョン14.1-73.57および13.1-64.39で修正されました。",
+            "quote": "Citrix NetScalerの重大な脆弱性がバージョン14.1-73.57および13.1-64.39で修正されました。",
+            "tags": [
+              "Citrix",
+              "NetScaler",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-13T02:40:06Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
