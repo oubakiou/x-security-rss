@@ -1,0 +1,377 @@
+{
+  "version": 1,
+  "date": "2026-11-14",
+  "snapshots": [
+    {
+      "name": "2026-11-14-02.json",
+      "sha256": "c3d9f374acffac10e9fcf0ea154e7175824fd00d34e738de6ef909197ded2770",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-14T02:29:09Z",
+        "window": {
+          "from": "2026-11-12T20:28:11.067Z",
+          "to": "2026-11-14T02:28:11.067Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-14T02:29:09Z",
+          "dropped_unverified": 3
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 13168,
+            "input_tokens_details": {
+              "cached_tokens": 5632
+            },
+            "output_tokens": 9485,
+            "output_tokens_details": {
+              "reasoning_tokens": 7398
+            },
+            "total_tokens": 22653,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 1526324000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 25,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 11235,
+              "output_tokens": 5712
+            }
+          },
+          "general": {
+            "input_tokens": 11736,
+            "input_tokens_details": {
+              "cached_tokens": 4352
+            },
+            "output_tokens": 8206,
+            "output_tokens_details": {
+              "reasoning_tokens": 5820
+            },
+            "total_tokens": 19942,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 1246664000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9529,
+              "output_tokens": 5921
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2121287163065319838",
+            "url": "https://x.com/i/status/2121287163065319838",
+            "title": "PostgreSQLが52の欠陥パッチ CVE-2026-6460含む",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-13T17:00:45Z",
+            "summary": "PostgreSQLが52のセキュリティ欠陥をパッチ。CVE-2026-6460 (CVSS 8.8)は22年前のバグで、認証済みユーザーがオブジェクト作成権限でデータベースサーバー上でコード実行可能。パッチだけでは不十分な場合あり。直ちに更新を。",
+            "quote": "PostgreSQL patches 52 security flaws — including a 22-year-old bug allowing remote code execution. Tracked as CVE-2026-6460 (CVSS 8.8), the flaw lets authenticated users with object-creation privileg…",
+            "tags": [
+              "CVE-2026-6460",
+              "PostgreSQL",
+              "RCE"
+            ],
+            "collected_at": "2026-11-14T02:28:42Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2121330894912799090",
+            "url": "https://x.com/i/status/2121330894912799090",
+            "title": "CISA、UnrealIRCdとCheck Pointの脆弱性をKEV追加",
+            "author": "CISA Cyber (@CISACyber)",
+            "posted_at": "2026-11-13T19:54:32Z",
+            "summary": "CISAがUnrealIRCd脆弱性CVE-2026-114713とCheck Point脆弱性CVE-2026-123039をKnown Exploited Vulnerabilities Catalogに追加。組織はhttps://go.dhs.gov/Z3Q を確認し、緩和策を適用して保護せよ。",
+            "quote": "We added UnrealIRCd vulnerability CVE-2026-114713 & Check Point vulnerability CVE-2026-123039 to our Known Exploited Vulnerabilities Catalog. Visit https://go.dhs.gov/Z3Q & apply mitigations to prote…",
+            "tags": [
+              "CVE-2026-114713",
+              "CVE-2026-123039",
+              "KEV",
+              "CISA"
+            ],
+            "collected_at": "2026-11-14T02:28:42Z",
+            "category": "vulnerability",
+            "author_handle": "cisacyber",
+            "quote_match": true
+          },
+          {
+            "id": "2121116969432957070",
+            "url": "https://x.com/i/status/2121116969432957070",
+            "title": "ハッカーがN-able N-centralサーバー21台侵害",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-13T05:44:28Z",
+            "summary": "ハッカーがN-able N-centralサーバー21台を侵害。19台はHotfix 2適用済みだったが、重大な欠陥を悪用してrootアクセスを取得しクリプトマイナーを展開。Hotfix 2だけでは不十分。管理者は追加対策を。",
+            "quote": "Hackers breached 21 N-able N-central servers. 19 were already running Hotfix 2. Attackers exploited critical flaws to gain root access and deploy crypto miners.",
+            "tags": [
+              "N-able",
+              "N-central",
+              "crypto miner"
+            ],
+            "collected_at": "2026-11-14T02:28:42Z",
+            "category": "incident",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2121249678167806415",
+            "url": "https://x.com/i/status/2121249678167806415",
+            "title": "北朝鮮ハッカーがディープフェイクで4億ドル超窃取",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-13T14:31:48Z",
+            "summary": "北朝鮮ハッカーが偽ビデオ通話とディープフェイクを使い、4億ドル以上の暗号資産を窃取。盗まれたアカウント、馴染みの顔、偽オーディオエラーで被害者を騙しマルウェアをインストール。FBIが攻撃インフラを押収。",
+            "quote": "North Korean hackers stole over $400 MILLION in crypto using fake video calls and deepfakes, FBI says. The scheme used stolen accounts, familiar faces, and fake audio errors to trick victims into ins…",
+            "tags": [
+              "North Korea",
+              "deepfake",
+              "crypto"
+            ],
+            "collected_at": "2026-11-14T02:28:42Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2121146159687500105",
+            "url": "https://x.com/i/status/2121146159687500105",
+            "title": "PHP2ShellがCheck Point Gateway攻撃で悪用",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-13T07:40:28Z",
+            "summary": "PHP2ShellがCheck Point Gatewayの破壊的攻撃で悪用された。攻撃者はこの脆弱性を用いて被害を拡大。関連するセキュリティ情報を確認し、対策を講じること。",
+            "quote": "PHP2Shell Exploited in Destructive Check Point Gateway Attacks",
+            "tags": [
+              "PHP2Shell",
+              "Check Point",
+              "exploited"
+            ],
+            "collected_at": "2026-11-14T02:28:42Z",
+            "category": "incident",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2121429231666188700",
+            "url": "https://x.com/i/status/2121429231666188700",
+            "title": "Python ≤3.7.2 ZIP bomb脆弱性 CVE-2019-9674",
+            "author": "DFIR Lab (@DFIR_Lab)",
+            "posted_at": "2026-11-14T02:25:17Z",
+            "summary": "HIGH Severity: CVE-2019-9674 (CVSS 7.5) Python ≤3.7.2 https://zipfile.py vulnerable to ZIP bomb DoS attacks. Remote attackers can cause resource exhaustion. Patch immediately if running affected versions.",
+            "quote": "Python ≤3.7.2 https://zipfile.py vulnerable to ZIP bomb DoS attacks. Remote attackers can cause resource exhaustion.",
+            "tags": [
+              "CVE-2019-9674",
+              "Python",
+              "DoS"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "vulnerability",
+            "author_handle": "dfir_lab",
+            "quote_match": true
+          },
+          {
+            "id": "2121426060009177572",
+            "url": "https://x.com/i/status/2121426060009177572",
+            "title": "Microsoft 365/Office for Mac 140件脆弱性修正",
+            "author": "Appleちゃんねる (@applechinfo)",
+            "posted_at": "2026-11-14T02:12:41Z",
+            "summary": "Microsoft、140件の脆弱性を修正した「Microsoft 365/Office for Mac v16.115」でシステム要件をmacOS 15 Sequoia以降に変更。Appleがセキュリティアップデートを終了したmacOS 14 Sonomaは非サポートに。",
+            "quote": "Microsoft、140件の脆弱性を修正した「Microsoft 365/Office for Mac v16.115」でシステム要件をmacOS 15 Sequoia以降に変更。Appleがセキュリティアップデートを終了したmacOS 14 Sonomaは非サポートに。",
+            "tags": [
+              "Microsoft",
+              "patch",
+              "macOS"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "vulnerability",
+            "author_handle": "applechinfo",
+            "quote_match": true
+          },
+          {
+            "id": "2121429675423752418",
+            "url": "https://x.com/i/status/2121429675423752418",
+            "title": "京成電鉄 不正アクセスで337万件情報漏えい",
+            "author": "ism security news (@ismsecuritynews)",
+            "posted_at": "2026-11-14T02:27:03Z",
+            "summary": "京成電鉄は13日、成田空港と都内を結ぶ有料特急「京成スカイライナー」の座席予約システムが不正アクセスを受けたと発表。電話番号やメールアドレスなどチケットレスサービスの顧客情報が最大約337万件流出した可能性。",
+            "quote": "京成電鉄は13日、成田空港と都内を結ぶ有料特急「京成スカイライナー」の座席予約システムが不正アクセスを受けたと発表。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "京成電鉄"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "incident",
+            "author_handle": "ismsecuritynews",
+            "quote_match": true
+          },
+          {
+            "id": "2121429546541232257",
+            "url": "https://x.com/i/status/2121429546541232257",
+            "title": "大阪市 行政システムで107万件メール漏えい",
+            "author": "ism security news (@ismsecuritynews)",
+            "posted_at": "2026-11-14T02:26:32Z",
+            "summary": "大阪市は13日、住民票の写しの請求などができる「行政オンラインシステム」の利用者のメールアドレスが107万8713件流出したと発表。メール配信サービスを提供するアララ（東京・港）への不正アクセスが原因。",
+            "quote": "大阪市は13日、住民票の写しの請求などができる「行政オンラインシステム」の利用者のメールアドレスが107万8713件流出したと発表。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "大阪市"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "incident",
+            "author_handle": "ismsecuritynews",
+            "quote_match": true
+          },
+          {
+            "id": "2121429401728688570",
+            "url": "https://x.com/i/status/2121429401728688570",
+            "title": "内閣府 広報サイト不正アクセスで5973人漏えい",
+            "author": "ism security news (@ismsecuritynews)",
+            "posted_at": "2026-11-14T02:25:58Z",
+            "summary": "内閣府は13日、沖縄県の魅力を発信する広報事業で使用していたレンタルサーバーに不正アクセスがあり、5973人分のメールアドレスや電話番号が漏洩した恐れ。委託先が運営するウェブサイト「OKINAWA41」で、写真コンテストと「かりゆしウエア」のデザインを募るイベント。",
+            "quote": "内閣府は13日、沖縄県の魅力を発信する広報事業で使用していたレンタルサーバーに不正アクセスがあり、5973人分のメールアドレスや電話番号が漏洩した恐れ。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "内閣府"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "incident",
+            "author_handle": "ismsecuritynews",
+            "quote_match": true
+          },
+          {
+            "id": "2121429082915410014",
+            "url": "https://x.com/i/status/2121429082915410014",
+            "title": "マネックス証券 不正アクセスで免許証画像流出",
+            "author": "かぶけろ（相場のだんごむし） (@Invisible_Q)",
+            "posted_at": "2026-11-14T02:24:42Z",
+            "summary": "マネックス、運転免許証画像とかの結構ヤバめなお漏らし。2019年以降の口座開設者らしい。該当者はご注意を…。不正アクセス被害のマネックス証券　免許証画像や「自撮り」流出か",
+            "quote": "マネックス、運転免許証画像とかの結構ヤバめなお漏らし。2019年以降の口座開設者らしい。該当者はご注意を…。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい",
+              "マネックス"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "incident",
+            "author_handle": "invisible_q",
+            "quote_match": true
+          },
+          {
+            "id": "2121428976023531592",
+            "url": "https://x.com/i/status/2121428976023531592",
+            "title": "サイバーセキュリティクラウド 不正アクセス被害",
+            "author": "公爵 (@Texas_Special)",
+            "posted_at": "2026-11-14T02:24:16Z",
+            "summary": "セキュリティ企業が不正アクセス受ける　サイバーセキュリティクラウド",
+            "quote": "セキュリティ企業が不正アクセス受ける　サイバーセキュリティクラウド",
+            "tags": [
+              "不正アクセス",
+              "サイバーセキュリティクラウド"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "incident",
+            "author_handle": "texas_special",
+            "quote_match": true
+          },
+          {
+            "id": "2121428600612098265",
+            "url": "https://x.com/i/status/2121428600612098265",
+            "title": "GitHub rucioにcriticalセキュリティアドバイザリ",
+            "author": "Flare Reef (@Flare_Reef)",
+            "posted_at": "2026-11-14T02:22:47Z",
+            "summary": "GitHub rated 1 new security advisory critical on November 13. It is in rucio. Apps that use rucio should update. Kept by GitHub.",
+            "quote": "GitHub rated 1 new security advisory critical on November 13. It is in rucio. Apps that use rucio should update.",
+            "tags": [
+              "security advisory",
+              "GitHub",
+              "rucio"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "vulnerability",
+            "author_handle": "flare_reef",
+            "quote_match": true
+          },
+          {
+            "id": "2121429380459303340",
+            "url": "https://x.com/i/status/2121429380459303340",
+            "title": "Tritonマルウェア 100億ドル化学プラント破壊向け",
+            "author": "Cipher Redacted (@cipherredacted1)",
+            "posted_at": "2026-11-14T02:25:53Z",
+            "summary": "Triton: Malware Designed to Destroy a $10 Billion Chemical Plant #Triton #Trisis #ICS #SafetySystems #ZeroDay #Cybersecurity",
+            "quote": "Triton: Malware Designed to Destroy a $10 Billion Chemical Plant",
+            "tags": [
+              "Triton",
+              "malware",
+              "ICS"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "campaign",
+            "author_handle": "cipherredacted1",
+            "quote_match": true
+          },
+          {
+            "id": "2121429287568044229",
+            "url": "https://x.com/i/status/2121429287568044229",
+            "title": "CVE vulnpocalypse到来？複数脆弱性関連投稿",
+            "author": "GNИR (@0xgnnr)",
+            "posted_at": "2026-11-14T02:25:31Z",
+            "summary": "https://gunnarleffler.com/posts/vulnado/ hide your kids, hide your wife the CVE vulnpocalypse is here. Or is it?",
+            "quote": "hide your kids, hide your wife the CVE vulnpocalypse is here. Or is it?",
+            "tags": [
+              "CVE",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-14T02:29:08Z",
+            "category": "vulnerability",
+            "author_handle": "0xgnnr",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2120746775455858849",
+            "posted_at": "2026-11-12T05:13:27Z"
+          },
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2120844091349155877",
+            "posted_at": "2026-11-12T11:40:09Z"
+          },
+          {
+            "search": "trusted",
+            "reason": "before_window",
+            "id": "2120941100441702854",
+            "posted_at": "2026-11-12T18:05:38Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
