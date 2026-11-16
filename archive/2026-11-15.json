@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "date": "2026-11-15",
+  "snapshots": [
+    {
+      "name": "2026-11-15-01.json",
+      "sha256": "29a469b5653390f43f90180c35e66fb8d5fda3f19c829b919db07b3176507410",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-15T01:58:13Z",
+        "window": {
+          "from": "2026-11-13T19:57:10.059Z",
+          "to": "2026-11-15T01:57:10.059Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "8 件を取得しました",
+          "checked_at": "2026-11-15T01:58:13Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 43607,
+            "input_tokens_details": {
+              "cached_tokens": 23040
+            },
+            "output_tokens": 9753,
+            "output_tokens_details": {
+              "reasoning_tokens": 8361
+            },
+            "total_tokens": 53360,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 12,
+            "cost_in_usd_ticks": 3146810000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 12,
+              "x_posts_fetched": 54,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 25541,
+              "output_tokens": 4541
+            }
+          },
+          "general": {
+            "input_tokens": 36117,
+            "input_tokens_details": {
+              "cached_tokens": 22016
+            },
+            "output_tokens": 8181,
+            "output_tokens_details": {
+              "reasoning_tokens": 6994
+            },
+            "total_tokens": 44298,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 8,
+            "cost_in_usd_ticks": 1548662000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 8,
+              "x_posts_fetched": 24,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 19442,
+              "output_tokens": 2606
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2121583887499542810",
+            "url": "https://x.com/i/status/2121583887499542810",
+            "title": "UnrealIRCd脆弱性CVE-2026-114713が悪用中、CISAがKEVに追加",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-14T12:39:50Z",
+            "summary": "ハッカーが高深刻度のUnrealIRCd脆弱性を積極的に悪用。CVE-2026-114713 (CVSS 8.6)でサーバーレベル権限でのコマンド注入が可能。CISAがKnown Exploited Vulnerabilitiesリストに追加。直ちにパッチを適用せよ。",
+            "quote": "CVE-2026-114713 (CVSS 8.6) lets attackers inject commands with server-level privileges. CISA has added it to its exploited vulnerabilities list. Patch now.",
+            "tags": [
+              "CVE-2026-114713",
+              "UnrealIRCd",
+              "KEV"
+            ],
+            "collected_at": "2026-11-15T01:57:44Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2121656319383847234",
+            "url": "https://x.com/i/status/2121656319383847234",
+            "title": "Cursorがセキュリティ侵害を確認、悪意あるClaude Code拡張機能が原因",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-14T17:27:39Z",
+            "summary": "Cursorがセキュリティ侵害を認め、悪意あるClaude Code拡張機能につながったと確認。AIコーディングツールの侵害事件が発生。影響を受けたユーザーへの対応が必要。",
+            "quote": "Cursor confirms security breach led to malicious Claude Code extension",
+            "tags": [
+              "Cursor",
+              "Claude",
+              "breach"
+            ],
+            "collected_at": "2026-11-15T01:57:44Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2121783201156767827",
+            "url": "https://x.com/i/status/2121783201156767827",
+            "title": "SCKitがScreenConnectを悪用した攻撃キャンペーン、CVE-2026-84869",
+            "author": "RST Cloud (@rst_cloud)",
+            "posted_at": "2026-11-15T01:51:50Z",
+            "summary": "脅威アクターがConnectWise ScreenConnectを悪用し、SCKitマルウェアをMSP顧客エンドポイントに展開。CVE-2026-84869 (CVSS 9.9)。技術者セッションを標的とする。クライアント更新と調査を。",
+            "quote": "SCKit abuses ScreenConnect to deploy remote access and target technician sessions | 13-11-2026",
+            "tags": [
+              "CVE-2026-84869",
+              "ScreenConnect",
+              "SCKit",
+              "malware"
+            ],
+            "collected_at": "2026-11-15T01:57:44Z",
+            "category": "campaign",
+            "author_handle": "rst_cloud",
+            "quote_match": true
+          },
+          {
+            "id": "2121623755101229236",
+            "url": "https://x.com/i/status/2121623755101229236",
+            "title": "米国が北朝鮮の暗号資産盗難キャンペーンを阻止",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-14T15:18:15Z",
+            "summary": "米国が北朝鮮のキャンペーンを妨害。4億ドルの暗号資産盗難に関与した攻撃活動を阻止。関連する脅威活動の分析が必要。",
+            "quote": "US disrupts North Korean campaign behind $400 million crypto theft",
+            "tags": [
+              "North Korea",
+              "crypto theft",
+              "campaign"
+            ],
+            "collected_at": "2026-11-15T01:57:44Z",
+            "category": "campaign",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2121756237691756730",
+            "url": "https://x.com/i/status/2121756237691756730",
+            "title": "Next.jsミドルウェア脆弱性CVE-2025-29927で認証バイパス",
+            "author": "Dark Web Informer (@DarkWebInformer)",
+            "posted_at": "2026-11-15T00:04:42Z",
+            "summary": "Next.jsのミドルウェア脆弱性CVE-2025-29927 (CVSS 9.1)。x-middleware-subrequestヘッダーを悪用し未認証攻撃者が認証チェックをバイパス可能。Next.js 11.1.4～15.2.3未満に影響。PoC公開済み。",
+            "quote": "🚨 A Next.js middleware flaw can let unauthenticated attackers bypass authorization checks; CVE-2025-29927",
+            "tags": [
+              "CVE-2025-29927",
+              "Next.js"
+            ],
+            "collected_at": "2026-11-15T01:57:44Z",
+            "category": "vulnerability",
+            "author_handle": "darkwebinformer",
+            "quote_match": true
+          },
+          {
+            "id": "2121784027590111530",
+            "url": "https://x.com/i/status/2121784027590111530",
+            "title": "Apache HTTP Server CVE-2026-119618、RCEの可能性",
+            "author": "ねこさん⚡(ΦωΦ) (@catnap707)",
+            "posted_at": "2026-11-15T01:55:07Z",
+            "summary": "Sysdigのレポート。Apache HTTP Server mod_http2でheap corruptionとRCEを検出。未認証のHTTP/2トラフィックが脆弱なhttpdのヒープをクラッシュ・破損させ、リモートコード実行が可能だが、公に悪用は確認されていない。",
+            "quote": "that unauthenticated HTTP/2 traffic can crash and corrupt the heap of a vulnerable httpd. Remote code execution is possible, but nobody has publicly…",
+            "tags": [
+              "CVE-2026-119618",
+              "Apache",
+              "RCE",
+              "HTTP/2"
+            ],
+            "collected_at": "2026-11-15T01:58:11Z",
+            "category": "vulnerability",
+            "author_handle": "catnap707",
+            "quote_match": true
+          },
+          {
+            "id": "2121783531643035812",
+            "url": "https://x.com/i/status/2121783531643035812",
+            "title": "LEGO BrickLinkでデータ侵害、ユーザー情報露出",
+            "author": "DevaOnBreaches (@DevaOnBreaches)",
+            "posted_at": "2026-11-15T01:53:09Z",
+            "summary": "LEGOのBrickLinkでデータ侵害を確認。ユーザー名、IPアドレス、小数のメールアドレスが露出。パスワードと支払い情報は影響なし。影響を受けたユーザーに直接通知。",
+            "quote": "LEGO’s BrickLink confirmed a #databreach exposing usernames, IP addresses, and a small number of email addresses. Passwords and payment information were not compromised.",
+            "tags": [
+              "databreach",
+              "LEGO",
+              "BrickLink"
+            ],
+            "collected_at": "2026-11-15T01:58:11Z",
+            "category": "incident",
+            "author_handle": "devaonbreaches",
+            "quote_match": true
+          },
+          {
+            "id": "2121782349432254752",
+            "url": "https://x.com/i/status/2121782349432254752",
+            "title": "三井住友カードを装ったAndroidマルウェア",
+            "author": "masaomi346 (@masaomi346)",
+            "posted_at": "2026-11-15T01:48:27Z",
+            "summary": "三井住友カードを装ったAndroidマルウェアを確認。hxxps://kaizensolutions-jp.com/ に存在。VirusTotalで解析済み。フィッシング詐欺に使用。",
+            "quote": "三井住友カードを装ったAndroidマルウェア\nhxxps://kaizensolutions-jp.com/",
+            "tags": [
+              "malware",
+              "Android",
+              "フィッシング詐欺"
+            ],
+            "collected_at": "2026-11-15T01:58:11Z",
+            "category": "campaign",
+            "author_handle": "masaomi346",
+            "quote_match": true
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
