@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "date": "2026-11-16",
+  "snapshots": [
+    {
+      "name": "2026-11-16-02.json",
+      "sha256": "14e83d8ac91bd3c147bb3f6f266c50712f2011827eb1601232f1c9993dc79695",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-16T02:12:11Z",
+        "window": {
+          "from": "2026-11-14T20:11:24.829Z",
+          "to": "2026-11-16T02:11:24.829Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "12 件を取得しました",
+          "checked_at": "2026-11-16T02:12:11Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 6509,
+            "input_tokens_details": {
+              "cached_tokens": 4352
+            },
+            "output_tokens": 3439,
+            "output_tokens_details": {
+              "reasoning_tokens": 2800
+            },
+            "total_tokens": 9948,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 18,
+            "cost_in_usd_ticks": 99054000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 18,
+              "x_posts_fetched": 0,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 4576,
+              "output_tokens": 910
+            }
+          },
+          "general": {
+            "input_tokens": 19115,
+            "input_tokens_details": {
+              "cached_tokens": 5632
+            },
+            "output_tokens": 11155,
+            "output_tokens_details": {
+              "reasoning_tokens": 8337
+            },
+            "total_tokens": 30270,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2369194000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 16908,
+              "output_tokens": 7585
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2122150308029567388",
+            "url": "https://x.com/i/status/2122150308029567388",
+            "title": "WP BASE Bookingにblind SQL injection脆弱性 (CVE-2026-124970)",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-16T02:10:35Z",
+            "summary": "WP BASE Bookingの予約スケジューリングにblind SQL injectionの脆弱性。攻撃者が巧妙なリクエストを送りデータベースの内容を推測可能。修正版6.6.1で対応。",
+            "quote": "🔴 CRITICAL 9.3 · WP BASE Booking: blind SQL injection in appointment scheduling (CVE-2026-124970) An attacker can send crafted requests to query the site's database and infer its contents.",
+            "tags": [
+              "CVE-2026-124970",
+              "SQL injection",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "cvedotnow",
+            "quote_match": true
+          },
+          {
+            "id": "2122149805908529271",
+            "url": "https://x.com/i/status/2122149805908529271",
+            "title": "EdgeChatにXSS脆弱性 (CVE-2026-129541)",
+            "author": "CVE (@CVEnew)",
+            "posted_at": "2026-11-16T02:08:36Z",
+            "summary": "EdgeChat 2.5.0から2.21.0にcross-site scripting脆弱性。招待ユーザーがVditor @-mentionでエスケープされていないユーザー名を通じてHTMLを注入可能。",
+            "quote": "CVE-2026-129541 EdgeChat 2.5.0 through 2.21.0 contains a cross-site scripting vulnerability that allows invited users to inject HTML through unescaped usernames in the Vditor @-men…",
+            "tags": [
+              "CVE-2026-129541",
+              "XSS"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "cvenew",
+            "quote_match": true
+          },
+          {
+            "id": "2122149804457209951",
+            "url": "https://x.com/i/status/2122149804457209951",
+            "title": "VoAPIにSQLインジェクション脆弱性 (CVE-2026-129540)",
+            "author": "CVE (@CVEnew)",
+            "posted_at": "2026-11-16T02:08:35Z",
+            "summary": "VoAPI 1.0.0から1.2.0にSQLインジェクション。認証ユーザーが検索フィルタで細工したカラム名を供給してSQL注入可能。",
+            "quote": "CVE-2026-129540 VoAPI 1.0.0 through 1.2.0 contains a sql injection vulnerability that allows authenticated users to inject SQL by supplying crafted column names as search[...] filt…",
+            "tags": [
+              "CVE-2026-129540",
+              "SQL injection"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "cvenew",
+            "quote_match": true
+          },
+          {
+            "id": "2122149802754314695",
+            "url": "https://x.com/i/status/2122149802754314695",
+            "title": "SSCMSに任意ファイル読み取り脆弱性 (CVE-2026-129539)",
+            "author": "CVE (@CVEnew)",
+            "posted_at": "2026-11-16T02:08:35Z",
+            "summary": "SSCMS 7.2.0から7.4.0に任意ファイル読み取り。登録ユーザーがソースパスを指定してサーバーファイルをコピー可能。",
+            "quote": "CVE-2026-129539 SSCMS 7.2.0 through 7.4.0 contains an arbitrary file read vulnerability that allows any registered user-center account to copy server files by supplying source path…",
+            "tags": [
+              "CVE-2026-129539",
+              "file read"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "cvenew",
+            "quote_match": true
+          },
+          {
+            "id": "2122147877107663348",
+            "url": "https://x.com/i/status/2122147877107663348",
+            "title": "Check Point PHP2Shellの脆弱性 (CVE-2026-109618)",
+            "author": "SANS.edu Internet Storm Center (@sans_isc)",
+            "posted_at": "2026-11-16T02:00:56Z",
+            "summary": "SANS StormcastでCheck Point PHP2Shellのエクスプロイト (CVE-2026-109618) を言及。Macfinger ClickFixなども取り上げ。",
+            "quote": "SANS Stormcast Monday, November 16th, 2026: Macfinger ClickFix DownTheDRAIN; Microsoft 365 Outage Phishing; Check Point PHP2Shell Exploits (CVE-2026-109618); Cursor Claude Code Extension",
+            "tags": [
+              "CVE-2026-109618",
+              "Check Point"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "sans_isc",
+            "quote_match": true
+          },
+          {
+            "id": "2122146695995695127",
+            "url": "https://x.com/i/status/2122146695995695127",
+            "title": "Apache ShiroのLDAP脆弱性 (CVE-2026-129349)",
+            "author": "Severity Daily (@severitydaily)",
+            "posted_at": "2026-11-16T01:56:14Z",
+            "summary": "Apache ShiroのLDAP realmにAllowAllCredentialsMatcher。auth caching有効でパスワードチェックが残る。8月に修正、Apacheが82日後に説明。悪用報告なし。",
+            "quote": "Apache Shiro's LDAP realm ships a checker named AllowAllCredentialsMatcher. Enable auth caching and it is the only check left. The fix shipped in August; Apache (@TheASF) explained it 82 days later. …",
+            "tags": [
+              "CVE-2026-129349",
+              "Apache Shiro",
+              "LDAP"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "severitydaily",
+            "quote_match": true
+          },
+          {
+            "id": "2122149213127450970",
+            "url": "https://x.com/i/status/2122149213127450970",
+            "title": "Check Point & UnrealIRCdにCISA KEV追加 (CVE-2026-114713)",
+            "author": "Security Arsenal, LLC (@SecurityAr58409)",
+            "posted_at": "2026-11-16T02:06:14Z",
+            "summary": "CISAがCheck PointとUnrealIRCdの脆弱性をKEVに追加。CVE-2026-114713。検知と修復ガイド提供。",
+            "quote": "🔒 #CyberSecurity CVE-2026-114713: Check Point & UnrealIRCd CISA KEV Alert — Immediate Detection … \"The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has officially added two…\"",
+            "tags": [
+              "CVE-2026-114713",
+              "CISA KEV",
+              "Check Point"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "securityar58409",
+            "quote_match": true
+          },
+          {
+            "id": "2122141493951439173",
+            "url": "https://x.com/i/status/2122141493951439173",
+            "title": "LinuxカーネルにNoisyTCP DoS脆弱性 (CVE-2026-99288)",
+            "author": "Daily CyberSecurity (@Daily_CyberSec)",
+            "posted_at": "2026-11-16T01:35:34Z",
+            "summary": "NoisyTCP脆弱性CVE-2026-99288。リモート攻撃者がLinuxカーネルTCPサーバーをpre-authでpanic可能。パッチを6.12.117, 6.18.63または7.3.4に。",
+            "quote": "NoisyTCP vulnerability CVE-2026-99288 lets remote attackers panic Linux kernel TCP servers pre-auth. Patch to 6.12.117, 6.18.63 or 7.3.4.",
+            "tags": [
+              "CVE-2026-99288",
+              "Linux",
+              "DoS"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "vulnerability",
+            "author_handle": "daily_cybersec",
+            "quote_match": true
+          },
+          {
+            "id": "2122149772530487575",
+            "url": "https://x.com/i/status/2122149772530487575",
+            "title": "Culinary SpecialtiesがAOQIN Leaksランサムウェア被害",
+            "author": "FalconFeeds.io (@FalconFeedsio)",
+            "posted_at": "2026-11-16T02:08:28Z",
+            "summary": "米食品生産会社Culinary SpecialtiesがAOQIN Leaksランサムウェアに被害。70GBデータ漏えい予定。4-5日以内に公開予定。",
+            "quote": "📢 Ransomware Alert: 🇺🇸 Culinary Specialties, Inc. (https://www.culinaryspecialties.net/ a US-based food production organization, has reportedly fallen victim to AOQIN Leaks ransomware. NB: The group …",
+            "tags": [
+              "ransomware",
+              "AOQIN Leaks",
+              "data breach"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "incident",
+            "author_handle": "falconfeedsio",
+            "quote_match": true
+          },
+          {
+            "id": "2122149678305476885",
+            "url": "https://x.com/i/status/2122149678305476885",
+            "title": "GoQSystemに不正アクセス、498万件注文情報漏えい",
+            "author": "INTERNET Watch (@internet_watch)",
+            "posted_at": "2026-11-16T02:08:05Z",
+            "summary": "EC管理システムGoQSystemに不正アクセス。1694社、約498万件の注文情報が漏えい。",
+            "quote": "EC管理システムの「GoQSystem」に不正アクセス、1694社・約498万件の注文情報が漏えい　 https://internet.watch.impress.co.jp/docs/news/2156617.html",
+            "tags": [
+              "data breach",
+              "不正アクセス",
+              "GoQSystem"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "incident",
+            "author_handle": "internet_watch",
+            "quote_match": true
+          },
+          {
+            "id": "2122149893376721373",
+            "url": "https://x.com/i/status/2122149893376721373",
+            "title": "GMOお名前.comに不正アクセス、FX口座29.9億円損失",
+            "author": "千葉誠吾 (@XaCYBQTtX0yUp1r)",
+            "posted_at": "2026-11-16T02:08:56Z",
+            "summary": "GMO「お名前.com」に不正アクセス。FX口座が操作され2943口座から約29.9億円の損失申請。全額補償で30.5億円費用発生。",
+            "quote": "【速報】GMO「お名前.com」に不正アクセス、FX口座が勝手に操作された結果→2943口座から約29.9億円の損失申請、全額補償などで約30.5億円の費用発生へ https://crx7601.com/archives/63607214.html",
+            "tags": [
+              "不正アクセス",
+              "GMO",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "incident",
+            "author_handle": "xacybqttx0yup1r",
+            "quote_match": true
+          },
+          {
+            "id": "2122150391756509640",
+            "url": "https://x.com/i/status/2122150391756509640",
+            "title": "NTTドコモで通信障害、不正アクセス調査",
+            "author": "川面梵児 (@hitukishinji)",
+            "posted_at": "2026-11-16T02:10:55Z",
+            "summary": "NTTドコモ全国で通信障害発生。不正アクセスか原因を調査中。音声通話やデータ通信、ショートメールに影響。",
+            "quote": "◎NTTドコモ 全国で通信障害 不正アクセスか含め原因調査急ぐ | NHKニュース 【NHK】NTTドコモによりますと、現在、全国で音声通話やデータ通信、ショートメールといった携帯電話のサービスが利用しにくい状況が発生しているということです。",
+            "tags": [
+              "NTTドコモ",
+              "通信障害",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-16T02:12:10Z",
+            "category": "incident",
+            "author_handle": "hitukishinji",
+            "quote_match": true
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
