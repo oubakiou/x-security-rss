@@ -20,6 +20,7 @@ export const DEFAULT_TRUSTED_HANDLES = [
   "yousukezan",
   "securityLab_jp",
   "IntCyberDigest",
+  "AikidoSecurity",
 ] as const;
 
 export function parseHandles(raw: string | undefined, fallback: readonly string[]): string[] {
