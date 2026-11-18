@@ -1,0 +1,403 @@
+{
+  "version": 1,
+  "date": "2026-11-17",
+  "snapshots": [
+    {
+      "name": "2026-11-17-04.json",
+      "sha256": "7386e6d75d2b2cedb4daef60446863bfc00ccf798078e5e77274a803644e49d0",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-17T04:31:59Z",
+        "window": {
+          "from": "2026-11-15T22:30:27.869Z",
+          "to": "2026-11-17T04:30:27.869Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "17 件を取得しました",
+          "checked_at": "2026-11-17T04:31:59Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 10416,
+            "input_tokens_details": {
+              "cached_tokens": 3072
+            },
+            "output_tokens": 7484,
+            "output_tokens_details": {
+              "reasoning_tokens": 5573
+            },
+            "total_tokens": 17900,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 1179264000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 19,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 8483,
+              "output_tokens": 6180
+            }
+          },
+          "general": {
+            "input_tokens": 16272,
+            "input_tokens_details": {
+              "cached_tokens": 4864
+            },
+            "output_tokens": 9833,
+            "output_tokens_details": {
+              "reasoning_tokens": 7598
+            },
+            "total_tokens": 26105,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2220468000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 38,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 14065,
+              "output_tokens": 6945
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2122515063747588241",
+            "url": "https://x.com/i/status/2122515063747588241",
+            "title": "Linuxカーネル11年潜む脆弱性 CVE-2026-99288",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-17T02:20:00Z",
+            "summary": "Linuxカーネルに11年潜む脆弱性(CVE-2026-99288)。インターネット経由のTCPパケットだけでサーバーをクラッシュ可能。デフォルトのNginx、ApacheまたはSSHサーバーで十分。コンテナではホスト全体に影響。修正は11月3日にCVE-2026-99288として適用。ほぼすべてのLinuxディストリビューションに影響。",
+            "quote": "An 11-year-old bug in the Linux kernel lets an attacker crash a server over the internet, with no login, just by sending it TCP packets.",
+            "tags": [
+              "CVE-2026-99288",
+              "Linux",
+              "kernel"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "vulnerability",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2122461970171322583",
+            "url": "https://x.com/i/status/2122461970171322583",
+            "title": "Optimizelyスクリプトにマルウェア注入、BBCなど186サイト感染",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-16T22:49:01Z",
+            "summary": "ハッカーがOptimizelyのスクリプトを毒入れ、BBC、Zoomなどの主要サイトで訪問者を狙う。コードは暗号ウォレットアドレスを置き換え、iPhoneをハッキングキットに送信。少なくとも186の感染サイトを確認。CNN、Fox News、Salesforceサイトにも出現。",
+            "quote": "‼️ BREAKING: Hackers poisoned a script running on BBC, Zoom and other major websites to rob their visitors.",
+            "tags": [
+              "Optimizely",
+              "supply chain",
+              "malware"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "campaign",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2122510326751269284",
+            "url": "https://x.com/i/status/2122510326751269284",
+            "title": "Uber運転手免許証・個人情報流出、Fireworks AI認証悪用",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-17T02:01:10Z",
+            "summary": "Uberで運転手の免許証画像・個人情報が流出。AI委託先Fireworksの認証情報が悪用されクラウドに不正アクセスされた。",
+            "quote": "Uber、運転手の免許証画像・個人情報が流出　AI委託先Fireworksの認証情報悪用でクラウドに不正アクセス",
+            "tags": [
+              "Uber",
+              "data breach",
+              "Fireworks AI"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2122486274468851915",
+            "url": "https://x.com/i/status/2122486274468851915",
+            "title": "トレンドマイクロApex Oneに18件脆弱性 CVE-2026-111773~90",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-17T00:25:36Z",
+            "summary": "トレンドマイクロ「Apex One」に18件の脆弱性。権限昇格やエージェント停止のおそれ。PHP2Shellにも対応。CVE-2026-111773~90など。",
+            "quote": "トレンドマイクロ「Apex One」に18件の脆弱性、権限昇格やエージェント停止のおそれ　PHP2Shellにも対応-CVE-2026-111773~90　他",
+            "tags": [
+              "CVE-2026-111773",
+              "Apex One",
+              "Trend Micro"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2122484150770807014",
+            "url": "https://x.com/i/status/2122484150770807014",
+            "title": "Microsoft 365障害を悪用したフィッシングキャンペーン分析",
+            "author": "Microsoft Threat Intelligence (@MsftSecIntel)",
+            "posted_at": "2026-11-17T00:17:10Z",
+            "summary": "Microsoft Threat Intelligenceが11月12日のMicrosoft 365サービス障害を悪用したフィッシングキャンペーンを分析。サービスヘルス通知を装い、複数の業界を標的。Microsoft Defenderでブロック。IOCや緩和策を公開。",
+            "quote": "Microsoft Threat Intelligence has published a detailed analysis of the phishing campaign exploiting the November 12 Microsoft 365 service disruption, an example of threat actors exploiting notable gl…",
+            "tags": [
+              "phishing",
+              "Microsoft 365",
+              "campaign"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "campaign",
+            "author_handle": "msftsecintel",
+            "quote_match": true
+          },
+          {
+            "id": "2122472595358662720",
+            "url": "https://x.com/i/status/2122472595358662720",
+            "title": "Google AIが脆弱性発見から攻撃まで自律化を初確認",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-16T23:31:15Z",
+            "summary": "GoogleがAIが脆弱性の発見から攻撃実行まで自律化した事例を初確認。パッチ差分を解析し悪用コードを生成。",
+            "quote": "Google、AIが脆弱性の発見から攻撃実行まで自律化した事例を初確認　パッチ差分を解析し悪用コードを生成",
+            "tags": [
+              "AI",
+              "vulnerability",
+              "Google"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "campaign",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2122453702477046094",
+            "url": "https://x.com/i/status/2122453702477046094",
+            "title": "Apple tvOS 27.2.1で脆弱性 CVE-2026-111497修正",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-16T22:16:10Z",
+            "summary": "AppleがtvOS 27.2.1とHomeView 27.2で脆弱性(CVE-2026-111497)を修正。Bluetoothの不正ペアリングやBrotliの既知悪用脆弱性に対応。",
+            "quote": "Apple、tvOS 27.2.1とHomeView 27.2で脆弱性(CVE-2026-111497)を修正　Bluetoothの不正ペアリングやBrotliの既知悪用脆弱性に対応",
+            "tags": [
+              "CVE-2026-111497",
+              "Apple",
+              "tvOS"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2122478357774307524",
+            "url": "https://x.com/i/status/2122478357774307524",
+            "title": "PureLogs/PureRAT DLLサイドローディング攻撃確認",
+            "author": "Unit 42 (@Unit42_Intel)",
+            "posted_at": "2026-11-16T23:54:08Z",
+            "summary": "ZIPアーカイブをダウンロードし、DLLサイドローディングで悪意あるPythonスクリプトを実行して#PureLogs / #PureRATを展開。詳細はGitHubで公開。",
+            "quote": "A downloaded ZIP archive disguised as a report uses DLL side-loading to decode and run a malicious Python script for #PureLogs / #PureRAT.",
+            "tags": [
+              "PureLogs",
+              "PureRAT",
+              "malware",
+              "DLL side-loading"
+            ],
+            "collected_at": "2026-11-17T04:31:20Z",
+            "category": "campaign",
+            "author_handle": "unit42_intel",
+            "quote_match": true
+          },
+          {
+            "id": "2122547710507327975",
+            "url": "https://x.com/i/status/2122547710507327975",
+            "title": "Linux NoisyTCP脆弱性、攻撃者がサーバーをリモートクラッシュ",
+            "author": "Abijita Foundation (@OfficialAbijita)",
+            "posted_at": "2026-11-17T04:29:43Z",
+            "summary": "NoisyTCP Linux Flaw Lets Attackers Crash Servers Remotely。Linuxカーネルの脆弱性で攻撃者が遠隔からサーバーをクラッシュさせられる。CVE-2026-99288関連。",
+            "quote": "NoisyTCP Linux Flaw Lets Attackers Crash Servers Remotely",
+            "tags": [
+              "NoisyTCP",
+              "Linux",
+              "CVE-2026-99288"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "vulnerability",
+            "author_handle": "officialabijita",
+            "quote_match": true
+          },
+          {
+            "id": "2122546762460311930",
+            "url": "https://x.com/i/status/2122546762460311930",
+            "title": "Windows版Zoomアプリに2件の脆弱性、1件はCritical",
+            "author": "中古パソコンショップ パナメディア (@panamedia)",
+            "posted_at": "2026-11-17T04:25:57Z",
+            "summary": "Windows版「Zoom」アプリに2件の脆弱性が見つかり、1件は深刻度「Critical」。窓の杜の報道。",
+            "quote": "Windows版「Zoom」アプリに2件の脆弱性 ～1件は深刻度「Critical」 - 窓の杜",
+            "tags": [
+              "Zoom",
+              "Windows",
+              "脆弱性"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "vulnerability",
+            "author_handle": "panamedia",
+            "quote_match": true
+          },
+          {
+            "id": "2122545121212145673",
+            "url": "https://x.com/i/status/2122545121212145673",
+            "title": "Apache Airflowの分散処理機能に脆弱性、修正版公開",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-17T04:19:26Z",
+            "summary": "「Apache Airflow」の分散処理機能に脆弱性があり、修正版が公開された。SecurityNEXT (Nov 16)。",
+            "quote": "「Apache Airflow」の分散処理機能に脆弱性、修正版を公開 #SecurityNEXT (Nov 16)",
+            "tags": [
+              "Apache Airflow",
+              "脆弱性",
+              "パッチ"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          },
+          {
+            "id": "2122544944187367460",
+            "url": "https://x.com/i/status/2122544944187367460",
+            "title": "CISAが悪用確認の脆弱性2件をKEVカタログに追加",
+            "author": "キタきつね (@foxbook)",
+            "posted_at": "2026-11-17T04:18:44Z",
+            "summary": "CISAが悪用確認の脆弱性2件をKEVカタログに追加。SecurityNEXT (Nov 16)。",
+            "quote": "CISAが悪用確認の脆弱性2件をKEVカタログに追加 #SecurityNEXT (Nov 16)",
+            "tags": [
+              "CISA",
+              "KEV",
+              "脆弱性"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "vulnerability",
+            "author_handle": "foxbook",
+            "quote_match": true
+          },
+          {
+            "id": "2122547043034140799",
+            "url": "https://x.com/i/status/2122547043034140799",
+            "title": "スパコン富岳に不正アクセス、運用停止とデータ流出の可能性",
+            "author": "sam (@sam90486210)",
+            "posted_at": "2026-11-17T04:27:04Z",
+            "summary": "「スパコン「富岳」不正アクセスで運用停止 研究データや外部接続用SSH鍵など流出の可能性 他システムへの接続試行も確認」。ITmedia NEWS。",
+            "quote": "\"スパコン「富岳」不正アクセスで運用停止 研究データや外部接続用SSH鍵など流出の可能性 他システムへの接続試行も確認\" - ITmedia NEWS",
+            "tags": [
+              "富岳",
+              "不正アクセス",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "incident",
+            "author_handle": "sam90486210",
+            "quote_match": true
+          },
+          {
+            "id": "2122547005033709879",
+            "url": "https://x.com/i/status/2122547005033709879",
+            "title": "日清食品グループ、外部サービス不正アクセスで個人情報漏えい",
+            "author": "ぽちこ (@pochicov6)",
+            "posted_at": "2026-11-17T04:26:55Z",
+            "summary": "外部サービスへの不正アクセスによる個人情報漏えいに関するお知らせとお詫び。日清食品グループ。住所氏名電話番号は漏れてない。",
+            "quote": "外部サービスへの不正アクセスによる 個人情報漏えいに関するお知らせとお詫び | ニュースリリース | 日清食品グループ",
+            "tags": [
+              "日清食品",
+              "不正アクセス",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "incident",
+            "author_handle": "pochicov6",
+            "quote_match": true
+          },
+          {
+            "id": "2122547254645191158",
+            "url": "https://x.com/i/status/2122547254645191158",
+            "title": "Optimizelyサプライチェーン攻撃でCNN BBCにマルウェア配信",
+            "author": "srikanth talloju (@tuffbrownboy)",
+            "posted_at": "2026-11-17T04:27:55Z",
+            "summary": "Zoom, CNN, BBC and GitLab served a card skimmer and crypto wallet swapper to visitors via Optimizely A/B testing script. Attackers abused a bug in signup flow.",
+            "quote": "Zoom, CNN, BBC and GitLab served a card skimmer and crypto wallet swapper to visitors yesterday, via their Optimizely A/B testing script.",
+            "tags": [
+              "Optimizely",
+              "supply chain",
+              "malware"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "campaign",
+            "author_handle": "tuffbrownboy",
+            "quote_match": true
+          },
+          {
+            "id": "2122545093626277985",
+            "url": "https://x.com/i/status/2122545093626277985",
+            "title": "LND開発者、Lightning Network向けクリティカルパッチ公開",
+            "author": "Arete (@AreteAgencyLTD)",
+            "posted_at": "2026-11-17T04:19:19Z",
+            "summary": "LND developers released a critical patch November 11 preventing an update-log overflow that could erase completed HTLC records during channel state reconstruction.",
+            "quote": "LND developers released a critical patch November 11 preventing an update-log overflow that could erase completed HTLC records during channel state reconstruction.",
+            "tags": [
+              "LND",
+              "Lightning Network",
+              "patch"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "vulnerability",
+            "author_handle": "areteagencyltd",
+            "quote_match": true
+          },
+          {
+            "id": "2122544703887511994",
+            "url": "https://x.com/i/status/2122544703887511994",
+            "title": "ACSC、脆弱性報告30%増、48時間以内に悪用例も",
+            "author": "Alan 🇦🇺 (@alanhoward)",
+            "posted_at": "2026-11-17T04:17:47Z",
+            "summary": "Australia's cyber authority (ACSC) has issued a critical alert: reported vulnerabilities up 30%, some exploited within 48 hours of a patch. AI is speeding up attacks.",
+            "quote": "Australia's cyber authority (ACSC) has issued a critical alert: reported vulnerabilities up 30%, some exploited within 48 hours of a patch.",
+            "tags": [
+              "ACSC",
+              "脆弱性",
+              "patch"
+            ],
+            "collected_at": "2026-11-17T04:31:58Z",
+            "category": "vulnerability",
+            "author_handle": "alanhoward",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2122545676596793380",
+            "posted_at": "2026-11-17T04:21:38Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
