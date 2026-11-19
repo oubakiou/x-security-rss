@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "date": "2026-11-18",
+  "snapshots": [
+    {
+      "name": "2026-11-18-03.json",
+      "sha256": "c8fc9e5397f0d3f844e508e859745cc1b84273704eb3665dce6990a46d4f24ea",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-18T03:44:58Z",
+        "window": {
+          "from": "2026-11-16T21:43:47.372Z",
+          "to": "2026-11-18T03:43:47.372Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "10 件を取得しました",
+          "checked_at": "2026-11-18T03:44:58Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 11844,
+            "input_tokens_details": {
+              "cached_tokens": 4608
+            },
+            "output_tokens": 8160,
+            "output_tokens_details": {
+              "reasoning_tokens": 6854
+            },
+            "total_tokens": 20004,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 1244776000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9911,
+              "output_tokens": 5473
+            }
+          },
+          "general": {
+            "input_tokens": 11782,
+            "input_tokens_details": {
+              "cached_tokens": 4608
+            },
+            "output_tokens": 9036,
+            "output_tokens_details": {
+              "reasoning_tokens": 7445
+            },
+            "total_tokens": 20818,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 1161676000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 18,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9575,
+              "output_tokens": 6460
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2122711601447092667",
+            "url": "https://x.com/i/status/2122711601447092667",
+            "title": "Oracle Javaに11件の脆弱性パッチ、CVE-2026-114938 RCE警報",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-17T15:20:58Z",
+            "summary": "Oracleは今日Javaの11の脆弱性にパッチを適用予定で、全てリモートから認証なしで悪用可能。OpenJDKの重大なRCE脆弱性CVE-2026-114938 (CVSS 9.2) も報告されており、詳細は未確認。Javaユーザーは注意が必要。",
+            "quote": "‼️ BREAKING: Oracle is set to patch 11 Java vulnerabilities today — all potentially exploitable remotely without authentication.",
+            "tags": [
+              "CVE-2026-114938",
+              "Java",
+              "Oracle"
+            ],
+            "collected_at": "2026-11-18T03:44:21Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122589269080596832",
+            "url": "https://x.com/i/status/2122589269080596832",
+            "title": "Optimizelyスクリプトハイジャック、CNN BBCにマルウェア",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-17T07:14:52Z",
+            "summary": "ハッカーらがOptimizelyスクリプトをハイジャックし、CNN、BBC、Zoomなどの主要サイト訪問者に悪意あるコードを配信。少なくとも178の組織が影響を受け、ペイロードはカードデータ、暗号アドレス置換、iOS exploitを試行。",
+            "quote": "‼️ BREAKING - Hackers hijacked Optimizely scripts to serve malicious code to visitors of CNN, BBC, Zoom and other major sites.",
+            "tags": [
+              "Optimizely",
+              "malware",
+              "supply-chain"
+            ],
+            "collected_at": "2026-11-18T03:44:21Z",
+            "category": "incident",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122578077301784897",
+            "url": "https://x.com/i/status/2122578077301784897",
+            "title": "ScreenConnect攻撃継続、SCKitマルウェアで205ホスト侵害",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-17T06:30:23Z",
+            "summary": "ConnectWiseはハッカーが未パッチのシステムを標的にSCKitマルウェアを使用し、MSPネットワークにリスクをもたらしていると警告。205ホスト、41組織で最近のスパイク。CVSS 9.9の重大脆弱性も脅威を増大。",
+            "quote": "🚨 ScreenConnect attacks are still underway. ConnectWise warns hackers are targeting unpatched systems with SCKit malware, putting MSP networks at risk.",
+            "tags": [
+              "ScreenConnect",
+              "SCKit",
+              "malware"
+            ],
+            "collected_at": "2026-11-18T03:44:21Z",
+            "category": "incident",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122736739832017322",
+            "url": "https://x.com/i/status/2122736739832017322",
+            "title": "antd-img-cropに偽コミット、Overlord RATマルウェア展開",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-17T17:00:51Z",
+            "summary": "antd-img-crop GitHubリポジトリに偽造コミットが使用され、悪意あるprebuildフックでnpm run build時にOverlord RATを展開。npmパッケージ自体は影響を受けていない。",
+            "quote": "A routine code build could trigger a malware installation. A forged commit in the antd-img-crop GitHub repository used a malicious prebuild hook to deploy Overlord RAT when developers ran npm run bui…",
+            "tags": [
+              "supply-chain",
+              "GitHub",
+              "Overlord RAT",
+              "npm"
+            ],
+            "collected_at": "2026-11-18T03:44:21Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122736877040246896",
+            "url": "https://x.com/i/status/2122736877040246896",
+            "title": "偽採用サイトでクリップボードに悪意コマンド注入",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-17T17:01:24Z",
+            "summary": "Trigramの偽採用サイトが検証コマンドを表示後、タイムアウトをシミュレートしてクリップボードに悪意コマンドを注入。Ctrl+Cでも動作し、実行でマルウェアローダーをトリガー。",
+            "quote": "The fake recruitment site could change what developers copied. Trigram first presented a verification command. After a simulated timeout, the page injected a malicious command into the clipboard—even…",
+            "tags": [
+              "malware",
+              "clipboard",
+              "supply-chain"
+            ],
+            "collected_at": "2026-11-18T03:44:21Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122839712314605797",
+            "url": "https://x.com/i/status/2122839712314605797",
+            "title": "GitLab 37件の脆弱性修正、XSSとCI/CD問題に対処",
+            "author": "しーにゃ♪@公式 (@Syynya)",
+            "posted_at": "2026-11-17T23:50:02Z",
+            "summary": "GitLabが脆弱性37件を修正。XSSやCI/CD保護変数の認可不備に対処。バージョン19.5.6、19.4.8、19.3.9公開。",
+            "quote": "GitLabが脆弱性 37件を修正　XSSやCI/CD保護変数の認可不備に対処、19.5.6・19.4.8・19.3.9公開",
+            "tags": [
+              "GitLab",
+              "XSS",
+              "CI/CD"
+            ],
+            "collected_at": "2026-11-18T03:44:57Z",
+            "category": "vulnerability",
+            "author_handle": "syynya",
+            "quote_match": true
+          },
+          {
+            "id": "2122841847781536215",
+            "url": "https://x.com/i/status/2122841847781536215",
+            "title": "京王ホテル、Qilinサイバー攻撃で18億円減収",
+            "author": "田中　実 (@cKLuUnRQQwYiCHL)",
+            "posted_at": "2026-11-17T23:58:31Z",
+            "summary": "京王傘下ホテルがサイバー攻撃を受け、18億円の減収見通し。国際ハッカー集団「Qilin」の関与が疑われる。",
+            "quote": "京王傘下ホテル サイバー攻撃で18億円減収見通し　国際ハッカー集団「Qilin」関与か",
+            "tags": [
+              "Qilin",
+              "ransomware",
+              "hotel",
+              "サイバー攻撃"
+            ],
+            "collected_at": "2026-11-18T03:44:57Z",
+            "category": "incident",
+            "author_handle": "ckluunrqqwyichl",
+            "quote_match": true
+          },
+          {
+            "id": "2122841799425405360",
+            "url": "https://x.com/i/status/2122841799425405360",
+            "title": "楽天証券、テスト環境データ不正アクセスで漏洩",
+            "author": "くまねこP (@TCzawashiho)",
+            "posted_at": "2026-11-17T23:58:20Z",
+            "summary": "楽天証券でテスト環境に本番環境のデータが入っていたタイミングで不正アクセスが発生。顧客データが狙われた可能性。",
+            "quote": "(なぜか)一時的にテスト環境に本番環境のデータが入っているタイミングがあり\nちょうどそのときに不正アクセスされたんですって",
+            "tags": [
+              "楽天証券",
+              "不正アクセス",
+              "データ漏洩"
+            ],
+            "collected_at": "2026-11-18T03:44:57Z",
+            "category": "incident",
+            "author_handle": "tczawashiho",
+            "quote_match": true
+          },
+          {
+            "id": "2122840377904525595",
+            "url": "https://x.com/i/status/2122840377904525595",
+            "title": "ANA装うAndroidマルウェア、フィッシングに使用",
+            "author": "masaomi346 (@masaomi346)",
+            "posted_at": "2026-11-17T23:52:41Z",
+            "summary": "ANAを装ったAndroidマルウェアが確認された。リンクはhxxps://openwebdesign-jp.com/ で、VirusTotal分析あり。",
+            "quote": "ANAを装ったAndroidマルウェア\nhxxps://openwebdesign-jp.com/\nhttps://www.virustotal.com/gui/file/765a5f66a7962ca02bc64338eba7899c63277fc638fb01f77028b1eb723c5137",
+            "tags": [
+              "Android",
+              "malware",
+              "ANA",
+              "フィッシング"
+            ],
+            "collected_at": "2026-11-18T03:44:57Z",
+            "category": "campaign",
+            "author_handle": "masaomi346",
+            "quote_match": true
+          },
+          {
+            "id": "2122839673831817331",
+            "url": "https://x.com/i/status/2122839673831817331",
+            "title": "CVE-2026-114938 Java4Shell、runtimeパッチで対応",
+            "author": "Brian Pak (@brian_pak)",
+            "posted_at": "2026-11-17T23:49:53Z",
+            "summary": "パッチがすぐ適用できない場合や再起動できない場合のためのruntimeパッチ。GitHubリンクあり。",
+            "quote": "In case you can’t patch right away, and can’t restart with the flag:\n\nhttps://github.com/theori-io/java4shell-runtime-patch-CVE-2026-114938",
+            "tags": [
+              "CVE-2026-114938",
+              "Java4Shell",
+              "patch"
+            ],
+            "collected_at": "2026-11-18T03:44:57Z",
+            "category": "vulnerability",
+            "author_handle": "brian_pak",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2122842021568409930",
+            "posted_at": "2026-11-17T23:59:13Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
