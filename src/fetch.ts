@@ -217,7 +217,7 @@ async function main(): Promise<void> {
   const apiKey = process.env.XAI_API_KEY?.trim();
 
   const modelEnv = process.env.XAI_MODEL?.trim();
-  const model = modelEnv && MODEL_RE.test(modelEnv) ? modelEnv : "grok-build-0.1";
+  const model = modelEnv && MODEL_RE.test(modelEnv) ? modelEnv : "grok-4.3";
   const maxItems = intEnv("MAX_ITEMS", 15, 1, 30);
   const maxTurns = intEnv("MAX_TURNS", 3, 1, 10);
   const excluded = parseExcludedHandles(process.env.EXCLUDED_HANDLES);
