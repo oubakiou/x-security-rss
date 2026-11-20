@@ -1,0 +1,406 @@
+{
+  "version": 1,
+  "date": "2026-11-19",
+  "snapshots": [
+    {
+      "name": "2026-11-19-03.json",
+      "sha256": "deccf2586e93a0f40b8553ed99dc130b7f6ea55be62e4799561dca5f79929bae",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-19T03:33:01Z",
+        "window": {
+          "from": "2026-11-17T21:31:18.859Z",
+          "to": "2026-11-19T03:31:18.859Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": true,
+          "message": "17 件を取得しました",
+          "checked_at": "2026-11-19T03:33:01Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 44599,
+            "input_tokens_details": {
+              "cached_tokens": 31744
+            },
+            "output_tokens": 10135,
+            "output_tokens_details": {
+              "reasoning_tokens": 7880
+            },
+            "total_tokens": 54734,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 29,
+            "cost_in_usd_ticks": 2694738000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 29,
+              "x_posts_fetched": 46,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 18100,
+              "output_tokens": 4227
+            }
+          },
+          "general": {
+            "input_tokens": 18815,
+            "input_tokens_details": {
+              "cached_tokens": 6400
+            },
+            "output_tokens": 14687,
+            "output_tokens_details": {
+              "reasoning_tokens": 12399
+            },
+            "total_tokens": 33502,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2180690000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 35,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 16608,
+              "output_tokens": 10425
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2123122388644856164",
+            "url": "https://x.com/i/status/2123122388644856164",
+            "title": "NGINXにCVE-2026-123007、10年古いHTTP/2でRCE",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-18T18:33:17Z",
+            "summary": "NGINXにCVE-2026-123007が発見され、ログイン不要でコード実行が可能。#nginx2rootと呼ばれ、深刻度9.2/10のcritical HTTP/2脆弱性。PoC公開済み。パッチがリリースされた。",
+            "quote": "‼️ BREAKING: A 10-year-old flaw in #NGINX could let attackers execute code on servers — no login required.",
+            "tags": [
+              "CVE-2026-123007",
+              "NGINX",
+              "RCE",
+              "HTTP/2"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2123102102302109896",
+            "url": "https://x.com/i/status/2123102102302109896",
+            "title": "Apache Roller CVE-2026-129448が積極悪用、RCE",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-18T17:12:41Z",
+            "summary": "Apache RollerのCVE-2026-129448がハッカーにより積極的に悪用され、リモートコード実行が可能。CVSS 9.8。XML-RPC無効化では保護されず。6.1.6以上にアップグレードを。",
+            "quote": "🛑 WARNING - Hackers are actively exploiting a critical Apache Roller flaw to execute code remotely — no login required.",
+            "tags": [
+              "CVE-2026-129448",
+              "Apache Roller",
+              "RCE"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122986001085894991",
+            "url": "https://x.com/i/status/2122986001085894991",
+            "title": "CISAがJava4Shell CVE-2026-114938即時パッチ推奨",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-18T09:31:20Z",
+            "summary": "CVE-2026-114938はOracle Javaのcritical脆弱性でCVSS 8.1。unauthenticated RCEが可能でJenkins、Jira、Confluenceに影響。CISAが即時パッチを促す。パッチ公開済み。",
+            "quote": "🛑 CISA urges immediate patching of Java4Shell (CVE-2026-114938).",
+            "tags": [
+              "CVE-2026-114938",
+              "Java",
+              "CISA",
+              "RCE"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122969572332503392",
+            "url": "https://x.com/i/status/2122969572332503392",
+            "title": "Puppet Enterprise CVE-2026-115731でRCE、CISA確認",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-18T08:26:03Z",
+            "summary": "CVE-2026-115731はPuppet Enterpriseの9.4深刻度脆弱性。中央管理サーバーにRCE可能で全システムにリスク。ハッカーが積極的に悪用、CISAがactive exploitationを確認。",
+            "quote": "⚠️ Hackers are actively exploiting a critical 9.4-severity flaw in Puppet Enterprise.",
+            "tags": [
+              "CVE-2026-115731",
+              "Puppet",
+              "RCE",
+              "CISA"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2123036869583851567",
+            "url": "https://x.com/i/status/2123036869583851567",
+            "title": "AMD CVE-2026-43613確認、ファームウェア修正へ",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-18T12:53:28Z",
+            "summary": "AMDのCVE-2026-43613が確認され、2027年2月までファームウェア修正予定。Winbondでは電圧グリッチで秘密鍵が約1秒で露呈。研究者は長いPINを推奨。",
+            "quote": "• AMD: CVE-2026-43613 confirmed; firmware fixes planned through Feb 2027.",
+            "tags": [
+              "CVE-2026-43613",
+              "AMD",
+              "hardware"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2122819575787995528",
+            "url": "https://x.com/i/status/2122819575787995528",
+            "title": "脅威アクターがCDNからiOS exploit kit配信",
+            "author": "Mandiant (part of Google Cloud) (@Mandiant)",
+            "posted_at": "2026-11-17T22:30:01Z",
+            "summary": "11月13-16日、脅威アクターが信頼CDNから悪意JSローダーを配信し、iOS exploit kitとブラウザベースのカード、クッキー、暗号通貨窃取。クリーン済みスクリプトは過去露出に影響せず。",
+            "quote": "From Nov. 13–16, threat actors served malicious JS loaders from trusted CDNs—delivering iOS exploit kits and browser-based card, cookie, and crypto theft.",
+            "tags": [
+              "malware",
+              "iOS",
+              "exploit kit",
+              "CDN"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "campaign",
+            "author_handle": "mandiant",
+            "quote_match": true
+          },
+          {
+            "id": "2123257458764263817",
+            "url": "https://x.com/i/status/2123257458764263817",
+            "title": "ロシアAPTがハッキング企業従業員を装い侵入",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-19T03:30:01Z",
+            "summary": "ロシアのAPTグループがハッキングされた企業の従業員を装って別の米組織に侵入した事例。",
+            "quote": "Russian APT Poses as Employee of Hacked Firm to Breach Another US Organization",
+            "tags": [
+              "APT",
+              "Russian",
+              "breach"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "campaign",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2123234815105192351",
+            "url": "https://x.com/i/status/2123234815105192351",
+            "title": "Chrome 158が204の脆弱性をパッチ",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-19T02:00:02Z",
+            "summary": "Chrome 158で204の脆弱性がパッチされた。セキュリティアップデートがリリース。",
+            "quote": "Chrome 158 Patches 204 Vulnerabilities",
+            "tags": [
+              "Chrome",
+              "patch",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-19T03:32:02Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2123204356224999603",
+            "url": "https://x.com/i/status/2123204356224999603",
+            "title": "NetAppにCVE-2026-114945 Java SE脆弱性",
+            "author": "VulniPulse (@vulnipulse)",
+            "posted_at": "2026-11-18T23:59:00Z",
+            "summary": "NetApp製品に2つの新しいCVEが公開された。最も深刻なのはCVE-2026-114945 (MEDIUM)で、Java SEの脆弱性。製品に影響を与える。",
+            "quote": "NetApp: 2 new CVEs. Most severe: CVE-2026-114945 (MEDIUM) - Java SE Vulnerability in NetApp Products.",
+            "tags": [
+              "CVE-2026-114945",
+              "NetApp",
+              "Java SE"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "vulnerability",
+            "author_handle": "vulnipulse",
+            "quote_match": true
+          },
+          {
+            "id": "2123202485602918827",
+            "url": "https://x.com/i/status/2123202485602918827",
+            "title": "Java4Shell脆弱性 CISAが即時パッチ推奨",
+            "author": "Threat Angel (@MyThreatAngel)",
+            "posted_at": "2026-11-18T23:51:34Z",
+            "summary": "新しいJavaの脆弱性Java4Shellにより、パスワードなしでサーバーを乗っ取られる可能性。CISAはパッチを今すぐ適用するよう呼びかけ、最初の調査が始まっている。",
+            "quote": "A new Java flaw, Java4Shell, can let attackers take over servers without a password. CISA says patch now, and the first probes have already started.",
+            "tags": [
+              "Java4Shell",
+              "CISA",
+              "Java"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "vulnerability",
+            "author_handle": "mythreatangel",
+            "quote_match": true
+          },
+          {
+            "id": "2123204359035158690",
+            "url": "https://x.com/i/status/2123204359035158690",
+            "title": "医薬品安定供給システムに不正アクセス、運用停止",
+            "author": "Shisetsu Kijun (@Shisetsu_Kijun)",
+            "posted_at": "2026-11-18T23:59:01Z",
+            "summary": "医薬品安定供給・流通確認システムへの不正アクセスにより、一部企業の担当者の氏名及び連絡先が漏洩した可能性がある。不審なファイルのアップロードも確認され、システムは11/17から運用停止。",
+            "quote": "医薬品安定供給・流通確認システムへの不正アクセスにより、一部企業の担当者の氏名及び連絡先が漏洩した可能性があるほか、不審なファイルのアップロードも確認されているとのことです。同システムは11/17(火)から運用停止しています。",
+            "tags": [
+              "不正アクセス",
+              "情報漏洩",
+              "医薬品"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "incident",
+            "author_handle": "shisetsu_kijun",
+            "quote_match": true
+          },
+          {
+            "id": "2123204488748220554",
+            "url": "https://x.com/i/status/2123204488748220554",
+            "title": "GPIF 8859件のメールアドレスが第三者に閲覧の可能性",
+            "author": "hgyss@静岡Love (@hg_yss)",
+            "posted_at": "2026-11-18T23:59:32Z",
+            "summary": "年金積立金管理運用独立行政法人（GPIF)の最大8,859件のメールアドレスが第三者に閲覧された可能性。デジタルアーツのメール誤送信防止サービスに不正アクセスがあった。",
+            "quote": "年金積立金管理運用独立行政法人（GPIF)、最大8,859件のメールアドレスが第三者に閲覧された可能性　デジタルアーツのメール誤送信防止サービスに不正アクセス",
+            "tags": [
+              "不正アクセス",
+              "情報漏洩",
+              "GPIF"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "incident",
+            "author_handle": "hg_yss",
+            "quote_match": true
+          },
+          {
+            "id": "2123204234451492910",
+            "url": "https://x.com/i/status/2123204234451492910",
+            "title": "Airbyte Cloudがセキュリティインシデントでオフライン",
+            "author": "CyberStack.org (@CyberStackorg)",
+            "posted_at": "2026-11-18T23:58:31Z",
+            "summary": "Airbyteはセキュリティインシデントを受けAirbyte Cloudをオフラインにした。グローバルなサイバー攻撃の一部とみられ、顧客の1%未満に影響。各顧客に連絡済みで、データ内容は不明。",
+            "quote": "Airbyte says it took Airbyte Cloud offline after a security incident it believes is part of a broader global cyber-attack. It says fewer than 1% of customers were affected and each has been contacted.",
+            "tags": [
+              "セキュリティインシデント",
+              "データ侵害",
+              "Airbyte"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "incident",
+            "author_handle": "cyberstackorg",
+            "quote_match": true
+          },
+          {
+            "id": "2123204207528558778",
+            "url": "https://x.com/i/status/2123204207528558778",
+            "title": "TOYOTA Wallet 約12万件の情報漏えい恐れ",
+            "author": "hgyss@静岡Love (@hg_yss)",
+            "posted_at": "2026-11-18T23:58:24Z",
+            "summary": "TOYOTA Walletで約12万件の情報漏えいの恐れ。委託先プレイド「KARTE」への不正アクセスにより、アプリの一部機能を停止。",
+            "quote": "TOYOTA Wallet、約12万件の情報漏えい恐れ-委託先 プレイド「KARTE」への不正アクセスでアプリ一部機能を停止",
+            "tags": [
+              "不正アクセス",
+              "情報漏洩",
+              "TOYOTA"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "incident",
+            "author_handle": "hg_yss",
+            "quote_match": true
+          },
+          {
+            "id": "2123201705441444103",
+            "url": "https://x.com/i/status/2123201705441444103",
+            "title": "Microsoft agent-framework PyPIパッケージにマルウェア",
+            "author": "Johann Smith (@Smithech)",
+            "posted_at": "2026-11-18T23:48:28Z",
+            "summary": "公式Microsoft \"agent-framework\" Pythonパッケージのバージョン1.26.1と1.26.2にマルウェアが含まれている。アカウントの侵害が原因とみられる。",
+            "quote": "Official Microsoft agent-framework PyPI package compromised Versions 1.26.1 and 1.26.2 of the official Microsoft \"agent-framework\" Python package contain malware - an account compromise is likely",
+            "tags": [
+              "マルウェア",
+              "PyPI",
+              "supply chain",
+              "Microsoft"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "campaign",
+            "author_handle": "smithech",
+            "quote_match": true
+          },
+          {
+            "id": "2123202532751429945",
+            "url": "https://x.com/i/status/2123202532751429945",
+            "title": "Supertransporteのシステム認証情報がマルウェアで漏洩",
+            "author": "MuchoHacker (@MuchoHacker)",
+            "posted_at": "2026-11-18T23:51:45Z",
+            "summary": "Supertransporteのシステムの認証情報が数ヶ月間マルウェアにより漏洩しており、現在販売されている。",
+            "quote": "Credenciales de los sistemas de @Supertransporte  llevan meses filtrándose por malware, y ahora alguien las pone a la venta.",
+            "tags": [
+              "マルウェア",
+              "情報漏洩",
+              "Supertransporte"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "incident",
+            "author_handle": "muchohacker",
+            "quote_match": true
+          },
+          {
+            "id": "2123204344900473175",
+            "url": "https://x.com/i/status/2123204344900473175",
+            "title": "Cuyahoga County Library データ侵害の最新情報",
+            "author": "fox8news (@fox8news)",
+            "posted_at": "2026-11-18T23:58:57Z",
+            "summary": "Cuyahoga County Libraryのデータ侵害に関する最新情報。すべての図書館がオープンしているという。",
+            "quote": "‘All those libraries are open’: Latest on the Cuyahoga County Library data breach",
+            "tags": [
+              "データ侵害",
+              "Cuyahoga"
+            ],
+            "collected_at": "2026-11-19T03:32:59Z",
+            "category": "incident",
+            "author_handle": "fox8news",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123200998001017026",
+            "posted_at": "2026-11-18T23:45:39Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
