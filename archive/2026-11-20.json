@@ -1,0 +1,356 @@
+{
+  "version": 1,
+  "date": "2026-11-20",
+  "snapshots": [
+    {
+      "name": "2026-11-20-03.json",
+      "sha256": "4e7ef311d46b30fa26b2ea7511dcd366140c84b31dc5ead729d2602c6bb4ec88",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-20T03:19:43Z",
+        "window": {
+          "from": "2026-11-18T21:19:43.112Z",
+          "to": "2026-11-20T03:19:43.112Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": false,
+          "message": "一部または全部の検索に失敗しました (xAI API エラー HTTP 404 / xAI API エラー HTTP 404)",
+          "checked_at": "2026-11-20T03:19:43Z",
+          "kind": "api_error",
+          "http_status": 404
+        },
+        "usage": {},
+        "items": [],
+        "rejected": [],
+        "errors": [
+          "trusted: xAI API エラー HTTP 404",
+          "general: xAI API エラー HTTP 404"
+        ]
+      }
+    },
+    {
+      "name": "2026-11-20-04.json",
+      "sha256": "53300fe943c8646f19e99a2543fd63a52dd3a6c6c83ee60580f43c715fa38476",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-20T04:27:16Z",
+        "window": {
+          "from": "2026-11-18T22:27:16.192Z",
+          "to": "2026-11-20T04:27:16.192Z"
+        },
+        "model": "grok-build-0.1",
+        "status": {
+          "ok": false,
+          "message": "一部または全部の検索に失敗しました (xAI API エラー HTTP 404 / xAI API エラー HTTP 404)",
+          "checked_at": "2026-11-20T04:27:16Z",
+          "kind": "api_error",
+          "http_status": 404
+        },
+        "usage": {},
+        "items": [],
+        "rejected": [],
+        "errors": [
+          "trusted: xAI API エラー HTTP 404",
+          "general: xAI API エラー HTTP 404"
+        ]
+      }
+    },
+    {
+      "name": "2026-11-20-04-2.json",
+      "sha256": "9aa3c479c8233bec22a3c359fbf5caed4eee57f231193f5f049d092dd5a45ba6",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-20T04:44:07Z",
+        "window": {
+          "from": "2026-11-18T22:43:06.288Z",
+          "to": "2026-11-20T04:43:06.288Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "11 件を取得しました",
+          "checked_at": "2026-11-20T04:44:07Z",
+          "dropped_unverified": 3
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 11272,
+            "input_tokens_details": {
+              "cached_tokens": 1280
+            },
+            "output_tokens": 2863,
+            "output_tokens_details": {
+              "reasoning_tokens": 1669
+            },
+            "total_tokens": 14135,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 1199035000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 9320,
+              "output_tokens": 1649
+            }
+          },
+          "general": {
+            "input_tokens": 16895,
+            "input_tokens_details": {
+              "cached_tokens": 2304
+            },
+            "output_tokens": 3263,
+            "output_tokens_details": {
+              "reasoning_tokens": 1286
+            },
+            "total_tokens": 20158,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2268570500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 40,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 14669,
+              "output_tokens": 2220
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2123573713954050434",
+            "url": "https://x.com/i/status/2123573713954050434",
+            "title": "VMware vCenterゼロデイ脆弱性CVE-2026-123890をパッチ公開、9月から攻撃で悪用",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-20T00:26:42Z",
+            "summary": "VMware vCenterのゼロデイ脆弱性CVE-2026-123890がパッチ公開。9月から攻撃で悪用されており、緊急対応が必要。",
+            "quote": "VMware patches vCenter zero-day exploited in attacks since September",
+            "tags": [
+              "CVE-2026-123890",
+              "VMware",
+              "vCenter",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-20T04:43:35Z",
+            "category": "vulnerability",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2123536854167494960",
+            "url": "https://x.com/i/status/2123536854167494960",
+            "title": "Apache RollerにCVSS 9.8の認証不要RCE脆弱性CVE-2026-129448、攻撃で悪用確認",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-19T22:00:14Z",
+            "summary": "Apache RollerにCVSS 9.8の認証不要RCE脆弱性CVE-2026-129448を発見、サイバー攻撃で悪用を確認。修正版への更新を推奨。",
+            "quote": "Apache RollerにCVSS 9.8の認証不要RCE脆弱性、サイバー攻撃で悪用を確認　CVE-2026-129448、修正版への更新を推奨",
+            "tags": [
+              "CVE-2026-129448",
+              "Apache Roller",
+              "RCE"
+            ],
+            "collected_at": "2026-11-20T04:43:35Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2123531057009950899",
+            "url": "https://x.com/i/status/2123531057009950899",
+            "title": "NvidiaがThe Gentlemenランサムウェアグループのハック主張を調査、第三者パートナーでデータ侵害の可能性",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-19T21:37:11Z",
+            "summary": "NvidiaがThe Gentlemenランサムウェアグループのハック主張を受け、第三者パートナーでのデータ侵害の可能性を調査中。Nvidiaシステム自体への影響は確認されず。",
+            "quote": "‼️ UPDATE: Nvidia says it is investigating a possible data breach at a third-party partner, after The Gentlemen claimed it hacked Nvidia.",
+            "tags": [
+              "ransomware",
+              "Nvidia",
+              "The Gentlemen"
+            ],
+            "collected_at": "2026-11-20T04:43:35Z",
+            "category": "incident",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2123574545718337902",
+            "url": "https://x.com/i/status/2123574545718337902",
+            "title": "FBIがランサムウェアグループに偽装しFloridaの復旧企業を摘発、CTOを起訴",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-20T00:30:00Z",
+            "summary": "FBIがランサムウェアグループに偽装し、Floridaの復旧企業を摘発。企業は偽の被害者に身代金を支払い、CTOが詐欺で起訴された事例。",
+            "quote": "‼️ The FBI secretly posed as a ransomware gang to trap a Florida ransomware recovery firm that told victims it never pays ransoms. Prosecutors say it took the bait and paid.",
+            "tags": [
+              "ransomware",
+              "FBI",
+              "incident"
+            ],
+            "collected_at": "2026-11-20T04:43:35Z",
+            "category": "incident",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2123638357146415140",
+            "url": "https://x.com/i/status/2123638357146415140",
+            "title": "PHP 11月セキュリティリリース公開状況",
+            "author": "Toru Shigehara (@sght)",
+            "posted_at": "2026-11-20T04:43:34Z",
+            "summary": "PHPの11月19日セキュリティリリースについて、RHEL互換ディストリビューション・Amazon Linux・Remiリポジトリの修正公開状況を2026年11月20日時点で報告。脆弱性修正に関する一次情報源のまとめ。",
+            "quote": "PHPの11月19日セキュリティリリース：RHEL互換ディストリビューション・Amazon Linux・Remiリポジトリの修正公開状況（2026年11月20日 11:39 JST時点） ##脆弱性",
+            "tags": [
+              "PHP",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "vulnerability",
+            "author_handle": "sght",
+            "quote_match": true
+          },
+          {
+            "id": "2123637964337020965",
+            "url": "https://x.com/i/status/2123637964337020965",
+            "title": "PHPが7件のRCE脆弱性に更新公開",
+            "author": "guiadeti (@guiadeti)",
+            "posted_at": "2026-11-20T04:42:00Z",
+            "summary": "PHPが7件の重大なリモートコード実行脆弱性に対する更新を公開。CVE-2026-115560はセッション設定に依存。",
+            "quote": "PHP lança atualizações para sete falhas críticas de execução remota PHP publicou atualizações para sete falhas críticas de execução remota; a CVE-2026-115560 depende de configurações específicas de s…",
+            "tags": [
+              "CVE-2026-115560",
+              "PHP",
+              "RCE"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "vulnerability",
+            "author_handle": "guiadeti",
+            "quote_match": true
+          },
+          {
+            "id": "2123637645754736841",
+            "url": "https://x.com/i/status/2123637645754736841",
+            "title": "宮内庁公式アプリに2件の脆弱性",
+            "author": "おたくま経済新聞📰 (@otakumatch)",
+            "posted_at": "2026-11-20T04:40:44Z",
+            "summary": "Android版宮内庁参観音声ガイドアプリに2件の脆弱性。表示内容改ざんや不正命令実行の恐れあり、最新版更新を呼びかけ。",
+            "quote": "Android版「宮内庁参観音声ガイド」に2件の脆弱性が見つかりました。表示内容の改ざんや不正な命令を実行されるおそれがあり、最新版への更新が呼びかけられています。",
+            "tags": [
+              "Android",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "vulnerability",
+            "author_handle": "otakumatch",
+            "quote_match": true
+          },
+          {
+            "id": "2123637454620209226",
+            "url": "https://x.com/i/status/2123637454620209226",
+            "title": "VMware vCenterにCVSS 9.8の脆弱性",
+            "author": "イエ@アプリ開発中のエンジニア (@ie_webengineer)",
+            "posted_at": "2026-11-20T04:39:59Z",
+            "summary": "VMware vCenterにCVSS 9.8の認証バイパス脆弱性CVE-2026-123890。認証なしで管理者権限取得可能、回避策なし。中国スパイグループが9月からゼロデイ悪用とMandiant報告。",
+            "quote": "VMware vCenterにCVSS 9.8の認証バイパス、CVE-2026-123890。認証なしで管理者権限を奪えるうえ、回避策なし。9月から中国のスパイグループにゼロデイ悪用されていたとMandiantが報告している。",
+            "tags": [
+              "CVE-2026-123890",
+              "VMware",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "vulnerability",
+            "author_handle": "ie_webengineer",
+            "quote_match": true
+          },
+          {
+            "id": "2123638281539870830",
+            "url": "https://x.com/i/status/2123638281539870830",
+            "title": "楽天証券情報漏えいで集団訴訟準備",
+            "author": "なすこ (@nascodazo)",
+            "posted_at": "2026-11-20T04:43:16Z",
+            "summary": "楽天証券の情報漏えい問題で集団訴訟に向けた準備サイトが立ち上がり、1万5000人超が登録。弁護士が個人情報漏えいを治安の問題と指摘。",
+            "quote": "楽天証券情報漏えい問題で集団訴訟に向けた準備サイト立ち上げ すでに1万5000人超が登録 弁護士「個人情報漏えいはもはや治安の問題に」",
+            "tags": [
+              "data breach",
+              "楽天証券"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "incident",
+            "author_handle": "nascodazo",
+            "quote_match": true
+          },
+          {
+            "id": "2123637520235921734",
+            "url": "https://x.com/i/status/2123637520235921734",
+            "title": "SBC不正アクセスで162万人情報漏えい",
+            "author": "ゆう (@momosakura1213)",
+            "posted_at": "2026-11-20T04:40:14Z",
+            "summary": "湘南美容クリニックなどのSBCで不正アクセスにより約162万人の情報が漏えいしたとImpress Watchが報じる。",
+            "quote": "湘南美容クリニックなどのSBC、不正アクセスで約162万人の情報漏えい(Impress Watch)",
+            "tags": [
+              "data breach",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "incident",
+            "author_handle": "momosakura1213",
+            "quote_match": true
+          },
+          {
+            "id": "2123636453364433131",
+            "url": "https://x.com/i/status/2123636453364433131",
+            "title": "NGINXが5件の脆弱性をパッチ",
+            "author": "The Defiant (@DefiantNews)",
+            "posted_at": "2026-11-20T04:36:00Z",
+            "summary": "NGINXが5件の脆弱性をパッチ。XINT社によると、ログインなしでコマンド実行可能。Cryptoサイトはパッチ適用後再起動が必要。",
+            "quote": "NGINX PATCHES FIVE FLAWS THAT RESEARCH FIRM XINT SAYS CAN LET ATTACKERS RUN COMMANDS WITHOUT LOGGING IN.",
+            "tags": [
+              "NGINX",
+              "patch"
+            ],
+            "collected_at": "2026-11-20T04:44:06Z",
+            "category": "vulnerability",
+            "author_handle": "defiantnews",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123456270862565445",
+            "posted_at": "2026-11-19T16:40:01Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123637778072142323",
+            "posted_at": "2026-11-20T04:41:16Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123637462035472876",
+            "posted_at": "2026-11-20T04:40:00Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
