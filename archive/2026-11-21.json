@@ -1,0 +1,339 @@
+{
+  "version": 1,
+  "date": "2026-11-21",
+  "snapshots": [
+    {
+      "name": "2026-11-21-03.json",
+      "sha256": "90e335323db68ea1637306a878f1f0580d846fed08dd6744bbf17f8696406ae5",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-21T03:15:12Z",
+        "window": {
+          "from": "2026-11-19T21:14:15.694Z",
+          "to": "2026-11-21T03:14:15.694Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "13 件を取得しました",
+          "checked_at": "2026-11-21T03:15:12Z",
+          "dropped_unverified": 3
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 7428,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 2945,
+            "output_tokens_details": {
+              "reasoning_tokens": 1303
+            },
+            "total_tokens": 10373,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 665131000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 10,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 5476,
+              "output_tokens": 1996
+            }
+          },
+          "general": {
+            "input_tokens": 15191,
+            "input_tokens_details": {
+              "cached_tokens": 2304
+            },
+            "output_tokens": 3172,
+            "output_tokens_details": {
+              "reasoning_tokens": 1189
+            },
+            "total_tokens": 18363,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 1944995500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 34,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 12965,
+              "output_tokens": 2157
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2123963997196370018",
+            "url": "https://x.com/i/status/2123963997196370018",
+            "title": "丸井グループ、1733万件情報漏えい",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-21T02:17:32Z",
+            "summary": "丸井グループ、マルイ・エポスカードで約1,733万件が情報漏えい。プレイド「KARTE」への不正アクセスによるサイバー攻撃。",
+            "quote": "丸井グループ、マルイ・エポスカードで約1,733万件が情報漏えい プレイド「KARTE」への不正アクセスによるサイバー攻撃で",
+            "tags": [
+              "incident",
+              "data breach"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2123823712801792303",
+            "url": "https://x.com/i/status/2123823712801792303",
+            "title": "AndroidマルウェアBazuka新発見",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-20T17:00:06Z",
+            "summary": "AndroidマルウェアBazuka、新たに発見。23モジュールでパスワード窃取、2FA傍受、リモート制御。AIで高価値被害者特定。画面偽装機能あり。",
+            "quote": "🚨 NEW: Android malware can now fake your phone's screen to hide what's happening behind it. Meet Bazuka — a newly uncovered malware framework with 23 modules",
+            "tags": [
+              "malware",
+              "Android",
+              "campaign"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2123808174767485321",
+            "url": "https://x.com/i/status/2123808174767485321",
+            "title": "Chaseなど顧客情報漏えい",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-20T15:58:21Z",
+            "summary": "Vendor data breach exposes Chase, Visa, Mastercard customer info",
+            "quote": "Vendor data breach exposes Chase, Visa, Mastercard customer info",
+            "tags": [
+              "incident",
+              "data breach"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2123807037008368115",
+            "url": "https://x.com/i/status/2123807037008368115",
+            "title": "OpenSSLにCVE-2026-121481",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-20T15:53:50Z",
+            "summary": "OpenSSL flaw CVE-2026-121481 scores 9.8, but exploitation appears highly constrained. Base64 buffer overflow requires ~1.6GB inputs.",
+            "quote": "OpenSSL flaw CVE-2026-121481 scores 9.8, but exploitation appears highly constrained. The Base64 buffer overflow requires unusually large inputs (~1.6GB)",
+            "tags": [
+              "CVE-2026-121481",
+              "OpenSSL",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2123756236520976743",
+            "url": "https://x.com/i/status/2123756236520976743",
+            "title": "KVM脆弱性CVE-2026-99312",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-20T12:31:58Z",
+            "summary": "Linux KVM flaw (CVE-2026-99312) breaks VM isolation on AMD hosts with nested virtualization. Host memory access from guest VM demonstrated.",
+            "quote": "‼️WARNING - A #Linux VM just accessed 127 GB of its host's RAM. A newly disclosed KVM flaw (CVE-2026-99312) breaks VM isolation on AMD hosts",
+            "tags": [
+              "CVE-2026-99312",
+              "KVM",
+              "Linux",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2123755743299965036",
+            "url": "https://x.com/i/status/2123755743299965036",
+            "title": "Microsoft AIツールキットにマルウェア",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-20T12:30:01Z",
+            "summary": "MicrosoftのAI agent toolkit on PyPIにマルウェア植え付け。盗まれたMicrosoft証明書使用。Wizが3件のデータ窃取確認。",
+            "quote": "‼️ UPDATE: The hackers who planted malware in Microsoft's AI agent toolkit on PyPI pushed it through Microsoft's own release system, with a stolen Microsoft certificate",
+            "tags": [
+              "incident",
+              "malware",
+              "Microsoft"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "incident",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2123726577418797146",
+            "url": "https://x.com/i/status/2123726577418797146",
+            "title": "Cisco ExpresswayにCVE-2026-76466悪用",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-20T10:34:07Z",
+            "summary": "Cisco Expressway flaw (CVSS 9.8) CVE-2026-76466が悪用され、ROOTアクセス取得。4台のデバイスが侵害され内部ネットワーク侵入可能。",
+            "quote": "⚠️ Hackers are exploiting a critical Cisco Expressway flaw (CVSS 9.8) to gain ROOT access. In one confirmed attack, 4 devices were breached",
+            "tags": [
+              "CVE-2026-76466",
+              "Cisco",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-21T03:14:40Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2123927463898325256",
+            "url": "https://x.com/i/status/2123927463898325256",
+            "title": "SonicWall Gen 6ファイアウォール、パッチ提供終了",
+            "author": "RichTechGuy (@richtechguy)",
+            "posted_at": "2026-11-20T23:52:22Z",
+            "summary": "SonicWall Gen 6ファイアウォールがセキュリティパッチ提供終了。インターネット-facingのGen 6は高リスクとみなし、WAN管理/SSL-VPNを無効化して置き換えを推奨。別途SonicOS SSLVPNのCVE-2026-19868がKEVに登録。",
+            "quote": "SonicWall: Gen 6 firewalls will not get security patches, including critical. Treat internet-facing Gen 6 as high-risk; disable WAN mgmt/SSL-VPN until replaced. Separate: SonicOS SSLVPN CVE-2026-1986…",
+            "tags": [
+              "CVE-2026-19868",
+              "SonicWall",
+              "patch"
+            ],
+            "collected_at": "2026-11-21T03:15:10Z",
+            "category": "vulnerability",
+            "author_handle": "richtechguy",
+            "quote_match": true
+          },
+          {
+            "id": "2123923124659839062",
+            "url": "https://x.com/i/status/2123923124659839062",
+            "title": "MONAI Labelに0-day RCE脆弱性(CVE-2026-133968)",
+            "author": "The Hacker Wire (@TheHackerWire)",
+            "posted_at": "2026-11-20T23:35:08Z",
+            "summary": "MONAI Label Medical AIに0-day RCE脆弱性(CVE-2026-133968, CVSS 9.8)。PUT /datastore/imageのパストラバーサルが11分でroot RCEに悪用。PR #1915適用と/datastore制限を推奨。",
+            "quote": "🚨 0-Day RCE in MONAI Label Medical AI (CVE-2026-133968, CVSS 9.8) Exploited in the wild: autonomous AI agents weaponized a PUT /datastore/image traversal in 11 min for root RCE. ⚡ Action: Apply PR #1…",
+            "tags": [
+              "CVE-2026-133968",
+              "RCE",
+              "MONAI"
+            ],
+            "collected_at": "2026-11-21T03:15:10Z",
+            "category": "vulnerability",
+            "author_handle": "thehackerwire",
+            "quote_match": true
+          },
+          {
+            "id": "2123922800771764442",
+            "url": "https://x.com/i/status/2123922800771764442",
+            "title": "Windows 11 BitLocker回避ゼロデイ脆弱性",
+            "author": "鞘町流市(2013.12.6を忘れない） (@sayamati)",
+            "posted_at": "2026-11-20T23:33:50Z",
+            "summary": "Windows 11でわずか数回のキー操作によりBitLockerを回避し侵入・コード実行を許すゼロデイ脆弱性が存在。",
+            "quote": "「#Windows 11、わずか数回のキー操作でBitlocker回避し侵入～コード実行許すゼロデイ　#脆弱性 」",
+            "tags": [
+              "Windows11",
+              "BitLocker",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-21T03:15:10Z",
+            "category": "vulnerability",
+            "author_handle": "sayamati",
+            "quote_match": true
+          },
+          {
+            "id": "2123929374936469862",
+            "url": "https://x.com/i/status/2123929374936469862",
+            "title": "楽天証券、テスト環境への不正アクセスで金融庁から報告徴求命令",
+            "author": "アカウントの片づけ｜退会・整理ガイド (@accountkatazuk)",
+            "posted_at": "2026-11-20T23:59:58Z",
+            "summary": "楽天証券は11月19日、テスト環境への不正アクセスの件で金融庁から報告徴求命令を受けたと公表。原因分析と再発防止策を検討中。",
+            "quote": "【公式発表】楽天証券は11月19日、テスト環境への不正アクセスの件で、金融庁から報告徴求命令を受けたと公表しました。原因分析と再発防止策の検討を続けるとしています。",
+            "tags": [
+              "不正アクセス",
+              "楽天証券"
+            ],
+            "collected_at": "2026-11-21T03:15:10Z",
+            "category": "incident",
+            "author_handle": "accountkatazuk",
+            "quote_match": true
+          },
+          {
+            "id": "2123929212382011416",
+            "url": "https://x.com/i/status/2123929212382011416",
+            "title": "GitHub、リポジトリセキュリティアドバイザリ権限を一般提供",
+            "author": "Undercode News (@undercode_news)",
+            "posted_at": "2026-11-20T23:59:19Z",
+            "summary": "GitHubがリポジトリセキュリティアドバイザリ権限を一般提供開始。チームに脆弱性管理の粒度高いアクセスを提供。",
+            "quote": "🚨 #GitHub Makes Repository Security Advisory Permissions Generally Available, Giving Teams More Granular Vulnerability Management Access + Video",
+            "tags": [
+              "GitHub",
+              "security advisory"
+            ],
+            "collected_at": "2026-11-21T03:15:10Z",
+            "category": "vulnerability",
+            "author_handle": "undercode_news",
+            "quote_match": true
+          },
+          {
+            "id": "2123925817713418430",
+            "url": "https://x.com/i/status/2123925817713418430",
+            "title": "Google広告アカウント悪用で開発者狙うマルウェアキャンペーン",
+            "author": "RST Cloud (@rst_cloud)",
+            "posted_at": "2026-11-20T23:45:50Z",
+            "summary": "脅威アクターが侵害されたGoogle広告アカウントを悪用し、開発者を偽のツールで狙う。AMOSステーラーなど複数マルウェア配信。",
+            "quote": "#threatreport #MediumCompleteness Threat Actors Abuse Suspected Compromised Google Ads Accounts to Target Developers with Fake Tools | 19-11-2026",
+            "tags": [
+              "malware",
+              "supply chain",
+              "AMOS"
+            ],
+            "collected_at": "2026-11-21T03:15:10Z",
+            "category": "campaign",
+            "author_handle": "rst_cloud",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123846336491422139",
+            "posted_at": "2026-11-20T18:30:00Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123927932645368129",
+            "posted_at": "2026-11-20T23:54:14Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2123928324879839643",
+            "posted_at": "2026-11-20T23:55:47Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
