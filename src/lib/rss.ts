@@ -170,8 +170,8 @@ function titleWithCves(t: Topic): string {
   return title ? `${prefix} ${title}` : prefix;
 }
 
-function nvdUrl(id: string): string {
-  return `https://nvd.nist.gov/vuln/detail/${id}`;
+function cveUrl(id: string): string {
+  return `https://radar.cloudflare.com/zero-wire/cves/${id}`;
 }
 
 function cveHtml(t: Topic, newTab = false): string {
@@ -180,8 +180,8 @@ function cveHtml(t: Topic, newTab = false): string {
   const links = ids
     .map((id) =>
       newTab
-        ? externalLink(nvdUrl(id), id)
-        : `<a href="${escapeXml(nvdUrl(id))}" rel="noopener noreferrer">${escapeXml(id)}</a>`,
+        ? externalLink(cveUrl(id), id)
+        : `<a href="${escapeXml(cveUrl(id))}" rel="noopener noreferrer">${escapeXml(id)}</a>`,
     )
     .join(" / ");
   return `<p class="cves">CVE: ${links}</p>`;
@@ -616,16 +616,16 @@ if (import.meta.vitest) {
       tags: ["CVE-2026-2222", "CVE-2026-1111"],
     };
 
-    it("prefixes the title and links each CVE to NVD in the feed", () => {
+    it("prefixes the title and links each CVE to Cloudflare Radar in the feed", () => {
       const xml = renderRss([cveTopic], meta);
       expect(xml).toContain("<title>[CVE-2026-1111, CVE-2026-2222] GitLab RCE</title>");
       const desc = xml.slice(xml.indexOf("<![CDATA["));
       expect(
         desc.startsWith(
-          '<![CDATA[<p class="cves">CVE: <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1111"',
+          '<![CDATA[<p class="cves">CVE: <a href="https://radar.cloudflare.com/zero-wire/cves/CVE-2026-1111"',
         ),
       ).toBe(true);
-      expect(desc).toContain('href="https://nvd.nist.gov/vuln/detail/CVE-2026-2222"');
+      expect(desc).toContain('href="https://radar.cloudflare.com/zero-wire/cves/CVE-2026-2222"');
     });
 
     it("prefixes the title and puts NVD links before the summary on the page", () => {
@@ -633,7 +633,7 @@ if (import.meta.vitest) {
       expect(html).toContain("[CVE-2026-1111, CVE-2026-2222] GitLab RCE<span");
       const article = html.slice(html.indexOf("<article>"));
       const links = article.indexOf(
-        '<p class="cves">CVE: <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1111" target="_blank"',
+        '<p class="cves">CVE: <a href="https://radar.cloudflare.com/zero-wire/cves/CVE-2026-1111" target="_blank"',
       );
       expect(links).toBeGreaterThan(0);
       expect(links).toBeLessThan(article.indexOf("line1"));
@@ -698,7 +698,7 @@ if (import.meta.vitest) {
       );
       const plain = renderRss([topic], meta);
       expect(plain).toContain("<title>A &amp; B &lt;script&gt;</title>");
-      expect(plain).not.toContain("nvd.nist.gov");
+      expect(plain).not.toContain("radar.cloudflare.com");
     });
   });
 
