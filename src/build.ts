@@ -6,6 +6,7 @@ import { toStatus } from "./lib/failure.ts";
 import { mergeTopics } from "./lib/items.ts";
 import { PENDING_ARCHIVE_DIR, PREV_MANIFEST, PUBLIC_DIR, SITE_DIR, siteUrl } from "./lib/paths.ts";
 import { renderHtml, renderJsonFeed, renderRss, type FeedMeta } from "./lib/rss.ts";
+import { loadZeroWireIndex } from "./lib/zerowire.ts";
 import {
   buildArchive,
   compareSnapshotNamesDesc,
@@ -32,6 +33,14 @@ const meta: FeedMeta = {
     parseHandles(process.env.TRUSTED_HANDLES, DEFAULT_TRUSTED_HANDLES).map((h) => h.toLowerCase()),
   ),
 };
+
+const zeroWire = await loadZeroWireIndex((url) => fetch(url, { signal: AbortSignal.timeout(15_000) }));
+logSafe(
+  zeroWire.error
+    ? `Zero Wire feed unavailable, building without briefing links: ${zeroWire.error}`
+    : `Zero Wire feed: ${zeroWire.index.size} CVEs with briefings`,
+);
+meta.zeroWire = zeroWire.index;
 
 async function readPrevManifest(): Promise<Manifest | undefined> {
   const text = await readFile(PREV_MANIFEST, "utf8").catch(() => undefined);

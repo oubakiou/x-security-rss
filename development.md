@@ -73,6 +73,7 @@ vp test --run    # in-source tests
 `vp` が PATH にない場合は `node_modules/.bin/vp` を使えます。
 
 `vp run restore` / `vp run fetch` / `vp run build` は公開中の Pages を読み、`fetch` は有料 API を呼び出します。
+`build` は Cloudflare Zero Wire の JSON Feed も読みます (読めなければリンクなしで生成)。
 通常のテストやレビューでは実行せず、依頼された場合にのみ実行してください。
 `SITE_URL` をローカルの HTTP サーバーに向ければ、Pages を使わずに一連の流れを確認できます。
 API キーは安全な環境変数や Secrets から渡し、コード・テスト・ログに記録しないでください。

@@ -1,6 +1,7 @@
 import { failureNotice } from "./failure.ts";
 import { topicCves } from "./items.ts";
 import { groupByDay, jstTime, timelineHtml } from "./timeline.ts";
+import { briefingsFor, zeroWireUrl, type ZeroWireIndex } from "./zerowire.ts";
 import { CATEGORIES, type Category, type Status, type Topic } from "./types.ts";
 
 export interface FeedMeta {
@@ -12,6 +13,8 @@ export interface FeedMeta {
   sourceUrl: string;
   /** lowercase handles shown as 優先アカウント */
   trustedHandles: ReadonlySet<string>;
+  /** Cloudflare Zero Wire briefings by CVE; absent or empty when the feed could not be read */
+  zeroWire?: ZeroWireIndex;
 }
 
 export function escapeXml(s: string): string {
@@ -187,6 +190,24 @@ function cveHtml(t: Topic, newTab = false): string {
   return `<p class="cves">CVE: ${links}</p>`;
 }
 
+function topicBriefings(t: Topic, meta: FeedMeta): string[] {
+  return briefingsFor(cveIds(t), meta.zeroWire);
+}
+
+/** The match is by CVE id only, which the model wrote, so the label claims a shared CVE rather than the same story. */
+function zeroWireHtml(t: Topic, meta: FeedMeta, newTab = false): string {
+  const slugs = topicBriefings(t, meta);
+  if (!slugs.length) return "";
+  const links = slugs
+    .map((slug) =>
+      newTab
+        ? externalLink(zeroWireUrl(slug), slug)
+        : `<a href="${escapeXml(zeroWireUrl(slug))}" rel="noopener noreferrer">${escapeXml(slug)}</a>`,
+    )
+    .join(" / ");
+  return `<p class="zero-wire">🛡️ 同じCVEを扱う Cloudflare Zero Wire の解説: ${links}</p>`;
+}
+
 function relatedHtml(t: Topic, newTab = false): string {
   const ids = (t.related ?? []).filter((id) => /^\d{1,20}$/.test(id));
   if (!ids.length) return "";
@@ -224,6 +245,7 @@ export function statusAlert(status: Status | undefined, meta: FeedMeta): Topic |
 function itemHtml(t: Topic, meta: FeedMeta): string {
   return (
     cveHtml(t) +
+    zeroWireHtml(t, meta) +
     `<p>${escapeXml(t.summary).replace(/\n/g, "<br/>")}</p>` +
     `<p>投稿者: ${authorHtml(t, meta, false)}</p>` +
     relatedHtml(t)
@@ -252,7 +274,10 @@ export function renderJsonFeed(topics: Topic[], meta: FeedMeta, status?: Status)
       date_published: t.posted_at,
       authors: [{ name: t.author }],
       tags: isTrusted(t, meta) ? [...t.tags, TRUSTED_LABEL] : t.tags,
-      _x_security: { trusted_author: isTrusted(t, meta) },
+      _x_security: {
+        trusted_author: isTrusted(t, meta),
+        zero_wire_briefings: topicBriefings(t, meta).map(zeroWireUrl),
+      },
     })),
   };
   return JSON.stringify(feed, null, 2) + "\n";
@@ -330,6 +355,7 @@ export function renderHtml(topics: Topic[], meta: FeedMeta, status?: Status): st
   <h2>${externalLink(t.url, displayTitle(t))}</h2>
   <p class="meta">${authorHtml(t, meta, true)} · <time datetime="${escapeXml(t.posted_at)}">${escapeXml(jstTime(t.posted_at))} JST</time></p>
   ${cveHtml(t, true)}
+  ${zeroWireHtml(t, meta, true)}
   <p>${escapeXml(t.summary)}</p>
   ${relatedHtml(t, true)}
   ${t.tags.length ? `<p class="tags">${t.tags.map((c) => `<span>${escapeXml(c)}</span>`).join(" ")}</p>` : ""}
@@ -496,9 +522,9 @@ if (import.meta.vitest) {
       expect(rss.match(/<category>優先アカウント<\/category>/g)).toHaveLength(1);
       const feed = JSON.parse(renderJsonFeed([trusted, topic], meta));
       expect(feed.items[0].tags).toContain("優先アカウント");
-      expect(feed.items[0]._x_security).toEqual({ trusted_author: true });
+      expect(feed.items[0]._x_security).toEqual({ trusted_author: true, zero_wire_briefings: [] });
       expect(feed.items[1].tags).not.toContain("優先アカウント");
-      expect(feed.items[1]._x_security).toEqual({ trusted_author: false });
+      expect(feed.items[1]._x_security).toEqual({ trusted_author: false, zero_wire_briefings: [] });
     });
   });
 
@@ -689,6 +715,33 @@ if (import.meta.vitest) {
         "[CVE-2026-1234] https://example.org の脆弱性",
       );
       expect(title("A -- B (x) CVE-2026-1234", [])).toBe("[CVE-2026-1234] A -- B (x)");
+    });
+
+    it("links briefings that cover the same CVE in the feeds and on the page", () => {
+      const withZw: FeedMeta = {
+        ...meta,
+        zeroWire: new Map([
+          ["CVE-2026-1111", ["php2shell"]],
+          ["CVE-2026-2222", ["php2shell", "php-november-2026-security-release-phpaftershell"]],
+        ]),
+      };
+      const zw = "https://radar.cloudflare.com/zero-wire/";
+      const xml = renderRss([cveTopic], withZw);
+      expect(xml).toContain(
+        `<p class="zero-wire">🛡️ 同じCVEを扱う Cloudflare Zero Wire の解説: <a href="${zw}php2shell" rel="noopener noreferrer">php2shell</a> / <a href="${zw}php-november-2026-security-release-phpaftershell"`,
+      );
+      const json = JSON.parse(renderJsonFeed([cveTopic, topic], withZw)) as {
+        items: Array<{ _x_security: { zero_wire_briefings: string[] } }>;
+      };
+      expect(json.items[0]!._x_security.zero_wire_briefings).toEqual([
+        `${zw}php2shell`,
+        `${zw}php-november-2026-security-release-phpaftershell`,
+      ]);
+      expect(json.items[1]!._x_security.zero_wire_briefings).toEqual([]);
+      const html = renderHtml([cveTopic], withZw);
+      expect(html).toContain(`<a href="${zw}php2shell" target="_blank" rel="noopener noreferrer">php2shell`);
+      expect(renderHtml([cveTopic], meta)).not.toContain('class="zero-wire"');
+      expect(renderRss([topic], withZw)).not.toContain('class="zero-wire"');
     });
 
     it("shortens long CVE lists in the title and leaves CVE-less topics alone", () => {

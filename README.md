@@ -22,6 +22,7 @@ X (旧Twitter) からサイバーセキュリティの話題を毎日収集し�
 - 生成: 一覧ページ (`index.html`)、RSS 2.0 (`feed.xml`)、JSON Feed 1.1 (`feed.json`) — `src/build.ts`。RSS と JSON Feed は同じ記事と失敗のお知らせを含む
   - 見出しの先頭に分類の絵文字 (🔓 脆弱性 / 🔥 インシデント / 🕵️ 攻撃キャンペーン / 📝 その他) と CVE 番号を付ける。分類はモデルの判定
   - 本文の CVE 番号は Cloudflare Radar の CVE ページ (`https://radar.cloudflare.com/zero-wire/cves/<CVE番号>`) へのリンクにする。CVSS、CISA KEV への掲載、EPSS、影響する製品、対処方法をまとめて確認できる
+  - Cloudflare Zero Wire の解説 (ブリーフィング) が同じ CVE を扱っていれば、🛡️ でその解説へのリンクを付ける (1記事3件まで。JSON Feed には `_x_security.zero_wire_briefings` も付ける)。ビルドのたびに [Zero Wire の JSON Feed](https://radar.cloudflare.com/zero-wire/feed?format=json) を読み、解説の CVE 一覧と記事の CVE 番号で照合する。照合は CVE 番号だけで、記事と解説が同じ内容とは限らない。CVE 番号のない記事は対象外。フィードを読めないときはリンクなしで生成する
   - 投稿者は X の oEmbed (`publish.x.com/oembed`、認証不要) で確認し、モデルが書いた投稿者と違えば X の値に直す。x_search の出典はアカウント名を含まない `/i/status/<id>` 形式のため。確認できなかった記事はモデルの値のまま
   - モデルには各項目の投稿本文の抜粋 (`quote`) も書かせ、oEmbed の本文に含まれるかを照合する (要約と投稿の取り違えの検出)。含まれない記事は、要約がリンク先とは別の投稿について書かれているとみなして `quote_mismatch` として破棄する (ログの `quote check: …` と snapshot に記録)。照合できなかった記事は残す
   - 投稿者が優先アカウント (`TRUSTED_HANDLES`) であることを oEmbed で確認できた記事は、投稿者名の前に 🔖 を付け、`@ハンドル` をプロフィール (`https://x.com/<handle>`) へのリンクにする。RSS / JSON Feed の本文の投稿者の行も同じ形にし、カテゴリー (tags) に「優先アカウント」、JSON Feed には `_x_security.trusted_author` も付ける。一覧ページは URL の末尾に `#trusted` を付けると優先アカウントの記事だけを表示する
