@@ -194,7 +194,7 @@ function topicBriefings(t: Topic, meta: FeedMeta): string[] {
   return briefingsFor(cveIds(t), meta.zeroWire);
 }
 
-/** The match is by CVE id only, which the model wrote, so the label claims a shared CVE rather than the same story. */
+/** Only the page can hide the screen-reader label; feed readers would show it, so feeds get the icon alone. */
 function zeroWireHtml(t: Topic, meta: FeedMeta, newTab = false): string {
   const slugs = topicBriefings(t, meta);
   if (!slugs.length) return "";
@@ -205,7 +205,10 @@ function zeroWireHtml(t: Topic, meta: FeedMeta, newTab = false): string {
         : `<a href="${escapeXml(zeroWireUrl(slug))}" rel="noopener noreferrer">${escapeXml(slug)}</a>`,
     )
     .join(" / ");
-  return `<p class="zero-wire">🛡️ 同じCVEを扱う Cloudflare Zero Wire の解説: ${links}</p>`;
+  const label = newTab
+    ? '<span aria-hidden="true">🛡️</span><span class="sr">Cloudflare Zero Wire の解説:</span>'
+    : "🛡️";
+  return `<p class="zero-wire">${label} ${links}</p>`;
 }
 
 function relatedHtml(t: Topic, newTab = false): string {
@@ -728,7 +731,7 @@ if (import.meta.vitest) {
       const zw = "https://radar.cloudflare.com/zero-wire/";
       const xml = renderRss([cveTopic], withZw);
       expect(xml).toContain(
-        `<p class="zero-wire">🛡️ 同じCVEを扱う Cloudflare Zero Wire の解説: <a href="${zw}php2shell" rel="noopener noreferrer">php2shell</a> / <a href="${zw}php-november-2026-security-release-phpaftershell"`,
+        `<p class="zero-wire">🛡️ <a href="${zw}php2shell" rel="noopener noreferrer">php2shell</a> / <a href="${zw}php-november-2026-security-release-phpaftershell"`,
       );
       const json = JSON.parse(renderJsonFeed([cveTopic, topic], withZw)) as {
         items: Array<{ _x_security: { zero_wire_briefings: string[] } }>;
@@ -739,7 +742,9 @@ if (import.meta.vitest) {
       ]);
       expect(json.items[1]!._x_security.zero_wire_briefings).toEqual([]);
       const html = renderHtml([cveTopic], withZw);
-      expect(html).toContain(`<a href="${zw}php2shell" target="_blank" rel="noopener noreferrer">php2shell`);
+      expect(html).toContain(
+        `<p class="zero-wire"><span aria-hidden="true">🛡️</span><span class="sr">Cloudflare Zero Wire の解説:</span> <a href="${zw}php2shell" target="_blank" rel="noopener noreferrer">php2shell`,
+      );
       expect(renderHtml([cveTopic], meta)).not.toContain('class="zero-wire"');
       expect(renderRss([topic], withZw)).not.toContain('class="zero-wire"');
     });
