@@ -1,0 +1,781 @@
+{
+  "version": 1,
+  "date": "2026-11-22",
+  "snapshots": [
+    {
+      "name": "2026-11-22-02.json",
+      "sha256": "e7dc1e081568beaee646a0e78b169401e05fd7f97bf94d2e340250e69c482b2a",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-22T02:17:21Z",
+        "window": {
+          "from": "2026-11-20T20:16:27.968Z",
+          "to": "2026-11-22T02:16:27.968Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "17 件を取得しました",
+          "checked_at": "2026-11-22T02:17:21Z",
+          "dropped_unverified": 3
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 8497,
+            "input_tokens_details": {
+              "cached_tokens": 1280
+            },
+            "output_tokens": 3174,
+            "output_tokens_details": {
+              "reasoning_tokens": 1509
+            },
+            "total_tokens": 11671,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 922122500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 15,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 6545,
+              "output_tokens": 2128
+            }
+          },
+          "general": {
+            "input_tokens": 16150,
+            "input_tokens_details": {
+              "cached_tokens": 2560
+            },
+            "output_tokens": 3880,
+            "output_tokens_details": {
+              "reasoning_tokens": 1177
+            },
+            "total_tokens": 20030,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2221995000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 13924,
+              "output_tokens": 3085
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2124319453311905835",
+            "url": "https://x.com/i/status/2124319453311905835",
+            "title": "Microsoft Entra Connect Healthでデータ露出",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-22T01:50:00Z",
+            "summary": "Microsoft Entra Connect Healthの脆弱性で、管理者のメールアドレスやアカウントID、ライセンス階層、同期ステータスが外部から閲覧可能に。7月23日から11月19日まで露出し、パスワードやトークンは漏洩せず。フィッシング対策を推奨。",
+            "quote": "Microsoft is telling business customers that a flaw in one of its cloud services left their admins' email addresses readable by outsiders for almost four months.",
+            "tags": [
+              "Microsoft",
+              "Entra Connect Health"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "vulnerability",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2124289254088135060",
+            "url": "https://x.com/i/status/2124289254088135060",
+            "title": "GL.iNetクラウド侵害でルーターにマルウェア",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-21T23:50:00Z",
+            "summary": "GL.iNetのクラウドサービスが侵害され、一部顧客のルーターとKVMボックスにマルウェアが植え付けられた。脆弱性は修正済みだが感染デバイスは要確認。KVM接続PCもチェックを。",
+            "quote": "An attacker breached GL.iNet's cloud service to reach some customers' routers and KVM boxes, which control PCs remotely, and plant malware on them.",
+            "tags": [
+              "GL.iNet",
+              "malware",
+              "incident"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "incident",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2124281998613299496",
+            "url": "https://x.com/i/status/2124281998613299496",
+            "title": "GhostscriptにUpload2Shell脆弱性 CVE-2026-125396",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-21T23:21:10Z",
+            "summary": "Ghostscriptに細工ファイルで任意コマンド実行可能な脆弱性CVE-2026-125396。-dSAFER回避、画像偽装でも攻撃成立。Debian/Ubuntu更新済み、WordPressはCVE-2026-65640で修正。",
+            "quote": "文書処理ソフト「Ghostscript」に、細工したファイルから安全機能を突破して任意のコマンドを実行できる脆弱性「Upload2Shell」が見つかった。",
+            "tags": [
+              "CVE-2026-125396",
+              "Ghostscript",
+              "Linux"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2124276769196740774",
+            "url": "https://x.com/i/status/2124276769196740774",
+            "title": "Rackspace Spot侵害でKubernetesシークレット露出",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-21T23:00:23Z",
+            "summary": "Rackspace Spotの侵害により、ハッカーが顧客のKubernetesシークレットにアクセス可能に。データ漏洩の可能性あり、詳細はBleepingComputer記事参照。",
+            "quote": "Rackspace Spot breach let hackers access customer Kubernetes secrets",
+            "tags": [
+              "Rackspace",
+              "Kubernetes",
+              "incident"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2124096705532506230",
+            "url": "https://x.com/i/status/2124096705532506230",
+            "title": "MONAI Labelにゼロデイ CVE-2026-133968",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-21T11:04:53Z",
+            "summary": "MONAI Label 0.8.5以前にCVSS 9.8のゼロデイ脆弱性CVE-2026-133968。中国関連ハッカーのAIエージェントが11分で発見し大学サーバーでroot取得。パッチ版未提供、認証有効化を推奨。",
+            "quote": "Hackers used AI agents to discover a critical zero-day in medical-imaging software and gain ROOT access to a university server.",
+            "tags": [
+              "CVE-2026-133968",
+              "MONAI Label",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124110583368659334",
+            "url": "https://x.com/i/status/2124110583368659334",
+            "title": "RubyにRuby2Shell脆弱性パッチ",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-21T12:00:01Z",
+            "summary": "RubyにRCEにつながるRuby2Shell脆弱性にパッチ適用。詳細はSecurityWeek記事参照。",
+            "quote": "Ruby Patches Ruby2Shell Vulnerability That Could Lead to RCE",
+            "tags": [
+              "Ruby",
+              "RCE"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2124097807435157635",
+            "url": "https://x.com/i/status/2124097807435157635",
+            "title": "GnuPG GPGMEにCVE-2026-129975",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-21T11:09:15Z",
+            "summary": "GnuPGがGPGMEのdouble-free脆弱性CVE-2026-129975を警告。メールクライアントやSambaに影響、データ窃取の可能性あり。RCEも否定せず。",
+            "quote": "GnuPG warns that CVE-2026-129975, a critical double-free flaw in GPGME, affects mail clients, Samba, and other software.",
+            "tags": [
+              "CVE-2026-129975",
+              "GnuPG",
+              "GPGME"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124072828022452390",
+            "url": "https://x.com/i/status/2124072828022452390",
+            "title": "VMware等4脆弱性が積極悪用中",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-21T09:30:00Z",
+            "summary": "CISAがVMware、Cisco、Apache、SAPの4脆弱性を積極悪用確認。中国関連グループがVMware欠陥でバックドア展開。パッチ期限11月23日。",
+            "quote": "Hackers are actively exploiting critical flaws in VMware, Cisco, Apache, and SAP.",
+            "tags": [
+              "VMware",
+              "CISA",
+              "KEV"
+            ],
+            "collected_at": "2026-11-22T02:16:52Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124291476901572682",
+            "url": "https://x.com/i/status/2124291476901572682",
+            "title": "Ruby case変換で1バイトheap overflow (CVE-2026-132825)",
+            "author": "Automater (@automater_ai)",
+            "posted_at": "2026-11-21T23:58:50Z",
+            "summary": "Rubyのcase変換における1バイトheap overflow。Rails/Sinatraの未認証フォーム投稿から到達可能。PoCは11月25日頃公開予定。パッチ適用を推奨。",
+            "quote": "A one-byte heap overflow in Ruby's case conversion is reachable from an unauthenticated Rails or Sinatra form post, and a public PoC is expected as early as Nov 25.",
+            "tags": [
+              "CVE-2026-132825",
+              "Ruby",
+              "PoC"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "automater_ai",
+            "quote_match": true
+          },
+          {
+            "id": "2124288418729607501",
+            "url": "https://x.com/i/status/2124288418729607501",
+            "title": "BuddyPressにCVE-2026-120539 (CVSS 9.8)",
+            "author": "朝8時の図解テックニュース｜AI×エンジニア (@zukai_ai_news)",
+            "posted_at": "2026-11-21T23:46:41Z",
+            "summary": "Restrictions for BuddyPress 1.5.4以前。未認証でコード実行の恐れ。1.5.5へ更新を。",
+            "quote": "CVE-2026-120539（CVSS v3.1 9.8／v4.0未公開）Restrictions for BuddyPress 1.5.4以前。未認証でコード実行の恐れ。1.5.5へ更新を。",
+            "tags": [
+              "CVE-2026-120539",
+              "BuddyPress"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "zukai_ai_news",
+            "quote_match": true
+          },
+          {
+            "id": "2124286412640121008",
+            "url": "https://x.com/i/status/2124286412640121008",
+            "title": "Apache Roller CVE-2026-129448 (CVSS 9.8) CISA KEV登録",
+            "author": "DEADHAND (@deadhandhq)",
+            "posted_at": "2026-11-21T23:38:42Z",
+            "summary": "Apache RollerのXML-RPC経由未認証deserialization RCE。CISA KEV登録済み。6.1.6+へアップグレードまたはエンドポイント無効化を。",
+            "quote": "Apache Roller CVE-2026-129448 (CVSS 9.8) unauthenticated deserialization RCE via XML-RPC is in CISA KEV. Upgrade to 6.1.6+ or disable the endpoint.",
+            "tags": [
+              "CVE-2026-129448",
+              "Apache Roller",
+              "CISA KEV"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "deadhandhq",
+            "quote_match": true
+          },
+          {
+            "id": "2124286336395829387",
+            "url": "https://x.com/i/status/2124286336395829387",
+            "title": "Cisco Expressway CVE-2026-76466 (CVSS 9.8)",
+            "author": "DEADHAND (@deadhandhq)",
+            "posted_at": "2026-11-21T23:38:24Z",
+            "summary": "Cisco Expresswayで未認証root RCE。ロシア組織で実際に悪用。X15.5.20へアップグレード。",
+            "quote": "Cisco Expressway CVE-2026-76466 (CVSS 9.8) permits unauthenticated root RCE on clustered devices and was used to breach a Russian organization. Upgrade to X15.5.20.",
+            "tags": [
+              "CVE-2026-76466",
+              "Cisco"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "deadhandhq",
+            "quote_match": true
+          },
+          {
+            "id": "2124285225370833330",
+            "url": "https://x.com/i/status/2124285225370833330",
+            "title": "Redux Framework脆弱性修正 (CVE-2026-120679)",
+            "author": "株式会社mgn (@mgn_jpn)",
+            "posted_at": "2026-11-21T23:33:59Z",
+            "summary": "Redux Frameworkの脆弱性修正（CVSS 5.4）。90万サイト以上影響。4.5.18へ更新。",
+            "quote": "🛠 Redux Framework の脆弱性が修正されました（深刻度 中） 90万サイト以上が利用 / CVSS 5.4 4.5.18 に更新してください",
+            "tags": [
+              "CVE-2026-120679",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "mgn_jpn",
+            "quote_match": true
+          },
+          {
+            "id": "2124290934762549438",
+            "url": "https://x.com/i/status/2124290934762549438",
+            "title": "マクロミル不正アクセスで317名情報漏えい",
+            "author": "アカウントの片づけ｜退会・整理ガイド (@accountkatazuk)",
+            "posted_at": "2026-11-21T23:56:40Z",
+            "summary": "マクロミル公式発表。11月12日の不正アクセスで317名情報閲覧痕跡、82名は振込先口座情報も対象。",
+            "quote": "【公式発表】マクロミルは11月12日、モニタサイトへの不正アクセスで317名の情報に閲覧の痕跡があり、うち82名は振込先口座情報も対象と公表しました。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "incident",
+            "author_handle": "accountkatazuk",
+            "quote_match": true
+          },
+          {
+            "id": "2124288932770955499",
+            "url": "https://x.com/i/status/2124288932770955499",
+            "title": "早稲田大学個人情報3,342件漏えい",
+            "author": "Into the Program｜セキュリティ・AI・Web開発 (@itp_media)",
+            "posted_at": "2026-11-21T23:48:43Z",
+            "summary": "早稲田大学で個人情報漏えい。延べ3,342件と卒業生向けサービス停止。",
+            "quote": "早稲田大学で個人情報漏えい｜延べ3,342件と卒業生向けサービスの停止 #情報漏洩 #サイバー攻撃",
+            "tags": [
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "incident",
+            "author_handle": "itp_media",
+            "quote_match": true
+          },
+          {
+            "id": "2124290421186875781",
+            "url": "https://x.com/i/status/2124290421186875781",
+            "title": "Optimizelyサプライチェーン攻撃で178組織にマルウェア",
+            "author": "information_overload/🍊 (@In4mationOverld)",
+            "posted_at": "2026-11-21T23:54:38Z",
+            "summary": "Optimizelyの11月16日登録不備を悪用し、信頼CDN経由で178組織サイトにマルウェア配信。カードスキミングなど。",
+            "quote": "Attackers used Optimizely’s Nov. 16 signup flaw to push malware through a trusted CDN to at least 178 organizations’ sites, researchers say.",
+            "tags": [
+              "supply chain",
+              "malware"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "campaign",
+            "author_handle": "in4mationoverld",
+            "quote_match": true
+          },
+          {
+            "id": "2124287932265820599",
+            "url": "https://x.com/i/status/2124287932265820599",
+            "title": "AIルーター経由で200万プロンプト漏えい",
+            "author": "sudo rm -rf (@itsjustmarky)",
+            "posted_at": "2026-11-21T23:44:45Z",
+            "summary": "偽シークレットを埋め込んだ200万プロンプトをAIルーター経由送信。3プロバイダ侵害、AWSキーが数万回再利用。",
+            "quote": "Nearly 2 million prompts seeded with fake secrets, sent through AI routers. Three providers got breached; stolen AWS keys were reused tens of thousands of times.",
+            "tags": [
+              "supply chain",
+              "AI"
+            ],
+            "collected_at": "2026-11-22T02:17:20Z",
+            "category": "campaign",
+            "author_handle": "itsjustmarky",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124289305480732702",
+            "posted_at": "2026-11-21T23:50:12Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124286400145289632",
+            "posted_at": "2026-11-21T23:38:39Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124289788366999724",
+            "posted_at": "2026-11-21T23:52:07Z"
+          }
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "2026-11-22-04.json",
+      "sha256": "c139ae3e67fe2dec709c025b50d2b3bd3e09fd2d0947b10507d368aceba0c47f",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-22T04:21:49Z",
+        "window": {
+          "from": "2026-11-20T22:20:50.493Z",
+          "to": "2026-11-22T04:20:50.493Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-22T04:21:49Z",
+          "dropped_unverified": 5
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 8596,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 2818,
+            "output_tokens_details": {
+              "reasoning_tokens": 1460
+            },
+            "total_tokens": 11414,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 926556000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 15,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 6644,
+              "output_tokens": 1724
+            }
+          },
+          "general": {
+            "input_tokens": 16711,
+            "input_tokens_details": {
+              "cached_tokens": 2304
+            },
+            "output_tokens": 4767,
+            "output_tokens_details": {
+              "reasoning_tokens": 1568
+            },
+            "total_tokens": 21478,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2253870500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 14485,
+              "output_tokens": 3616
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2124319453311905835",
+            "url": "https://x.com/i/status/2124319453311905835",
+            "title": "Microsoft Entra Connect Healthの脆弱性、4ヶ月間メールアドレス露出",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-22T01:50:00Z",
+            "summary": "Microsoft Entra Connect Healthの脆弱性により、管理者のメールアドレス、企業アカウントID、ライセンス階層、同期ステータスが外部から読み取り可能だった。7月23日から11月19日まで開放。パスワードやトークンは漏洩せず。フィッシングに注意するよう通知。",
+            "quote": "‼️ Microsoft is telling business customers that a flaw in one of its cloud services left their admins' email addresses readable by outsiders for almost four months.",
+            "tags": [
+              "Microsoft",
+              "Entra",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-22T04:21:07Z",
+            "category": "vulnerability",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2124289254088135060",
+            "url": "https://x.com/i/status/2124289254088135060",
+            "title": "GL.iNetクラウドサービス侵害、ルーターにマルウェア植え付け",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-21T23:50:00Z",
+            "summary": "攻撃者がGL.iNetのクラウドサービスを侵害し、一部の顧客ルーターやKVMボックスにマルウェアを植え付けた。穴は塞がれたが感染デバイスは残る。KVM所有者は接続PCも確認必要。",
+            "quote": "‼️ BREAKING: An attacker breached GL.iNet's cloud service to reach some customers' routers and KVM boxes, which control PCs remotely, and plant malware on them.",
+            "tags": [
+              "GL.iNet",
+              "incident",
+              "malware"
+            ],
+            "collected_at": "2026-11-22T04:21:07Z",
+            "category": "incident",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2124281998613299496",
+            "url": "https://x.com/i/status/2124281998613299496",
+            "title": "GhostscriptにUpload2Shell脆弱性、CVE-2026-125396",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-21T23:21:10Z",
+            "summary": "GhostscriptのType 1フォント処理メモリ欠陥により-dSAFER制限を回避し任意コマンド実行可能。CVE-2026-125396。Debian/Ubuntu更新済み、WordPress CVE-2026-65640、Roundcube CVE-2026-114727で修正。",
+            "quote": "文書処理ソフト「Ghostscript」に、細工したファイルから安全機能を突破して任意のコマンドを実行できる脆弱性「Upload2Shell」が見つかった。",
+            "tags": [
+              "CVE-2026-125396",
+              "Ghostscript",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-22T04:21:07Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2124276769196740774",
+            "url": "https://x.com/i/status/2124276769196740774",
+            "title": "Rackspace Spot侵害、Kubernetesシークレットアクセス",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-21T23:00:23Z",
+            "summary": "Rackspace Spot侵害によりハッカーが顧客のKubernetesシークレットにアクセス。詳細はリンク先参照。",
+            "quote": "Rackspace Spot breach let hackers access customer Kubernetes secrets",
+            "tags": [
+              "Rackspace",
+              "incident",
+              "Kubernetes"
+            ],
+            "collected_at": "2026-11-22T04:21:07Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2124174823828189690",
+            "url": "https://x.com/i/status/2124174823828189690",
+            "title": "MONAI Labelゼロデイ、CVE-2026-133968、中国系攻撃者AIエージェント使用",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-21T16:15:17Z",
+            "summary": "中国関連攻撃者がAIエージェントでMONAI Labelの未知脆弱性CVE-2026-133968を発見、大学サーバーでroot取得。0.8.5以前影響。修正コード公開済みだがパッケージ未提供。通信制限、認証有効化推奨。",
+            "quote": "中国との関連が疑われる攻撃者が、自律型AIエージェントを使って医療画像解析サーバー「MONAI Label」の未知の脆弱性を発見し、大学のサーバーでroot権限を取得したとAmazonが報告した。",
+            "tags": [
+              "CVE-2026-133968",
+              "MONAI",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-22T04:21:07Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2124097807435157635",
+            "url": "https://x.com/i/status/2124097807435157635",
+            "title": "GnuPG、GPGMEにCVE-2026-129975二重解放脆弱性警告",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-21T11:09:15Z",
+            "summary": "GnuPGがCVE-2026-129975の重大な二重解放脆弱性を警告。GPGMEに影響しメールクライアント、Sambaなどで機密データ露出可能。RCEの可能性も否定せず。",
+            "quote": "‼️ CRITICAL - A malicious OpenPGP key could expose sensitive data from your apps.",
+            "tags": [
+              "CVE-2026-129975",
+              "GnuPG",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-22T04:21:07Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124291476901572682",
+            "url": "https://x.com/i/status/2124291476901572682",
+            "title": "Ruby case変換で1バイトheap overflow (CVE-2026-132825)",
+            "author": "Automater (@automater_ai)",
+            "posted_at": "2026-11-21T23:58:50Z",
+            "summary": "Rubyのcase変換における1バイトheap overflowが、認証なしのRails/Sinatraフォーム投稿から到達可能。11月25日頃に公開PoCが予想される。パッチ適用を推奨。",
+            "quote": "A one-byte heap overflow in Ruby's case conversion is reachable from an unauthenticated Rails or Sinatra form post, and a public PoC is expected as early as Nov 25.",
+            "tags": [
+              "CVE-2026-132825",
+              "Ruby",
+              "RCE"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "vulnerability",
+            "author_handle": "automater_ai",
+            "quote_match": true
+          },
+          {
+            "id": "2124288418729607501",
+            "url": "https://x.com/i/status/2124288418729607501",
+            "title": "BuddyPress 1.5.4未満で未認証コード実行 (CVE-2026-120539)",
+            "author": "朝8時の図解テックニュース｜AI×エンジニア (@zukai_ai_news)",
+            "posted_at": "2026-11-21T23:46:41Z",
+            "summary": "Restrictions for BuddyPress 1.5.4以前でCVSS v3.1 9.8。未認証でコード実行の恐れ。1.5.5へ更新を。",
+            "quote": "CVE-2026-120539（CVSS v3.1 9.8／v4.0未公開）Restrictions for BuddyPress 1.5.4以前。未認証でコード実行の恐れ。1.5.5へ更新を。",
+            "tags": [
+              "CVE-2026-120539",
+              "BuddyPress"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "vulnerability",
+            "author_handle": "zukai_ai_news",
+            "quote_match": true
+          },
+          {
+            "id": "2124288285199778234",
+            "url": "https://x.com/i/status/2124288285199778234",
+            "title": "Nexter Blocks Pro 5.0.10未満で管理者アカウント作成 (CVE-2026-125294)",
+            "author": "朝8時の図解テックニュース｜AI×エンジニア (@zukai_ai_news)",
+            "posted_at": "2026-11-21T23:46:09Z",
+            "summary": "Nexter Blocks Pro 5.0.10以前でCVSS v3.1 9.8。未認証で管理者アカウントを作られる恐れ。修正版未確認。",
+            "quote": "CVE-2026-125294（CVSS v3.1 9.8／v4.0未公開）Nexter Blocks Pro 5.0.10以前。未認証で管理者アカウントを作られる恐れ。修正版は未確認、公式案内を。",
+            "tags": [
+              "CVE-2026-125294",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "vulnerability",
+            "author_handle": "zukai_ai_news",
+            "quote_match": true
+          },
+          {
+            "id": "2124286412640121008",
+            "url": "https://x.com/i/status/2124286412640121008",
+            "title": "Apache Roller CVE-2026-129448がCISA KEVに登録",
+            "author": "DEADHAND (@deadhandhq)",
+            "posted_at": "2026-11-21T23:38:42Z",
+            "summary": "Apache Roller CVE-2026-129448 (CVSS 9.8) XML-RPC経由の未認証デシリアライズRCEがCISA KEV入り。6.1.6+へアップグレードまたはエンドポイント無効化を。",
+            "quote": "Apache Roller CVE-2026-129448 (CVSS 9.8) unauthenticated deserialization RCE via XML-RPC is in CISA KEV. Upgrade to 6.1.6+ or disable the endpoint.",
+            "tags": [
+              "CVE-2026-129448",
+              "Apache",
+              "CISA-KEV"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "vulnerability",
+            "author_handle": "deadhandhq",
+            "quote_match": true
+          },
+          {
+            "id": "2124286336395829387",
+            "url": "https://x.com/i/status/2124286336395829387",
+            "title": "Cisco Expressway CVE-2026-76466でロシア組織侵害",
+            "author": "DEADHAND (@deadhandhq)",
+            "posted_at": "2026-11-21T23:38:24Z",
+            "summary": "Cisco Expressway CVE-2026-76466 (CVSS 9.8) クラスタデバイスで未認証root RCE、ロシア組織で実際に悪用。X15.5.20へアップグレード。",
+            "quote": "Cisco Expressway CVE-2026-76466 (CVSS 9.8) permits unauthenticated root RCE on clustered devices and was used to breach a Russian organization. Upgrade to X15.5.20.",
+            "tags": [
+              "CVE-2026-76466",
+              "Cisco"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "vulnerability",
+            "author_handle": "deadhandhq",
+            "quote_match": true
+          },
+          {
+            "id": "2124290934762549438",
+            "url": "https://x.com/i/status/2124290934762549438",
+            "title": "マクロミル モニタサイト不正アクセスで情報漏えい",
+            "author": "アカウントの片づけ｜退会・整理ガイド (@accountkatazuk)",
+            "posted_at": "2026-11-21T23:56:40Z",
+            "summary": "マクロミル、11月12日にモニタサイト不正アクセスで317名情報閲覧痕跡、82名は振込先口座情報も対象。不正交換完了は未確認。",
+            "quote": "【公式発表】マクロミルは11月12日、モニタサイトへの不正アクセスで317名の情報に閲覧の痕跡があり、うち82名は振込先口座情報も対象と公表しました。",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "incident",
+            "author_handle": "accountkatazuk",
+            "quote_match": true
+          },
+          {
+            "id": "2124285225370833330",
+            "url": "https://x.com/i/status/2124285225370833330",
+            "title": "Redux Framework脆弱性修正 (CVE-2026-120679)",
+            "author": "株式会社mgn (@mgn_jpn)",
+            "posted_at": "2026-11-21T23:33:59Z",
+            "summary": "Redux Frameworkの脆弱性修正（深刻度 中）、CVSS 5.4。90万サイト以上が利用、4.5.18へ更新。",
+            "quote": "🛠 Redux Framework の脆弱性が修正されました（深刻度 中）90万サイト以上が利用 / CVSS 5.4 4.5.18 に更新してください",
+            "tags": [
+              "CVE-2026-120679",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "vulnerability",
+            "author_handle": "mgn_jpn",
+            "quote_match": true
+          },
+          {
+            "id": "2124290421186875781",
+            "url": "https://x.com/i/status/2124290421186875781",
+            "title": "Optimizelyサプライチェーン攻撃で178組織にマルウェア",
+            "author": "information_overload/🍊 (@In4mationOverld)",
+            "posted_at": "2026-11-21T23:54:38Z",
+            "summary": "Optimizelyの11月16日登録不具合を悪用し、信頼できるCDN経由で少なくとも178組織のサイトにマルウェア配信。カードスキミングなど。",
+            "quote": "Attackers used Optimizely’s Nov. 16 signup flaw to push malware through a trusted CDN to at least 178 organizations’ sites, researchers say.",
+            "tags": [
+              "supply-chain",
+              "malware"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "campaign",
+            "author_handle": "in4mationoverld",
+            "quote_match": true
+          },
+          {
+            "id": "2124287932265820599",
+            "url": "https://x.com/i/status/2124287932265820599",
+            "title": "AIプロンプト2百万件に偽シークレット埋め込みで供給チェーン漏えい",
+            "author": "sudo rm -rf (@itsjustmarky)",
+            "posted_at": "2026-11-21T23:44:45Z",
+            "summary": "AIルーター経由で2百万件のプロンプトに偽シークレット埋め込み、3プロバイダ侵害。盗まれたAWSキーが数万回再利用。",
+            "quote": "Nearly 2 million prompts seeded with fake secrets, sent through AI routers. Three providers got breached; stolen AWS keys were reused tens of thousands of times.",
+            "tags": [
+              "supply-chain",
+              "AI"
+            ],
+            "collected_at": "2026-11-22T04:21:47Z",
+            "category": "campaign",
+            "author_handle": "itsjustmarky",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "general",
+            "reason": "duplicate",
+            "id": "2124288932770955499",
+            "posted_at": "2026-11-21T23:48:43Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124289305480732702",
+            "posted_at": "2026-11-21T23:50:12Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124286400145289632",
+            "posted_at": "2026-11-21T23:38:39Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124289788366999724",
+            "posted_at": "2026-11-21T23:52:07Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124288932770955499",
+            "posted_at": "2026-11-21T23:48:43Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
