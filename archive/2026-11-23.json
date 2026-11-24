@@ -1,0 +1,356 @@
+{
+  "version": 1,
+  "date": "2026-11-23",
+  "snapshots": [
+    {
+      "name": "2026-11-23-02.json",
+      "sha256": "0e447d64db02b67bb89381a7b4cc14bfe20e9528588c0416a9e1f3fdf26c3404",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-23T02:49:07Z",
+        "window": {
+          "from": "2026-11-21T20:48:15.966Z",
+          "to": "2026-11-23T02:48:15.966Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-23T02:49:07Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 8512,
+            "input_tokens_details": {
+              "cached_tokens": 2048
+            },
+            "output_tokens": 2760,
+            "output_tokens_details": {
+              "reasoning_tokens": 1291
+            },
+            "total_tokens": 11272,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 903896000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 15,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 6560,
+              "output_tokens": 1780
+            }
+          },
+          "general": {
+            "input_tokens": 19023,
+            "input_tokens_details": {
+              "cached_tokens": 2304
+            },
+            "output_tokens": 3740,
+            "output_tokens_details": {
+              "reasoning_tokens": 1558
+            },
+            "total_tokens": 22763,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2257095500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 16797,
+              "output_tokens": 2440
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2124647301784523243",
+            "url": "https://x.com/i/status/2124647301784523243",
+            "title": "Linuxカーネルに競合状態の脆弱性 CVE-2026-99676",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-22T23:32:45Z",
+            "summary": "LinuxカーネルのIPv4・IPv6通信処理にソケット参照管理の競合状態脆弱性。CVE-2026-99676として11月20日公表。ARM64などで解放済み情報参照の恐れあり。5.5で導入され、6.12.118など修正済み。最新安定版更新を推奨。",
+            "quote": "LinuxカーネルのIPv4・IPv6通信処理に、ソケットの参照管理を巡る競合状態の脆弱性が見つかった。CVE-2026-99676として11月20日に公表され",
+            "tags": [
+              "CVE-2026-99676",
+              "Linux",
+              "kernel"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2124575838112784827",
+            "url": "https://x.com/i/status/2124575838112784827",
+            "title": "GL.iNet GoodCloudにマルウェア感染の攻撃確認",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-22T18:48:47Z",
+            "summary": "GL.iNetのGoodCloudプラットフォームの脆弱性が悪用され、ルーターとKVMデバイスにカスタムマルウェア感染。ルートシェルや永続バックドアを確認。GL.iNetが攻撃経路をブロックし、セキュリティファームウェア更新をリリース。",
+            "quote": "🚨 Hackers exploited a vulnerability in GL.iNet's GoodCloud platform to infect routers and KVM devices with custom malware!",
+            "tags": [
+              "malware",
+              "router",
+              "GL.iNet"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2124529175423865107",
+            "url": "https://x.com/i/status/2124529175423865107",
+            "title": "Cleverbridgeでクレジットカード情報漏えい",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-22T15:43:21Z",
+            "summary": "Cleverbridgeがハッカーによるクレジットカード番号とCVVの盗難を警告。データ侵害が発生したと発表。",
+            "quote": "Cleverbridge warns hackers stole credit card numbers, CVVs in data breach",
+            "tags": [
+              "data breach",
+              "credit card"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2124455348777955393",
+            "url": "https://x.com/i/status/2124455348777955393",
+            "title": "Google CloudでPHP脆弱性 CVE-2026-126714",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-22T10:50:00Z",
+            "summary": "Google CloudがPHPのセッション保存に関する重大脆弱性CVE-2026-126714を警告。App Engineなどでコード実行可能。PHP 8.5.13などで修正済み。回避策としてsession upload progressを無効化。",
+            "quote": "‼️ Google Cloud warns that a critical PHP flaw can let attackers run their own code on customers' apps without logging in.",
+            "tags": [
+              "CVE-2026-126714",
+              "PHP",
+              "Google Cloud"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "vulnerability",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2124374819538088284",
+            "url": "https://x.com/i/status/2124374819538088284",
+            "title": "Ghostscriptにコード実行脆弱性 CVE-2026-125396",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-22T05:30:00Z",
+            "summary": "Ghostscriptの脆弱性CVE-2026-125396で画像アップロードがコード実行に悪用可能。RoundcubeやCUPSに影響。Ghostscript 10.08.0でパッチ適用済み。",
+            "quote": "Researchers turned crafted files into server command execution through Ghostscript (CVE-2026-125396)",
+            "tags": [
+              "CVE-2026-125396",
+              "Ghostscript"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124364752646439234",
+            "url": "https://x.com/i/status/2124364752646439234",
+            "title": "nginx脆弱性 CVE-2026-123007/CVE-2026-123633",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-22T04:50:00Z",
+            "summary": "nginxの脆弱性CVE-2026-123007とCVE-2026-123633。BitwardenがLinuxカーネルバグとの連鎖を警告し、OS更新を推奨。",
+            "quote": "Bitwarden says attackers could chain the nginx flaws, CVE-2026-123007 and CVE-2026-123633, with an unrelated Linux kernel bug",
+            "tags": [
+              "CVE-2026-123007",
+              "CVE-2026-123633",
+              "nginx"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "vulnerability",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2124344620251242819",
+            "url": "https://x.com/i/status/2124344620251242819",
+            "title": "SBC Medical Groupで200万人超のデータ侵害",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-22T03:30:00Z",
+            "summary": "SBC Medical Groupのデータ侵害で200万人超に影響。",
+            "quote": "SBC Medical Group Data Breach Impacts Over 2 Million",
+            "tags": [
+              "data breach",
+              "medical"
+            ],
+            "collected_at": "2026-11-23T02:48:41Z",
+            "category": "incident",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2124653937748058404",
+            "url": "https://x.com/i/status/2124653937748058404",
+            "title": "タワーレコードに不正アクセス、1100万件流出",
+            "author": "ガク (@0814_gaku)",
+            "posted_at": "2026-11-22T23:59:07Z",
+            "summary": "タワーレコードに不正アクセスが発生し、1100万件の個人情報が流出したと発表。PHP脆弱性関連のニュース後からメンテナンスが入り、情報漏えいの懸念が高まっている。",
+            "quote": "タワーレコードに不正アクセス、1100万件の個人情報流出と発表（朝日新聞） https://news.yahoo.co.jp/articles/269659d7246adc6239b74120320371d45b6a3f06",
+            "tags": [
+              "不正アクセス",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "incident",
+            "author_handle": "0814_gaku",
+            "quote_match": true
+          },
+          {
+            "id": "2124653296338243832",
+            "url": "https://x.com/i/status/2124653296338243832",
+            "title": "VMware vCenter脆弱性(CVE-2026-123890)",
+            "author": "🎖️Ai Hunt™@AIXNOA／公式 (@aixnoa)",
+            "posted_at": "2026-11-22T23:56:34Z",
+            "summary": "VMware vCenterの脆弱性(CVE-2026-123890)。認証回避され不正アクセス可能。悪用確認済み、回避策なし。修正版へ更新を推奨。",
+            "quote": "VMware vCenterの脆弱性(CVE-2026-123890)です。認証を回避され、不正アクセスされます。悪用が確認され、回避策はありません。修正版へ更新してください。",
+            "tags": [
+              "CVE-2026-123890",
+              "VMware"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "vulnerability",
+            "author_handle": "aixnoa",
+            "quote_match": true
+          },
+          {
+            "id": "2124652613719494965",
+            "url": "https://x.com/i/status/2124652613719494965",
+            "title": "GL.iNetクラウド管理脆弱性でマルウェア感染",
+            "author": "ハクノバ (@hakunoba)",
+            "posted_at": "2026-11-22T23:53:51Z",
+            "summary": "GL.iNetのクラウド管理脆弱性を悪用され、一部ルーター・KVMにマルウェアが仕込まれた。攻撃経路は遮断済み。利用者は感染確認と修正ファームウェア適用を。",
+            "quote": "GL.iNetのクラウド管理の脆弱性を悪用され、一部ルーター・KVMにマルウェアが仕込まれた。攻撃経路は遮断済み。利用者は感染の有無を確認し、修正ファームウェアを適用してほしい。",
+            "tags": [
+              "malware",
+              "GL.iNet",
+              "supply chain"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "campaign",
+            "author_handle": "hakunoba",
+            "quote_match": true
+          },
+          {
+            "id": "2124651809042313218",
+            "url": "https://x.com/i/status/2124651809042313218",
+            "title": "Ghostscript CVE-2026-125396 -dSAFER bypass",
+            "author": "Cyber Advising (@cyber_advising)",
+            "posted_at": "2026-11-22T23:50:40Z",
+            "summary": "CVE-2026-125396 Ghostscript before 10.08.0に-dSAFER bypass脆弱性。細工したPostScript/PDFで特権呼び出し可能。PoC公開。",
+            "quote": "CVE-2026-125396 Ghostscript before 10.08.0 contains a -dSAFER bypass vulnerability in the .putgstringcopy procedure in gs_fonts.ps, which calls the privileged .... Attackers can supply crafted PostSc…",
+            "tags": [
+              "CVE-2026-125396",
+              "Ghostscript"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "vulnerability",
+            "author_handle": "cyber_advising",
+            "quote_match": true
+          },
+          {
+            "id": "2124648138585808908",
+            "url": "https://x.com/i/status/2124648138585808908",
+            "title": "GnuPG GPGMEにdouble free脆弱性(CVE-2026-129975)",
+            "author": "Yoshiki Kato (@burnworks)",
+            "posted_at": "2026-11-22T23:36:04Z",
+            "summary": "GnuPGのGPGMEに二重解放脆弱性(CVE-2026-129975)。データ盗み出しやRCEの可能性あり。https://www.openwall.com/lists/oss-security/2026/11/20/13",
+            "quote": "GnuPGの暗号ライブラリ「GPGME」に二重解放（double free）の脆弱性（CVE-2026-129975）の話",
+            "tags": [
+              "CVE-2026-129975",
+              "GnuPG"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "vulnerability",
+            "author_handle": "burnworks",
+            "quote_match": true
+          },
+          {
+            "id": "2124653727118434733",
+            "url": "https://x.com/i/status/2124653727118434733",
+            "title": "DHC・JINS・楽天証券など大規模情報漏えい",
+            "author": "swimple｜ソロプレナーの定点観測 (@swimple_app)",
+            "posted_at": "2026-11-22T23:58:17Z",
+            "summary": "先週の漏えいトップはDHC 1911万件、JINS 1829万件、楽天証券 1125万件。CLOMO MDMの不正アクセスも新たに記録。",
+            "quote": "先週の漏えい、件数トップは DHC 1,911万件・JINS 1,829万件・楽天証券 1,125万件。",
+            "tags": [
+              "情報漏えい",
+              "不正アクセス"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "incident",
+            "author_handle": "swimple_app",
+            "quote_match": true
+          },
+          {
+            "id": "2124652531104325703",
+            "url": "https://x.com/i/status/2124652531104325703",
+            "title": "ボルドー大学病院がSCARLETTGROUPランサムウェア被害",
+            "author": "FalconFeeds.io (@FalconFeedsio)",
+            "posted_at": "2026-11-22T23:53:32Z",
+            "summary": "Centre Hospitalier Universitaire de BordeauxがSCARLETTGROUPランサムウェアの被害。データ公開予定7-8日以内。",
+            "quote": "🚨 Ransomware Alert: 🇫🇷 Centre Hospitalier Universitaire de Bordeaux (https://chu-bordeaux.fr a France-based hospital and health care organization, has reportedly fallen victim to SCARLETTGROUP ransom…",
+            "tags": [
+              "ransomware",
+              "SCARLETTGROUP"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "incident",
+            "author_handle": "falconfeedsio",
+            "quote_match": true
+          },
+          {
+            "id": "2124652247426470356",
+            "url": "https://x.com/i/status/2124652247426470356",
+            "title": "Microsoft Entra Connect Health脆弱性でデータ窃取",
+            "author": "SecOpsChat (@secopschat)",
+            "posted_at": "2026-11-22T23:52:24Z",
+            "summary": "Microsoft Entra Connect Healthの脆弱性が悪用されテナントデータが盗まれた。Microsoftが警告を発している。",
+            "quote": "@Microsoft  Entra Connect Health flaw exploited to steal tenant data Microsoft is warning organizations that it suffered a data breach after #attackers exploited a #vulnerability in its Entra Connect…",
+            "tags": [
+              "data breach",
+              "Microsoft"
+            ],
+            "collected_at": "2026-11-23T02:49:05Z",
+            "category": "incident",
+            "author_handle": "secopschat",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124649907508429239",
+            "posted_at": "2026-11-22T23:43:06Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
