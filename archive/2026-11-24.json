@@ -1,0 +1,367 @@
+{
+  "version": 1,
+  "date": "2026-11-24",
+  "snapshots": [
+    {
+      "name": "2026-11-24-06.json",
+      "sha256": "930de612cf79d0286b9c143268e30cd920bc3b7f20ea8d16d8cadf992df11201",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-24T06:06:23Z",
+        "window": {
+          "from": "2026-11-23T00:04:57.754Z",
+          "to": "2026-11-24T06:04:57.754Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "15 件を取得しました",
+          "checked_at": "2026-11-24T06:06:23Z",
+          "dropped_unverified": 2
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 9656,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 3100,
+            "output_tokens_details": {
+              "reasoning_tokens": 1443
+            },
+            "total_tokens": 12756,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 1196856000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 7704,
+              "output_tokens": 2135
+            }
+          },
+          "general": {
+            "input_tokens": 21290,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 3399,
+            "output_tokens_details": {
+              "reasoning_tokens": 1494
+            },
+            "total_tokens": 24689,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2299756000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 39,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 19064,
+              "output_tokens": 2318
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2124797606379372722",
+            "url": "https://x.com/i/status/2124797606379372722",
+            "title": "ASP.NET anti-CSRFライブラリにCVE-2026-131914",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-23T09:30:00Z",
+            "summary": "Hackers are actively exploiting a critical flaw in a legacy ASP .NET anti-CSRF library to take over web servers. CVE-2026-131914 (CVSS 9.3). No login required. Just ONE HTTP POST request. No official patch. The vulnerable library hasn't been updated since 2008.",
+            "quote": "🚨 Hackers are actively exploiting a critical flaw in a legacy ASP .NET anti-CSRF library to take over web servers.",
+            "tags": [
+              "CVE-2026-131914",
+              "ASP.NET",
+              "RCE"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124920434202460185",
+            "url": "https://x.com/i/status/2124920434202460185",
+            "title": "SAP NetWeaver CVE-2025-42884が悪用中",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-23T17:38:05Z",
+            "summary": "UPDATE: Hackers are actively exploiting an SAP NetWeaver flaw (CVE-2025-42884) with NO public exploit available. Onapsis confirms the attacks and warns the CVSS 6.5 bug could enable remote code execution and full server compromise. Patch now.",
+            "quote": "🚨 UPDATE: Hackers are actively exploiting an SAP NetWeaver flaw (CVE-2025-42884) with NO public exploit available.",
+            "tags": [
+              "CVE-2025-42884",
+              "SAP",
+              "RCE"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124792361666719931",
+            "url": "https://x.com/i/status/2124792361666719931",
+            "title": "GL.iNetルータにクラウド脆弱性悪用",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-23T09:09:10Z",
+            "summary": "WARNING - Hackers exploited a GL.iNet cloud security flaw to install malware on customer routers and KVM devices. The attack involved root-level access, and the cloud-side fix alone won't clean infected devices.",
+            "quote": "‼️ WARNING - Hackers exploited a GL.iNet cloud security flaw to install malware on customer routers and KVM devices.",
+            "tags": [
+              "GL.iNet",
+              "malware",
+              "router"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "campaign",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124843232374956519",
+            "url": "https://x.com/i/status/2124843232374956519",
+            "title": "N-able Mail AssureにCVE-2026-134624",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-23T12:31:18Z",
+            "summary": "BREAKING: N-able reveals a critical 9.3-severity flaw in Mail Assure, discovered during an investigation into a breach of its hosted cloud. CVE-2026-134624 could let privileged API users reach internal systems.",
+            "quote": "‼️ BREAKING: N-able reveals a critical 9.3-severity flaw in Mail Assure, discovered during an investigation into a breach of its hosted cloud.",
+            "tags": [
+              "CVE-2026-134624",
+              "N-able",
+              "Mail Assure"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2124846108111515991",
+            "url": "https://x.com/i/status/2124846108111515991",
+            "title": "ScreenConnectにCVSS 9.9の脆弱性悪用",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-23T12:42:44Z",
+            "summary": "ALERT - Hackers are exploiting a critical ScreenConnect flaw (CVSS 9.9) to hijack MSP technicians' PCs, without a single warning or prompt. One malicious session. Remote access in just 9 seconds. 688,000+ exploit attempts observed.",
+            "quote": "‼️ ALERT - Hackers are exploiting a critical ScreenConnect flaw (CVSS 9.9) to hijack MSP technicians' PCs, without a single warning or prompt.",
+            "tags": [
+              "ScreenConnect",
+              "RCE",
+              "MSP"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2125009313676898429",
+            "url": "https://x.com/i/status/2125009313676898429",
+            "title": "Linux NFSにCVE-2026-99362",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-23T23:31:15Z",
+            "summary": "LinuxのNFSサーバーに重大脆弱性「CVE-2026-99362」 RHEL 6～10やUbuntuも対象、認証不要でカーネルメモリー破壊のおそれ",
+            "quote": "LinuxのNFSサーバーに重大脆弱性「CVE-2026-99362」　RHEL 6～10やUbuntuも対象、認証不要でカーネルメモリー破壊のおそれ",
+            "tags": [
+              "CVE-2026-99362",
+              "Linux",
+              "NFS",
+              "RHEL"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125004458451153144",
+            "url": "https://x.com/i/status/2125004458451153144",
+            "title": "Node.js binary-parserにCVE-2026-134814",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-23T23:11:58Z",
+            "summary": "Node.js向け「binary-parser」に重大なコードインジェクション脆弱性　CVE-2026-134814",
+            "quote": "Node.js向け「binary-parser」に重大なコードインジェクション脆弱性　CVE-2026-134814",
+            "tags": [
+              "CVE-2026-134814",
+              "Node.js",
+              "code injection"
+            ],
+            "collected_at": "2026-11-24T06:05:50Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125013381828784356",
+            "url": "https://x.com/i/status/2125013381828784356",
+            "title": "mod_perlに6件の脆弱性、2.0.14で修正",
+            "author": "satoru.net (@satorunet)",
+            "posted_at": "2026-11-23T23:47:25Z",
+            "summary": "mod_perl 1.99_01〜2.0.13にCVE-2026-116799など6件の脆弱性。OOB readでメモリ漏洩など。Apacheチームと協力し2.0.14で修正。アップグレード推奨。",
+            "quote": "I found 6 vulnerabilities in mod_perl. Worked with the Apache team, and they're all fixed in 2.0.14.",
+            "tags": [
+              "CVE-2026-116799",
+              "mod_perl",
+              "Apache"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "vulnerability",
+            "author_handle": "satorunet",
+            "quote_match": true
+          },
+          {
+            "id": "2125013757738836329",
+            "url": "https://x.com/i/status/2125013757738836329",
+            "title": "EUSurvey 1.6にCVE-2026-101864、弱いパスワード回復",
+            "author": "AgentPrime (@agentprime_io)",
+            "posted_at": "2026-11-23T23:48:55Z",
+            "summary": "EUSurvey 1.6の/auth/reset/で弱いパスワード回復の脆弱性(CVE-2026-101864)。Fixリンクあり。",
+            "quote": "🔴 EUSURVEY: EUSurvey 1.6 Weak Password Recovery via /auth/reset/ (CVE-2026-101864)",
+            "tags": [
+              "CVE-2026-101864",
+              "EUSurvey"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "vulnerability",
+            "author_handle": "agentprime_io",
+            "quote_match": true
+          },
+          {
+            "id": "2125012996460019965",
+            "url": "https://x.com/i/status/2125012996460019965",
+            "title": "MSが1093件の脆弱性を修正、Critical 63件",
+            "author": "山口啓｜サイバーセキュリティ総研 (@CSI_post)",
+            "posted_at": "2026-11-23T23:45:53Z",
+            "summary": "MicrosoftがOutlookのゼロデイ含む1093件の脆弱性を修正。Critical 63件。Windows/Outlook/M365の更新確認を。",
+            "quote": "Outlookのゼロデイ含む…MSが脆弱性1,093件を一気に修正。Criticalは63件、未更新端末は侵入の入口に。",
+            "tags": [
+              "Microsoft",
+              "patch",
+              "zero-day"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "vulnerability",
+            "author_handle": "csi_post",
+            "quote_match": true
+          },
+          {
+            "id": "2125013423419519200",
+            "url": "https://x.com/i/status/2125013423419519200",
+            "title": "GitHub Security Advisory権限を細分化",
+            "author": "山下和彦｜AI・事業推進 (@kzhkymst)",
+            "posted_at": "2026-11-23T23:47:35Z",
+            "summary": "GitHubがSecurity Advisoryの権限を細分化。Enterprise Cloudで閲覧・編集・公開を個別管理可能に。",
+            "quote": "GitHubがSecurity Advisoryの権限を細分化。Enterprise Cloudなどで閲覧・編集・公開を個別に管理できるように。",
+            "tags": [
+              "GitHub",
+              "security advisory"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "vulnerability",
+            "author_handle": "kzhkymst",
+            "quote_match": true
+          },
+          {
+            "id": "2125015298822611096",
+            "url": "https://x.com/i/status/2125015298822611096",
+            "title": "GoFundMeで非営利団体情報漏えいの可能性",
+            "author": "KTVB.COM (@KTVB)",
+            "posted_at": "2026-11-23T23:55:02Z",
+            "summary": "GoFundMeがセキュリティインシデントを調査中。一部非営利団体の情報が漏えいした可能性。",
+            "quote": "GoFundMe is investigating a security incident where information from some nonprofits may have been compromised.",
+            "tags": [
+              "data breach",
+              "GoFundMe"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "incident",
+            "author_handle": "ktvb",
+            "quote_match": true
+          },
+          {
+            "id": "2125014029886505033",
+            "url": "https://x.com/i/status/2125014029886505033",
+            "title": "WordPressプラグイン6本にサプライチェーン攻撃のバックドア",
+            "author": "パッチくん🐾WordPressの見張り係 (@patchkun_jp)",
+            "posted_at": "2026-11-23T23:50:00Z",
+            "summary": "WP connect製6本のプラグインにバックドア。WordPress.orgのリリース保留で配信阻止。Wordfence報告。",
+            "quote": "11/22にWP connect製6本へ入ったバックドアはその間に見つかり、配信されなかったとWordfenceが報告。",
+            "tags": [
+              "supply chain",
+              "WordPress",
+              "backdoor"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "campaign",
+            "author_handle": "patchkun_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125014994098307072",
+            "url": "https://x.com/i/status/2125014994098307072",
+            "title": "楽天証券データ侵害、数百万件影響",
+            "author": "MadisonComputerWorks (@mcworks)",
+            "posted_at": "2026-11-23T23:53:50Z",
+            "summary": "Rakuten Securitiesのデータ侵害で数百万人の顧客に影響。",
+            "quote": "https://www.scworld.com/brief/rakuten-securities-data-breach-impacts-millions-of-customers",
+            "tags": [
+              "data breach",
+              "Rakuten"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "incident",
+            "author_handle": "mcworks"
+          },
+          {
+            "id": "2125014857150017781",
+            "url": "https://x.com/i/status/2125014857150017781",
+            "title": "マンダム、3万6000人情報漏えいの恐れ",
+            "author": "洋朗 (@n0314920donmb)",
+            "posted_at": "2026-11-23T23:53:17Z",
+            "summary": "マンダム、委託先への不正アクセスで3万6000人の顧客情報漏えいの恐れ。",
+            "quote": "マンダム、3万6000人の顧客情報漏洩の恐れ　委託先に不正アクセス - 日本経済新聞",
+            "tags": [
+              "data leak",
+              "Mandom"
+            ],
+            "collected_at": "2026-11-24T06:06:21Z",
+            "category": "incident",
+            "author_handle": "n0314920donmb",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2124979088595308797",
+            "posted_at": "2026-11-23T21:31:09Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2125015307567890436",
+            "posted_at": "2026-11-23T23:55:04Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
