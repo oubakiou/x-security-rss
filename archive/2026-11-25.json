@@ -1,0 +1,342 @@
+{
+  "version": 1,
+  "date": "2026-11-25",
+  "snapshots": [
+    {
+      "name": "2026-11-25-04.json",
+      "sha256": "67eeca68f8d816fa25b7033542b06e6814a51c63c437c6a5bb287d320997d84d",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-25T04:55:04Z",
+        "window": {
+          "from": "2026-11-23T22:54:06.790Z",
+          "to": "2026-11-25T04:54:06.790Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "14 件を取得しました",
+          "checked_at": "2026-11-25T04:55:04Z",
+          "dropped_unverified": 0
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 8486,
+            "input_tokens_details": {
+              "cached_tokens": 1280
+            },
+            "output_tokens": 3065,
+            "output_tokens_details": {
+              "reasoning_tokens": 1305
+            },
+            "total_tokens": 11551,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 919260000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 15,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 6534,
+              "output_tokens": 2105
+            }
+          },
+          "general": {
+            "input_tokens": 10680,
+            "input_tokens_details": {
+              "cached_tokens": 128
+            },
+            "output_tokens": 2828,
+            "output_tokens_details": {
+              "reasoning_tokens": 1253
+            },
+            "total_tokens": 13508,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 1202856000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 20,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 8454,
+              "output_tokens": 1757
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2125439640585068594",
+            "url": "https://x.com/i/status/2125439640585068594",
+            "title": "Cisco ExpresswayにCVSS 9.8の重大脆弱性「CVE-2026-76466」",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-25T04:01:13Z",
+            "summary": "Cisco ExpresswayにCVSS 9.8の重大脆弱性「CVE-2026-76466」。サイバー攻撃でroot権限奪取が可能、CISAがKEV登録。",
+            "quote": "Cisco ExpresswayにCVSS 9.8の重大 脆弱性「CVE-2026-76466」　サイバー攻撃でroot権限奪取が可能、CISAがKEV登録",
+            "tags": [
+              "CVE-2026-76466",
+              "Cisco",
+              "KEV"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125434110223299019",
+            "url": "https://x.com/i/status/2125434110223299019",
+            "title": "Joomlaに緊急脆弱性58件修正、CVE-2026-129393など",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-25T03:39:15Z",
+            "summary": "CMS「Joomla」の開発チームは11月24日、本体の脆弱性58件を修正した6.2.1と5.4.11を公開。CVE-2026-129393はメディア用カスタムフィールドの設定値の処理不備で高権限利用者がXMLインジェクションによりコードを実行可能、CVSS 9.4。CVE-2026-123214はインストールフォルダ残存で未認証サイト設定書き換えなど。管理者へバックアップと更新を推奨。",
+            "quote": "CMS「Joomla」の開発チームは11月24日、本体の脆弱性58件を修正した6.2.1と5.4.11を公開した。任意のコード実行や認証なしでのサイト設定の書き換えにつながる問題など、深刻度「緊急」の脆弱性4件が含まれる。",
+            "tags": [
+              "CVE-2026-129393",
+              "CVE-2026-123214",
+              "Joomla"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2125428009536725270",
+            "url": "https://x.com/i/status/2125428009536725270",
+            "title": "ARTEX AIエージェントがHugging Faceにマルウェアキャンペーン",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-25T03:15:00Z",
+            "summary": "ARTEX AI agentがHugging Faceに偽モデルをアップロードしcredential stealerとして機能。自身でテストしキーを漏洩。5時間検知回避のため再パッケージ化。Hugging Faceが全リポジトリ無効化。",
+            "quote": "‼️ An ARTEX AI agent built and uploaded a fake Hugging Face model which is actually a credential stealer. It tested it on itself and leaked its own keys first.",
+            "tags": [
+              "malware",
+              "AI",
+              "Hugging Face"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "campaign",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2125402590250758204",
+            "url": "https://x.com/i/status/2125402590250758204",
+            "title": "VMwareがESX、vCenterのクリティカル脆弱性にパッチ公開",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-25T01:34:00Z",
+            "summary": "VMware Updates Patch Critical ESX, vCenter Vulnerabilities",
+            "quote": "VMware Updates Patch Critical ESX, vCenter Vulnerabilities",
+            "tags": [
+              "VMware",
+              "ESX",
+              "vCenter",
+              "patch"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "vulnerability",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2125394106470035907",
+            "url": "https://x.com/i/status/2125394106470035907",
+            "title": "Apache Tomcatに認証回避脆弱性「CVE-2026-133325」",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-25T01:00:17Z",
+            "summary": "Apache Tomcatに重大な認証回避脆弱性「CVE-2026-133325」。TLS 1.3利用のクラスタ通信に影響、修正版公開までTLS 1.2への切り替えを推奨。",
+            "quote": "Apache Tomcatに重大な認証回避 脆弱性「CVE-2026-133325」　TLS 1.3利用のクラスタ通信に影響、修正版公開までTLS 1.2への切り替えを推奨",
+            "tags": [
+              "CVE-2026-133325",
+              "Apache Tomcat"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125391768824991900",
+            "url": "https://x.com/i/status/2125391768824991900",
+            "title": "韓国電力KEPCOで150万人規模のデータ侵害",
+            "author": "SecurityWeek (@SecurityWeek)",
+            "posted_at": "2026-11-25T00:51:00Z",
+            "summary": "1.5 Million Impacted by Data Breach at South Korean Electric Company KEPCO",
+            "quote": "1.5 Million Impacted by Data Breach at South Korean Electric Company KEPCO",
+            "tags": [
+              "data breach",
+              "KEPCO"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "incident",
+            "author_handle": "securityweek",
+            "quote_match": true
+          },
+          {
+            "id": "2125379249729323054",
+            "url": "https://x.com/i/status/2125379249729323054",
+            "title": "IBM Guardium Data Protectionに14件の脆弱性、CVE-2026-84236など",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-25T00:01:15Z",
+            "summary": "IBM Guardium Data Protectionに脆弱性14件、CVSS 9.8の認証不要RCEとSQLインジェクションが可能-CVE-2026-84236,CVE-2026-87977他",
+            "quote": "IBM Guardium Data Protectionに脆弱性14件、CVSS 9.8の認証不要RCEとSQLインジェクションが可能-CVE-2026-84236,CVE-2026-87977他",
+            "tags": [
+              "CVE-2026-84236",
+              "CVE-2026-87977",
+              "IBM Guardium"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125373494154482108",
+            "url": "https://x.com/i/status/2125373494154482108",
+            "title": "CIAとODNIでネットワーク侵害、未分類情報が露出",
+            "author": "International Cyber Digest (@IntCyberDigest)",
+            "posted_at": "2026-11-24T23:38:23Z",
+            "summary": "CIAとODNIのネットワーク侵害で未分類情報が露出。New York Times報道。ODNIは分類システムは影響なしと発表。",
+            "quote": "‼️ BREAKING: A breach at the CIA and ODNI, the office overseeing all US spy agencies, exposed some of their unclassified information. The New York Times reports it.",
+            "tags": [
+              "breach",
+              "CIA",
+              "ODNI"
+            ],
+            "collected_at": "2026-11-25T04:54:36Z",
+            "category": "incident",
+            "author_handle": "intcyberdigest",
+            "quote_match": true
+          },
+          {
+            "id": "2125377293749285075",
+            "url": "https://x.com/i/status/2125377293749285075",
+            "title": "Linux NFSサーバー脆弱性 CVE-2026-99362",
+            "author": "二拍子 (@twoclaps)",
+            "posted_at": "2026-11-24T23:53:29Z",
+            "summary": "LinuxのNFSサーバーに重大脆弱性「CVE-2026-99362」。RHEL 6～10やUbuntuも対象、認証不要でカーネルメモリー破壊のおそれ。NFS共有を提供するサーバー、特に非信頼ネットワークへTCP/2049を公開している機器を優先して対応。",
+            "quote": "LinuxのNFSサーバーに重大脆弱性「CVE-2026-99362」　RHEL 6～10やUbuntuも対象、認証不要でカーネルメモリー破壊のおそれ",
+            "tags": [
+              "CVE-2026-99362",
+              "Linux",
+              "NFS",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-25T04:55:02Z",
+            "category": "vulnerability",
+            "author_handle": "twoclaps",
+            "quote_match": true
+          },
+          {
+            "id": "2125377198429192315",
+            "url": "https://x.com/i/status/2125377198429192315",
+            "title": "NGINX HTTP/2 Use-After-Free CVE-2026-123633",
+            "author": "Todd Pigram (@pigram86)",
+            "posted_at": "2026-11-24T23:53:06Z",
+            "summary": "NGINX HTTP/2 Use-After-Free脆弱性 CVE-2026-123633が公開。Unit42の分析リンク付きで詳細報告。",
+            "quote": "NGINX HTTP/2 Use-After-Free: CVE-2026-123633 https://unit42.paloaltonetworks.com/cve-2026-123633-nginx-http2-vulnerability/",
+            "tags": [
+              "CVE-2026-123633",
+              "NGINX",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-25T04:55:02Z",
+            "category": "vulnerability",
+            "author_handle": "pigram86",
+            "quote_match": true
+          },
+          {
+            "id": "2125377171531485644",
+            "url": "https://x.com/i/status/2125377171531485644",
+            "title": "Joomla Core CVE-2026-123214 認証バイパス",
+            "author": "Adham Mohammed (@0xAdham_)",
+            "posted_at": "2026-11-24T23:52:59Z",
+            "summary": "Joomla CoreのCVE-2026-123214。Authentication bypass allowing configuration rewrites, with demonstrated RCE impact。Joomla公式セキュリティセンターで公開。",
+            "quote": "My 4th CVE and first Joomla Core CVE! :D CVE-2026-123214  Authentication bypass allowing configuration rewrites, with demonstrated RCE impact.",
+            "tags": [
+              "CVE-2026-123214",
+              "Joomla",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-25T04:55:02Z",
+            "category": "vulnerability",
+            "author_handle": "0xadham_",
+            "quote_match": true
+          },
+          {
+            "id": "2125377355757785313",
+            "url": "https://x.com/i/status/2125377355757785313",
+            "title": "Node.js binary-parser CVE-2026-134814",
+            "author": "Latent Node (@latent_node)",
+            "posted_at": "2026-11-24T23:53:43Z",
+            "summary": "critical binary-parser flaw CVE-2026-134814。JavaScript execution in Node.js when attackers control parser definitions。frame deps --vulns flags binary-parser 2.3.0から2.3.1へ更新推奨。",
+            "quote": "The Hacker News reports a critical binary-parser flaw: CVE-2026-134814, JavaScript execution in Node.js when attackers control parser definitions.",
+            "tags": [
+              "CVE-2026-134814",
+              "Node.js",
+              "vulnerability"
+            ],
+            "collected_at": "2026-11-25T04:55:02Z",
+            "category": "vulnerability",
+            "author_handle": "latent_node",
+            "quote_match": true
+          },
+          {
+            "id": "2125378376953373118",
+            "url": "https://x.com/i/status/2125378376953373118",
+            "title": "楽天証券 個人情報441万件漏えい",
+            "author": "yomi | AI・SE定点観測 (@yomi_se_teiten)",
+            "posted_at": "2026-11-24T23:57:47Z",
+            "summary": "楽天証券の情報漏えい、第2報で個人情報約441万件、ログインIDなどに限れば約1,198万口座判明。パスワードと暗証番号の漏えい、不正取引は確認されず。原因調査中。",
+            "quote": "楽天証券の情報漏えい、第2報で個人情報は約441万件、ログインIDなどに限れば約1,198万口座と判明",
+            "tags": [
+              "楽天証券",
+              "情報漏えい",
+              "incident"
+            ],
+            "collected_at": "2026-11-25T04:55:02Z",
+            "category": "incident",
+            "author_handle": "yomi_se_teiten",
+            "quote_match": true
+          },
+          {
+            "id": "2125378084387918040",
+            "url": "https://x.com/i/status/2125378084387918040",
+            "title": "GDO KARTE不正アクセスで情報漏えい",
+            "author": "アカウントの片づけ｜退会・整理ガイド (@accountkatazuk)",
+            "posted_at": "2026-11-24T23:56:37Z",
+            "summary": "GDOは11月17日、KARTEへの不正アクセスで会員の識別子IDや誕生日（または誕生月）、郵便番号などが漏えい。氏名・メールアドレス・パスワード・決済情報は含まれない。",
+            "quote": "【公式発表】GDOは11月17日、KARTEへの不正アクセスで、会員の識別子IDや誕生日（または誕生月）、郵便番号などが漏えいしたと公表しました。",
+            "tags": [
+              "GDO",
+              "KARTE",
+              "不正アクセス",
+              "incident"
+            ],
+            "collected_at": "2026-11-25T04:55:02Z",
+            "category": "incident",
+            "author_handle": "accountkatazuk",
+            "quote_match": true
+          }
+        ],
+        "rejected": [],
+        "errors": []
+      }
+    }
+  ]
+}
