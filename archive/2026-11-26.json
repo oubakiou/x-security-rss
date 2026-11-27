@@ -1,0 +1,309 @@
+{
+  "version": 1,
+  "date": "2026-11-26",
+  "snapshots": [
+    {
+      "name": "2026-11-26-04.json",
+      "sha256": "2407bd3c2a728ec4479675afd5e72acb6f836c0f160b5f30d3ac0afda352ab2c",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-26T04:11:40Z",
+        "window": {
+          "from": "2026-11-24T22:10:30.064Z",
+          "to": "2026-11-26T04:10:30.064Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "12 件を取得しました",
+          "checked_at": "2026-11-26T04:11:40Z",
+          "dropped_unverified": 1
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 7788,
+            "input_tokens_details": {
+              "cached_tokens": 256
+            },
+            "output_tokens": 3195,
+            "output_tokens_details": {
+              "reasoning_tokens": 1408
+            },
+            "total_tokens": 10983,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 3,
+            "cost_in_usd_ticks": 674537000,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 3,
+              "x_posts_fetched": 10,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 5836,
+              "output_tokens": 2112
+            }
+          },
+          "general": {
+            "input_tokens": 14727,
+            "input_tokens_details": {
+              "cached_tokens": 2304
+            },
+            "output_tokens": 3006,
+            "output_tokens_details": {
+              "reasoning_tokens": 1704
+            },
+            "total_tokens": 17733,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2085045500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 37,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 12501,
+              "output_tokens": 1844
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2125703873512018181",
+            "url": "https://x.com/i/status/2125703873512018181",
+            "title": "WordPressプラグイン6種にバックドア混入、CVE-2026-135202（CVSS 9.8）公式審査で阻止",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-25T21:31:11Z",
+            "summary": "WordPressプラグイン6種にバックドア混入、CVE-2026-135202（CVSS 9.8）。公式の配布前審査でサプライチェーン攻撃を阻止。パッチ適用を推奨。",
+            "quote": "WordPressプラグイン6種にバックドア混入、CVE-2026-135202（CVSS 9.8）　公式の配布前審査でサプライチェーン攻撃を阻止",
+            "tags": [
+              "CVE-2026-135202",
+              "WordPress",
+              "backdoor"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125688767860404510",
+            "url": "https://x.com/i/status/2125688767860404510",
+            "title": "F5 NGINXに認証不要のDoS脆弱性（CVE-2026-132779）、TLS 1.3 Early Data環境に影響",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-25T20:31:10Z",
+            "summary": "F5 NGINXに認証不要のDoS脆弱性（CVE-2026-132779）。TLS 1.3 Early Dataの利用環境に影響、修正版を公開。早急にアップデートを。",
+            "quote": "F5、NGINXに認証不要のDoS 脆弱性（CVE-2026-132779） TLS 1.3 Early Dataの利用環境に影響、修正版を公開",
+            "tags": [
+              "CVE-2026-132779",
+              "NGINX",
+              "DoS"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125644444095451415",
+            "url": "https://x.com/i/status/2125644444095451415",
+            "title": "NGINXにPre-auth RCE脆弱性CVE-2026-123633、Unit 42が分析・修正版公開",
+            "author": "Unit 42 (@Unit42_Intel)",
+            "posted_at": "2026-11-25T17:35:02Z",
+            "summary": "Pre-auth RCE in NGINX、CVE-2026-123633とmemory disclosureをチェーン。DNS resolver path to HTTP/2 use-after-free。CVE fixed in 1.30.7 and 1.31.9。",
+            "quote": "Pre-auth RCE in a two-VM NGINX lab: Unit 42's @memN0ps chained CVE-2026-123633 with a separate memory disclosure under a non-default config.",
+            "tags": [
+              "CVE-2026-123633",
+              "NGINX",
+              "RCE"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "vulnerability",
+            "author_handle": "unit42_intel",
+            "quote_match": true
+          },
+          {
+            "id": "2125578074867843514",
+            "url": "https://x.com/i/status/2125578074867843514",
+            "title": "Palo Alto Networks、Fragnesia脆弱性CVE-2026-46300を積極的に悪用中、パッチ適用を",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-25T13:11:19Z",
+            "summary": "Palo Alto Networks patches actively exploited Fragnesia flaw (CVE-2026-46300) in PAN-OS。Hackers chaining with PHP2Shell。Upgrade immediately。",
+            "quote": "🚨 UPDATE: Palo Alto Networks patches actively exploited Fragnesia flaw (CVE-2026-46300) in PAN-OS.",
+            "tags": [
+              "CVE-2026-46300",
+              "Palo Alto",
+              "exploited"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2125573068504650142",
+            "url": "https://x.com/i/status/2125573068504650142",
+            "title": "GeoServer脆弱性2件が昨日パッチ後すでに悪用中、RCE可能",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-25T12:51:25Z",
+            "summary": "Hackers are already exploiting two GeoServer vulnerabilities patched just YESTERDAY。Researchers warn the flaws can be chained to achieve remote code execution without authentication。Patch urgently。",
+            "quote": "🛑 WARNING - Hackers are already exploiting two GeoServer vulnerabilities patched just YESTERDAY.",
+            "tags": [
+              "GeoServer",
+              "RCE",
+              "exploited"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2125551411270455668",
+            "url": "https://x.com/i/status/2125551411270455668",
+            "title": "DrupalのCritical脆弱性CVE-2026-132165が活発に悪用中、CISA KEV追加",
+            "author": "The Hacker News (@TheHackersNews)",
+            "posted_at": "2026-11-25T11:25:21Z",
+            "summary": "Critical Drupal flaw now under active exploitation — no login required。9.8-rated Fail2Install bug (CVE-2026-132165)。CISA has added it to its KEV catalog。",
+            "quote": "‼️ Critical Drupal flaw now under active exploitation — no login required.",
+            "tags": [
+              "CVE-2026-132165",
+              "Drupal",
+              "KEV"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "vulnerability",
+            "author_handle": "thehackersnews",
+            "quote_match": true
+          },
+          {
+            "id": "2125704532759814459",
+            "url": "https://x.com/i/status/2125704532759814459",
+            "title": "1Password、従業員GitHubアカウント侵害で顧客データ流出",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-25T21:33:48Z",
+            "summary": "1Password customer data stolen after employee GitHub account breach。影響を受けた顧客に通知済み。",
+            "quote": "1Password customer data stolen after employee GitHub account breach",
+            "tags": [
+              "1Password",
+              "data breach",
+              "GitHub"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "incident",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2125713592205152572",
+            "url": "https://x.com/i/status/2125713592205152572",
+            "title": "JCB、MyJCBで最大約15万件の情報漏えい、KARTEへの不正アクセスで",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-25T22:09:48Z",
+            "summary": "JCB、会員サービス「MyJCB」で最大約15万件の情報漏えい-プレイド「KARTE」への不正アクセスで。影響確認と対応を。",
+            "quote": "JCB、会員サービス「MyJCB」で最大約15万件の情報漏えい-プレイド「KARTE」への不正アクセスで",
+            "tags": [
+              "JCB",
+              "data breach",
+              "KARTE"
+            ],
+            "collected_at": "2026-11-26T04:11:15Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125803485979361555",
+            "url": "https://x.com/i/status/2125803485979361555",
+            "title": "Linux NFSサーバーに12年前のRCE脆弱性 CVE-2026-99362",
+            "author": "Hacker News 50 (@betterhn50)",
+            "posted_at": "2026-11-26T04:07:01Z",
+            "summary": "LinuxカーネルNFSサーバーの12年前のプリ認証リモートルート脆弱性CVE-2026-99362が詳細公開。opensec.inのブログで解説。パッチ適用を推奨。",
+            "quote": "Nfs2root: A 12-year-old pre-auth remote root in the Linux kernel's NFS server https://opensec.in/blog/nfs2root-cve-2026-99362",
+            "tags": [
+              "CVE-2026-99362",
+              "Linux",
+              "NFS"
+            ],
+            "collected_at": "2026-11-26T04:11:38Z",
+            "category": "vulnerability",
+            "author_handle": "betterhn50",
+            "quote_match": true
+          },
+          {
+            "id": "2125803753823666294",
+            "url": "https://x.com/i/status/2125803753823666294",
+            "title": "1Passwordに不正アクセス、一部顧客情報流出",
+            "author": "ケータイ Watch (@ktai_watch)",
+            "posted_at": "2026-11-26T04:08:05Z",
+            "summary": "1Passwordに不正アクセスが発生。一部顧客の氏名などが流出したが保管庫への影響なし。公式報道リンク付き。",
+            "quote": "1Passwordに不正アクセス、一部顧客の氏名など流出も保管庫への影響なし https://k-tai.watch.impress.co.jp/docs/news/2159461.html",
+            "tags": [
+              "data breach",
+              "1Password"
+            ],
+            "collected_at": "2026-11-26T04:11:38Z",
+            "category": "incident",
+            "author_handle": "ktai_watch",
+            "quote_match": true
+          },
+          {
+            "id": "2125802492407767222",
+            "url": "https://x.com/i/status/2125802492407767222",
+            "title": "楽天証券情報漏えい、資産家リストがダークウェブで取引",
+            "author": "ろでむ@ラグ写部🍵汲み係🏠🐰 💫🌸 (@rodem01)",
+            "posted_at": "2026-11-26T04:03:04Z",
+            "summary": "楽天証券の情報流出でダークウェブで1000万円以上の資産を持つ「資産家リスト」の売買が確認。関西テレビ報道。",
+            "quote": "護身用に「バット」を買った人も　「楽天証券」の情報流出で犯罪のターゲットに？　フェーズが変わった情報漏えい　ダークウェブでは1000万円以上の資産を持つ「資産家リスト」の売買が(関西テレビ)",
+            "tags": [
+              "情報漏えい",
+              "ransomware"
+            ],
+            "collected_at": "2026-11-26T04:11:38Z",
+            "category": "incident",
+            "author_handle": "rodem01",
+            "quote_match": true
+          },
+          {
+            "id": "2125802033135661268",
+            "url": "https://x.com/i/status/2125802033135661268",
+            "title": "Postfix 3.11.8などで12件の脆弱性修正",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-26T04:01:14Z",
+            "summary": "Postfix 3.11.8などで情報漏えい・DoSにつながる12件の不具合を修正。最古は29年前のコード。セキュリティ更新公開。",
+            "quote": "Postfix、情報漏えい・DoSにつながる12件の不具合を修正 3.11.8など公開、最古は29年前のコード https://rocket-boys.co.jp/security-measures-lab/postfix_3_11_8_security_update_2026/",
+            "tags": [
+              "Postfix",
+              "patch"
+            ],
+            "collected_at": "2026-11-26T04:11:38Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2125802618463080510",
+            "posted_at": "2026-11-26T04:03:34Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
