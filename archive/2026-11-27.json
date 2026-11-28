@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "date": "2026-11-27",
+  "snapshots": [
+    {
+      "name": "2026-11-27-04.json",
+      "sha256": "9c16a60c688fc9426058b39762bf0d62551187bbe50077c889d98a50b5df5949",
+      "snapshot": {
+        "version": 1,
+        "fetched_at": "2026-11-27T04:18:08Z",
+        "window": {
+          "from": "2026-11-25T22:16:26.925Z",
+          "to": "2026-11-27T04:16:26.925Z"
+        },
+        "model": "grok-4.3",
+        "status": {
+          "ok": true,
+          "message": "11 件を取得しました",
+          "checked_at": "2026-11-27T04:18:08Z",
+          "dropped_unverified": 4
+        },
+        "usage": {
+          "trusted": {
+            "input_tokens": 9181,
+            "input_tokens_details": {
+              "cached_tokens": 3072
+            },
+            "output_tokens": 3582,
+            "output_tokens_details": {
+              "reasoning_tokens": 2022
+            },
+            "total_tokens": 12763,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 2,
+            "cost_in_usd_ticks": 872056500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 2,
+              "x_posts_fetched": 14,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 7229,
+              "output_tokens": 2341
+            }
+          },
+          "general": {
+            "input_tokens": 18853,
+            "input_tokens_details": {
+              "cached_tokens": 256
+            },
+            "output_tokens": 3020,
+            "output_tokens_details": {
+              "reasoning_tokens": 1072
+            },
+            "total_tokens": 21873,
+            "num_sources_used": 0,
+            "num_server_side_tools_used": 4,
+            "cost_in_usd_ticks": 2158474500,
+            "server_side_tool_usage_details": {
+              "web_search_calls": 0,
+              "x_search_calls": 4,
+              "x_posts_fetched": 37,
+              "x_users_fetched": 0,
+              "code_interpreter_calls": 0,
+              "file_search_calls": 0,
+              "mcp_calls": 0,
+              "document_search_calls": 0,
+              "image_generation_calls": 0
+            },
+            "context_details": {
+              "input_tokens": 16627,
+              "output_tokens": 2181
+            }
+          }
+        },
+        "items": [
+          {
+            "id": "2126119122539082021",
+            "url": "https://x.com/i/status/2126119122539082021",
+            "title": "Drupalに認証不要でサイト乗っ取り脆弱性、悪用確認（CVE-2026-132165・136716）",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-27T01:01:14Z",
+            "summary": "Drupalに認証不要でサイトを乗っ取られる重大な脆弱性、サイバー攻撃 悪用を確認（CVE-2026-132165・136716）。製品名：Drupal、影響：認証不要でのサイト乗っ取り、対処：詳細未記載。",
+            "quote": "Drupalに認証不要でサイトを乗っ取られる重大な脆弱性、サイバー攻撃 悪用を確認（CVE-2026-132165・136716）",
+            "tags": [
+              "CVE-2026-132165",
+              "CVE-2026-136716",
+              "Drupal"
+            ],
+            "collected_at": "2026-11-27T04:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2126090714677399876",
+            "url": "https://x.com/i/status/2126090714677399876",
+            "title": "Cactiにゼロデイ脆弱性「4HTTP2ROOT」、RCE可能",
+            "author": "yousukezan (@yousukezan)",
+            "posted_at": "2026-11-26T23:08:21Z",
+            "summary": "ネットワーク監視ソフト「Cacti」にログイン不要でRCE可能なゼロデイ「4HTTP2ROOT」。バージョン1.2.31に影響、修正版未提供、ゲストアクセス無効化を推奨。",
+            "quote": "ネットワーク監視ソフト「Cacti」に、ログインせずにわずか4回のHTTPリクエストで遠隔コード実行が可能になるゼロデイ脆弱性「4HTTP2ROOT」",
+            "tags": [
+              "Cacti",
+              "zero-day",
+              "RCE"
+            ],
+            "collected_at": "2026-11-27T04:17:20Z",
+            "category": "vulnerability",
+            "author_handle": "yousukezan",
+            "quote_match": true
+          },
+          {
+            "id": "2126134647918850464",
+            "url": "https://x.com/i/status/2126134647918850464",
+            "title": "中国銀行ちゅうぎんビジネスポータルで顧客情報漏洩、KARTE不正アクセス",
+            "author": "セキュリティ対策Lab (@securityLab_jp)",
+            "posted_at": "2026-11-27T02:02:56Z",
+            "summary": "中国銀行「ちゅうぎんビジネスポータル」の顧客情報が漏洩。プレイド「KARTE」への不正アクセスで、法人狙いフィッシング注意。",
+            "quote": "中国銀行「ちゅうぎんビジネスポータル」の顧客情報が漏洩　プレイド「KARTE」への不正アクセスで、法人を狙うフィッシングに注意",
+            "tags": [
+              "data breach",
+              "KARTE"
+            ],
+            "collected_at": "2026-11-27T04:17:20Z",
+            "category": "incident",
+            "author_handle": "securitylab_jp",
+            "quote_match": true
+          },
+          {
+            "id": "2125973917193863413",
+            "url": "https://x.com/i/status/2125973917193863413",
+            "title": "Remusマルウェア、偽Google Sheets拡張でGmail窃取",
+            "author": "BleepingComputer (@BleepinComputer)",
+            "posted_at": "2026-11-26T15:24:15Z",
+            "summary": "Remus malware steals Gmail messages via fake Google Sheets extension。マルウェア分析、Gmailメッセージ窃取キャンペーン。",
+            "quote": "Remus malware steals Gmail messages via fake Google Sheets extension",
+            "tags": [
+              "Remus",
+              "malware",
+              "Gmail"
+            ],
+            "collected_at": "2026-11-27T04:17:20Z",
+            "category": "campaign",
+            "author_handle": "bleepincomputer",
+            "quote_match": true
+          },
+          {
+            "id": "2126103461368357258",
+            "url": "https://x.com/i/status/2126103461368357258",
+            "title": "CISA、Cisco Expresswayの積極的に悪用される脆弱性をKEVに追加",
+            "author": "SC Media (@SCMagazine)",
+            "posted_at": "2026-11-26T23:59:00Z",
+            "summary": "CISAがCisco Expresswayシリーズの脆弱性を積極的に悪用される脆弱性リストに追加。未認証の攻撃者がrootアクセスを取得可能。直ちにパッチ適用と侵害確認を推奨。",
+            "quote": "The @CISAgov flagged an actively exploited Cisco Expressway flaw that gives unauthenticated attackers root access. Experts urge immediate patching and checks for prior compromise.",
+            "tags": [
+              "Cisco Expressway",
+              "CISA KEV",
+              "actively exploited"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "vulnerability",
+            "author_handle": "scmagazine",
+            "quote_match": true
+          },
+          {
+            "id": "2126102134345355774",
+            "url": "https://x.com/i/status/2126102134345355774",
+            "title": "LiteSpeed Cacheの脆弱性修正、CVSS 5.4のCVE-2026-131695",
+            "author": "株式会社mgn (@mgn_jpn)",
+            "posted_at": "2026-11-26T23:53:44Z",
+            "summary": "LiteSpeed Cacheの脆弱性が修正（深刻度 中）。700万サイト以上が利用、CVSS 5.4。7.9.4に更新を。",
+            "quote": "🛠 LiteSpeed Cache の脆弱性が修正されました（深刻度 中）\n\n700万サイト以上が利用 / CVSS 5.4\n7.9.4 に更新してください",
+            "tags": [
+              "CVE-2026-131695",
+              "LiteSpeed Cache",
+              "WordPress"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "vulnerability",
+            "author_handle": "mgn_jpn",
+            "quote_match": true
+          },
+          {
+            "id": "2126101799870316779",
+            "url": "https://x.com/i/status/2126101799870316779",
+            "title": "Canonical LXDにCVE-2026-135384、認証バイパス脆弱性",
+            "author": "cve.now (@cvedotnow)",
+            "posted_at": "2026-11-26T23:52:24Z",
+            "summary": "Canonical製品に2件の新規CVE。LXDでOIDC bearer token検証の認証バイパス（CVE-2026-135384、CVSS 9.2）。アドバイザリ参照して修正を。",
+            "quote": "🔴 CRITICAL · Canonical products: 2 new CVEs\n\nProducts: LXD (1), pylxd (1)\nWorst (LXD, 9.2): authentication bypass in OIDC bearer token verification (CVE-2026-135384)",
+            "tags": [
+              "CVE-2026-135384",
+              "LXD",
+              "Canonical"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "vulnerability",
+            "author_handle": "cvedotnow",
+            "quote_match": true
+          },
+          {
+            "id": "2126101493035979027",
+            "url": "https://x.com/i/status/2126101493035979027",
+            "title": "CISA、Drupal Core CVE-2026-132165など3件をKEVに追加",
+            "author": "Hunter Hotton | Redes, webs y bots IA (@hunterhotton)",
+            "posted_at": "2026-11-26T23:51:11Z",
+            "summary": "CISAが2026/11/24に3件の積極的に悪用される脆弱性をKEVカタログに追加。Drupal CoreのRCE（CVE-2026-132165）など。",
+            "quote": "⚠️ CISA sumó el 24/11 tres fallas con explotación activa a su catálogo KEV. Entre ellas, una de ejecución remota de código en Drupal Core (CVE-2026-132165)",
+            "tags": [
+              "CVE-2026-132165",
+              "Drupal",
+              "CISA KEV"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "vulnerability",
+            "author_handle": "hunterhotton",
+            "quote_match": true
+          },
+          {
+            "id": "2126102360246358468",
+            "url": "https://x.com/i/status/2126102360246358468",
+            "title": "WOWOW、KARTE不正アクセスで個人情報漏えいの可能性",
+            "author": "アカウントの片づけ｜退会・整理ガイド (@accountkatazuk)",
+            "posted_at": "2026-11-26T23:54:38Z",
+            "summary": "WOWOW公式発表：11月17日、KARTEへの不正アクセスで生年月日・性別・郵便番号・メールアドレスが漏えいした可能性。カード・口座情報・パスワードは含まれず。",
+            "quote": "【公式発表】WOWOWは11月17日、案内に使っていたKARTEへの不正アクセスで、生年月日・性別・郵便番号・メールアドレスなどが漏えいした可能性があると公表しました。",
+            "tags": [
+              "WOWOW",
+              "KARTE",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "incident",
+            "author_handle": "accountkatazuk",
+            "quote_match": true
+          },
+          {
+            "id": "2126102293913440559",
+            "url": "https://x.com/i/status/2126102293913440559",
+            "title": "文部科学省に不正アクセス、16万件の個人情報漏えい可能性",
+            "author": "原　祐二 (@Yuji_HARA1977)",
+            "posted_at": "2026-11-26T23:54:22Z",
+            "summary": "文部科学省に不正アクセス、16万件漏えいの可能性（共同通信報道）。",
+            "quote": "文部科学省に不正アクセス　16万件漏えいの可能性（共同通信）",
+            "tags": [
+              "文部科学省",
+              "不正アクセス",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "incident",
+            "author_handle": "yuji_hara1977",
+            "quote_match": true
+          },
+          {
+            "id": "2126102127802245508",
+            "url": "https://x.com/i/status/2126102127802245508",
+            "title": "JCB、KARTE不正アクセスで最大約15万件の管理コード漏えい",
+            "author": "rassy (@rassy333)",
+            "posted_at": "2026-11-26T23:53:42Z",
+            "summary": "JCBがKARTE不正アクセスでMyJCB関連の管理コード最大約15万件の漏えいを発表。",
+            "quote": "JCBがKARTE不正アクセスでMyJCB関連の管理コード最大約15万件の漏えいを発表",
+            "tags": [
+              "JCB",
+              "KARTE",
+              "情報漏えい"
+            ],
+            "collected_at": "2026-11-27T04:18:06Z",
+            "category": "incident",
+            "author_handle": "rassy333",
+            "quote_match": true
+          }
+        ],
+        "rejected": [
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2126109750009995629",
+            "posted_at": "2026-11-27T00:24:00Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2126064199873036449",
+            "posted_at": "2026-11-26T21:23:00Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2126087272252744129",
+            "posted_at": "2026-11-26T22:54:41Z"
+          },
+          {
+            "search": "verify",
+            "reason": "quote_mismatch",
+            "id": "2126101995048116431",
+            "posted_at": "2026-11-26T23:53:11Z"
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}
